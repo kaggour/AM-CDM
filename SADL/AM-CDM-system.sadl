@@ -1,0 +1,243 @@
+uri "http://kdl.ge.com/AM-CDM-system" alias AM-CDM-system version "$Revision:$ Last modified on   $Date:$".
+
+import "http://kdl.ge.com/AM-CDM-base".
+
+//
+// Non-AM equipment
+//
+NonAMEquipment is a type of Equipment,
+	described by equipmentPurchaseDate with a single value of type dateTime,
+	described by calibration with a single value of type Calibration.
+
+//
+// AM system structure
+//
+AMSystem is a type of Equipment,
+	described by systemID with a single value of type string,
+	described by systemName with a single value of type string,
+	described by machineName with a single value of type string,
+	described by machineManufacturer with a single value of type string,
+	described by machineModel with a single value of type string,
+	described by systemOwner with a single value of type Organization,
+	described by systemUUID with a single value of type string,
+	described by machineAcceptanceDate with a single value of type dateTime,
+	described by systemProcessType with a single value of type string,
+	described by systemSubprocessType with a single value of type string,
+	described by machineElectricVoltage with a single value of type double,
+	described by machinePowerIntensity with a single value of type double,
+	described by machinePowerFrequency with a single value of type double,
+	described by systemInstallationQualification with a single value of type string,
+	described by systemOperationQualification with a single value of type string,
+	described by systemFacility with a single value of type string,
+	described by machineHazmatRequirements with a single value of type string,
+	described by machineSerialNumber with a single value of type string,
+	described by location with a single value of type Address,
+	described by software with values of type Software,
+	described by machineCapability with a single value of type MachineCapability,
+	described by machineCalibration with a single value of type MachineCalibration,
+	described by maintenanceEvent with values of type MaintenanceEvent,
+	described by maintenanceHistory with a single value of type MaintenanceHistory,
+	described by inSituMonitoringSystem with a single value of type InSituMonitoringSystem,
+	described by projectSpecificSubsystem with values of type ProjectSpecificSubsystem.
+
+InSituMonitoringSystem is a type of Equipment,
+	described by inSituMonitoringSystemId with a single value of type string,
+	described by inSituMonitoringSystemModelName with a single value of type string,
+	described by inSituMonitoringSystemManufacturer with a single value of type string,
+	described by inSituMonitoringSystemSerialNumber with a single value of type string,
+	described by inSituMonitoringSystemLocation with a single value of type string,
+	described by inSituSensingType with a single value of type string,
+	described by inSituMonitoringSystemSamplingRate with a single value of type double,
+	described by inSituMonitoringSystemCalibration with a single value of type dateTime,
+	described by camera with a single value of type Camera,
+	described by photodiode with a single value of type Photodiode,
+	described by pyrometer with a single value of type Pyrometer.
+
+ProjectSpecificSubsystem is a type of Equipment.
+
+BuildChamber is a type of ProjectSpecificSubsystem,
+	described by buildEnvironmentalControl with a single value of type BuildEnvironmentalControl,
+	described by buildVolume with a single value of type BuildVolume.
+
+LaserSystem is a type of ProjectSpecificSubsystem,
+	described by numberOfLasers with a single value of type int,
+	described by modeOfLaserOperation with a single value of type string,
+	described by laserType with a single value of type string,
+	described by maxLaserPower with a single value of type double,
+	described by minLaserPower with a single value of type double,
+	described by ratedWaveLength with a single value of type Measurement,
+	described by beamShape with a single value of type string,
+	described by beamDiameter with a single value of type Measurement,
+	described by laserBeamSpotSizeType with a single value of type string,
+	described by maxBeamSpotSize with a single value of type Measurement,
+	described by minBeamSpotSize with a single value of type Measurement,
+	described by focusCorrectionType with a single value of type string,
+	described by laserManufacturer with a single value of type string,
+	described by laserModelName with a single value of type string,
+	described by laserSystemSerialNumber with a single value of type string,
+	described by precisionLensMaterialType with a single value of type string,
+	described by laserBeamProfile with a single value of type Document,
+	described by laserSystemCalibration with a single value of type LaserSystemCalibration.
+
+RecoatingSystem is a type of ProjectSpecificSubsystem,
+	described by recoatingSystemType with a single value of type string,
+	described by recoaterMaximumSpeed with a single value of type double,
+	described by recoaterMaxUsesAllowed with a single value of type integer,
+	described by recoatingBlade with a single value of type RecoatingBlade,
+	described by roller with a single value of type Roller.
+
+GalvoScanner is a type of ProjectSpecificSubsystem,
+	described by galvoScannerManufacturer with a single value of type string,
+	described by galvoScannerModel with a single value of type string,
+	described by maxScanAngleX with a single value of type double,
+	described by maxScanAngleY with a single value of type double,
+	described by galvoScannerRepeatability with a single value of type double,
+	described by galvoScannerMaxScanSpeed with a single value of type double,
+	described by galvoScannerCalibrationDate with a single value of type dateTime,
+	described by galvoScannerOriginX with a single value of type double,
+	described by galvoScannerOriginY with a single value of type double.
+
+//
+// Laser Powder Bed Fusion AM System
+//
+LaserPowderBedFusionSystem is a type of AMSystem,
+	described by laserPowderBedFusionSpecificAttribute with a single value of type string.
+
+LaserPowderBedFusionBuildChamber is a type of BuildChamber,
+	described by laserSystem with a single value of type LaserSystem,
+	described by recoatingSystem with a single value of type RecoatingSystem.
+
+//
+// Directed Energy Deposition AM System
+//
+DirectedEnergyDepositionSystem is a type of AMSystem,
+	described by directedEnergyDepositionSpecificAttribute with a single value of type string.
+
+//
+// Binder Jet System AM System
+//
+
+BinderJetSystem is a type of AMSystem,
+	described by binderJetSpecificAttribute with a single value of type string.
+
+//
+// Detailed Characteristics
+//
+BuildEnvironmentalControl is a class,
+	described by shieldingGasType with a single value of type string,
+	described by maximumPreheatingTemperature with a single value of type double,
+	described by gasFlowNozzleType with a single value of type string,
+	described by shieldingDeviceType with a single value of type string.
+
+BuildVolume is a class,
+	described by volumeShape with a single value of type string,
+	described by volumeWidth with a single value of type Measurement,
+	described by volumeDepth with a single value of type Measurement,
+	described by volumeHeight with a single value of type Measurement,
+	described by volumeDiameter with a single value of type Measurement,
+	described by machineOriginX with a single value of type double, 
+	described by machineOriginY with a single value of type double, 
+	described by machineOriginZ with a single value of type double,
+	described by totalBuildVolume with a single value of type double,
+	described by machineLastCleanoutDate with a single value of type dateTime.
+
+Calibration is a class,
+	described by equipmentCalibrationId with a single value of type string,
+	described by equipmentCalibrationDate with a single value of type dateTime,
+	described by equipmentCalibrationResults with a single value of type Document,
+	described by equipmentCalibrationPassFail with a single value of type string,
+	described by equipmentCalibrationOperator with a single value of type string,
+	described by equipmentType with a single value of type string,
+	described by equipmentId with a single value of type string,
+	described by equipmentOwner with a single value of type string,
+	described by equipmentLocation with a single value of type string,
+	described by equipmentManufacturer with a single value of type string,
+	described by equipmentModel with a single value of type string,
+	described by equipmentSerialNumber with a single value of type string.
+
+Camera is a class,
+	described by cameraImageWidth with a single value of type integer,
+	described by cameraBitDepth with a single value of type integer,
+	described by lastCameraCalibration with a single value of type dateTime,
+	described by cameraModel with a single value of type string,
+	described by cameraManufacturer with a single value of type string,
+	described by cameraImageHeight with a single value of type integer,
+	described by cameraCenterX with a single value of type integer,
+	described by cameraCenterY with a single value of type integer,
+	described by cameraOpticalFilterBandwidth with a single value of type double,
+	described by detectorPitchSize with a single value of type double,
+	described by cameraMagnification with a single value of type double,
+	described by minShutterSpeed with a single value of type double,
+	described by cameraFrameRate with a single value of type integer.
+
+LaserSystemCalibration is a class,
+	described by laserCalibrationDate with a single value of type dateTime,
+	described by laserSystemCalibrationReport with a single value of type Document.
+
+MachineCalibration is a class,
+	described by machineCalibrationOperator with a single value of type string,
+	described by machineCalibrationId with a single value of type string,
+	described by machineCalibrationDate with a single value of type dateTime,
+	described by machineCalibrationResult with a single value of type string,
+	described by machineCalibrationNotes with a single value of type string,
+	described by machineCalibrationReport with a single value of type Document.
+
+MachineCapability is a class,
+	described by processableRawMaterial with a single value of type string,
+	described by maximumBuildRate with a single value of type double,
+	described by minimumLayerThickness with a single value of type double,
+	described by maximumLayerThickness with a single value of type double,
+	described by minimumOxygenLevel with a single value of type double,
+	described by minimumMoistureLevel with a single value of type double.
+
+MaintenanceEvent is a class,
+	described by maintenanceDate with a single value of type dateTime,
+	described by maintenanceReport with a single value of type Document.
+
+MaintenanceHistory is a class,
+	described by amSystemLastMaintenanceDate with a single value of type dateTime,
+	described by smSystemLastMaintenanceReport with a single value of type Document.
+
+
+Photodiode is a class,
+	described by photodiodeModel with a single value of type string,
+	described by photodiodeManufacturer with a single value of type string,
+	described by photodiodeOpticalFilterBandwidth with a single value of type double,
+	described by photodiodeBitDepth with a single value of type integer,
+	described by photodiodeSamplingRate with a single value of type double,
+	described by lastPhotdiodeCalibration with a single value of type dateTime.
+
+Pyrometer is a class,
+	described by pyrometerModel with a single value of type string,
+	described by pyrometerManufacturer with a single value of type string,
+	described by pyrometerOpticalFilterBandwidth1 with a single value of type double,
+	described by pyrometerOpticalFilterBandwidth2 with a single value of type double,
+	described by pyrometerBitDepth with a single value of type integer,
+	described by pyrometerSamplingRate with a single value of type double,
+	described by lastPyrometerCalibration with a single value of type dateTime.
+
+RecoatingBlade is a class,
+	described by bladeId with a single value of type string,
+	described by recoatingBladeMaterial with a single value of type string,
+	described by rollerId with a single value of type string,
+	described by recoatingBladePartNumber with a single value of type string,
+	described by recoatingBladeMaterialSpecification with a single value of type Document,
+	described by recoatingBladeDrawing with a single value of type Document,
+	described by recoatingRakeAngle with a single value of type double,
+	described by recoatingClearanceAngle with a single value of type double,
+	described by recoatingMechanismType with a single value of type string.
+
+Roller is a class,
+	described by rollerMaterial with a single value of type string,
+	described by rollerDiameter with a single value of type double,
+	described by maxRollingAngularSpeed with a single value of type double,
+	described by rollerSpinDirection with a single value of type string,
+	described by dateOfLastRollerCleaning with a single value of type dateTime.
+
+Software is a class,
+	described by softwareName with a single value of type string,
+	described by softwareID with a single value of type string,
+	described by softwareVendor with a single value of type string,
+	described by softwareVersion with a single value of type string
+	described by softwareConfigurationSettingsFile with a single value of type Document,
+	described by softwareFileType with a single value of type string.

@@ -1,0 +1,104 @@
+uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testInspectionCharacterization version "$Revision:$ Last modified on   $Date:$".
+
+import "http://kdl.ge.com/AM-CDM-build".
+import "http://kdl.ge.com/AM-CDM-material".
+import "http://kdl.ge.com/AM-CDM-process".
+
+TestInspectionCharacterization is a class,
+		// acronyms bad :-(
+	// TIC is it a Process (BFO)? An Activity (SADL)? Test result is a (measured) Quality?
+	described by ticID with a single value of type string,
+	described by ticName with a single value of type string,
+	described by ticType with a single value of type string,
+	described by ticStandard with a single value of type string,
+	described by ticStartTimeAndDate with a single value of type dateTime,
+	described by ticEndTimeAndDate with a single value of type dateTime,
+	described by ticLocation with a single value of type Address,
+	described by ticNotes with a single value of type string,
+	described by ticOperator with a single value of type Operator,
+	described by ticPointOfContact with a single value of type PointOfContact,
+	described by ticVendor with a single value of type TICVendor,
+	described by ticEquipment with a single value of type NonAMEquipment,
+	described by ticSoftware with a single value of type Software,
+	described by ticProcedure with a single value of type Document,
+	// this should be an enumeration
+	described by ticDestructureVsNonDestructive with a single value of type string,
+	described by ticDuration with a single value of type Measurement,
+	described by ticEnvironment with a single value of type TICEnvironment,
+	// Could the below live in a TestResult class?
+	// This should also be an enumeration
+	// described by ticPassFail with a single value of type string,
+	described by ticResult with a single value of type TestResult.
+	// Feedstock requirements should probably fall under specific tests
+	// described by ticAncillaryFeedstock with a single value of type TICAncillaryFeedstock.
+	// described by specimen with a single value of type Specimen,
+	// Are these truly general? Should they be dropped from CDD for WK72172?
+	// NDT (or visual inspection) could be a subclass of TIC with these terms.
+	// described by ticIndicationID with a single value of type string,
+	// described by ticIndicationSize with a single value of type Measurement,
+	// described by ticIndicationLocation with a single value of type string,
+	// described by ticIndicationReport with a single value of type Document,
+	// described by ticIndicationType with a single value of type string,
+	// described by ticIndicationNotes with a single value of type string.
+	
+TestResult is a class,
+	described by ticPassFail with a single value of type string,
+	described by ticRawData with values of type Document,
+	described by ticReport with a single value of type Document.
+
+
+Specimen is a class,
+// or MaterialSpecimen is a type of Material, ???
+	// the source material should describe properties like refractive index, or it should be here?
+	// Question for Kareem: can we require a subtype when declaring a specimen?
+	described by specimenID with a single value of type string,
+	described by specimenDescription with a single value of type string,
+	described by specimenMass with a single value of type Measurement,
+	described by specimenTIC with values of type TestInspectionCharacterization,
+	described by specimenDeviations with a single value of type string,
+	described by specimenPostProcessInformation with a single value of type string,
+	described by specimenPostProcessSequence with a single value of type Process.
+	
+	
+BuiltPartSpecimen is a type of Specimen,
+	described by specimenTestLocation with a single value of type Address,
+	// Should a part have specimens or a specimen have a part?
+	described by specimenOriginatingBuiltPart with a single value of type BuiltPart,
+	described by specimenModelID with a single value of type string,
+	described by specimenLocation with a single value of type Document,
+	described by specimenOrientation with a single value of type Coordinate.
+
+
+FeedstockSpecimen is a type of Specimen,
+	// or MaterialSpecimen is a type of Material, ???
+	// the source material should describe properties like refractive index, or it should be here?
+	described by specimenMaterialSource with a single value of type Material,
+	// Sampling method could be a Process?
+	described by specimenSamplingMethod with a single value of type Process.
+		
+ 
+// TICAncillaryFeedstock is a type of Material.
+
+TICEnvironment is a class,
+	described by ticEnvironmentID with a single value of type string,
+	described by ticEnvironmentTemperature with a single value of type Measurement,
+	described by ticTemperatureControlMethod with a single value of type string,
+	described by ticTemperatureMeasurementLocation with a single value of type string,
+	described by ticHumidity with a single value of type Measurement.
+
+TICVendor is a type of Vendor.
+Vendor is a type of Organization.
+
+PointOfContact is a type of Personnel.
+Operator is a type of Personnel.
+
+
+// below is from the previous mock-up model I made for discussion purposes
+TensileTest is a type of TestInspectionCharacterization.
+FatigueTest is a type of TestInspectionCharacterization.
+ImpactTest is a type of TestInspectionCharacterization.
+FractureToughnessTest is a type of TestInspectionCharacterization.
+CreepTest is a type of TestInspectionCharacterization.
+ChemistryTest is a type of TestInspectionCharacterization.
+HardnessTest is a type of TestInspectionCharacterization.
+

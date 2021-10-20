@@ -1,0 +1,27 @@
+uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
+
+import "http://kdl.ge.com/AM-CDM-base".
+
+Process is a class,
+	described by processSteps with values of type ProcessSteps.
+
+ProcessSteps is a class,
+	described by processStep with a single value of type ProcessStep,
+	described by sequenceNumber with a single value of type int.
+
+ProcessStep is a class.
+
+MachinePreparation is a type of ProcessStep.
+
+PreProcess is a type of ProcessStep.
+
+AMProcess is a type of ProcessStep.
+
+PostProcess is a type of ProcessStep.
+
+HotIsostaticPressing is a type of PostProcess.
+HeatTreatment is a type of PostProcess.
+
+ProcessPedigreeData is a class.
+ProcessMonitoringData is a class.
+

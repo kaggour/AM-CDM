@@ -1,0 +1,76 @@
+uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last modified on   $Date:$".
+
+Equipment is a class,
+	described by equipmentID with a single value of type string,
+	described by equipmentName with a single value of type string.
+
+Document (note "File of any type") is a class,
+	described by documentName with a single value of type string,
+	described by documentLocation with a single value of type string,
+	described by documentURI with a single value of type string.
+
+Organization is a class,
+	described by organizationID with a single value of type string,
+	described by organizationName with a single value of type string,
+	described by organizationType with values of type OrganizationType,
+	described by organizationQualification with values of type PersonnelQualification,
+	described by organizationAddress with a single value of type Address,
+	described by organizationPhoneNumber with a single value of type PhoneNumber,
+	described by organizationPointOfContact with a single value of type Personnel,
+	described by organizationPersonnel with values of type Personnel.
+
+OrganizationType is a class, must be one of {TypeManufacturer, TypeVendor, TypeSupplier, TypeContractor}.
+
+Personnel is a class,
+	described by personnelID with a single value of type string,
+	described by personnelFirstName with a single value of type string,
+	described by personnelLastName with a single value of type string, // or surname?
+	described by personnelRole with a single value of type string,
+	described by personnelEmail with a single value of type string,
+	described by personnelPhoneNumber with values of type PhoneNumber,
+	described by personnelQualification with values of type PersonnelQualification.
+
+PersonnelQualification is a class,
+	described by personnelQualificationType with a single value of type string,
+	described by personnelQualificationLevel with a single value of type string,
+//	described by equipment with a single value of type string,
+//	described by software with a single value of type string,
+//	described by system with a single value of type string,
+	described by personnelQualificationNumberOfHours with a single value of type int.
+
+Address is a class,
+	described by addressLine1 with a single value of type string,
+	described by addressLine2 with a single value of type string,
+	described by city with a single value of type string,
+	described by stateProvince with a single value of type string,
+	described by postalCode with a single value of type string,
+	described by country with a single value of type Country.
+
+PhoneNumber is a class,
+	described by phoneCountry with a single value of type Country,
+	described by phoneNumber with a single value of type string.
+
+Country is a class,
+	described by countryName with a single value of type string,
+	described by countryAlpha2Code with a single value of type string,
+	described by countryAlpha3Code with a single value of type string,
+	described by countryCallingCode with a single value of type int.
+
+Coordinate is a class,
+	described by xCoordinate with a single value of type Measurement,
+	described by yCoordinate with a single value of type Measurement,
+	described by zCoordinate with a single value of type Measurement.
+
+Measurement is a class,
+	described by measurementValue with a single value of type double,
+	described by measurementUnit with a single value of type string.
+
+/*
+// GE's Measurement class
+Measurement is a class,
+	described by units with a single value of type string, // enumerated list!
+	described by measuredValue with a single value of type double,
+	described by stdDeviation with a single value of type double,
+	described by distribution with a single value of type string.
+	described by measurementTechnique with a single value of type MeasurementTechnique.
+*/

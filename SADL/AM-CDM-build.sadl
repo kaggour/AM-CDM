@@ -1,0 +1,53 @@
+uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Last modified on   $Date:$".
+
+import "http://kdl.ge.com/AM-CDM-system".
+import "http://kdl.ge.com/AM-CDM-material".
+import "http://kdl.ge.com/AM-CDM-process".
+
+Project is a class,
+	described by projectID with a single value of type string,
+	described by projectCreator with a single value of type Organization,
+	described by projectSponsor with a single value of type Organization,
+	described by projectOwningOrganization with a single value of type Organization,
+	described by projectDistributionStatement with a single value of type string,
+	described by projectRequirements with a single value of type Document,
+	described by projectPlan with a single value of type Document,
+	described by projectStartDate with a single value of type dateTime,
+	described by projectEndDate with a single value of type dateTime,
+	described by build with values of type Build.
+
+Build is a class,
+	described by buildID with a single value of type string,
+	// I think we should have different attributes for different roles, not one catch-all
+	described by buildPersonnel with values of type Personnel,
+	described by buildSimulation with values of type Simulation,
+	described by inputMaterial with values of type Material,
+	described by outputMaterial with values of type Material,
+	described by buildSoftware with values of type Software,
+	described by buildOrganization with a single value of type Organization,
+	described by buildLayout with a single value of type BuildLayout,
+	described by buildJobFile with a single value of type Document,
+	described by amSystem with a single value of type AMSystem,
+	described by nonAMSystem with values of type NonAMEquipment.
+
+BuiltPart is a class,
+	described by partSerialNumber with a single value of type string,
+	described by build with a single value of type Build,
+	described by partDesign with a single value of type PartDesign,
+	described by partSimulation with values of type Simulation,
+	described by partLocationOnBuild with a single value of type Coordinate,
+	described by partOrientation with a single value of type string.
+
+PartSpecimen is a type of BuiltPart,
+	described by parentPart with a single value of type BuiltPart.
+
+BuildLayout is a class.
+
+PartDesign is a class,
+	described by partDesignID with a single value of type string,
+	described by designVersion with a single value of type string,
+	described by objectDefinitionFile with a single value of type Document,
+	described by partDesignSourceFile with a single value of type Document.
+
+Simulation is a class.
+
