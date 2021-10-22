@@ -2,24 +2,27 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-base".
 
-Part is a type of Object,
+Part is a type of continuant,
+    // continuant is inherited from BFO
 	has_history process with a single value of type Process,
 	participates in project with a single value of type Project.
 
 Process is a type of process_history,
-	// process_history is from BFO
+	// process_history is inherited from BFO
 	has_proper_occurent_part processstep with ordered list of type ProcessStep.
 
 ProcessStep is a type of process,
+    // process is inherited from BFO
 	described by sequenceNumber with a single value of type int,
-	run_on process_machine with a single value of type System, // See System group
     has_agent organization with a single value of type Organization,
 	has_agent personnel with values of type Personnel,
-    // TODO: Further discuss inheritance of these items. Could be process specific
-    // See HIP below as an example
+    // Items here down maybe better suited to be uniquely specificed in each child
+    // Would allow more specific type testing but also may lead to inconsistency across the children
+	run_on process_machine with a single value of type Equipment, // See System group. System class may include software
     generates processData with a single value of type ProcessData,
 	follows processControl with a single value of type ProcessControl,
-    uses inputs material with values Material.
+    uses inputs_material with values Material,
+    creates output_material with values Material.
 
 // Taxonomy of ProcessStep which inherit from process-------------------------------
 TestInspectionCharacterization is a type of ProcessStep,
