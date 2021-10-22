@@ -1,8 +1,6 @@
-uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision:$ Last modified on   $Date:$".
+uri "http://kdl.ge.com/AM-CDM-material-old" alias AM-CDM-material-old version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-base".
-
-// powder, wire, bulk
 
 PowderLot is a type of Material,
 	described by virginOrUsed with a single value of type string,
@@ -11,15 +9,40 @@ PowderLot is a type of Material,
 
 // ASTM F42.04 - Medical powder reuse strategies
 
+/*
+Missing attributes from CDD:
+	- ingot ID = should we include this when focused primarily on powder?
+*/
+
 Material is a class,
 	described by materialID with a single value of type string,
 	described by materialType with a single value of type MaterialType,
-	described by materialSpecification with a single value of type MaterialSpecification,
+	described by materialGrade with a single value of type string,
 	described by actualChemistry with a single value of type Chemistry,
+	described by materialStock with a single value of type MaterialStock,
 	described by materialProperties with values of type MaterialProperties,
-	described by vendor with a single value of type Organization, // not specified if material is a blend from multiple lots
-	described by materialLocation with a single value of type Address,
 	described by parents with values of type ParentMaterial.
+
+MaterialStock is a class,
+	described by materialStockForm with a single value of type MaterialStockForm,
+	described by materialStockOwner with a single value of type Organization,
+	described by materialStockLocation with a single value of type Address,
+	described by materialStockStorageEnvironment with a single value of type Address,
+
+	described by materialPackagingRequirements with a single value of type string,
+	described by materialStorageRequirements with a single value of type string,
+	described by materialProductSpecification with a single value of type string,
+
+	described by materialPurchaseOrderNumber with a single value of type string,
+	described by materialSupplier with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by materialManufacturer with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by vendorManufacturingLot with a single value of type string,
+	described by materialStockQuantityPurchased with a single value of type Measurement,
+
+	described by materialStockCertificate with a single value of type Document,
+	described by materialStockCertificationDate with a single value of type dateTime.
+
+MaterialStockForm is a class, must be one of {Powder, Wire, BulkSolid}.
 
 // procedures for mixing/blending - part of Material or ParentMaterial?
 ParentMaterial is a class,
@@ -70,6 +93,30 @@ CreepProperties is a type of MechanicalProperties,
 	described by elongationAtRuptureCreep with a single value of type Measurement.
 
 HardnessProperties is a type of MechanicalProperties.
+
+ParticleSizeDistribution is a type of TestInspectionCharacterization,
+	described by psdPrincipleOfMeasurement with a single value of type string,
+	described by psdParameterBasis with a single value of type string,
+	described by psdDispersionMedium with a single value of type string,
+	described by psdDispersionMethod with a single value of type string,
+	described by psdDispersionType with a single value of type string,
+	described by psdConcentration with a single value of type Measurement,
+	described by psdIndexOfRefractions with a single value of type double,
+	described by psdScatteringModel with a single value of type string,
+	// I'm not understanding what the 'psd_diam' and 'psd_perc' variables are supposed to represent
+	// are these two arrays supposed to correspond?
+	//described by psdDiameter with a single value of type string,
+	//described by psdPercent with a single value of type string,
+	// what does 'dv' stand for in 'dv10'?
+	described by psd_dv10 with a single value of type Measurement,
+	described by psd_dv50 with a single value of type Measurement,
+	described by psd_dv90 with a single value of type Measurement,
+	described by psdMean with a single value of type Measurement,
+	described by psdMode with a single value of type Measurement,
+	described by psdStandardDeviation with a single value of type Measurement,
+	described by psdRange with a single value of type Measurement,
+	described by psdSkewness with a single value of type Measurement,
+	described by psdKurtosis with a single value of type Measurement.
 */
 
 ThermodynamicProperties is a type of MaterialProperties,
