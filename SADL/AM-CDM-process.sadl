@@ -2,26 +2,57 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-base".
 
-Process is a class,
-	described by processSteps with values of type ProcessSteps.
+Part is a type of Object,
+	has_history process with a single value of type Process,
+	participates in project with a single value of type Project.
 
-ProcessSteps is a class,
-	described by processStep with a single value of type ProcessStep,
-	described by sequenceNumber with a single value of type int.
+Process is a type of process_history,
+	// process_history is from BFO
+	has_proper_occurent_part processstep with ordered list of type ProcessStep.
 
-ProcessStep is a class.
+ProcessStep is a type of process,
+	described by sequenceNumber with a single value of type int,
+	run_on process_machine with a single value of type System, // See System group
+    has_agent organization with a single value of type Organization,
+	has_agent personnel with values of type Personnel,
+    // TODO: Further discuss inheritance of these items. Could be process specific
+    // See HIP below as an example
+    generates processData with a single value of type ProcessData,
+	follows processControl with a single value of type ProcessControl,
+    uses inputs material with values Material.
 
-MachinePreparation is a type of ProcessStep.
+// Taxonomy of ProcessStep which inherit from process-------------------------------
+TestInspectionCharacterization is a type of ProcessStep,
+    described by test_result with a single value of type TestResult.
 
 PreProcess is a type of ProcessStep.
 
-AMProcess is a type of ProcessStep.
+Build is a type of ProcessStep. // See build groups work
 
-PostProcess is a type of ProcessStep.
+PostProcess is a type of ProcessStep,
+    described by postprocessstandard as type Document,
+    described by controlducment as type Document.
 
-HotIsostaticPressing is a type of PostProcess.
-HeatTreatment is a type of PostProcess.
+HotIsostaticPressing is a type of PostProcess,
+    uses inertgas of type Material,
+    achieved vessel_pressure with a single value of type ProcessData,
+    achieved vessel_temperature with a single value of type ProcessData.
 
-ProcessPedigreeData is a class.
-ProcessMonitoringData is a class.
+HeatTreatment is a type of PostProcess,
+    run_on control_instrument_type with a single value of type System,
+    achieved furnace_temperature with values of type ProcessData,
+    achieved inert_gas_ramp_up_rate with value of type ProcessData,
+    achieved inert_gas_ramp_down_rate with value of type ProcessData.
 
+ProcessData is a type of Object,
+    described by process_monitoring_data_type with a single value of type Int,
+    described by sampling_rate with a single value of type Float,
+    achieved log_file with value of type Document.
+
+MaterialPreperation if a type of PreProcess.
+
+MachinePreperation if a type of PreProcess.
+
+BuildPlatformPreperation is a type of PreProcess.
+
+MachinePrep
