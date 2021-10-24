@@ -14,46 +14,47 @@ Missing attributes from CDD:
 	- ingot ID = should we include this when focused primarily on powder?
 */
 
-Material is a class,
-	described by materialID with a single value of type string,
-	described by materialType with a single value of type MaterialType,
-	described by materialGrade with a single value of type string,
-	described by actualChemistry with a single value of type Chemistry,
-	described by materialStock with a single value of type MaterialStock,
+Material (note "Specific instance of a material utilized in an AM process") is a class,
+	described by materialID (note "Unique identifier for specific material instance") with a single value of type string,
+	described by materialType (note "Generic material this specific instance is an instantiation of") with a single value of type MaterialType,
+	described by materialGrade (note "Standard grade the material product conforms to") with a single value of type string,
+	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
+	described by materialStock (note "Stock information about the material") with a single value of type MaterialStock,
 	described by materialProperties with values of type MaterialProperties,
-	described by parents with values of type ParentMaterial.
+	described by materialSpecification (note "Specification of specific material instance") with a single value of type MaterialSpecification,
+	described by parents (note "Parent or parents of material if it is blended") with values of type ParentMaterial.
 
 MaterialStock is a class,
-	described by materialStockForm with a single value of type MaterialStockForm,
-	described by materialStockOwner with a single value of type Organization,
-	described by materialStockLocation with a single value of type Address,
-	described by materialStockStorageEnvironment with a single value of type Address,
+	described by materialStockForm (note "Form of a material stock") with a single value of type MaterialStockForm,
+	described by materialStockOwner (note "Owner/organization of a material stock") with a single value of type Organization,
+	described by materialStockLocation (note "Location of a material stock") with a single value of type Address,
+	described by materialStockStorageEnvironment (note "Environment specified by the vendor of a material stock - temp, humidity, light") with a single value of type Address,
 
-	described by materialPackagingRequirements with a single value of type string,
-	described by materialStorageRequirements with a single value of type string,
-	described by materialProductSpecification with a single value of type string,
+	described by materialPackagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product") with a single value of type string,
+	described by materialStorageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product") with a single value of type string,
+	described by materialProductSpecification (note "Material data sheet provided by a material supplier or manufacturer") with a single value of type Document,
 
-	described by materialPurchaseOrderNumber with a single value of type string,
-	described by materialSupplier with a single value of type Organization, // not specified if material is a blend from multiple lots
-	described by materialManufacturer with a single value of type Organization, // not specified if material is a blend from multiple lots
-	described by vendorManufacturingLot with a single value of type string,
-	described by materialStockQuantityPurchased with a single value of type Measurement,
+	described by materialPurchaseOrderNumber (note "Reference to the internal purchase order") with a single value of type string,
+	described by materialSupplier (note "Name of the material vendor") with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by materialManufacturer (note "Name of the material manufacturer") with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock") with a single value of type string,
+	described by materialStockQuantityPurchased (note "Purchased quantity of a material stock") with a single value of type Measurement,
 
-	described by materialStockCertificate with a single value of type Document,
-	described by materialStockCertificationDate with a single value of type dateTime.
+	described by materialStockCertificate (note "Link to a material stock certificate") with a single value of type Document,
+	described by materialStockCertificationDate (note "Purchase/certification date of a material stock") with a single value of type dateTime.
 
-MaterialStockForm is a class, must be one of {Powder, Wire, BulkSolid}.
+MaterialStockForm (note "Form of a material stock") is a class, must be one of {Powder, Wire, BulkSolid}.
 
 // procedures for mixing/blending - part of Material or ParentMaterial?
 ParentMaterial is a class,
 	described by parentMaterial with a single value of type Material,
 	described by parentMaterialPercent with a single value of type double.
 
-MaterialType is a class,
-	described by materialName with a single value of type string,
-	described by materialTypeDescription with a single value of type string,
-	described by baseElement with a single value of type PeriodicElement,
-	described by materialSpecification with a single value of type MaterialSpecification.
+MaterialType (note "Generic material type") is a class,
+	described by materialName (note "Name of a material, e.g., Inconel 625") with a single value of type string,
+	described by materialTypeDescription (note "Description of generic material") with a single value of type string,
+	described by baseElement (note "Base element of material from periodic table") with a single value of type PeriodicElement,
+	described by materialSpecification (note "Ideal chemistry specification of generic material") with a single value of type MaterialSpecification.
 
 MaterialSpecification is a class,
 	described by specChemistry with a single value of type Chemistry,
