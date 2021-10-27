@@ -1,0 +1,326 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:AM-CDM-material="http://kdl.ge.com/AM-CDM-material#"
+    xmlns:builtinfunctions="http://sadl.org/builtinfunctions#"
+    xmlns:sadllistmodel="http://sadl.org/sadllistmodel#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sadlimplicitmodel="http://sadl.org/sadlimplicitmodel#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:sadlbasemodel="http://sadl.org/sadlbasemodel#"
+    xmlns:AM-CDM-process="http://kdl.ge.com/AM-CDM-process#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://kdl.ge.com/AM-CDM-process">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://sadl.org/sadllistmodel"/>
+    <owl:imports rdf:resource="AM-CDM-material"/>
+    <owl:imports rdf:resource="http://sadl.org/builtinfunctions"/>
+    <owl:imports rdf:resource="http://sadl.org/sadlimplicitmodel"/>
+    <owl:imports rdf:resource="http://sadl.org/sadlbasemodel"/>
+    <owl:versionInfo>$Revision:$ Last modified on   $Date:$</owl:versionInfo>
+    <rdfs:comment xml:lang="en">This ontology was created from a SADL file 'AM-CDM-process.sadl' and should not be directly edited.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="BuildPlatformPreperation">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PreProcess"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Continuant"/>
+  <owl:Class rdf:about="#PreProcess">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProcessStep"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HotIsostaticPressing">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="ProcessData"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="vesselTemperature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="#ProcessData"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="vesselPressure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-material#Material"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="inertGas"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="PostProcess"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ProcessControl"/>
+  <owl:Class rdf:ID="MachinePreperation">
+    <rdfs:subClassOf rdf:resource="#PreProcess"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProcessData">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="logFile"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="samplingRate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="processMonitoringDataType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Object"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MaterialPreperation">
+    <rdfs:subClassOf rdf:resource="#PreProcess"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Process">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ProcessHistory"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#ProcessStep">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#ProcessControl"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processControl"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#ProcessData"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processData"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Equipment"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processMachine"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="agentOorganization"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="sequenceNumber"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Process"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HeatTreatment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Equipment"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="controlInstrumentType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PostProcess"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:nodeID="A0">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:nodeID="A0"/>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ProcessStep"/>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PostProcess">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="controlDocument"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="postProcessStandard"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#ProcessStep"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Part">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#Process"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="process"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Continuant"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="outputMaterial">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-material#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processControl">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="#ProcessControl"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inertGasRampDownRate">
+    <rdfs:domain rdf:resource="#HeatTreatment"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#controlInstrumentType">
+    <rdfs:domain rdf:resource="#HeatTreatment"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Equipment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#vesselPressure">
+    <rdfs:domain rdf:resource="#HotIsostaticPressing"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#inertGas">
+    <rdfs:domain rdf:resource="#HotIsostaticPressing"/>
+    <rdfs:range rdf:resource="AM-CDM-material#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#controlDocument">
+    <rdfs:domain rdf:resource="#PostProcess"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#process">
+    <rdfs:domain rdf:resource="#Part"/>
+    <rdfs:range rdf:resource="#Process"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#vesselTemperature">
+    <rdfs:domain rdf:resource="#HotIsostaticPressing"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processMachine">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Equipment"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="furnaceTemperature">
+    <rdfs:domain rdf:resource="#HeatTreatment"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inertGasRampUpRate">
+    <rdfs:domain rdf:resource="#HeatTreatment"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="properOccurentPart">
+    <rdfs:domain rdf:resource="#Process"/>
+    <rdfs:range rdf:nodeID="A0"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#logFile">
+    <rdfs:domain rdf:resource="#ProcessData"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#postProcessStandard">
+    <rdfs:domain rdf:resource="#PostProcess"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processData">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="#ProcessData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inputMaterial">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-material#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="agentPersonnel">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Personnel"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#agentOorganization">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Organization"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#samplingRate">
+    <rdfs:domain rdf:resource="#ProcessData"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#processMonitoringDataType">
+    <rdfs:domain rdf:resource="#ProcessData"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#sequenceNumber">
+    <rdfs:domain rdf:resource="#ProcessStep"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>
