@@ -64,6 +64,8 @@ Coordinate is a class,
 Measurement is a class,
 	described by measurementValue with a single value of type double,
 	described by measurementUnit with a single value of type string.
+	// need to add measure(s) of uncertainty -- standard deviation, more?
+
 
 /*
 // GE's Measurement class
