@@ -1,61 +1,64 @@
 uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-base".
+import "http://kdl.ge.com/AM-CDM-material".
 
-Part is a type of continuant,
+//BFO classes temporarily being defined here
+Continuant is a class.
+ProcessHistory is a class.
+Process is a class.
+Object is a class.
+
+Part is a type of Continuant,
     // continuant is inherited from BFO
-	has_history process with a single value of type Process,
-	participates in project with a single value of type Project.
+	described by process with a single value of type Process.
 
-Process is a type of process_history,
+Process is a type of ProcessHistory,
 	// process_history is inherited from BFO
-	has_proper_occurent_part processstep with ordered list of type ProcessStep.
+	described by properOccurentPart with values of type ProcessStep List. // ordered list
 
-ProcessStep is a type of process,
+ProcessStep is a type of Process,
     // process is inherited from BFO
 	described by sequenceNumber with a single value of type int,
-    has_agent organization with a single value of type Organization,
-	has_agent personnel with values of type Personnel,
-    // Items here down maybe better suited to be uniquely specificed in each child
+    described by agentOorganization with a single value of type Organization,
+	described by agentPersonnel with values of type Personnel,
+    // Items here down maybe better suited to be uniquely specified in each child
     // Would allow more specific type testing but also may lead to inconsistency across the children
-	run_on process_machine with a single value of type Equipment, // See System group. System class may include software
-    generates processData with a single value of type ProcessData,
-	follows processControl with a single value of type ProcessControl,
-    uses inputs_material with values Material,
-    creates output_material with values Material.
+	described by processMachine with a single value of type Equipment, // See System group. System class may include software
+    described by processData with a single value of type ProcessData,
+	described by processControl with a single value of type ProcessControl,
+    described by inputMaterial with values of type Material,
+    described by outputMaterial with values of type Material.
 
 // Taxonomy of ProcessStep which inherit from process-------------------------------
-TestInspectionCharacterization is a type of ProcessStep,
-    described by test_result with a single value of type TestResult.
+//TestInspectionCharacterization is a type of ProcessStep,
+//    described by test_result with a single value of type TestResult.
 
 PreProcess is a type of ProcessStep.
 
-Build is a type of ProcessStep. // See build groups work
+MaterialPreperation is a type of PreProcess.
 
-PostProcess is a type of ProcessStep,
-    described by postprocessstandard as type Document,
-    described by controlducment as type Document.
-
-HotIsostaticPressing is a type of PostProcess,
-    uses inertgas of type Material,
-    achieved vessel_pressure with a single value of type ProcessData,
-    achieved vessel_temperature with a single value of type ProcessData.
-
-HeatTreatment is a type of PostProcess,
-    run_on control_instrument_type with a single value of type System,
-    achieved furnace_temperature with values of type ProcessData,
-    achieved inert_gas_ramp_up_rate with value of type ProcessData,
-    achieved inert_gas_ramp_down_rate with value of type ProcessData.
-
-ProcessData is a type of Object,
-    described by process_monitoring_data_type with a single value of type Int,
-    described by sampling_rate with a single value of type Float,
-    achieved log_file with value of type Document.
-
-MaterialPreperation if a type of PreProcess.
-
-MachinePreperation if a type of PreProcess.
+MachinePreperation is a type of PreProcess.
 
 BuildPlatformPreperation is a type of PreProcess.
 
-MachinePrep
+ProcessControl is a class.
+
+PostProcess is a type of ProcessStep,
+    described by postProcessStandard with a single value of type Document,
+    described by controlDocument with a single value of type Document.
+
+HotIsostaticPressing is a type of PostProcess,
+    described by inertGas with a single value of type Material,
+    described by vesselPressure with a single value of type ProcessData,
+    described by vesselTemperature with a single value of type ProcessData.
+
+HeatTreatment is a type of PostProcess,
+    described by controlInstrumentType with a single value of type Equipment,
+    described by furnaceTemperature with values of type ProcessData,
+    described by inertGasRampUpRate with values of type ProcessData,
+    described by inertGasRampDownRate with values of type ProcessData.
+
+ProcessData is a type of Object,
+    described by processMonitoringDataType with a single value of type int,
+    described by samplingRate with a single value of type float,
+    described by logFile with a single value of type Document.
