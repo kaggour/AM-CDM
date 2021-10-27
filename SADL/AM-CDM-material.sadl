@@ -28,10 +28,11 @@ MaterialStock is a class,
 	described by materialStockForm (note "Form of a material stock") with a single value of type MaterialStockForm,
 	described by materialStockOwner (note "Owner/organization of a material stock") with a single value of type Organization,
 	described by materialStockLocation (note "Location of a material stock") with a single value of type Address,
-	described by materialStockStorageEnvironment (note "Environment specified by the vendor of a material stock - temp, humidity, light") with a single value of type Address,
+	// should this be the actual storage environment -- CDD label suggests otherwise, but then redundant with materialStorageRequirements field
+	described by materialStockStorageEnvironment (note "Environment specified by the vendor of a material stock - temp, humidity, light") with a single value of type Document,
 
-	described by materialPackagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product") with a single value of type string,
-	described by materialStorageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product") with a single value of type string,
+	described by materialPackagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product") with a single value of type Document,
+	described by materialStorageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product") with a single value of type Document,
 	described by materialProductSpecification (note "Material data sheet provided by a material supplier or manufacturer") with a single value of type Document,
 
 	described by materialPurchaseOrderNumber (note "Reference to the internal purchase order") with a single value of type string,
