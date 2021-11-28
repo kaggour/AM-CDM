@@ -4,24 +4,18 @@ import "http://kdl.ge.com/AM-CDM-base".
 
 PowderLot is a type of Material,
 	described by virginOrUsed with a single value of type string,
-	described by reuseNumber with a single value of type int,
-	described by parentMaterial with values of type ParentMaterial. // not specified if material is pure from a vendor
+	described by reuseNumber with a single value of type int.
 
-// ASTM F42.04 - Medical powder reuse strategies
-
-/*
-Missing attributes from CDD:
-	- ingot ID = should we include this when focused primarily on powder?
-*/
-
+// Luke - have expected properties in Material and measured properties in TIC
 Material (note "Specific instance of a material utilized in an AM process") is a class,
 	described by materialID (note "Unique identifier for specific material instance") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of") with a single value of type MaterialType,
 	described by materialGrade (note "Standard grade the material product conforms to") with a single value of type string,
 	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
-	described by materialStock (note "Stock information about the material") with a single value of type MaterialStock,
+	described by materialStock (note "Stock information about the material from vendor/manufacturer") with a single value of type MaterialStock,
 	described by materialProperties with values of type MaterialProperties,
-	described by materialSpecification (note "Specification of specific material instance") with a single value of type MaterialSpecification,
+	// below is redundant with materialType
+	//described by materialSpecification (note "Specification of specific material instance") with a single value of type MaterialSpecification,
 	described by parents (note "Parent or parents of material if it is blended") with values of type ParentMaterial.
 
 MaterialStock is a class,
@@ -121,11 +115,15 @@ ParticleSizeDistribution is a type of TestInspectionCharacterization,
 	described by psdKurtosis with a single value of type Measurement.
 */
 
+// ASM - reports "Standard Values" of materials
+// also want to represent uncertainty in value(s)
+// values are not independent of the manufacturing process, e.g., dependent upon part shape
+
 ThermodynamicProperties is a type of MaterialProperties,
-	described by electricalCondictivity with a single value of type Measurement,
-	described by rhermalExpansionCoef with a single value of type Measurement,
+	described by electricalConductivity with a single value of type Measurement,
+	described by thermalExpansionCoef with a single value of type Measurement,
 	described by thermalConductivity with a single value of type Measurement,
-	described by heatCapacity  with a single value of type Measurement,
+	described by heatCapacity with a single value of type Measurement,
 	described by meltingTemperature with a single value of type Measurement,
 	described by density with a single value of type Measurement.
 
@@ -143,7 +141,6 @@ MaterialDefinition is a class.
 
 Chemistry is a class,
 	described by chemistryMeasurementMethod with a single value of type string,
-	// e.g., weight % or atomic %
 	described by chemistryPercentUnit with a single value of type ChemistryPercentUnit,
 	described by elements with values of type ChemistryElement.
 

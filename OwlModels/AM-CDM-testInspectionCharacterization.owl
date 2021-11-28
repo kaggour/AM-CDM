@@ -26,6 +26,11 @@
       <owl:Class rdf:ID="Vendor"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="TensileTestResult">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TestResult"/>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:Class rdf:ID="TICEnvironment">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -78,7 +83,18 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="FeedstockSpecimen">
+  <owl:Class rdf:ID="PointOfContact">
+    <rdfs:subClassOf rdf:resource="AM-CDM-base#Personnel"/>
+  </owl:Class>
+  <owl:Class rdf:ID="FractureToughnessTest">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TestInspectionCharacterization"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Vendor">
+    <rdfs:subClassOf rdf:resource="AM-CDM-base#Organization"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MaterialSpecimen">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="AM-CDM-process#Process"/>
@@ -103,18 +119,12 @@
       <owl:Class rdf:ID="Specimen"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="PointOfContact">
-    <rdfs:subClassOf rdf:resource="AM-CDM-base#Personnel"/>
-  </owl:Class>
-  <owl:Class rdf:ID="FractureToughnessTest">
+  <owl:Class rdf:ID="TensileTestProcessStepResult">
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="TestInspectionCharacterization"/>
+      <owl:Class rdf:about="#TestInspectionCharacterization"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="#Vendor">
-    <rdfs:subClassOf rdf:resource="AM-CDM-base#Organization"/>
-  </owl:Class>
-  <owl:Class rdf:ID="TestResult">
+  <owl:Class rdf:about="#TestResult">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="AM-CDM-base#Document"/>
@@ -152,51 +162,11 @@
   <owl:Class rdf:about="#TestInspectionCharacterization">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-system#Software"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticSoftware"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#PointOfContact"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticPointOfContact"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:ID="ticEndTimeAndDate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticProcedure"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Operator"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticOperator"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -212,21 +182,11 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-system#NonAMEquipment"/>
+        <owl:onClass rdf:resource="AM-CDM-base#Address"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticEquipment"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticDuration"/>
+          <owl:ObjectProperty rdf:ID="ticLocation"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -236,17 +196,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticName"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticStartTimeAndDate"/>
+          <owl:DatatypeProperty rdf:ID="ticType"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -276,7 +226,78 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticID"/>
+          <owl:DatatypeProperty rdf:ID="ticName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-system#NonAMEquipment"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticEquipment"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticDuration"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="ticStartTimeAndDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="AM-CDM-process#ProcessStep"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#TICVendor"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticVendor"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#PointOfContact"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticPointOfContact"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-system#Software"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticSoftware"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#Operator"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticOperator"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -292,11 +313,11 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Address"/>
+        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticLocation"/>
+          <owl:ObjectProperty rdf:ID="ticProcedure"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -316,17 +337,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#TICVendor"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticVendor"/>
+          <owl:DatatypeProperty rdf:ID="ticID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -399,50 +410,17 @@
   <owl:Class rdf:ID="FatigueTest">
     <rdfs:subClassOf rdf:resource="#TestInspectionCharacterization"/>
   </owl:Class>
-  <owl:Class rdf:ID="TensileTest">
-    <rdfs:subClassOf rdf:resource="#TestInspectionCharacterization"/>
-  </owl:Class>
   <owl:Class rdf:ID="ImpactTest">
     <rdfs:subClassOf rdf:resource="#TestInspectionCharacterization"/>
   </owl:Class>
   <owl:Class rdf:ID="BuiltPartSpecimen">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Coordinate"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenOrientation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenLocation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="specimenModelID"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-build#BuiltPart"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenOriginatingBuiltPart"/>
+          <owl:DatatypeProperty rdf:ID="specimenExtractionMethod"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -456,6 +434,16 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-build#BuiltPart"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="parentPart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#Specimen"/>
   </owl:Class>
   <owl:ObjectProperty rdf:about="#ticVendor">
@@ -466,12 +454,8 @@
     <rdfs:domain rdf:resource="#Specimen"/>
     <rdfs:range rdf:resource="AM-CDM-process#Process"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#specimenLocation">
-    <rdfs:domain rdf:resource="#BuiltPartSpecimen"/>
-    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenMaterialSource">
-    <rdfs:domain rdf:resource="#FeedstockSpecimen"/>
+    <rdfs:domain rdf:resource="#MaterialSpecimen"/>
     <rdfs:range rdf:resource="AM-CDM-material#Material"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticHumidity">
@@ -493,10 +477,6 @@
   <owl:ObjectProperty rdf:about="#ticPointOfContact">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
     <rdfs:range rdf:resource="#PointOfContact"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#specimenOrientation">
-    <rdfs:domain rdf:resource="#BuiltPartSpecimen"/>
-    <rdfs:range rdf:resource="AM-CDM-base#Coordinate"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenMass">
     <rdfs:domain rdf:resource="#Specimen"/>
@@ -522,7 +502,7 @@
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
     <rdfs:range rdf:resource="AM-CDM-system#NonAMEquipment"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#specimenOriginatingBuiltPart">
+  <owl:ObjectProperty rdf:about="#parentPart">
     <rdfs:domain rdf:resource="#BuiltPartSpecimen"/>
     <rdfs:range rdf:resource="AM-CDM-build#BuiltPart"/>
   </owl:ObjectProperty>
@@ -543,8 +523,12 @@
     <rdfs:range rdf:resource="AM-CDM-system#Software"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenSamplingMethod">
-    <rdfs:domain rdf:resource="#FeedstockSpecimen"/>
+    <rdfs:domain rdf:resource="#MaterialSpecimen"/>
     <rdfs:range rdf:resource="AM-CDM-process#Process"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="specimenCoordinate">
+    <rdfs:domain rdf:resource="#BuiltPartSpecimen"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Coordinate"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="ticRawData">
     <rdfs:domain rdf:resource="#TestResult"/>
@@ -566,7 +550,7 @@
     <rdfs:domain rdf:resource="#TICEnvironment"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#specimenModelID">
+  <owl:DatatypeProperty rdf:about="#specimenExtractionMethod">
     <rdfs:domain rdf:resource="#BuiltPartSpecimen"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>

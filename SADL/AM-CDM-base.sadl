@@ -2,7 +2,23 @@ uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last 
 
 Equipment is a class,
 	described by equipmentID with a single value of type string,
-	described by equipmentName with a single value of type string.
+	described by equipmentName with a single value of type string,
+	described by equipmentType (note "The type of equipment") with a single value of type string,
+	described by equipmentOwner (note "The owner/organization of the equipment") with a single value of type string,
+	described by equipmentLocation (note "The location where the equipment is installed") with a single value of type string,
+	described by equipmentManufacturer (note "The manufacturer's name of the equipment") with a single value of type string,
+	described by equipmentModel (note "The model name of the equipment") with a single value of type string,
+	described by equipmentSerialNumber (note "The serial number of the equipment defined by the vendor") with a single value of type string,
+	described by calibration (note "Calibration information") with a single value of type Calibration.
+
+Calibration is a class,
+	described by calibrationId (note "ID of a calibration process") with a single value of type string,
+	described by calibrationDate (note "Date of machine calibration") with a single value of type dateTime,
+	described by calibrationOperator (note "Person performing the machine calibration. Links to Personnel ID") with a single value of type Personnel,
+	described by calibrationPassFail (note "Pass / fail result") with a single value of type string,
+	described by calibrationResults (note "The results of the equipment calibration (files, etc.)") with a single value of type Document,
+	described by machineCalibrationNotes (note "Comments of a machine calibration") with a single value of type string,
+	described by machineCalibrationReport (note "Technical report from the calibration") with a single value of type Document.
 
 Document (note "File of any type") is a class,
 	described by documentName with a single value of type string,
@@ -10,33 +26,33 @@ Document (note "File of any type") is a class,
 	described by documentURI with a single value of type string.
 
 Organization is a class,
-	described by organizationID with a single value of type string,
-	described by organizationName with a single value of type string,
-	described by organizationType with values of type OrganizationType,
-	described by organizationQualification with values of type PersonnelQualification,
-	described by organizationAddress with a single value of type Address,
-	described by organizationPhoneNumber with a single value of type PhoneNumber,
-	described by organizationPointOfContact with a single value of type Personnel,
-	described by organizationPersonnel with values of type Personnel.
+	described by organizationID (note "The unique identifier of the organization.") with a single value of type string,
+	described by organizationName (note "The name of an organization.") with a single value of type string,
+	described by organizationType (note "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor.  One organization may have many types.") with values of type OrganizationType,
+	described by organizationQualification (note "Details of the organization's qualifications and certifications.") with values of type PersonnelQualification,
+	described by organizationAddress (note "The address of the organization.") with a single value of type Address,
+	described by organizationPhoneNumber (note "A phone number for the organization.") with a single value of type PhoneNumber,
+	described by organizationPointOfContact (note "Identification of the POC. Link to a Personnel foreign key.") with a single value of type Personnel,
+	described by organizationPersonnel (note "Link to Personnel who are a part of this Organization. Links to foreign keys") with values of type Personnel.
 
 OrganizationType is a class, must be one of {TypeManufacturer, TypeVendor, TypeSupplier, TypeContractor}.
 
-Personnel is a class,
-	described by personnelID with a single value of type string,
-	described by personnelFirstName with a single value of type string,
-	described by personnelLastName with a single value of type string, // or surname?
-	described by personnelRole with a single value of type string,
-	described by personnelEmail with a single value of type string,
-	described by personnelPhoneNumber with values of type PhoneNumber,
+Personnel (note "Individuals performing tasks and their credentials") is a class,
+	described by personnelID (note "Unique identifier of the personnel") with a single value of type string,
+	described by personnelFirstName (note "First name of individual performing task") with a single value of type string,
+	described by personnelLastName (note "Last name of individual performing task") with a single value of type string, // or surname?
+	described by personnelRole (note "Role of individual performing task") with a single value of type string,
+	described by personnelEmail (note "The email for the individual.") with a single value of type string,
+	described by personnelPhoneNumber (note "The phone number for the individual.") with values of type PhoneNumber,
 	described by personnelQualification with values of type PersonnelQualification.
 
-PersonnelQualification is a class,
-	described by personnelQualificationType with a single value of type string,
-	described by personnelQualificationLevel with a single value of type string,
+PersonnelQualification (note "Details of Qualification/certification (machine specific operator certificate, UL, ASTM)") is a class,
+	described by personnelQualificationType (note "The type of qualification/certification") with a single value of type string,
+	described by personnelQualificationLevel (note "The level of qualificaiton/certification") with a single value of type string,
 //	described by equipment with a single value of type string,
 //	described by software with a single value of type string,
 //	described by system with a single value of type string,
-	described by personnelQualificationNumberOfHours with a single value of type int.
+	described by personnelQualificationNumberOfHours (note "The number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
 
 Address is a class,
 	described by addressLine1 with a single value of type string,

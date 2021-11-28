@@ -4,9 +4,8 @@ import "http://kdl.ge.com/AM-CDM-build".
 import "http://kdl.ge.com/AM-CDM-material".
 import "http://kdl.ge.com/AM-CDM-process".
 
-TestInspectionCharacterization is a class,
+TestInspectionCharacterization is a type of ProcessStep,
 		// acronyms bad :-(
-	// TIC is it a Process (BFO)? An Activity (SADL)? Test result is a (measured) Quality?
 	described by ticID with a single value of type string,
 	described by ticName with a single value of type string,
 	described by ticType with a single value of type string,
@@ -46,11 +45,7 @@ TestResult is a class,
 	described by ticRawData with values of type Document,
 	described by ticReport with a single value of type Document.
 
-
 Specimen is a class,
-// or MaterialSpecimen is a type of Material, ???
-	// the source material should describe properties like refractive index, or it should be here?
-	// Question for Kareem: can we require a subtype when declaring a specimen?
 	described by specimenID with a single value of type string,
 	described by specimenDescription with a single value of type string,
 	described by specimenMass with a single value of type Measurement,
@@ -59,25 +54,15 @@ Specimen is a class,
 	described by specimenPostProcessInformation with a single value of type string,
 	described by specimenPostProcessSequence with a single value of type Process.
 	
-	
 BuiltPartSpecimen is a type of Specimen,
+	described by parentPart with a single value of type BuiltPart,
+	described by specimenCoordinate with values of type Coordinate,   //using part/CAD coordinate system
 	described by specimenTestLocation with a single value of type Address,
-	// Should a part have specimens or a specimen have a part?
-	described by specimenOriginatingBuiltPart with a single value of type BuiltPart,
-	described by specimenModelID with a single value of type string,
-	described by specimenLocation with a single value of type Document,
-	described by specimenOrientation with a single value of type Coordinate.
+	described by specimenExtractionMethod with a single value of type string.
 
-
-FeedstockSpecimen is a type of Specimen,
-	// or MaterialSpecimen is a type of Material, ???
-	// the source material should describe properties like refractive index, or it should be here?
+MaterialSpecimen is a type of Specimen,
 	described by specimenMaterialSource with a single value of type Material,
-	// Sampling method could be a Process?
 	described by specimenSamplingMethod with a single value of type Process.
-		
- 
-// TICAncillaryFeedstock is a type of Material.
 
 TICEnvironment is a class,
 	described by ticEnvironmentID with a single value of type string,
@@ -94,7 +79,9 @@ Operator is a type of Personnel.
 
 
 // below is from the previous mock-up model I made for discussion purposes
-TensileTest is a type of TestInspectionCharacterization.
+TensileTestProcessStepResult is a type of TestInspectionCharacterization.
+TensileTestResult is a type of TestResult.
+
 FatigueTest is a type of TestInspectionCharacterization.
 ImpactTest is a type of TestInspectionCharacterization.
 FractureToughnessTest is a type of TestInspectionCharacterization.

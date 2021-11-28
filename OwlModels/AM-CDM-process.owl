@@ -108,6 +108,23 @@
       <owl:Class rdf:ID="Object"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:nodeID="A0">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:nodeID="A0"/>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom>
+          <owl:Class rdf:about="#ProcessStep"/>
+        </owl:allValuesFrom>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
+  </owl:Class>
   <owl:Class rdf:ID="MaterialPreperation">
     <rdfs:subClassOf rdf:resource="#PreProcess"/>
   </owl:Class>
@@ -184,21 +201,6 @@
       <owl:Class rdf:about="#PostProcess"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:nodeID="A0">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:nodeID="A0"/>
-        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#rest"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:resource="#ProcessStep"/>
-        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#first"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
-  </owl:Class>
   <owl:Class rdf:about="#PostProcess">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -221,19 +223,6 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="#ProcessStep"/>
-  </owl:Class>
-  <owl:Class rdf:ID="Part">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Process"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="process"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#Continuant"/>
   </owl:Class>
   <owl:ObjectProperty rdf:ID="outputMaterial">
     <rdfs:domain rdf:resource="#ProcessStep"/>
@@ -262,10 +251,6 @@
   <owl:ObjectProperty rdf:about="#controlDocument">
     <rdfs:domain rdf:resource="#PostProcess"/>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#process">
-    <rdfs:domain rdf:resource="#Part"/>
-    <rdfs:range rdf:resource="#Process"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#vesselTemperature">
     <rdfs:domain rdf:resource="#HotIsostaticPressing"/>

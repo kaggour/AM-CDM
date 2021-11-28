@@ -2,6 +2,8 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-process".
+//import "http://kdl.ge.com/AM-CDM-material".
+//import "http://purl.obolibrary.org/obo/bfo.owl".
 
 Project is a class,
 	described by projectID with a single value of type string,
@@ -11,44 +13,144 @@ Project is a class,
 	described by projectDistributionStatement with a single value of type string,
 	described by projectRequirements with a single value of type Document,
 	described by projectPlan with a single value of type Document,
-	described by projectStartDate with a single value of type dateTime,
-	described by projectEndDate with a single value of type dateTime,
-	described by part with values of type Part.
-//	described by build with values of type Build.
+	described by projectStart with a single value of type dateTime,
+	described by projectEnd with a single value of type dateTime,
+	described by projectBuilds with values of type Build,
+	described by projectStandards with values of type string,
+	described by projectQualityControlPlan with a single value of type Document,
+	described by projectQualityProcessControlPlan with a single value of type Document,
+	described by projectDeliveryDate with a single value of type dateTime,
+	described by projectDistributionControl with a single value of type string.
+//	described by projectMaterialDB with values of type Database,
+//	described by projectRepository with values of type Repository.
 
 Build is a type of ProcessStep,
 	described by buildID with a single value of type string,
 	// I think we should have different attributes for different roles, not one catch-all
-	described by buildPersonnel with values of type Personnel,
+	described by buildOperator with values of type Personnel,
 	described by buildSimulation with values of type Simulation,
-	// these are already defined in ProcessStep
-	//described by inputMaterial with values of type Material,
-	//described by outputMaterial with values of type Material,
+	described by feedstockMaterial with a single value of type Material,
+	described by buildPlatform with a single value of type BuildPlatform,
+	described by buildPart with values of type BuiltPart,
 	described by buildSoftware with values of type Software,
 	described by buildOrganization with a single value of type Organization,
-	described by buildLayout with a single value of type BuildLayout,
+	described by buildLayout with a single value of type Document,
 	described by buildJobFile with a single value of type Document,
 	described by amSystem with a single value of type AMSystem,
-	described by nonAMSystem with values of type NonAMEquipment.
+	described by nonAMSystem with values of type NonAMEquipment,
+	described by amProcessData with values of type AMProcessData,
+	described by amInSituDaya with values of type AMInsituData,
+	described by buildSetting with a single value of type BuildSetting,
+	described by buildDuration with a single value of type Measurement,
+	described by buildCoordinate with a single value of type Address,
+	described by buildStartTime with a single value of type dateTime,
+	described by buildEndTime with a single value of type dateTime,
+	described by buildCooldownPeriod with a single value of type Measurement,
+	described by quantityOfActualUsedMaterial with a single value of type float.
 
 BuiltPart is a class,
-	described by partSerialNumber with a single value of type string,
-	described by build with a single value of type Build,
+	described by builtPartName with a single value of type string,
+	described by builtPartID with a single value of type string,
+	described by process with a single value of type Process,
+//	described by build with a single value of type Build,
 	described by partDesign with a single value of type PartDesign,
-	described by partSimulation with values of type Simulation,
-	described by partLocationOnBuild with a single value of type Coordinate,
+	described by partCoordinateOnBuild with a single value of type Coordinate, //using build platform as the coordinate system
 	described by partOrientation with a single value of type string.
 
-PartSpecimen is a type of BuiltPart,
-	described by parentPart with a single value of type BuiltPart.
+BuildPlatform is a class,
+	described by buildPlatformID (note "Identifier of a build platform") with a single value of type string,
+	described by buildPlatformMaterial (note "Material type of a build platform") with a single value of type Material,
+	described by buildPlatformMaterialGrade (note "Standard grade the build platform material product conforms to") with a single value of type string,
+	described by buildPlatformHeight (note "Height of the build platform/plate") with a single value of type Measurement,
+	described by buildPlatformWidth (note "Width of the build platform/plate") with a single value of type Measurement,
+	described by buildPlatformDepth (note "Depth of the build platform/plate") with a single value of type Measurement,
+
+	described by buildPlatformPostProcessMethods (note "Post processing methods of a build platform, eg, hot rolled and annealed") with a single value of type string,
+	described by buildPlatformSurfaceFinish (note "Surface roughness description of the build plate") with a single value of type string, // surface roughness?
+	described by buildPlatformManufacturer (note "Build platform manufacturer, links to Organization") with a single value of type Organization,
+
+	described by buildPlatformCertificationDate (note "The purchase/certification date of the build platform") with a single value of type dateTime,
+	described by buildPlatformCertification (note "Link to the build plate certificate") with a single value of type Document.
+
+AMProcessData is a type of DatasetMetadata.
+//	described by keyDataElement with a single value of type string,
+//	described by timePeriod with a single value of type duration,
+//	described by dataFormat with a single value of type string,
+
+AMInsituData is a type of DatasetMetadata.
+//	described by measurementType with a single value of type string,
+//	described by characteristicsType with a single value of type string,
+//	descrived by device with a single value of NonAMEquipment,
+//	described by contentType with a single value of string.
+
+BuildSetting is a type of DatasetMetadata,
+	described by buildPlatformPreheatTemperature with a single value of type float,
+	described by platformLevelingMethod with a single value of type string, 
+	described by BuildPlatformPosition with a single value of type Coordinate,
+	described by buildPlatformPreheatStrategy with a single value of type string,
+	described by buildPlatformPreheatProfile with a single value of type Document,
+	described by exposureSettings with values of type string,
+	described by layerThickness with a single value of type float.
+//	Contour Setting Type
+//	Post Contour Setting Type
+//	Skin Exposure Setting Type
+//	Core Exposure Setting Type
+//	Pre-Exposure Setting Type
+//	Upskin Exposure Setting Type
+//	Downskin Exposure Setting Type
+//	Post Exposure Setting Type
+//	Parts Associated with the Build Setting
+//	Layerwise Scan Rotation Setting
+//	Contour Spacing
+//	Contour Overlap
+//	Hatch Distance
+//	Hatch Overlap
+//	Hatch Pattern Type
+//	Print Head Scan Speed
+
+DatasetMetadata is a class,
+	described by datasetName with a single value of type string,
+	described by datasetID with a single value of type string,
+	described by datasetSubject with values of type string,
+	described by creator with values of type Personnel,
+	described by creationDateTime with a single value of type dateTime,
+	described by datesetType with values of type string,
+	described by datasetURI with a single value of type string,
+	described by fileSizeQuantity with a single value of type integer.
 
 BuildLayout is a class.
 
 PartDesign is a class,
-	described by partDesignID with a single value of type string,
-	described by designVersion with a single value of type string,
+	described by DesignID with a single value of type string,
+	described by designDeveloper with a single value of type Personnel,
+	described by designSoftware with a single value of type Software,
+	described by partCriticality with a single value of type string,
+	described by partRequrements with a single value of type Document,
+	described by partDesignAugmentedSource with a single value of type Document,
+	described by reverseEngineeredModel with a single value of type Document,
+	described by partRevNumber with a single value of type string,
 	described by objectDefinitionFile with a single value of type Document,
-	described by partDesignSourceFile with a single value of type Document.
+	described by partDesignPromarySourceFile with a single value of type Document,
+	described by derivedFromPartDesignID with values of type Document,
+	described by originatingOrganization with values of type Organization,
+	described by assmblyPartDesignIDList with values of type string.
 
-Simulation is a class.
+Simulation is a class,
+	described by simulationID with a single value of type string,
+	described by simulationModel with a single value of type Document,
+	described by simulationSoftware with values of type Software,
+	described by simulationInputs with a single value of type Document,
+	described by simulatioOutputs with a single value of type Document,
+	described by modelDomain with values of type string,
+	described by modelDefinition with a single value of type Document.
 
+SynthData is a class,
+	described by synthDataID with a single value of type string,
+	described by synthDataSources with values of type string,
+	described by synthDataFormat with a single value of type string,
+	described by dataSynthMethod with values of type string,
+	described by dataSynthSoftware with values of type Software,
+	described by dataSynthDescription with a single value of type string,
+	described by dataSynthResults with a single value of type Document,
+	described by ABasis with a single value of type float,
+	described by BBasis with a single value of type float.

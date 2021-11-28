@@ -2,22 +2,16 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-material".
 
-//BFO classes temporarily being defined here
+// BFO classes temporarily being defined here
 Continuant is a class.
 ProcessHistory is a class.
 Process is a class.
 Object is a class.
 
-Part is a type of Continuant,
-    // continuant is inherited from BFO
-	described by process with a single value of type Process.
-
 Process is a type of ProcessHistory,
-	// process_history is inherited from BFO
 	described by properOccurentPart with values of type ProcessStep List. // ordered list
 
 ProcessStep is a type of Process,
-    // process is inherited from BFO
 	described by sequenceNumber with a single value of type int,
     described by agentOorganization with a single value of type Organization,
 	described by agentPersonnel with values of type Personnel,
