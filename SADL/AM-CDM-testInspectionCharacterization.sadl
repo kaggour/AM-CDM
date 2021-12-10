@@ -18,7 +18,6 @@ TestInspectionCharacterization (note "Any inspection or test performed on any pa
 	described by ticEquipment (note "Identifier of Non-AM Equipment used during the test, inspection, or characterization") with a single value of type NonAMEquipment,
 	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization") with a single value of type Software,
 	described by ticProcedure (note "The procedure used if it is not from an existing standard") with a single value of type Document,
-	// this should be an enumeration
 	described by ticDestructureVsNonDestructive (note "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen") with a single value of type TestType,
 	described by ticDuration (note "The time that the Test took (Test only)") with a single value of type Measurement,
 	described by ticEnvironment (note "The atmospheric conditions of the test environment") with a single value of type TICEnvironment,
@@ -40,10 +39,8 @@ TestType is a class, must be one of {Destructive, NonDestructive}.
 TestResult is a class,
 	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only") with a single value of type string,
 	described by ticRawData with values of type Document,
-	described by ticReport with a single value of type Document.
-
-MaterialTestResult is a type of TestResult,
-	described by ticMaterialProperty with values of type ExtrinsicMaterialProperties.
+	described by ticReport with a single value of type Document,
+	described by ticMaterialProperty with values of type MaterialProperties.
 
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One build part may contain no specimens, one specimen, or multiple specimens.  A build part can also be the specimen without additional sectioning or post processing") is a class,
 	described by specimenID (note "The identifier of the individual specimen") with a single value of type string,

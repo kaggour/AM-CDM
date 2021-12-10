@@ -13,8 +13,9 @@ Material (note "Specific instance of a material utilized in an AM process") is a
 	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
 	described by materialStock (note "Stock information about the material from vendor/manufacturer") with a single value of type MaterialStock,
 	described by measuredMaterialProperties with values of type IntrinsicMaterialProperties,
-	// expected, predicted, calculated, which one...?
-	described by expectedMaterialProperties with values of type MaterialProperties,
+// how does the specificMaterialProperties align or misalign with the MaterialSpecification class?
+	described by specifiedMaterialProperties (note "Vendor-provided extrinsic or intrinsic material properties") with values of type MaterialProperties,
+	described by predictedMaterialProperties (note "Capture ICME simulated material properties") with values of type MaterialProperties,
 	described by parents (note "Parent or parents of material if it is blended") with values of type ParentMaterial.
 
 MaterialStock is a class,
@@ -58,7 +59,9 @@ MaterialSpecification is a class,
 // also want to represent uncertainty in value(s)
 
 MaterialProperties is a class,
-	described by derivedBy with a single value of type PropertyDerivedBy.
+	described by derivedBy with a single value of type PropertyDerivedBy,
+	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to") with a single value of type Document,
+	described by propertyDataSheet (note "Reference document used to provide material properties") with a single value of type Document.
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
