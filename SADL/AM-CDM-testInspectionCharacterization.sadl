@@ -1,32 +1,27 @@
 uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testInspectionCharacterization version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-build".
-import "http://kdl.ge.com/AM-CDM-material".
-import "http://kdl.ge.com/AM-CDM-process".
 
-TestInspectionCharacterization is a type of ProcessStep,
-		// acronyms bad :-(
-	described by ticID with a single value of type string,
-	described by ticName with a single value of type string,
-	described by ticType with a single value of type string,
-	described by ticStandard with a single value of type string,
-	described by ticStartTimeAndDate with a single value of type dateTime,
-	described by ticEndTimeAndDate with a single value of type dateTime,
-	described by ticLocation with a single value of type Address,
-	described by ticNotes with a single value of type string,
-	described by ticOperator with a single value of type Operator,
-	described by ticPointOfContact with a single value of type PointOfContact,
-	described by ticVendor with a single value of type TICVendor,
-	described by ticEquipment with a single value of type NonAMEquipment,
-	described by ticSoftware with a single value of type Software,
-	described by ticProcedure with a single value of type Document,
+TestInspectionCharacterization (note "Any inspection or test performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring)") is a type of ProcessStep,
+	// acronyms bad :-(
+	described by ticID (note "An identifier of the test, inspection or characterization type") with a single value of type string,
+	described by ticName (note "A short description of the test/inspection/characterization") with a single value of type string,
+	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type string,
+	described by ticStandard (note "An identifier for the corresponding standard used") with a single value of type string,
+	described by ticStartTime (note "Start time and date of the test") with a single value of type dateTime,
+	described by ticEndTime (note "End time and date of the test") with a single value of type dateTime,
+	described by ticLocation (note "The physical location where the test was conducted") with a single value of type Address,
+	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen") with a single value of type string,
+	described by ticOperator (note "Identifier of the operator who facilitated the test, inspection, or characterization linking to Personnel ID") with a single value of type Operator,
+	described by ticPointOfContact (note "The name of the point of contact for the task being performed, if not the person performing the task") with a single value of type PointOfContact,
+	described by ticVendor (note "Identifier of Vendor/Supplier/Contractor who physically performed the test, inspection, or characterization linking to Organization ID") with a single value of type TICVendor,
+	described by ticEquipment (note "Identifier of Non-AM Equipment used during the test, inspection, or characterization") with a single value of type NonAMEquipment,
+	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization") with a single value of type Software,
+	described by ticProcedure (note "The procedure used if it is not from an existing standard") with a single value of type Document,
 	// this should be an enumeration
-	described by ticDestructureVsNonDestructive with a single value of type string,
-	described by ticDuration with a single value of type Measurement,
-	described by ticEnvironment with a single value of type TICEnvironment,
-	// Could the below live in a TestResult class?
-	// This should also be an enumeration
-	// described by ticPassFail with a single value of type string,
+	described by ticDestructureVsNonDestructive (note "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen") with a single value of type TestType,
+	described by ticDuration (note "The time that the Test took (Test only)") with a single value of type Measurement,
+	described by ticEnvironment (note "The atmospheric conditions of the test environment") with a single value of type TICEnvironment,
 	described by ticResult with a single value of type TestResult.
 	// Feedstock requirements should probably fall under specific tests
 	// described by ticAncillaryFeedstock with a single value of type TICAncillaryFeedstock.
@@ -39,53 +34,47 @@ TestInspectionCharacterization is a type of ProcessStep,
 	// described by ticIndicationReport with a single value of type Document,
 	// described by ticIndicationType with a single value of type string,
 	// described by ticIndicationNotes with a single value of type string.
-	
+
+TestType is a class, must be one of {Destructive, NonDestructive}.
+
 TestResult is a class,
-	described by ticPassFail with a single value of type string,
+	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only") with a single value of type string,
 	described by ticRawData with values of type Document,
 	described by ticReport with a single value of type Document.
 
-Specimen is a class,
-	described by specimenID with a single value of type string,
-	described by specimenDescription with a single value of type string,
+MaterialTestResult is a type of TestResult,
+	described by ticMaterialProperty with values of type ExtrinsicMaterialProperties.
+
+Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One build part may contain no specimens, one specimen, or multiple specimens.  A build part can also be the specimen without additional sectioning or post processing") is a class,
+	described by specimenID (note "The identifier of the individual specimen") with a single value of type string,
+	described by specimenDescription (note "A description of the specimen") with a single value of type string,
 	described by specimenMass with a single value of type Measurement,
 	described by specimenTIC with values of type TestInspectionCharacterization,
-	described by specimenDeviations with a single value of type string,
-	described by specimenPostProcessInformation with a single value of type string,
-	described by specimenPostProcessSequence with a single value of type Process.
-	
+	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation") with a single value of type string,
+	described by specimenPostProcessInformation (note "An internal description of the AM Post Process used to prepare the specimen") with a single value of type string,
+	described by specimenPostProcessSequence (note "A list of identifiers of the AM Post Process linking to sequence information") with a single value of type Process.
+
 BuiltPartSpecimen is a type of Specimen,
 	described by parentPart with a single value of type BuiltPart,
-	described by specimenCoordinate with values of type Coordinate,   //using part/CAD coordinate system
-	described by specimenTestLocation with a single value of type Address,
-	described by specimenExtractionMethod with a single value of type string.
+	described by specimenCoordinate (note "The location that the specimen was extracted from the original part") with values of type Coordinate,   //using part/CAD coordinate system
+	// I don't think the type of the TestLocation is correct, I don't think its an Address
+	described by specimenTestLocation (note "Location of the test relative to the specimen") with a single value of type Address,
+	described by specimenOrientation (note "The orientation of the specimen relative to the AM part .  (The orientation with respect to the build platform can be traced through the part's orientation)") with a single value of type string,
+	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part") with a single value of type string.
 
 MaterialSpecimen is a type of Specimen,
 	described by specimenMaterialSource with a single value of type Material,
 	described by specimenSamplingMethod with a single value of type Process.
 
-TICEnvironment is a class,
+TICEnvironment (note "The atmospheric conditions of the test environment") is a class,
 	described by ticEnvironmentID with a single value of type string,
-	described by ticEnvironmentTemperature with a single value of type Measurement,
-	described by ticTemperatureControlMethod with a single value of type string,
-	described by ticTemperatureMeasurementLocation with a single value of type string,
-	described by ticHumidity with a single value of type Measurement.
+	described by ticEnvironmentTemperature (note "The atmospheric temperature during the test, inspection, or characterization") with a single value of type Measurement,
+	described by ticTemperatureControlMethod (note "The method for controlling the temperature during the test, inspection, or characterization") with a single value of type string,
+	described by ticTemperatureMeasurementLocation (note "Where the temperature was measured during the test, inspection, or characterization") with a single value of type string,
+	described by ticHumidity (note "The humidity measurement during the test, inspection, or characterization ") with a single value of type Measurement.
 
 TICVendor is a type of Vendor.
 Vendor is a type of Organization.
 
 PointOfContact is a type of Personnel.
 Operator is a type of Personnel.
-
-
-// below is from the previous mock-up model I made for discussion purposes
-TensileTestProcessStepResult is a type of TestInspectionCharacterization.
-TensileTestResult is a type of TestResult.
-
-FatigueTest is a type of TestInspectionCharacterization.
-ImpactTest is a type of TestInspectionCharacterization.
-FractureToughnessTest is a type of TestInspectionCharacterization.
-CreepTest is a type of TestInspectionCharacterization.
-ChemistryTest is a type of TestInspectionCharacterization.
-HardnessTest is a type of TestInspectionCharacterization.
-

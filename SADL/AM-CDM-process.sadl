@@ -1,6 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-material".
+import "http://kdl.ge.com/AM-CDM-system".
 
 // BFO classes temporarily being defined here
 Continuant is a class.
@@ -8,11 +8,11 @@ ProcessHistory is a class.
 Process is a class.
 Object is a class.
 
-Process is a type of ProcessHistory,
-	described by properOccurentPart with values of type ProcessStep List. // ordered list
+Process (note "All stages of manufacturing processes of a part") is a type of ProcessHistory,
+	described by properOccurentPart (note "Sequence of events performed") with values of type ProcessStep List. // ordered list
 
-ProcessStep is a type of Process,
-	described by sequenceNumber with a single value of type int,
+ProcessStep (note "Individual step in a sequence of processing operations related to additive manufacturing.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations") is a type of Process,
+	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order") with a single value of type int,
     described by agentOorganization with a single value of type Organization,
 	described by agentPersonnel with values of type Personnel,
     // Items here down maybe better suited to be uniquely specified in each child
@@ -27,32 +27,34 @@ ProcessStep is a type of Process,
 //TestInspectionCharacterization is a type of ProcessStep,
 //    described by test_result with a single value of type TestResult.
 
-PreProcess is a type of ProcessStep.
+PreProcess (note "Pre-processing steps") is a type of ProcessStep.
 
-MaterialPreperation is a type of PreProcess.
+MaterialPreperation (note "Sifting/blending") is a type of PreProcess.
 
-MachinePreperation is a type of PreProcess.
+MachinePreperation (note "Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming") is a type of PreProcess.
 
-BuildPlatformPreperation is a type of PreProcess.
+BuildPlatformPreperation (note "Description of how the build plate was prepared before the AM process: new or recycles") is a type of PreProcess.
 
-ProcessControl is a class.
+ProcessControl (note "Class for process settings") is a class.
 
-PostProcess is a type of ProcessStep,
-    described by postProcessStandard with a single value of type Document,
-    described by controlDocument with a single value of type Document.
+PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification") is a type of ProcessStep,
+    described by postProcessID (note "Unique identifier for a post process") with a single value of type string,
+    described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string,
+    described by postProcessStandard (note "Standards used to guide a post process, e.g., AMS2774") with a single value of type Document,
+    described by controlDocument (note "Control document provided by post-process providers") with a single value of type Document.
 
-HotIsostaticPressing is a type of PostProcess,
-    described by inertGas with a single value of type Material,
-    described by vesselPressure with a single value of type ProcessData,
-    described by vesselTemperature with a single value of type ProcessData.
+HotIsostaticPressing (note "Data generated during a HIP processe -sa solid-state process, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties") is a type of PostProcess,
+    described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel") with a single value of type Material,
+    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process") with a single value of type ProcessData,
+    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process") with a single value of type ProcessData.
 
-HeatTreatment is a type of PostProcess,
-    described by controlInstrumentType with a single value of type Equipment,
-    described by furnaceTemperature with values of type ProcessData,
-    described by inertGasRampUpRate with values of type ProcessData,
-    described by inertGasRampDownRate with values of type ProcessData.
+HeatTreatment (note "Data generated during Heat Treatment processes") is a type of PostProcess,
+    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment") with a single value of type Equipment,
+    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process") with values of type ProcessData,
+    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process") with values of type ProcessData,
+    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process") with values of type ProcessData.
 
-ProcessData is a type of Object,
-    described by processMonitoringDataType with a single value of type int,
-    described by samplingRate with a single value of type float,
-    described by logFile with a single value of type Document.
+ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during an AM fabrication process Note: The sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment)") is a type of Object,
+    described by processMonitoringDataType (note "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video") with a single value of type string,
+    described by samplingRate (note "Sampling frequency of the process monitoring") with a single value of type Measurement,
+    described by logFile (note "Data generated from the AM System, including log data") with a single value of type Document.

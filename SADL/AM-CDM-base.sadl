@@ -1,25 +1,5 @@
 uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last modified on   $Date:$".
 
-Equipment is a class,
-	described by equipmentID with a single value of type string,
-	described by equipmentName with a single value of type string,
-	described by equipmentType (note "The type of equipment") with a single value of type string,
-	described by equipmentOwner (note "The owner/organization of the equipment") with a single value of type string,
-	described by equipmentLocation (note "The location where the equipment is installed") with a single value of type string,
-	described by equipmentManufacturer (note "The manufacturer's name of the equipment") with a single value of type string,
-	described by equipmentModel (note "The model name of the equipment") with a single value of type string,
-	described by equipmentSerialNumber (note "The serial number of the equipment defined by the vendor") with a single value of type string,
-	described by calibration (note "Calibration information") with a single value of type Calibration.
-
-Calibration is a class,
-	described by calibrationId (note "ID of a calibration process") with a single value of type string,
-	described by calibrationDate (note "Date of machine calibration") with a single value of type dateTime,
-	described by calibrationOperator (note "Person performing the machine calibration. Links to Personnel ID") with a single value of type Personnel,
-	described by calibrationPassFail (note "Pass / fail result") with a single value of type string,
-	described by calibrationResults (note "The results of the equipment calibration (files, etc.)") with a single value of type Document,
-	described by machineCalibrationNotes (note "Comments of a machine calibration") with a single value of type string,
-	described by machineCalibrationReport (note "Technical report from the calibration") with a single value of type Document.
-
 Document (note "File of any type") is a class,
 	described by documentName with a single value of type string,
 	described by documentLocation with a single value of type string,

@@ -2,17 +2,34 @@ uri "http://kdl.ge.com/AM-CDM-system" alias AM-CDM-system version "$Revision:$ L
 
 import "http://kdl.ge.com/AM-CDM-material".
 
-//
-// Non-AM equipment
-//
-NonAMEquipment is a type of Equipment,
-	described by equipmentPurchaseDate (note "The purchase/certification date of the installed equipment") with a single value of type dateTime.
+// should we call this 'System' instead of Equipment?  And have AMSystem and NonAMSystem instead of AMSystem and NonAMEquipment?
+Equipment (note "Equipment information") is a class,
+	described by equipmentID (note "Unique identifier of equipment") with a single value of type string,
+	described by equipmentName (note "The name of the equipment") with a single value of type string,
+	described by equipmentType (note "The type of equipment") with a single value of type string,
+	described by equipmentSerialNumber (note "The serial number of the equipment defined by the vendor") with a single value of type string,
+	described by equipmentPurchaseDate (note "The purchase/certification date of the installed equipment") with a single value of type dateTime,
+	described by equipmentOwner (note "The owner/organization of the equipment") with a single value of type string,
+	described by equipmentLocation (note "The location where the equipment is installed") with a single value of type string,
+	described by equipmentManufacturer (note "The manufacturer's name of the equipment") with a single value of type string,
+	described by equipmentModel (note "The model name of the equipment") with a single value of type string,
+	described by calibration (note "Calibration information") with a single value of type Calibration.
 
-//
-// AM system structure
-//
-AMSystem is a type of Equipment,
-	described by systemID (note "identifier of an AM system") with a single value of type string,
+// If we rename the above to 'System' I'd suggest we call this SystemCalibration to remove ambiguity
+Calibration (note "Calibration information") is a class,
+	described by calibrationId (note "ID of a calibration process") with a single value of type string,
+	described by calibrationDate (note "Date of machine calibration") with a single value of type dateTime,
+	described by calibrationOperator (note "Person performing the machine calibration. Links to Personnel ID") with a single value of type Personnel,
+	described by calibrationPassFail (note "Pass / fail result") with a single value of type string,
+	described by calibrationResults (note "The results of the equipment calibration (files, etc.)") with a single value of type Document,
+	described by machineCalibrationNotes (note "Comments of a machine calibration") with a single value of type string,
+	described by machineCalibrationReport (note "Technical report from the calibration") with a single value of type Document.
+
+NonAMEquipment (note "Non AM system equipment/devices required for pre/post processes and post inspection") is a type of Equipment.
+
+AMSystem (note "Additive Manufacturing System Machine and auxiliary equipment used for additive manufacturing") is a type of Equipment,
+	// redundant with equipmentID
+	//described by systemID (note "identifier of an AM system") with a single value of type string,
 	described by systemName (note "Name of an AM system") with a single value of type string,
 	described by machineName (note "Name of an AM machine - Section of the additive manufacturing system including hardware, machine control software, required set-up software and peripheral accessories necessary to complete a build cycle for producing parts") with a single value of type string,
 	described by machineManufacturer (note "Manufacturer's name of an AM Machine") with a single value of type Organization,
@@ -38,7 +55,7 @@ AMSystem is a type of Equipment,
 	described by inSituMonitoringSystem with a single value of type InSituMonitoringSystem,
 	described by projectSpecificSubsystem with values of type ProjectSpecificSubsystem.
 
-InSituMonitoringSystem is a type of Equipment,
+InSituMonitoringSystem (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process as it occurs in real time.  Each individual piece of monitoring technology constitutes a separate in-situ monitoring system. An in-situ monitoring system may be built into an AM System by the AM System Manufacturer, or a third-party monitoring system may be attached by the owning organization") is a type of Equipment,
 	described by inSituMonitoringSystemId (note "ID of an in-Situ Monitoring system") with a single value of type string,
 	described by inSituMonitoringSystemModelName (note "Model name of the in-situ monitoring system provided by the manufacturer") with a single value of type string,
 	described by inSituMonitoringSystemManufacturer (note "Manufacture name of the in-situ monitoring system. Links to an Organization ID") with a single value of type Organization,
@@ -56,7 +73,7 @@ InSituMonitoringSystemTechnology is a class, must be one of {PhotonicTechnology,
 
 ProjectSpecificSubsystem is a type of Equipment.
 
-BuildChamber is a type of ProjectSpecificSubsystem,
+BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated") is a type of ProjectSpecificSubsystem,
 	described by buildEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.") with a single value of type BuildEnvironmentalControl,
 	described by buildVolume (note "total usable volume available in the machine for building parts") with a single value of type BuildVolume.
 
@@ -98,9 +115,6 @@ GalvoScanner is a type of ProjectSpecificSubsystem,
 	described by galvoScannerOriginX with a single value of type Measurement,
 	described by galvoScannerOriginY with a single value of type Measurement.
 
-//
-// Laser Powder Bed Fusion AM System
-//
 LaserPowderBedFusionSystem is a type of AMSystem,
 	described by laserPowderBedFusionSpecificAttribute with a single value of type string.
 
@@ -108,29 +122,20 @@ LaserPowderBedFusionBuildChamber is a type of BuildChamber,
 	described by laserSystem with a single value of type LaserSystem,
 	described by recoatingSystem with a single value of type RecoatingSystem.
 
-//
-// Directed Energy Deposition AM System
-//
 DirectedEnergyDepositionSystem is a type of AMSystem,
 	described by directedEnergyDepositionSpecificAttribute with a single value of type string.
-
-//
-// Binder Jet System AM System
-//
 
 BinderJetSystem is a type of AMSystem,
 	described by binderJetSpecificAttribute with a single value of type string.
 
-//
 // Detailed Characteristics
-//
-BuildEnvironmentalControl is a class,
+BuildEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation") is a class,
 	described by shieldingGasType with a single value of type string,
 	described by maximumPreheatingTemperature with a single value of type Measurement,
 	described by gasFlowNozzleType with a single value of type string,
 	described by shieldingDeviceType with a single value of type string.
 
-BuildVolume is a class,
+BuildVolume (note "total usable volume available in the machine for building parts") is a class,
 	described by volumeShape (note "Shape of a building volume, i.e., BOX or CYLINDER") with a single value of type string,
 	described by volumeWidth (note "Width of a building volume") with a single value of type Measurement,
 	described by volumeDepth (note "Depth of a building volume") with a single value of type Measurement,
@@ -139,11 +144,10 @@ BuildVolume is a class,
 	described by machineOriginX (note "Origin X as defined by the machine manufacturer relative to build volume center") with a single value of type Measurement,
 	described by machineOriginY (note "Origin Y as defined by the machine manufacturer relative to build volume center") with a single value of type Measurement,
 	described by machineOriginZ (note "Origin Z as defined by the machine manufacturer relative to build volume center") with a single value of type Measurement,
-	described by totalBuildVolume (note "The total usable volume available in the AM System in cm^3") with a single value of type Measurement,
-	described by machineLastCleanoutDate (note "The date when the build volume was last cleaned.") with a single value of type dateTime.
+	described by totalBuildVolume (note "The total usable volume available in the AM System") with a single value of type Measurement,
+	described by machineLastCleanoutDate (note "The date when the build volume was last cleaned") with a single value of type dateTime.
 
-// should the pixel-related values be integer or Measurement?  I.e., do they have units?
-Camera is a class,
+Camera (note "Optical system by which objects are imaged and recorded") is a class,
 	described by cameraImageWidth (note "Camera image width in pixel") with a single value of type Measurement,
 	described by cameraBitDepth (note "Bit depth of pixel values") with a single value of type Measurement,
 	described by lastCameraCalibration (note "Date of the last camera calibration") with a single value of type dateTime,
@@ -162,8 +166,8 @@ LaserSystemCalibration is a class,
 	described by laserCalibrationDate with a single value of type dateTime,
 	described by laserSystemCalibrationReport with a single value of type Document.
 
-MachineCapability is a class,
-	described by processableRawMaterial (note "A processable raw material list of an AM machine") with a single value of type string,
+MachineCapability (note "Vendor provided AM machine specification") is a class,
+	described by processableRawMaterial (note "A processable raw material list of an AM machine") with values of type Material,
 	described by maximumBuildRate with a single value of type Measurement,
 	described by minimumLayerThickness with a single value of type Measurement,
 	described by maximumLayerThickness with a single value of type Measurement,
@@ -177,7 +181,6 @@ MaintenanceEvent is a class,
 MaintenanceHistory is a class,
 	described by amSystemLastMaintenanceDate (note "Date of last AM system Maintenance") with a single value of type dateTime,
 	described by amSystemLastMaintenanceReport (note "Technical report from the maintenance") with a single value of type Document.
-
 
 Photodiode is a class,
 	described by photodiodeModel with a single value of type string,
@@ -220,4 +223,4 @@ Software is a class,
 	described by softwareVendor (note "Software Vendor identification. Links to Organization foreign key") with a single value of type Organization,
 	described by softwareVersion (note "The version number of the software") with a single value of type string,
 	described by softwareConfigurationSettingsFile (note "specific software settings document, for this project/component") with a single value of type Document,
-	described by softwareFileType (note "capture of file type (for automated processing)") with a single value of type string.
+	described by softwareFileType (note "File type (for automated processing)") with a single value of type string.

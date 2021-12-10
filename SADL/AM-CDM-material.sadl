@@ -6,16 +6,15 @@ PowderLot is a type of Material,
 	described by virginOrUsed with a single value of type string,
 	described by reuseNumber with a single value of type int.
 
-// Luke - have expected properties in Material and measured properties in TIC
 Material (note "Specific instance of a material utilized in an AM process") is a class,
 	described by materialID (note "Unique identifier for specific material instance") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of") with a single value of type MaterialType,
 	described by materialGrade (note "Standard grade the material product conforms to") with a single value of type string,
 	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
 	described by materialStock (note "Stock information about the material from vendor/manufacturer") with a single value of type MaterialStock,
-	described by materialProperties with values of type MaterialProperties,
-	// below is redundant with materialType
-	//described by materialSpecification (note "Specification of specific material instance") with a single value of type MaterialSpecification,
+	described by measuredMaterialProperties with values of type IntrinsicMaterialProperties,
+	// expected, predicted, calculated, which one...?
+	described by expectedMaterialProperties with values of type MaterialProperties,
 	described by parents (note "Parent or parents of material if it is blended") with values of type ParentMaterial.
 
 MaterialStock is a class,
@@ -53,44 +52,28 @@ MaterialType (note "Generic material type") is a class,
 
 MaterialSpecification is a class,
 	described by specChemistry with a single value of type Chemistry,
-	described by predictedProperties with values of type PhysicalProperties.
+	described by predictedProperties with values of type MaterialProperties.
+
+// ASM - reports "Standard Values" of materials
+// also want to represent uncertainty in value(s)
 
 MaterialProperties is a class,
 	described by derivedBy with a single value of type PropertyDerivedBy.
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
-/*
-// these should all be in TestInspectionCharacterization classes
-MechanicalProperties is a type of MaterialProperties.
+IntrinsicMaterialProperties (note "Properties that are independent of the processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
 
-TensileProperties is a type of MechanicalProperties,
-	described by tensileTestStrainRate with a single value of type string,
-	described by tensileTestDisplacementRate with a single value of type string,
-	described by tensileTestControlMode with a single value of type string,
-	described by initialStrainRate with a single value of type Measurement,
-	described by initialLoadingRate with a single value of type Measurement,
-	described by finalStrainRate with a single value of type Measurement,
-	described by finalLoadingRate with a single value of type Measurement,
-	described by yieldStrengthZeroPoint2Percent with a single value of type Measurement,
-	described by yieldStrengthZeroPointZero2Percent with a single value of type Measurement,
-	described by ultimateTensileStrength with a single value of type Measurement,
-	described by elongation with a single value of type Measurement,
-	described by percentReductionInArea with a single value of type Measurement,
-	described by youngsModulus with a single value of type Measurement,
-	described by maximumLoad with a single value of type Measurement.
+ExtrinsicMaterialProperties (note "Properties that are dependent upon the processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
 
-CreepProperties is a type of MechanicalProperties,
-	described by creepPanLoad with a single value of type Measurement,
-	described by creepLeverArmRatio with a single value of type string,
-	described by creepTestLoad with a single value of type string,
-	described by creepTestStress with a single value of type string,
-	described by creepTestDuration with a single value of type Measurement,
-	described by elongationAtRuptureCreep with a single value of type Measurement.
+ThermodynamicProperties is a type of IntrinsicMaterialProperties,
+	described by electricalConductivity with a single value of type Measurement,
+	described by thermalExpansionCoef with a single value of type Measurement,
+	described by thermalConductivity with a single value of type Measurement,
+	described by heatCapacity with a single value of type Measurement,
+	described by meltingTemperature with a single value of type Measurement.
 
-HardnessProperties is a type of MechanicalProperties.
-
-ParticleSizeDistribution is a type of TestInspectionCharacterization,
+ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 	described by psdPrincipleOfMeasurement with a single value of type string,
 	described by psdParameterBasis with a single value of type string,
 	described by psdDispersionMedium with a single value of type string,
@@ -113,25 +96,37 @@ ParticleSizeDistribution is a type of TestInspectionCharacterization,
 	described by psdRange with a single value of type Measurement,
 	described by psdSkewness with a single value of type Measurement,
 	described by psdKurtosis with a single value of type Measurement.
-*/
 
-// ASM - reports "Standard Values" of materials
-// also want to represent uncertainty in value(s)
-// values are not independent of the manufacturing process, e.g., dependent upon part shape
+TensileProperties is a type of ExtrinsicMaterialProperties,
+	described by tensileTestStrainRate with a single value of type string,
+	described by tensileTestDisplacementRate with a single value of type string,
+	described by tensileTestControlMode with a single value of type string,
+	described by initialStrainRate with a single value of type Measurement,
+	described by initialLoadingRate with a single value of type Measurement,
+	described by finalStrainRate with a single value of type Measurement,
+	described by finalLoadingRate with a single value of type Measurement,
+	described by yieldStrengthZeroPoint2Percent with a single value of type Measurement,
+	described by yieldStrengthZeroPointZero2Percent with a single value of type Measurement,
+	described by ultimateTensileStrength with a single value of type Measurement,
+	described by elongation with a single value of type Measurement,
+	described by percentReductionInArea with a single value of type Measurement,
+	described by youngsModulus with a single value of type Measurement,
+	described by maximumLoad with a single value of type Measurement.
 
-ThermodynamicProperties is a type of MaterialProperties,
-	described by electricalConductivity with a single value of type Measurement,
-	described by thermalExpansionCoef with a single value of type Measurement,
-	described by thermalConductivity with a single value of type Measurement,
-	described by heatCapacity with a single value of type Measurement,
-	described by meltingTemperature with a single value of type Measurement,
-	described by density with a single value of type Measurement.
+CreepProperties is a type of ExtrinsicMaterialProperties,
+	described by creepPanLoad with a single value of type Measurement,
+	described by creepLeverArmRatio with a single value of type string,
+	described by creepTestLoad with a single value of type string,
+	described by creepTestStress with a single value of type string,
+	described by creepTestDuration with a single value of type Measurement,
+	described by elongationAtRuptureCreep with a single value of type Measurement.
 
-PhysicalProperties is a type of MaterialProperties.
+ChemicalProperties is a type of ExtrinsicMaterialProperties,
+	described by oxidationResistance with a single value of type Measurement.
 
-Flowability is a type of PhysicalProperties.
-SizeDistribution is a type of PhysicalProperties.
-Reflectivity is a type of PhysicalProperties.
+
+
+
 
 // describes material characteristics from vendor
 MaterialDefinition is a class.
