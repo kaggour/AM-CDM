@@ -12,7 +12,7 @@ Material (note "Specific instance of a material utilized in an AM process") is a
 	described by materialGrade (note "Standard grade the material product conforms to") with a single value of type string,
 	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
 	described by materialStock (note "Stock information about the material from vendor/manufacturer") with a single value of type MaterialStock,
-	described by measuredMaterialProperties with values of type IntrinsicMaterialProperties,
+	described by genericMaterialProperties with values of type IntrinsicMaterialProperties,
 // how does the specificMaterialProperties align or misalign with the MaterialSpecification class?
 	described by specifiedMaterialProperties (note "Vendor-provided extrinsic or intrinsic material properties") with values of type MaterialProperties,
 	described by predictedMaterialProperties (note "Capture ICME simulated material properties") with values of type MaterialProperties,
@@ -65,9 +65,9 @@ MaterialProperties is a class,
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
-IntrinsicMaterialProperties (note "Properties that are independent of the processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
+IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
 
-ExtrinsicMaterialProperties (note "Properties that are dependent upon the processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
+ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
 
 ThermodynamicProperties is a type of IntrinsicMaterialProperties,
 	described by electricalConductivity with a single value of type Measurement,
