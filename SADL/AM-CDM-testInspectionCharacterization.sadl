@@ -55,9 +55,10 @@ BuiltPartSpecimen is a type of Specimen,
 	described by parentPart with a single value of type BuiltPart,
 	described by specimenCoordinate (note "The location that the specimen was extracted from the original part") with values of type Coordinate,   //using part/CAD coordinate system
 	// I don't think the type of the TestLocation is correct, I don't think its an Address
-	described by specimenTestLocation (note "Location of the test relative to the specimen") with a single value of type Address,
+	described by specimenTestLocation (note "Location of the test relative to the specimen") with a single value of type Coordinate,
 	described by specimenOrientation (note "The orientation of the specimen relative to the AM part .  (The orientation with respect to the build platform can be traced through the part's orientation)") with a single value of type string,
-	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part") with a single value of type string.
+	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part") with a single value of type string,
+	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type document.
 
 MaterialSpecimen is a type of Specimen,
 	described by specimenMaterialSource with a single value of type Material,
