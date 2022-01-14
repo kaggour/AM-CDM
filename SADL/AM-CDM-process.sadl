@@ -3,13 +3,10 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 import "http://kdl.ge.com/AM-CDM-system".
 
 // BFO classes temporarily being defined here
-Continuant is a class.
 ProcessHistory is a class.
-Process is a class.
-Object is a class.
 
 Process (note "All stages of manufacturing processes of a part") is a type of ProcessHistory,
-	described by properOccurentPart (note "Sequence of events performed") with values of type ProcessStep List. // ordered list
+	described by processStep (note "Sequence of events performed") with values of type ProcessStep List. // ordered list
 
 ProcessStep (note "Individual step in a sequence of processing operations related to additive manufacturing.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations") is a type of Process,
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order") with a single value of type int,
