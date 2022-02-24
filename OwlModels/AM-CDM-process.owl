@@ -25,6 +25,7 @@
       <owl:Class rdf:ID="PreProcess"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="Continuant"/>
   <owl:Class rdf:nodeID="A0">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -42,7 +43,6 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
   </owl:Class>
-  <owl:Class rdf:ID="Continuant"/>
   <owl:Class rdf:about="#PreProcess">
     <rdfs:comment xml:lang="en">Pre-processing steps</rdfs:comment>
     <rdfs:subClassOf>

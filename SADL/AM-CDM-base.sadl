@@ -59,9 +59,16 @@ Coordinate is a class,
 
 Measurement is a class,
 	described by measurementValue with a single value of type double,
-	described by measurementUnit with a single value of type string.
+	described by measurementUnit with a single value of type string,
+	described by rawDataValues with values of type RawDataValue,
+	described by rawDataAggregationTechnique with a single value of type string.
 	// need to add measure(s) of uncertainty -- standard deviation, more?
 
+RawDataValue is a class,
+	//described by rawDataTag with a single value of type string,
+	described by rawDataTimestamp with a single value of type dateTime,
+	described by rawDataValue with a single value of type Measurement,
+	described by rawDataQuality with a single value of type string.
 
 /*
 // GE's Measurement class
