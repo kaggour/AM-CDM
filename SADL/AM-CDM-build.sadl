@@ -35,7 +35,7 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts") with a single value of type Measurement,
 	described by prcessingMaterial (note "Ancillary material used for build, e.g., environmental gas") with a single value of type Material,
 	described by buildPlatform with a single value of type BuildPlatform,
-	described by builtPart (note "Parts built from this build. One build can have multiple built parts") with values of type BuiltPart,
+	described by part (note "Parts built from this build. One build can have multiple built parts") with values of type Part,
 	described by buildPlan (note "Document that describes the build specifc design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation") with values of type Document,
 	described by buildSoftware (note "Software used in build") with values of type Software,
 	described by buildOrganization (note "Production organization for this build") with a single value of type Organization,
@@ -53,9 +53,9 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by buildEndTime (note "Time when an AM build cycle ends") with a single value of type dateTime,
 	described by buildCooldownDuration (note "Time from build completion to cooling to 100 degrees C") with a single value of type Measurement.
 
-BuiltPart (note "Instances of part designs in the as-built state") is a class,
-	described by builtPartID (note "Identifier for the built part") with a single value of type string,
-	described by builtPartName (note "Conventional name for the built part") with a single value of type string,
+Part (note "Instances of part designs in the as-built state") is a class,
+	described by partID (note "Identifier for the built part") with a single value of type string,
+	described by partName (note "Conventional name for the built part") with a single value of type string,
 	described by process with a single value of type Process,
 //	described by build with a single value of type Build,
 	described by partDesign (note "Design information for the built part") with a single value of type PartDesign,
