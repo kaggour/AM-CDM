@@ -42,22 +42,25 @@ TestResult is a class,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
+VendorProvidedTestResult (note "Vendor-provided extrinsic or intrinsic material properties") is a type of TestResult,
+	described by testedMaterial (note "Material that was tested by the vendor of the material") with a single value of type Material.
+
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One build part may contain no specimens, one specimen, or multiple specimens.  A build part can also be the specimen without additional sectioning or post processing") is a class,
 	described by specimenID (note "The identifier of the individual specimen") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen") with a single value of type string,
 	described by specimenMass with a single value of type Measurement,
 	described by specimenProcessHistory with a single value of type Process,
-	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation") with a single value of type string,
+	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation") with a single value of type string.
 	// The below are probably redundant with specimenProcessHistory
 	//described by specimenPostProcessInformation (note "An internal description of the AM Post Process used to prepare the specimen") with a single value of type string,
 	//described by specimenPostProcessSequence (note "A list of identifiers of the AM Post Process linking to sequence information") with a single value of type Process.
 
-BuiltPartSpecimen is a type of Specimen,
-	described by parentPart with a single value of type BuiltPart,
+PartSpecimen is a type of Specimen,
+	described by parentPart with a single value of type Part,
 	described by specimenCoordinate (note "The location that the specimen was extracted from the original part") with values of type Coordinate,   //using part/CAD coordinate system
 	described by specimenTestLocation (note "Location of the test relative to the specimen") with a single value of type Coordinate,
 	// Future work: more robust definitions of orientations with respect to each other
-	described by specimenOrientation (note "The orientation of the specimen relative to the AM part .  (The orientation with respect to the build platform can be traced through the part's orientation)") with a single value of type string,
+	described by specimenOrientation (note "The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation)") with a single value of type string,
 	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part") with a single value of type string,
 	// Geometry could be specified by a standard for a test
 	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
