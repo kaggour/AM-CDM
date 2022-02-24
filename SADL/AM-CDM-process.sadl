@@ -52,7 +52,7 @@ HeatTreatment (note "Data generated during Heat Treatment processes") is a type 
     described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process") with values of type ProcessData,
     described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process") with values of type ProcessData.
 
-ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during an AM fabrication process Note: The sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment)") is a type of Object,
+ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during an AM fabrication process Note: The sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment)") is a class,
     described by processMonitoringDataType (note "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video") with a single value of type string,
     described by samplingRate (note "Sampling frequency of the process monitoring") with a single value of type Measurement,
     described by logFile (note "Data generated from the AM System, including log data") with a single value of type Document.
