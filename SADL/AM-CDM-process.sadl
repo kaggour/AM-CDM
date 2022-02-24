@@ -16,7 +16,7 @@ ProcessStep (note "Individual step in a sequence of processing operations relate
     // Would allow more specific type testing but also may lead to inconsistency across the children
 	described by processMachine with a single value of type Equipment, // See System group. System class may include software
     described by processData with a single value of type ProcessData,
-	described by processControl with a single value of type ProcessControl,
+	described by processControl with a single value of type ProcessParameters,
     described by inputMaterial with values of type Material,
     described by outputMaterial with values of type Material.
 
@@ -32,7 +32,8 @@ MachinePreperation (note "Operations to prepare an AM machine before a build sta
 
 BuildPlatformPreperation (note "Description of how the build plate was prepared before the AM process: new or recycles") is a type of PreProcess.
 
-ProcessControl (note "Class for process settings") is a class.
+ProcessParameters (note "Class for process parameters") is a class,
+    described by processParameterID (note "Unique identifier for process parameters") with a single value of type string.
 
 PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification") is a type of ProcessStep,
     described by postProcessID (note "Unique identifier for a post process") with a single value of type string,
