@@ -36,7 +36,7 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by prcessingMaterial (note "Ancillary material used for build, e.g., environmental gas") with a single value of type Material,
 	described by buildPlatform with a single value of type BuildPlatform,
 	described by builtPart (note "Parts built from this build. One build can have multiple built parts") with values of type BuiltPart,
-	described by buildPlan (note "Document that describes the build specifc design intent and requirements. This may include plate layout, witness coupons,  object quantity, position/orientation") with values of type Document,
+	described by buildPlan (note "Document that describes the build specifc design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation") with values of type Document,
 	described by buildSoftware (note "Software used in build") with values of type Software,
 	described by buildOrganization (note "Production organization for this build") with a single value of type Organization,
 	described by buildLayout with a single value of type Document,
@@ -45,7 +45,8 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by nonAMSystem (note "Links to Non AM Equipment records") with values of type NonAMEquipment,
 	described by amProcessData (note "Recorded observations about an AM build cycle") with values of type AMProcessData,
 	described by amInSituData with values of type AMInsituData,
-	described by buildSetting with a single value of type BuildSetting,
+	//already linked through ProcessStep --> ProcessParameters
+	//described by buildParameters with a single value of type BuildParameters,
 	described by buildDuration (note "Recorded duration of build cycle") with a single value of type Measurement,
 	described by buildLocation (note "Place of an AM process") with a single value of type Address,
 	described by buildStartTime (note "Time when an AM build cycle starts") with a single value of type dateTime,
@@ -90,7 +91,7 @@ AMInsituData (note "Data recorded by in-situ monitoring systems during an AM Bui
 //	described by device with a single value of NonAMEquipment,
 //	described by contentType with a single value of string.
 
-BuildSetting is a type of DatasetMetadata,
+BuildParameters is a type of ProcessParameters,//DatasetMetadata, ??
 	described by buildPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print") with a single value of type Measurement,
 	described by platformLevelingMethod (note "Description of the method of platform leveling – procedures and tools") with a single value of type string, 
 	described by buildPlatformZPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures") with a single value of type Measurement,
@@ -123,6 +124,7 @@ DatasetMetadata is a class,
 	described by creator with values of type Personnel,
 	described by creationDateTime with a single value of type dateTime,
 	described by datesetType with values of type string,
+	described by datesetSchema with values of type string,
 	described by datasetURI with a single value of type string,
 	described by fileSizeQuantity with a single value of type integer.
 
