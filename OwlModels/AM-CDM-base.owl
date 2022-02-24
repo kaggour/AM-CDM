@@ -178,6 +178,40 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="RawDataValue">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="rawDataQuality"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="Measurement"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="rawDataValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="rawDataTimestamp"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:Class rdf:ID="Document">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -211,7 +245,17 @@
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">File of any type</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Measurement">
+  <owl:Class rdf:about="#Measurement">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="rawDataAggregationTechnique"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -264,6 +308,39 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="PersonnelQualification">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="personnelQualificationNumberOfHours"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="personnelQualificationLevel"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="personnelQualificationType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Details of Qualification/certification (machine specific operator certificate, UL, ASTM)</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="#Address">
     <rdfs:subClassOf>
@@ -327,39 +404,6 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="PersonnelQualification">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personnelQualificationNumberOfHours"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personnelQualificationLevel"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personnelQualificationType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Details of Qualification/certification (machine specific operator certificate, UL, ASTM)</rdfs:comment>
-  </owl:Class>
   <owl:Class rdf:about="#PhoneNumber">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -396,6 +440,10 @@
     <rdfs:comment xml:lang="en">The phone number for the individual.</rdfs:comment>
     <rdfs:range rdf:resource="#PhoneNumber"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="rawDataValues">
+    <rdfs:domain rdf:resource="#Measurement"/>
+    <rdfs:range rdf:resource="#RawDataValue"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#organizationPointOfContact">
     <rdfs:domain rdf:resource="#Organization"/>
     <rdfs:comment xml:lang="en">Identification of the POC. Link to a Personnel foreign key.</rdfs:comment>
@@ -417,6 +465,10 @@
     <rdfs:domain rdf:resource="#Organization"/>
     <rdfs:comment xml:lang="en">A phone number for the organization.</rdfs:comment>
     <rdfs:range rdf:resource="#PhoneNumber"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#rawDataValue">
+    <rdfs:domain rdf:resource="#RawDataValue"/>
+    <rdfs:range rdf:resource="#Measurement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#country">
     <rdfs:domain rdf:resource="#Address"/>
@@ -454,6 +506,10 @@
     <rdfs:domain rdf:resource="#Address"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#rawDataTimestamp">
+    <rdfs:domain rdf:resource="#RawDataValue"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#documentURI">
     <rdfs:domain rdf:resource="#Document"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -483,6 +539,10 @@
   <owl:DatatypeProperty rdf:about="#organizationName">
     <rdfs:domain rdf:resource="#Organization"/>
     <rdfs:comment xml:lang="en">The name of an organization.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#rawDataAggregationTechnique">
+    <rdfs:domain rdf:resource="#Measurement"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#documentName">
@@ -515,21 +575,25 @@
     <rdfs:comment xml:lang="en">The unique identifier of the organization.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#countryCallingCode">
-    <rdfs:domain rdf:resource="#Country"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#measurementValue">
     <rdfs:domain rdf:resource="#Measurement"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personnelFirstName">
-    <rdfs:domain rdf:resource="#Personnel"/>
-    <rdfs:comment xml:lang="en">First name of individual performing task</rdfs:comment>
+  <owl:DatatypeProperty rdf:about="#countryCallingCode">
+    <rdfs:domain rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#rawDataQuality">
+    <rdfs:domain rdf:resource="#RawDataValue"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#countryAlpha2Code">
     <rdfs:domain rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#personnelFirstName">
+    <rdfs:domain rdf:resource="#Personnel"/>
+    <rdfs:comment xml:lang="en">First name of individual performing task</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#personnelID">
