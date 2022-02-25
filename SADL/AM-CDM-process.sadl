@@ -42,11 +42,17 @@ PostProcess (note "Note: The scope of post-processes is broad, which could inclu
     described by controlDocument (note "Control document provided by post-process providers") with a single value of type Document.
 
 HotIsostaticPressing (note "Data generated during a HIP processe -sa solid-state process, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties") is a type of PostProcess,
+    described by hotIsostaticPressingProcessParameters with a single value of type HotIsostaticPressingProcessParameters.
+
+HotIsostaticPressingProcessParameters (note "Nominal process parameters used during Hot Isotatic Pressing") is a type of ProcessParameters:
     described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel") with a single value of type Material,
     described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process") with a single value of type ProcessData,
     described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process") with a single value of type ProcessData.
 
 HeatTreatment (note "Data generated during Heat Treatment processes") is a type of PostProcess,
+    described by heatTreatmentProcessParameters with a single value of type HeatTreatmentProcessParameters.
+
+HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment") is a type of Process Parameters:
     described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment") with a single value of type Equipment,
     described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process") with values of type ProcessData,
     described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process") with values of type ProcessData,
