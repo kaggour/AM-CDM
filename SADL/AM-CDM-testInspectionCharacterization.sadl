@@ -42,7 +42,7 @@ TestResult is a class,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
-VendorProvidedTestResult (note "Vendor-provided extrinsic or intrinsic material properties") is a type of TestResult,
+NonPedigreedTestResult (note "Vendor-provided extrinsic or intrinsic material properties") is a type of TestResult,
 	described by testedMaterial (note "Material that was tested by the vendor of the material") with a single value of type Material.
 
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One build part may contain no specimens, one specimen, or multiple specimens.  A build part can also be the specimen without additional sectioning or post processing") is a class,
