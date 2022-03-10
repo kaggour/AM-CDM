@@ -1,11 +1,11 @@
 uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last modified on   $Date:$".
 
-Document (note "File of any type") is a class,
+Document (note "File of any type.") is a class,
 	described by documentName with a single value of type string,
 	described by documentLocation with a single value of type string,
 	described by documentURI with a single value of type string.
 
-Organization is a class,
+Organization (note "An organization of various types.") is a class,
 	described by organizationID (note "The unique identifier of the organization.") with a single value of type string,
 	described by organizationName (note "The name of an organization.") with a single value of type string,
 	described by organizationType (note "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor.  One organization may have many types.") with values of type OrganizationType,
@@ -13,25 +13,22 @@ Organization is a class,
 	described by organizationAddress (note "The address of the organization.") with a single value of type Address,
 	described by organizationPhoneNumber (note "A phone number for the organization.") with a single value of type PhoneNumber,
 	described by organizationPointOfContact (note "Identification of the POC. Link to a Personnel foreign key.") with a single value of type Personnel,
-	described by organizationPersonnel (note "Link to Personnel who are a part of this Organization. Links to foreign keys") with values of type Personnel.
+	described by organizationPersonnel (note "Link to Personnel who are a part of this Organization. Links to foreign keys.") with values of type Personnel.
 
-OrganizationType is a class, must be one of {TypeManufacturer, TypeVendor, TypeSupplier, TypeContractor}.
+OrganizationType is a class, must be one of {ManufacturerOrganization, VendorOrganization, SupplierOrganization, ContractorOrganization, HybridOrganization}.
 
-Personnel (note "Individuals performing tasks and their credentials") is a class,
-	described by personnelID (note "Unique identifier of the personnel") with a single value of type string,
-	described by personnelFirstName (note "First name of individual performing task") with a single value of type string,
-	described by personnelLastName (note "Last name of individual performing task") with a single value of type string, // or surname?
-	described by personnelRole (note "Role of individual performing task") with a single value of type string,
+Personnel (note "Individuals performing tasks and their credentials.") is a class,
+	described by personnelID (note "Unique identifier of the personnel.") with a single value of type string,
+	described by personnelFirstName (note "First name of individual performing task.") with a single value of type string,
+	described by personnelLastName (note "Last name of individual performing task.") with a single value of type string, // or surname?
+	described by personnelRole (note "Role of individual performing task.") with a single value of type string,
 	described by personnelEmail (note "The email for the individual.") with a single value of type string,
 	described by personnelPhoneNumber (note "The phone number for the individual.") with values of type PhoneNumber,
-	described by personnelQualification with values of type PersonnelQualification.
+	described by personnelQualification (note "Qualifications of person.") with values of type PersonnelQualification.
 
-PersonnelQualification (note "Details of Qualification/certification (machine specific operator certificate, UL, ASTM)") is a class,
-	described by personnelQualificationType (note "The type of qualification/certification") with a single value of type string,
-	described by personnelQualificationLevel (note "The level of qualificaiton/certification") with a single value of type string,
-//	described by equipment with a single value of type string,
-//	described by software with a single value of type string,
-//	described by system with a single value of type string,
+PersonnelQualification (note "Details of Qualification/certification (machine specific operator certificate, UL, ASTM).") is a class,
+	described by personnelQualificationType (note "The type of qualification/certification.") with a single value of type string,
+	described by personnelQualificationLevel (note "The level of qualification/certification.") with a single value of type string,
 	described by personnelQualificationNumberOfHours (note "The number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
 
 Address is a class,
@@ -64,12 +61,6 @@ Measurement is a class,
 	described by rawDataAggregationTechnique with a single value of type string.
 	// need to add measure(s) of uncertainty -- standard deviation, more?
 
-RawDataValue is a class,
-	//described by rawDataTag with a single value of type string,
-	described by rawDataTimestamp with a single value of type dateTime,
-	described by rawDataValue with a single value of type Measurement,
-	described by rawDataQuality with a single value of type string.
-
 /*
 // GE's Measurement class
 Measurement is a class,
@@ -79,3 +70,25 @@ Measurement is a class,
 	described by distribution with a single value of type string.
 	described by measurementTechnique with a single value of type MeasurementTechnique.
 */
+
+RawDataValue is a class,
+	//described by rawDataTag with a single value of type string,
+	described by rawDataTimestamp with a single value of type dateTime,
+	described by rawDataValue with a single value of type Measurement,
+	described by rawDataQuality with a single value of type string.
+
+DatasetMetadata is a class,
+	described by datasetName (note "Name of the dataset.") with a single value of type string,
+	described by datasetID (note "Unique identifier of the dataset.") with a single value of type string,
+	described by datasetSubject (note "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).") with values of type string,
+	described by datasetType (note "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications.") with a single value of type string,
+	described by datasetURI (note "URI location where a dataset can be found.") with a single value of type string,
+	described by datesetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth.") with values of type string,
+	described by datasetSchemaURI (note "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.") with a single value of type string,
+	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Personnel,
+	described by datasetCreationDateTime (note "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].") with a single value of type dateTime,
+	described by datasetSize (note "The number of bytes in Megabytes of a dataset.") with a single value of type Measurement,
+	described by datesetType (note "Dataset type, raw data or synthesized data.") with values of type string,
+	described by datasetQuantityType (note "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.") with values of type string,
+	described by datasetKeyDataElements (note "Data elements of principle interest within a dataset, particularly useful for traceability applications.") with values of type string,
+	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type string.

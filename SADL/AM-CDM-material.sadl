@@ -2,67 +2,68 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 
 import "http://kdl.ge.com/AM-CDM-base".
 
-PowderLot (note "Unique lot of powder material used in one or more builds") is a type of Material,
-	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously") with a single value of type string,
-	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused") with a single value of type int.
+PowderLot (note "Unique lot of powder material used in one or more builds.") is a type of Material,
+	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously.") with a single value of type string,
+	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused.") with a single value of type int.
 
-Material (note "Specific instance of a material utilized in an AM process") is a class,
-	described by materialID (note "Unique identifier for specific material instance") with a single value of type string,
-	described by materialType (note "Generic material this specific instance is an instantiation of") with a single value of type MaterialType,
-	described by materialGrade (note "Standard grade the material product conforms to") with a single value of type string,
-	described by actualChemistry (note "Chemistry characterization for a material stock") with a single value of type Chemistry,
-	described by materialStock (note "Stock information about the material from vendor/manufacturer") with a single value of type MaterialStock,
-	described by measuredMaterialProperties (note "Measured intrinsic properties of the material") with values of type IntrinsicMaterialProperties,
-//	described by specifiedMaterialProperties (note "Vendor-provided extrinsic or intrinsic material properties") with values of type MaterialProperties,
-	described by predictedMaterialProperties (note "Simulated properties for this specific material instance, which is going to be an imperfect instantiation of the ideal material and hence these properties may be slightly different from the predictedProperties found in the MaterialSpecification") with values of type MaterialProperties,
-	described by parents (note "Parent or parents of material, if it is blended") with values of type ParentMaterial.
+Material (note "Specific instance of a material utilized in an AM process.") is a class,
+	described by materialID (note "Unique identifier for specific material instance.") with a single value of type string,
+	described by materialType (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,
+	described by materialGrade (note "Standard grade the material product conforms to.") with a single value of type string,
+	described by actualChemistry (note "Chemistry characterization for a material stock.") with a single value of type Chemistry,
+	described by materialStock (note "Stock information about the material from vendor/manufacturer.") with a single value of type MaterialStock,
+	described by measuredMaterialProperties (note "Measured intrinsic properties of the material.") with values of type IntrinsicMaterialProperties,
+	// properties specified by third parties, such as vendors, are linked through NonPedigreedTestResult in testInspectionCharacterization
+	//described by specifiedMaterialProperties (note "Vendor-provided extrinsic or intrinsic material properties.") with values of type MaterialProperties,
+	described by predictedMaterialProperties (note "Simulated properties for this specific material instance, which is going to be an imperfect instantiation of the ideal material and hence these properties may be slightly different from the predictedProperties found in the MaterialSpecification.") with values of type MaterialProperties,
+	described by parents (note "Parent or parents of material, if it is blended.") with values of type ParentMaterial.
 
-MaterialStock (note "Information about a stock of material, including physical form, location, and purchasing information") is a class,
-	described by materialStockForm (note "Form of a material stock") with a single value of type MaterialStockForm,
-	described by materialStockOwner (note "Owner/organization of a material stock") with a single value of type Organization,
-	described by materialStockLocation (note "Physical location of a material stock") with a single value of type Address,
-	described by materialStockStorageEnvironment (note "Material stock storage environment details - temperature, humidity, light") with a single value of type Document,
+MaterialStock (note "Information about a stock of material, including physical form, location, and purchasing information.") is a class,
+	described by materialStockForm (note "Form of a material stock.") with a single value of type MaterialStockForm,
+	described by materialStockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
+	described by materialStockLocation (note "Physical location of a material stock.") with a single value of type Address,
+	described by materialStockStorageEnvironment (note "Material stock storage environment details - temperature, humidity, light.") with a single value of type Document,
 
-	described by materialPackagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product") with a single value of type Document,
-	described by materialStorageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product") with a single value of type Document,
-	described by materialProductSpecification (note "Material data sheet provided by a material supplier or manufacturer") with a single value of type Document,
+	described by materialPackagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
+	described by materialStorageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document,
+	described by materialProductSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
 
-	described by materialPurchaseOrderNumber (note "Reference to the internal purchase order") with a single value of type string,
-	described by materialSupplier (note "Name of the material vendor") with a single value of type Organization, // not specified if material is a blend from multiple lots
-	described by materialManufacturer (note "Name of the material manufacturer") with a single value of type Organization, // not specified if material is a blend from multiple lots
-	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock") with a single value of type string,
-	described by materialStockQuantityPurchased (note "Purchased quantity of a material stock") with a single value of type Measurement,
+	described by materialPurchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
+	described by materialSupplier (note "Name of the material vendor.") with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by materialManufacturer (note "Name of the material manufacturer.") with a single value of type Organization, // not specified if material is a blend from multiple lots
+	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
+	described by materialStockQuantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement,
 
-	described by materialStockCertificate (note "Link to a material stock certificate") with a single value of type Document,
-	described by materialStockCertificationDate (note "Purchase/certification date of a material stock") with a single value of type dateTime.
+	described by materialStockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
+	described by materialStockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime.
 
-MaterialStockForm (note "Form of a material stock") is a class, must be one of {Powder, Wire, BulkSolid}.
+MaterialStockForm (note "Form of a material stock.") is a class, must be one of {Powder, Wire, BulkSolid}.
 
 // procedures for mixing/blending - part of Material or ParentMaterial?
-ParentMaterial (note "Parent materials used to generate a new material instance (e.g., through powder blending)") is a class,
-	described by parentMaterial (note "The parent material used to create a new material") with a single value of type Material,
-	described by parentMaterialPercent (note "Percent of the new material that is comprised of this parent") with a single value of type double.
+ParentMaterial (note "Parent materials used to generate a new material instance (e.g., through powder blending).") is a class,
+	described by parentMaterial (note "The parent material used to create a new material.") with a single value of type Material,
+	described by parentMaterialPercent (note "Percent of the new material that is comprised of this parent.") with a single value of type double.
 
-MaterialType (note "Generic/ideal material type") is a class,
-	described by materialName (note "Name of material, e.g., Inconel 625") with a single value of type string,
-	described by materialTypeDescription (note "Description of generic/ideal material") with a single value of type string,
-	described by baseElement (note "Base element of material from periodic table") with a single value of type PeriodicElement,
-	described by materialSpecification (note "Ideal chemistry specification of generic material") with a single value of type MaterialSpecification.
+MaterialType (note "Generic/ideal material type.") is a class,
+	described by materialName (note "Name of material, e.g., Inconel 625.") with a single value of type string,
+	described by materialTypeDescription (note "Description of generic/ideal material.") with a single value of type string,
+	described by baseElement (note "Base element of material from periodic table.") with a single value of type PeriodicElement,
+	described by materialSpecification (note "Ideal chemistry specification of generic material.") with a single value of type MaterialSpecification.
 
-MaterialSpecification (note "The ideal specification of a material, e.g., a perfect lot of Inconel 625") is a class,
-	described by specChemistry (note "The chemistry specification of the generic/ideal material") with a single value of type Chemistry,
-	described by predictedProperties (note "The predicted properties of the generic/ideal material") with values of type MaterialProperties.
+MaterialSpecification (note "The ideal specification of a material, e.g., a perfect lot of Inconel 625.") is a class,
+	described by specChemistry (note "The chemistry specification of the generic/ideal material.") with a single value of type Chemistry,
+	described by predictedProperties (note "The predicted properties of the generic/ideal material.") with values of type MaterialProperties.
 
-MaterialProperties (note "Properties of a material") is a class,
-	described by derivedBy (note "How property was determined") with a single value of type PropertyDerivedBy,
-	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to") with a single value of type Document,
-	described by propertyDataSheet (note "Reference document used to provide material properties") with a single value of type Document.
+MaterialProperties (note "Properties of a material.") is a class,
+	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
+	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to.") with a single value of type Document,
+	described by propertyDataSheet (note "Reference document used to provide material properties.") with a single value of type Document.
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
-IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
+IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as part dimensions.") is a type of MaterialProperties.
 
-ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as part dimensions") is a type of MaterialProperties.
+ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as part dimensions.") is a type of MaterialProperties.
 
 ThermodynamicProperties is a type of IntrinsicMaterialProperties,
 	described by electricalConductivity with a single value of type Measurement,
@@ -146,9 +147,9 @@ ChemistryElement is a class,
 	described by avgAtomicPercent with a single value of type Measurement.
 */
 
-PeriodicElement (note "Information about individual elements") is a class,
-	described by elementName (note "element name, e.g., Carbon") with a single value of type string,
-	described by elementSymbol (note "element symbol, e.g., C") with a single value of type string,
-	described by atomicNumber (note "element atomic number, e.g., 6") with a single value of type int,
-	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu") with a single value of type Measurement,
-	described by elementMeltingPoint (note "element melting point, e.g., 3500.0	degrees Celsius") with a single value of type Measurement.
+PeriodicElement (note "Information about individual elements.") is a class,
+	described by elementName (note "element name, e.g., Carbon.") with a single value of type string,
+	described by elementSymbol (note "element symbol, e.g., C.") with a single value of type string,
+	described by atomicNumber (note "element atomic number, e.g., 6.") with a single value of type int,
+	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu.") with a single value of type Measurement,
+	described by elementMeltingPoint (note "element melting point, e.g., 3500.0	degrees Celsius.") with a single value of type Measurement.

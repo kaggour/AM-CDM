@@ -2,63 +2,56 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-system".
 
-// BFO classes temporarily being defined here
 ProcessHistory is a class.
 
-Process (note "All stages of manufacturing processes of a part") is a type of ProcessHistory,
-	described by processStep (note "Sequence of events performed") with values of type ProcessStep List. // ordered list
+Process (note "All stages of manufacturing processes of a part.") is a type of ProcessHistory,
+	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List. // ordered list of process steps
 
-ProcessStep (note "Individual step in a sequence of processing operations related to additive manufacturing.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations") is a type of Process,
-	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order") with a single value of type int,
-    described by agentOorganization with a single value of type Organization,
+ProcessStep (note "Individual step in a sequence of processing operations related to additive manufacturing.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations.") is a type of Process,
+	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
+    described by agentOrganization with a single value of type Organization,
 	described by agentPersonnel with values of type Personnel,
-    // Items here down maybe better suited to be uniquely specified in each child
-    // Would allow more specific type testing but also may lead to inconsistency across the children
-	described by processMachine with a single value of type Equipment, // See System group. System class may include software
+	described by processMachine with a single value of type System,
     described by processData with a single value of type ProcessData,
-	described by processControl with a single value of type ProcessParameters,
+	described by processParameters with a single value of type ProcessParameters,
     described by inputMaterial with values of type Material,
     described by outputMaterial with values of type Material.
 
-// Taxonomy of ProcessStep which inherit from process-------------------------------
-//TestInspectionCharacterization is a type of ProcessStep,
-//    described by test_result with a single value of type TestResult.
+PreProcess (note "Pre-processing steps.") is a type of ProcessStep.
 
-PreProcess (note "Pre-processing steps") is a type of ProcessStep.
+MaterialPreperation (note "Sifting/blending material preparation.") is a type of PreProcess.
 
-MaterialPreperation (note "Sifting/blending") is a type of PreProcess.
+MachinePreperation (note "Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming.") is a type of PreProcess.
 
-MachinePreperation (note "Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming") is a type of PreProcess.
+BuildPlatformPreperation (note "Description of how the build plate was prepared before the AM process: new or recycles.") is a type of PreProcess.
 
-BuildPlatformPreperation (note "Description of how the build plate was prepared before the AM process: new or recycles") is a type of PreProcess.
+ProcessParameters (note "Process parameters used for build.") is a class,
+    described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.
 
-ProcessParameters (note "Class for process parameters") is a class,
-    described by processParameterID (note "Unique identifier for process parameters") with a single value of type string.
-
-PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification") is a type of ProcessStep,
-    described by postProcessID (note "Unique identifier for a post process") with a single value of type string,
+PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.") is a type of ProcessStep,
+    described by postProcessID (note "Unique identifier for a post process.") with a single value of type string,
     described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string,
-    described by postProcessStandard (note "Standards used to guide a post process, e.g., AMS2774") with a single value of type Document,
-    described by controlDocument (note "Control document provided by post-process providers") with a single value of type Document.
+    described by postProcessStandard (note "Standards used to guide a post process, e.g., AMS2774.") with a single value of type Document,
+    described by controlDocument (note "Control document provided by post-process providers.") with a single value of type Document.
 
-HotIsostaticPressing (note "Data generated during a HIP processe -sa solid-state process, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties") is a type of PostProcess,
-    described by hotIsostaticPressingProcessParameters with a single value of type HotIsostaticPressingProcessParameters.
+HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess,
+    described by hotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing.") with a single value of type HotIsostaticPressingProcessParameters.
 
-HotIsostaticPressingProcessParameters (note "Nominal process parameters used during Hot Isotatic Pressing") is a type of ProcessParameters:
-    described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel") with a single value of type Material,
-    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process") with a single value of type ProcessData,
-    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process") with a single value of type ProcessData.
+HotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing (HIP).") is a type of ProcessParameters,
+    described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel.") with a single value of type Material,
+    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process.") with a single value of type ProcessData,
+    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process.") with a single value of type ProcessData.
 
-HeatTreatment (note "Data generated during Heat Treatment processes") is a type of PostProcess,
-    described by heatTreatmentProcessParameters with a single value of type HeatTreatmentProcessParameters.
+HeatTreatment (note "Heat treatment process.") is a type of PostProcess,
+    described by heatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") with a single value of type HeatTreatmentProcessParameters.
 
-HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment") is a type of Process Parameters:
-    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment") with a single value of type Equipment,
-    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process") with values of type ProcessData,
-    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process") with values of type ProcessData,
-    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process") with values of type ProcessData.
+HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") is a type of ProcessParameters,
+    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment.") with a single value of type System,
+    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process.") with values of type ProcessData,
+    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process.") with values of type ProcessData,
+    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process.") with values of type ProcessData.
 
-ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during an AM fabrication process Note: The sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment)") is a class,
-    described by processMonitoringDataType (note "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video") with a single value of type string,
-    described by samplingRate (note "Sampling frequency of the process monitoring") with a single value of type Measurement,
-    described by logFile (note "Data generated from the AM System, including log data") with a single value of type Document.
+ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during an AM fabrication process. Note: the sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment).") is a class,
+    described by processMonitoringDataType (note "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video.") with a single value of type string,
+    described by samplingRate (note "Sampling frequency of the process monitoring.") with a single value of type Measurement,
+    described by logFile (note "Data generated from the AM System, including log data.") with a single value of type Document.

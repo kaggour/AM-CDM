@@ -2,165 +2,117 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-process".
-//import "http://purl.obolibrary.org/obo/bfo.owl".
 
-Project (note "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not)") is a class,
+Project (note "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not).") is a class,
 	described by projectID (note "Reference to the associated Project that produced this build. Links to Project record.") with a single value of type string,
-	described by projectCreator (note "Organization that created the project") with a single value of type Organization,
-	described by projectSponsor (note "Provider of money and requirements for the project") with a single value of type Organization,
-	described by projectOwningOrganization with a single value of type Organization,
-	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source") with a single value of type string,
-	described by projectDistributionControl (note "ITAR-like restrictions") with a single value of type string,
-	described by projectRequirements with a single value of type Document,
+	described by projectCreator (note "Organization that created the project.") with a single value of type Organization,
+	described by projectSponsor (note "Provider of money and requirements for the project.") with a single value of type Organization,
+	described by projectOwningOrganization (note "Organization that owns the project.") with a single value of type Organization,
+	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.") with a single value of type string,
+	//described by projectDistributionControl (note "ITAR-like restrictions") with a single value of type string,
+	described by projectRequirements (note "Documented requirements for the project.") with a single value of type Document,
 	described by projectPlan (note "Document describing how project is to be conducted, organized, etc.") with a single value of type Document,
-	described by projectStart (note "Start date of project") with a single value of type dateTime,
-	described by projectEnd (note "End date of project") with a single value of type dateTime,
-	described by projectBuilds (note "Build(s) associated with project") with values of type Build,
-	described by projectStandards (note "Set of standards used in project") with values of type string,
-	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project") with a single value of type Document,
-	described by projectQualityProcessControlPlan (note "Document describing the quality process control plan for the the site performing the project") with a single value of type Document,
-	described by projectDeliveryDate (note "Requested delivery date of project") with a single value of type dateTime,
-	described by projectDistributionControl (note "ITAR-like restrictions") with a single value of type string.
-//	described by projectMaterialDB with values of type Database,
-//	described by projectRepository with values of type Repository.
+	described by projectStart (note "Start date of project.") with a single value of type dateTime,
+	described by projectEnd (note "End date of project.") with a single value of type dateTime,
+	described by projectBuilds (note "Build(s) associated with project.") with values of type Build,
+	described by projectStandards (note "Set of standards used in project.") with values of type string,
+	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project.") with a single value of type Document,
+	described by projectQualityProcessControlPlan (note "Document describing the quality process control plan for the the site performing the project.") with a single value of type Document,
+	described by projectDeliveryDate (note "Requested delivery date of project.") with a single value of type dateTime,
+	described by projectDistributionControl (note "ITAR-like restrictions.") with a single value of type string.
 
 Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers  in the process chamber of the additive manufacturing system.") is a type of ProcessStep,
-	described by buildID (note "An identifier for an AM build") with a single value of type string,
-	described by buildType (note "Description of the primary purpose of the Build (end use component, specimens, research, etc.)") with a single value of type string,
-	// I think we should have different attributes for different roles, not one catch-all
-	// I also believe this may be covered by the Personnel listed in ProcessStep, so commenting this out for now
-	//described by buildOperator (note "Build operator(s)") with values of type Personnel,
-	described by buildSimulation (note "Reference to Simulation records associated with this build") with values of type BuildSimulation,
-	described by feedstockMaterial (note "Material consumed during build") with a single value of type Material,
-	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts") with a single value of type Measurement,
-	described by prcessingMaterial (note "Ancillary material used for build, e.g., environmental gas") with a single value of type Material,
+	described by buildID (note "An identifier for an AM build.") with a single value of type string,
+	described by buildType (note "Description of the primary purpose of the Build (end use component, specimens, research, etc.).") with a single value of type string,
+	described by buildSimulation (note "Reference to Simulation records associated with this build.") with values of type BuildSimulation,
+	described by feedstockMaterial (note "Material consumed during build.") with a single value of type Material,
+	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Measurement,
+	described by processingMaterial (note "Ancillary material used for build, e.g., environmental gas.") with a single value of type Material,
 	described by buildPlatform with a single value of type BuildPlatform,
-	described by part (note "Parts built from this build. One build can have multiple built parts") with values of type Part,
-	described by buildPlan (note "Document that describes the build specifc design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation") with values of type Document,
-	described by buildSoftware (note "Software used in build") with values of type Software,
-	described by buildOrganization (note "Production organization for this build") with a single value of type Organization,
+	described by part (note "Parts built from this build. One build can have multiple built parts.") with values of type Part,
+	described by buildPlan (note "Document that describes the build specifc design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
+	described by buildSoftware (note "Software used in build.") with values of type Software,
+	described by buildOrganization (note "Production organization for this build.") with a single value of type Organization,
 	described by buildLayout with a single value of type Document,
 	described by buildJobFile with a single value of type Document,
-	described by amSystem (note "AM system used for this build") with a single value of type AMSystem,
-	described by nonAMSystem (note "Links to Non AM Equipment records") with values of type NonAMEquipment,
-	described by amProcessData (note "Recorded observations about an AM build cycle") with values of type AMProcessData,
-	described by amInSituData with values of type AMInsituData,
-	//already linked through ProcessStep --> ProcessParameters
-	//described by buildParameters with a single value of type BuildParameters,
-	described by buildDuration (note "Recorded duration of build cycle") with a single value of type Measurement,
-	described by buildLocation (note "Place of an AM process") with a single value of type Address,
-	described by buildStartTime (note "Time when an AM build cycle starts") with a single value of type dateTime,
-	described by buildEndTime (note "Time when an AM build cycle ends") with a single value of type dateTime,
-	described by buildCooldownDuration (note "Time from build completion to cooling to 100 degrees C") with a single value of type Measurement.
+	described by amSystem (note "AM system used for this build.") with a single value of type AMSystem,
+	described by buildSpecificSubsystems (note "equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for the duration of a build.") with values of type BuildSpecificSubsystem,
+	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInsituData,
+	described by buildDuration (note "Recorded duration of build cycle.") with a single value of type Measurement,
+	described by buildLocation (note "Place of an AM process.") with a single value of type Address,
+	described by buildStartTime (note "Time when an AM build cycle starts.") with a single value of type dateTime,
+	described by buildEndTime (note "Time when an AM build cycle ends.") with a single value of type dateTime,
+	described by buildCooldownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Measurement.
 
-Part (note "Instances of part designs in the as-built state") is a class,
-	described by partID (note "Identifier for the built part") with a single value of type string,
-	described by partName (note "Conventional name for the built part") with a single value of type string,
+Part (note "Instances of part designs in the as-built state.") is a class,
+	described by partID (note "Identifier for the built part.") with a single value of type string,
+	described by partName (note "Conventional name for the built part.") with a single value of type string,
 	described by process with a single value of type Process,
-//	described by build with a single value of type Build,
-	described by partDesign (note "Design information for the built part") with a single value of type PartDesign,
-	described by partCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum") with a single value of type Coordinate,
-	described by partOrientation (note "The orientation of the box") with a single value of type string.
+	described by partDesign (note "Design information for the built part.") with a single value of type PartDesign,
+	described by partCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type Coordinate,
+	described by partOrientation (note "The orientation of the box.") with a single value of type PartOrientation.
 
 BuildPlatform is a class,
-	described by buildPlatformID (note "Identifier of a build platform") with a single value of type string,
-	described by buildPlatformMaterial (note "Material type of a build platform") with a single value of type Material,
-	described by buildPlatformMaterialGrade (note "Standard grade the build platform material product conforms to") with a single value of type string,
-	described by buildPlatformHeight (note "Height of the build platform/plate") with a single value of type Measurement,
-	described by buildPlatformWidth (note "Width of the build platform/plate") with a single value of type Measurement,
-	described by buildPlatformDepth (note "Depth of the build platform/plate") with a single value of type Measurement,
+	described by buildPlatformID (note "Identifier of a build platform.") with a single value of type string,
+	described by buildPlatformMaterial (note "Material type of a build platform.") with a single value of type Material,
+	described by buildPlatformMaterialGrade (note "Standard grade to which the build platform material product conforms.") with a single value of type string,
+	described by buildPlatformHeight (note "Height of the build platform/plate.") with a single value of type Measurement,
+	described by buildPlatformWidth (note "Width of the build platform/plate.") with a single value of type Measurement,
+	described by buildPlatformDepth (note "Depth of the build platform/plate.") with a single value of type Measurement,
 
-	described by buildPlatformPostProcessMethods (note "Post processing methods of a build platform, eg, hot rolled and annealed") with a single value of type string,
-	described by buildPlatformSurfaceFinish (note "Surface roughness description of the build plate") with a single value of type string, // surface roughness?
-	described by buildPlatformManufacturer (note "Build platform manufacturer, links to Organization") with a single value of type Organization,
+	described by buildPlatformPostProcessMethods (note "Post processing methods of a build platform, e.g., hot rolled and annealed.") with a single value of type string,
+	described by buildPlatformSurfaceFinish (note "Surface roughness description of the build plate.") with a single value of type string, // surface roughness?
+	described by buildPlatformManufacturer (note "Build platform manufacturer, links to Organization.") with a single value of type Organization,
 
-	described by buildPlatformCertificationDate (note "The purchase/certification date of the build platform") with a single value of type dateTime,
-	described by buildPlatformCertification (note "Link to the build plate certificate") with a single value of type Document.
+	described by buildPlatformCertificationDate (note "The purchase/certification date of the build platform.") with a single value of type dateTime,
+	described by buildPlatformCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
-AMProcessData (note "Data generated from the AM System, including log data") is a type of DatasetMetadata,
-	described by processDataLog (note "Recorded observations about a AM build cycle") with a single value of type Document,
-	described by processDataAlarms (note "A list of alarms generated during a build cycle, with time stamp and alarm type") with values of type string,
-	described by processDataEvents (note "A list of events generated during a build cycle, with time stamp and event type") with values of type string.
-//	described by keyDataElement with a single value of type string,
-//	described by timePeriod with a single value of type duration,
-//	described by dataFormat with a single value of type string,
+AMInsituData (note "Data recorded by in-situ monitoring systems during an AM Build cycle.") is a type of DatasetMetadata,
+	described by characteristicsType (note "characteristics measured, eg, melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
+	described by measurementType (note "Technique used for the measurement, eg, co-axial optical camera.") with values of type string,
+	described by inSituDevice (note "in-situ device used for the measurement.") with a single value of type InSituMonitoringSystem,
+	described by inSituDeviceSetting (note "in-situ device setting for the measurement, including acquisition settings, for example, camera model, sampling rate, protocol, etc.") with values of type Measurement,
+	described by measurementDuration with a single value of type Measurement.
 
-AMInsituData (note "Data recorded by in-situ monitoring systems during an AM Build cycle") is a type of DatasetMetadata.
-//	described by measurementType with a single value of type string,
-//	described by characteristicsType with a single value of type string,
-//	described by device with a single value of NonAMEquipment,
-//	described by contentType with a single value of string.
-
-BuildParameters is a type of ProcessParameters,//DatasetMetadata, ??
-	described by buildPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print") with a single value of type Measurement,
-	described by platformLevelingMethod (note "Description of the method of platform leveling – procedures and tools") with a single value of type string, 
-	described by buildPlatformZPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures") with a single value of type Measurement,
-	described by buildPlatformPreheatStrategy (note "Objective for the heating process") with a single value of type string,
-	described by buildPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature") with a single value of type Document,
-	described by exposureSettings with values of type string,
-	described by layerThickness (note "Setting for the incremental distance between built layers") with a single value of type float.
-// are these too LPBF-specific?  Which are generic to AM?
-//	Contour Setting Type
-//	Post Contour Setting Type
-//	Skin Exposure Setting Type
-//	Core Exposure Setting Type
-//	Pre-Exposure Setting Type
-//	Upskin Exposure Setting Type
-//	Downskin Exposure Setting Type
-//	Post Exposure Setting Type
-//	Parts Associated with the Build Setting
-//	Layerwise Scan Rotation Setting
-//	Contour Spacing
-//	Contour Overlap
-//	Hatch Distance
-//	Hatch Overlap
-//	Hatch Pattern Type
-//	Print Head Scan Speed
-
-DatasetMetadata is a class,
-	described by datasetName with a single value of type string,
-	described by datasetID with a single value of type string,
-	described by datasetSubject with values of type string,
-	described by creator with values of type Personnel,
-	described by creationDateTime with a single value of type dateTime,
-	described by datesetType with values of type string,
-	described by datesetSchema with values of type string,
-	described by datasetURI with a single value of type string,
-	described by fileSizeQuantity with a single value of type integer.
+BuildParameters is a type of ProcessParameters,
+	described by buildPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Measurement,
+	described by buildPlatformLevelingMethod (note "Description of the method of platform leveling  procedures and tools.") with a single value of type string, 
+	described by buildPlatformZStartPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.") with a single value of type Measurement,
+	described by buildPlatformPreheatStrategy (note "Objective for the heating process.") with a single value of type string,
+	described by buildPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature.") with a single value of type Document,
+	described by layerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Measurement,
+	described by buildEnvironmentTemperature (note "Build environment/chamber temperature is important to some FDM processes; Bob will provide a definition.") with a single value of type Measurement,
+	described by buildCommandData with a single value of type DatasetMetadata.
 
 BuildLayout is a class.
 
-PartDesign (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system") is a class,
-	described by designID (note "An identifier for the part design") with a single value of type string,
-	described by designDeveloper (note "Reference to personnel who created CAD file. Links to Personnel foreign key") with a single value of type Personnel,
-	described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key") with a single value of type Software,
-	described by partCriticality (note "Criticality designation of part or parts to be developed in this project") with a single value of type string,
-	described by partRequrements (note "Document describing requirements or goals for components/specimens to be manufactured") with a single value of type Document,
-	described by partDesignAugmentedSource (note "File (or pointer to file) containing source CAD for the augmented part design, complete with augmentation for support structures and other AM-specific data") with a single value of type Document,
-	described by reverseEngineeredModel (note "Point cloud scanned AM part model brought back in to the CAD application for feedback and analysis") with a single value of type Document,
-	described by partRevNumber (note "Revision number of the part design") with a single value of type string,
-	described by objectDefinitionFile (note "File that pertains to the part design description") with a single value of type Document,
-	described by partDesignPromarySourceFile (note "File (or pointer to file) containing source CAD for the primary part design, without augmentation for support structures") with a single value of type Document,
-	described by derivedFromPartDesign (note "Part Design of original part this object is derived from (if applicable)") with a single value of type PartDesign,
-	described by originatingOrganization (note "Developer of the source CAD file. Links to Organization foreign key") with values of type Organization,
-	described by assmblyPartDesignList (note "list of part design and relative locations in this object - this is intended for part designs of assemblies, where the model is comprised of multiple individual part designs that are brought into the file via reference (like a build plate definition, for example)") with values of type PartDesign.
+PartOrientation is a class.
 
-BuildSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs") is a class,
-	described by simulationID (note "UID for specific simulation") with a single value of type string,
-	described by simulationModel (note "Physical phenomenon covered, mathematical equations") with a single value of type Document,
-	described by simulationSoftware (note "Software information") with values of type Software,
-	described by simulationInputs (note "Parameters used for simulations") with a single value of type Document,
-	described by simulatioOutputs (note "Simulation results") with a single value of type Document,
-	described by modelDomain (note "Focal area of model") with values of type string,
-	described by modelDefinition (note "Documentation of how model is constructed (equations, I/O)") with a single value of type Document.
+PartDesign (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a class,
+	described by designID (note "An identifier for the part design.") with a single value of type string,
+	described by designDeveloper (note "Reference to personnel who created CAD file. Links to Personnel foreign key.") with a single value of type Personnel,
+	described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key.") with a single value of type Software,
+	described by partCriticality (note "Criticality designation of part or parts to be developed in this project.") with a single value of type string,
+	described by partRequrements (note "Document describing requirements or goals for components/specimens to be manufactured.") with a single value of type Document,
+	described by partDesignAugmentedSource (note "File (or pointer to file) containing source CAD for the augmented part design, complete with augmentation for support structures and other AM-specific data.") with a single value of type Document,
+	described by reverseEngineeredModel (note "Point cloud scanned AM part model brought back in to the CAD application for feedback and analysis.") with a single value of type Document,
+	described by partRevNumber (note "Revision number of the part design.") with a single value of type string,
+	described by objectDefinitionFile (note "File that pertains to the part design description.") with a single value of type Document,
+	described by partDesignPromarySourceFile (note "File (or pointer to file) containing source CAD for the primary part design, without augmentation for support structures.") with a single value of type Document,
+	described by derivedFromPartDesign (note "Part Design of original part this object is derived from (if applicable).") with a single value of type PartDesign,
+	described by originatingOrganization (note "Developer of the source CAD file. Links to Organization foreign key.") with values of type Organization,
+	described by assmblyPartDesignList (note "list of part design and relative locations in this object - this is intended for part designs of assemblies, where the model is comprised of multiple individual part designs that are brought into the file via reference (like a build plate definition, for example).") with values of type PartDesign.
 
-SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar") is a class,
-	described by synthesizedDataID (note "The unique identifier to specific synthesized data set") with a single value of type string,
-	described by synthesizedDataSources (note "The identifier to the original source(s) of the data (such as; a test/inspection/characterization, an AM System, Other Equipment, etc.)") with values of type string,
-	described by synthesizedDataType (note "The format of the synthesized data as it pertains to the intended vehicle which will ingest the data") with a single value of type string,
-	described by synthesizedDataFormat (note "The format of the synthesized data as it pertains to the intended vehicle which will ingest the data") with a single value of type string,
-	described by synthesizedDataMethod (note "The method used to synthesize the data") with values of type string,
-	described by synthesizedDataSoftware (note "The software used to synthesize the data") with values of type Software,
-	described by synthesizedDataDescription (note "A summary of the results/conclusions/relationships that were deduced by this synthesized data set") with a single value of type string,
-	described by synthesizedDataResults (note "The synthesized data") with a single value of type Document,
-	described by synthesizedABBasis (note "Statistical material allowable data") with a single value of type Measurement.
+BuildSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs.") is a class,
+	described by simulationID (note "UID for specific simulation.") with a single value of type string,
+	described by simulationModel (note "Physical phenomenon covered, mathematical equations.") with a single value of type Document,
+	described by simulationSoftware (note "Software information.") with values of type Software,
+	described by simulationInputs (note "Parameters used for simulations.") with a single value of type Document,
+	described by simulatioOutputs (note "Simulation results.") with a single value of type Document,
+	described by modelDomain (note "Focal area of model.") with values of type string,
+	described by modelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
+
+SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.") is a type of DatasetMetadata,
+	described by synthesizedDataMethod (note "The method used to synthesize the data.") with values of type string,
+	described by synthesizedDataSoftware (note "The software used to synthesize the data.") with values of type Software,
+	described by synthesisDocument with a single value of type Document.
