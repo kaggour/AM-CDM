@@ -2,7 +2,7 @@
 Additive Manufacturing - Common Data Model
 
 ## SADL Model Viewer
-SADL files are typically defined, edited, and viewed using the Eclipse IDE with a SADL-file plugin. A browser-based alternative to desktop Eclipse called [Theia](https://theia-ide.org/) is bundled with this repository to allow users with to open AM-CDM files using Theia and Docker.
+SADL files are typically defined, edited, and viewed using the Eclipse IDE with a SADL-file plugin. A browser-based alternative to desktop Eclipse called [Theia](https://theia-ide.org/) is bundled with this repository to allow users to open AM-CDM SADL files using Theia and Docker.
 
 ### Viewer Prerequisites
 1. `git` - see [installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
