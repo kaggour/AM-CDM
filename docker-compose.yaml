@@ -3,6 +3,6 @@ services:
   sadlweb:
     build: .
     volumes:
-      - ./SADL/:/home/SADL/
+      - ./SADL/:/root/SADL
     ports:
       - "3000:3000"
