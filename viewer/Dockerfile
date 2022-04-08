@@ -1,5 +1,8 @@
 FROM theiaide/sadl:next
 
+RUN mkdir /root/SADL
+COPY theia_project/* /root/SADL/
+
 RUN git clone https://gitlab.com/graphviz/graphviz /usr/graphviz
 
 RUN apk update
