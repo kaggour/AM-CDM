@@ -1,11 +1,18 @@
-# Copyright 2021, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
+FROM theiaide/sadl:next
 
-FROM node:14.4.0
+RUN git clone https://gitlab.com/graphviz/graphviz /usr/graphviz
 
-WORKDIR /usr/src
+RUN apk update
+RUN apk add g++ libtool automake make autoconf-archive autoconf python3 libcurl pkgconfig libltdl bison flex
+RUN alias yacc="bison"
 
-COPY package.json .
+WORKDIR /usr/graphviz
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
 
-RUN npm install
+ENV GraphVizPath /usr/local/bin
+ENV GraphVizKeepDot true
 
-COPY . .
+WORKDIR /home/theia

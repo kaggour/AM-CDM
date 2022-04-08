@@ -1,0 +1,8 @@
+version: '3'
+services:
+  sadlweb:
+    build: .
+    volumes:
+      - ../SADL/:/root/SADL/
+    ports:
+      - "3000:3000"
