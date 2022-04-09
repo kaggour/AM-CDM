@@ -1,7 +1,9 @@
 version: '3'
 services:
-  sadlweb:
-    build: .
+  sadlwebexp:
+    build:
+      context: .
+      dockerfile: Dockerfile-experimental
     volumes:
       - ../SADL/:/root/SADL/
       - ./theia_recs/.project:/root/SADL/.project

@@ -19,3 +19,8 @@ SADL files are typically defined, edited, and viewed using the Eclipse IDE with 
 1. Open a web browser, and enter `localhost:3000` in the address bar.
 1. In the menu bar that appears in the upper left of the page, select `File` > `Open Workspace` and highlight the directory `SADL` under the `root` folder and click `Open`.
 1. Opening the SADL files launches a request for SADL syntax highlighting, and the full color and in-text search functions will activate after ~20 seconds. You can swap through different syntax highlighting schemes by selecting `File` > `Settings` > `Color Theme`
+
+### Experimental Viewer
+To use an experimental version of the viewer with extended functions, replace the `docker-compose` commands above with
+* `docker-compose -f docker-compose-exp.yaml build` and
+* `docker-compose -f docker-compose-exp.yaml up`
