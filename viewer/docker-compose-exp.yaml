@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-experimental
+    # entrypoint: /bin/bash
+    # command: "yarn theia start /home/project --hostname=0.0.0.0"
     volumes:
       - ../SADL/:/root/SADL/
       - ./theia_recs/.project:/root/SADL/.project

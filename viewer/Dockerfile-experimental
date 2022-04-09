@@ -16,3 +16,7 @@ ENV GraphVizPath /usr/local/bin
 ENV GraphVizKeepDot true
 
 WORKDIR /home/theia
+
+# make plugin directory
+
+# ENTRYPOINT ["yarn", "theia", "start", "--plugins=local-dir:./plugins"]
