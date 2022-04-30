@@ -1,0 +1,11 @@
+version: '3'
+services:
+  sadlweb:
+    platform: linux/x86_64
+    build: .
+    volumes:
+      - ../SADL/:/root/SADL/
+      - ./theia_recs/.project:/root/SADL/.project
+      - ./theia_recs/settings.json:/root/SADL/settings.json
+    ports:
+      - "3000:3000"
