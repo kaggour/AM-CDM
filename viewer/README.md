@@ -1,5 +1,5 @@
 # SADL Model Viewer
-SADL files are typically defined, edited, and viewed using the Eclipse IDE with a SADL-file plugin. A browser-based alternative to desktop Eclipse called [Theia](https://theia-ide.org/) is bundled with this repository to allow users with to open AM-CDM files using Theia and Docker.
+SADL files are typically defined, edited, and viewed using the Eclipse IDE with a SADL-file plugin. A browser-based alternative to desktop Eclipse called [Theia](https://theia-ide.org/) is bundled with this repository to allow users to open AM-CDM files using Theia and Docker.
 
 ### Viewer Prerequisites
 1. `git` - see [installation guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -19,6 +19,10 @@ SADL files are typically defined, edited, and viewed using the Eclipse IDE with 
 1. Open a web browser, and enter `localhost:3000` in the address bar.
 1. In the menu bar that appears in the upper left of the page, select `File` > `Open Workspace` and highlight the directory `SADL` under the `root` folder and click `Open`.
 1. Opening the SADL files launches a request for SADL syntax highlighting, and the full color and in-text search functions will activate after ~20 seconds. You can swap through different syntax highlighting schemes by selecting `File` > `Settings` > `Color Theme`
+
+### Note
+* Since the `docker-compose.yaml` file shares the a volume with this project's `SADL` directory, any changes you make to the .sadl files in the Theia editor will be reflected on your host directory.
+* When launching the Docker container, two files will be created in the SADL directory for the Theia editor to recognize the directory as a SADL project (`.project` and `settings.json`). These files are defined in the project's `.gitignore` file, so they will be excluded from version control.
 
 ### Experimental Viewer
 To use an experimental version of the viewer with extended functions, replace the `docker-compose` commands above with
