@@ -19,7 +19,9 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project.") with a single value of type Document,
 	described by projectQualityProcessControlPlan (note "Document describing the quality process control plan for the the site performing the project.") with a single value of type Document,
 	described by projectDeliveryDate (note "Requested delivery date of project.") with a single value of type dateTime,
-	described by projectDistributionControl (note "ITAR-like restrictions.") with a single value of type string.
+	described by projectDistributionControl (note "ITAR-like restrictions.") with a single value of type string,
+	described by projectDataset (note "Datsets generated from the project.") with values of type DatasetMetadata,
+	described by projectReport (note "Reports of the project.") with values of type Document.
 
 Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers  in the process chamber of the additive manufacturing system.") is a type of ProcessStep,
 	described by buildID (note "An identifier for an AM build.") with a single value of type string,
