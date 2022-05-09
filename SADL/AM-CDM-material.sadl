@@ -4,20 +4,21 @@ import "http://kdl.ge.com/AM-CDM-base".
 
 PowderLot (note "Unique lot of powder material used in one or more builds.") is a type of Material,
 	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously.") with a single value of type string,
-	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused.") with a single value of type int.
+	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused.  If 0 the powder has never been used, if 1 the powder has been used once, etc.") with a single value of type int.
 
 Material (note "Specific instance of a material utilized in an AM process.") is a class,
 	described by materialID (note "Unique identifier for specific material instance.") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,
 	described by materialGrade (note "Standard grade the material product conforms to.") with a single value of type string,
-	described by actualChemistry (note "Chemistry characterization for a material stock.") with a single value of type Chemistry,
+	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
 	described by materialStock (note "Stock information about the material from vendor/manufacturer.") with a single value of type MaterialStock,
 	described by measuredMaterialProperties (note "Measured intrinsic properties of the material.") with values of type IntrinsicMaterialProperties,
 	// properties specified by third parties, such as vendors, are linked through NonPedigreedTestResult in testInspectionCharacterization
 	//described by specifiedMaterialProperties (note "Vendor-provided extrinsic or intrinsic material properties.") with values of type MaterialProperties,
 	described by predictedMaterialProperties (note "Simulated properties for this specific material instance, which is going to be an imperfect instantiation of the ideal material and hence these properties may be slightly different from the predictedProperties found in the MaterialSpecification.") with values of type MaterialProperties,
-	described by parents (note "Parent or parents of material, if it is blended.") with values of type ParentMaterial.
+	described by parents (note "Parent or parents of material, if it is blended or mixed.") with values of type ParentMaterial.
 
+//MaterialStockHistory MaterialPurchaseHistory
 MaterialStock (note "Information about a stock of material, including physical form, location, and purchasing information.") is a class,
 	described by materialStockForm (note "Form of a material stock.") with a single value of type MaterialStockForm,
 	described by materialStockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
@@ -40,7 +41,7 @@ MaterialStock (note "Information about a stock of material, including physical f
 MaterialStockForm (note "Form of a material stock.") is a class, must be one of {Powder, Wire, BulkSolid}.
 
 // procedures for mixing/blending - part of Material or ParentMaterial?
-ParentMaterial (note "Parent materials used to generate a new material instance (e.g., through powder blending).") is a class,
+ParentMaterial (note "Parent materials used to generate a new material instance (e.g., through powder blending or mixing).") is a class,
 	described by parentMaterial (note "The parent material used to create a new material.") with a single value of type Material,
 	described by parentMaterialPercent (note "Percent of the new material that is comprised of this parent.") with a single value of type double.
 
@@ -54,23 +55,24 @@ MaterialSpecification (note "The ideal specification of a material, e.g., a perf
 	described by specChemistry (note "The chemistry specification of the generic/ideal material.") with a single value of type Chemistry,
 	described by predictedProperties (note "The predicted properties of the generic/ideal material.") with values of type MaterialProperties.
 
-MaterialProperties (note "Properties of a material.") is a class,
+MaterialProperties (note "Base class of material properties. Can be sub-classed to define specific types of material properties.") is a class,
 	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
 	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to.") with a single value of type Document,
 	described by propertyDataSheet (note "Reference document used to provide material properties.") with a single value of type Document.
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
-IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as part dimensions.") is a type of MaterialProperties.
+IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as x-ray density, lattice structure, and heat capacity.") is a type of MaterialProperties.
 
-ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as part dimensions.") is a type of MaterialProperties.
+ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as tap density, and thermal conductivity.") is a type of MaterialProperties.
 
 ThermodynamicProperties is a type of IntrinsicMaterialProperties,
 	described by electricalConductivity with a single value of type Measurement,
 	described by thermalExpansionCoef with a single value of type Measurement,
-	described by thermalConductivity with a single value of type Measurement,
+//	described by thermalConductivity with a single value of type Measurement,
 	described by heatCapacity with a single value of type Measurement,
-	described by meltingTemperature with a single value of type Measurement.
+	described by meltingTemperature with a single value of type Measurement,
+	described by glassTransitionTemperature with a single value of type Measurement.
 
 ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 	described by psdPrincipleOfMeasurement with a single value of type string,
@@ -79,7 +81,7 @@ ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 	described by psdDispersionMethod with a single value of type string,
 	described by psdDispersionType with a single value of type string,
 	described by psdConcentration with a single value of type Measurement,
-	described by psdIndexOfRefractions with a single value of type double,
+	described by psdIndexOfRefraction with a single value of type double,
 	described by psdScatteringModel with a single value of type string,
 	// I'm not understanding what the 'psd_diam' and 'psd_perc' variables are supposed to represent
 	// are these two arrays supposed to correspond?
@@ -97,8 +99,8 @@ ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 	described by psdKurtosis with a single value of type Measurement.
 
 TensileProperties is a type of ExtrinsicMaterialProperties,
-	described by tensileTestStrainRate with a single value of type string,
-	described by tensileTestDisplacementRate with a single value of type string,
+	described by tensileTestStrainRate with a single value of type Measurement,
+	described by tensileTestDisplacementRate with a single value of type Measurement,
 	described by tensileTestControlMode with a single value of type string,
 	described by initialStrainRate with a single value of type Measurement,
 	described by initialLoadingRate with a single value of type Measurement,
@@ -114,9 +116,9 @@ TensileProperties is a type of ExtrinsicMaterialProperties,
 
 CreepProperties is a type of ExtrinsicMaterialProperties,
 	described by creepPanLoad with a single value of type Measurement,
-	described by creepLeverArmRatio with a single value of type string,
-	described by creepTestLoad with a single value of type string,
-	described by creepTestStress with a single value of type string,
+	described by creepLeverArmRatio with a single value of type Measurement,
+	described by creepTestLoad with a single value of type Measurement,
+	described by creepTestStress with a single value of type Measurement,
 	described by creepTestDuration with a single value of type Measurement,
 	described by elongationAtRuptureCreep with a single value of type Measurement.
 
@@ -124,7 +126,7 @@ ChemicalProperties is a type of ExtrinsicMaterialProperties,
 	described by oxidationResistance with a single value of type Measurement.
 
 Chemistry is a class,
-	described by chemistryMeasurementMethod with a single value of type string,
+	described by chemistryMeasurementMethod (note "Measurement method for real chemistries, which may be different from nominal chemistries. Should not be included if this is a specified chemistry.") with a single value of type string,
 	described by chemistryPercentUnit with a single value of type ChemistryPercentUnit,
 	described by elements with values of type ChemistryElement.
 
@@ -132,9 +134,9 @@ ChemistryPercentUnit is a class, must be one of {WeightPercent, AtomicPercent}.
 
 ChemistryElement is a class,
 	described by chemistryElement with a single value of type PeriodicElement,
-	described by minPercent with a single value of type Measurement,
-	described by maxPercent with a single value of type Measurement,
-	described by avgPercent with a single value of type Measurement.
+	described by minPercent with a single value of type double,
+	described by maxPercent with a single value of type double,
+	described by avgPercent with a single value of type double.
 /*
 ChemistryElement is a class,
 	described by chemistryElement with a single value of type PeriodicElement,
