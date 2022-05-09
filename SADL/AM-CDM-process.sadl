@@ -10,7 +10,7 @@ Process (note "All stages of manufacturing processes of a part.") is a type of P
 ProcessStep (note "Individual step in a sequence of processing operations related to additive manufacturing.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations.") is a type of Process,
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
     described by agentOrganization with a single value of type Organization,
-	described by agentPersonnel with values of type Personnel,
+	described by agentPersonnel with values of type Person,
 	described by processMachine with a single value of type System,
     described by processData with a single value of type ProcessData,
 	described by processParameters with a single value of type ProcessParameters,

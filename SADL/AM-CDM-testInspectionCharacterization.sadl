@@ -43,8 +43,8 @@ Specimen (note "Information specific to an individual specimen. A specimen refer
 
 PartSpecimen is a type of Specimen,
 	described by parentPart with a single value of type Part,
-	described by specimenCoordinate (note "The location that the specimen was extracted from the original part.") with values of type Coordinate,   //using part/CAD coordinate system
-	described by specimenTestLocation (note "Location of the test relative to the specimen.") with a single value of type Coordinate,
+	described by specimenCoordinate (note "The location that the specimen was extracted from the original part.") with values of type CartesianCoordinate,   //using part/CAD coordinate system
+	described by specimenTestLocation (note "Location of the test relative to the specimen.") with a single value of type CartesianCoordinate,
 	// Future work: more robust definitions of orientations with respect to each other
 	described by specimenOrientation (note "The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation).") with a single value of type string,
 	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part.") with a single value of type string,
@@ -65,5 +65,5 @@ TICEnvironment (note "The atmospheric conditions of the test environment.") is a
 TICVendor is a type of Vendor.
 Vendor is a type of Organization.
 
-PointOfContact is a type of Personnel.
-Operator is a type of Personnel.
+PointOfContact is a type of Person.
+Operator is a type of Person.

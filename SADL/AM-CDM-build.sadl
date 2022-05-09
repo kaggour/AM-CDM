@@ -1,6 +1,5 @@
 uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-process".
 
 Project (note "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not).") is a class,
@@ -36,7 +35,7 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by buildLayout with a single value of type Document,
 	described by buildJobFile with a single value of type Document,
 	described by amSystem (note "AM system used for this build.") with a single value of type AMSystem,
-	described by buildSpecificSubsystems (note "equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for the duration of a build.") with values of type BuildSpecificSubsystem,
+//	described by buildSpecificSubsystems (note "equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for the duration of a build.") with values of type BuildSpecificSubsystem,
 	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInsituData,
 	described by buildDuration (note "Recorded duration of build cycle.") with a single value of type Measurement,
 	described by buildLocation (note "Place of an AM process.") with a single value of type Address,
@@ -49,7 +48,7 @@ Part (note "Instances of part designs in the as-built state.") is a class,
 	described by partName (note "Conventional name for the built part.") with a single value of type string,
 	described by process with a single value of type Process,
 	described by partDesign (note "Design information for the built part.") with a single value of type PartDesign,
-	described by partCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type Coordinate,
+	described by partCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
 	described by partOrientation (note "The orientation of the box.") with a single value of type PartOrientation.
 
 BuildPlatform is a class,
@@ -90,7 +89,7 @@ PartOrientation is a class.
 
 PartDesign (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a class,
 	described by designID (note "An identifier for the part design.") with a single value of type string,
-	described by designDeveloper (note "Reference to personnel who created CAD file. Links to Personnel foreign key.") with a single value of type Personnel,
+	described by designDeveloper (note "Reference to personnel who created CAD file. Links to Personnel foreign key.") with a single value of type Person,
 	described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key.") with a single value of type Software,
 	described by partCriticality (note "Criticality designation of part or parts to be developed in this project.") with a single value of type string,
 	described by partRequrements (note "Document describing requirements or goals for components/specimens to be manufactured.") with a single value of type Document,

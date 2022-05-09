@@ -3,33 +3,40 @@ uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last 
 Document (note "File of any type.") is a class,
 	described by documentName with a single value of type string,
 	described by documentLocation with a single value of type string,
+	described by documentClassificationLevel with a single value of type string,
+	described by documentClassificationIPClass with a single value of type string,
 	described by documentURI with a single value of type string.
 
 Organization (note "An organization of various types.") is a class,
 	described by organizationID (note "The unique identifier of the organization.") with a single value of type string,
 	described by organizationName (note "The name of an organization.") with a single value of type string,
 	described by organizationType (note "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor.  One organization may have many types.") with values of type OrganizationType,
-	described by organizationQualification (note "Details of the organization's qualifications and certifications.") with values of type PersonnelQualification,
+	described by organizationQualification (note "Details of the organization's qualifications and certifications.") with values of type OrganizationQualification,
 	described by organizationAddress (note "The address of the organization.") with a single value of type Address,
 	described by organizationPhoneNumber (note "A phone number for the organization.") with a single value of type PhoneNumber,
-	described by organizationPointOfContact (note "Identification of the POC. Link to a Personnel foreign key.") with a single value of type Personnel,
-	described by organizationPersonnel (note "Link to Personnel who are a part of this Organization. Links to foreign keys.") with values of type Personnel.
+	described by organizationPointOfContact (note "Identification of the point of contact.") with a single value of type Person.
 
-OrganizationType is a class, must be one of {ManufacturerOrganization, VendorOrganization, SupplierOrganization, ContractorOrganization, HybridOrganization}.
+OrganizationType is a class, must be one of {MaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester}.
 
-Personnel (note "Individuals performing tasks and their credentials.") is a class,
-	described by personnelID (note "Unique identifier of the personnel.") with a single value of type string,
-	described by personnelFirstName (note "First name of individual performing task.") with a single value of type string,
-	described by personnelLastName (note "Last name of individual performing task.") with a single value of type string, // or surname?
-	described by personnelRole (note "Role of individual performing task.") with a single value of type string,
-	described by personnelEmail (note "The email for the individual.") with a single value of type string,
-	described by personnelPhoneNumber (note "The phone number for the individual.") with values of type PhoneNumber,
-	described by personnelQualification (note "Qualifications of person.") with values of type PersonnelQualification.
+Person (note "Individuals and their credentials.") is a class,
+	described by personID (note "Unique identifier of the person.") with a single value of type string,
+	described by personFirstName (note "First name of individual performing task.") with a single value of type string,
+	described by personLastName (note "Last name of individual performing task.") with a single value of type string,
+	described by personRole (note "Role of individual performing task.") with a single value of type string,
+	described by personEmail (note "The email for the individual.") with a single value of type string,
+	described by personPhoneNumber (note "The phone number for the individual.") with values of type PhoneNumber,
+	described by personQualification (note "Qualifications of person.") with values of type PersonQualification,
+	described by personOrganization (note "Links person to an organization") with a single value of type Organization.
 
-PersonnelQualification (note "Details of Qualification/certification (machine specific operator certificate, UL, ASTM).") is a class,
-	described by personnelQualificationType (note "The type of qualification/certification.") with a single value of type string,
-	described by personnelQualificationLevel (note "The level of qualification/certification.") with a single value of type string,
-	described by personnelQualificationNumberOfHours (note "The number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
+OrganizationQualification (note "Details of qualification/certification for an organization.") is a type of Qualification.
+
+PersonQualification (note "Details of qualification/certification for a person.") is a type of Qualification,
+	described by personQualificationNumberOfHours (note "The number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
+
+Qualification (note "Details of qualification/certification (machine specific operator certificate, UL, ASTM).") is a class,
+	described by qualificationType (note "The type of qualification/certification.") with a single value of type string,
+	described by qualificationLevel (note "The level of qualification/certification.") with a single value of type string,
+	described by qualifyingOrganization (note "The organization from which the qualification or certification originates.") with a single value of type Organization.
 
 Address is a class,
 	described by addressLine1 with a single value of type string,
@@ -49,7 +56,7 @@ Country is a class,
 	described by countryAlpha3Code with a single value of type string,
 	described by countryCallingCode with a single value of type int.
 
-Coordinate is a class,
+CartesianCoordinate is a class,
 	described by xCoordinate with a single value of type Measurement,
 	described by yCoordinate with a single value of type Measurement,
 	described by zCoordinate with a single value of type Measurement.
@@ -73,7 +80,7 @@ Measurement is a class,
 
 RawDataValue is a class,
 	//described by rawDataTag with a single value of type string,
-	described by rawDataTimestamp with a single value of type dateTime,
+	described by rawDataTime with a single value of type dateTime,
 	described by rawDataValue with a single value of type Measurement,
 	described by rawDataQuality with a single value of type string.
 
@@ -85,10 +92,12 @@ DatasetMetadata is a class,
 	described by datasetURI (note "URI location where a dataset can be found.") with a single value of type string,
 	described by datesetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth.") with values of type string,
 	described by datasetSchemaURI (note "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.") with a single value of type string,
-	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Personnel,
+	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Person,
 	described by datasetCreationDateTime (note "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].") with a single value of type dateTime,
-	described by datasetSize (note "The number of bytes in Megabytes of a dataset.") with a single value of type Measurement,
+	described by datasetSize (note "The size of the dataset.") with a single value of type Measurement,
 	described by datesetType (note "Dataset type, raw data or synthesized data.") with values of type string,
 	described by datasetQuantityType (note "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.") with values of type string,
-	described by datasetKeyDataElements (note "Data elements of principle interest within a dataset, particularly useful for traceability applications.") with values of type string,
-	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type string.
+	described by datasetKeyDataElements (note "Data elements of principal interest within a dataset, particularly useful for traceability applications.") with values of type string,
+	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.
+
+DatasetAccessControl is a class, must be one of {Restricted, Consent, Public}.
