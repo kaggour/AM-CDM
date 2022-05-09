@@ -31,23 +31,6 @@
       <owl:Class rdf:ID="ProcessStep"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:nodeID="A0">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom rdf:nodeID="A0"/>
-        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#rest"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:allValuesFrom>
-          <owl:Class rdf:about="#ProcessStep"/>
-        </owl:allValuesFrom>
-        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#first"/>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
-  </owl:Class>
   <owl:Class rdf:ID="HotIsostaticPressing">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -250,6 +233,21 @@
     <rdfs:comment xml:lang="en">Nominal process parameters used during heat treatment.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="#ProcessParameters"/>
   </owl:Class>
+  <owl:Class rdf:nodeID="A0">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:nodeID="A0"/>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#rest"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#ProcessStep"/>
+        <owl:onProperty rdf:resource="http://sadl.org/sadllistmodel#first"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://sadl.org/sadllistmodel#List"/>
+  </owl:Class>
   <owl:Class rdf:about="#PostProcess">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -390,7 +388,7 @@
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="agentPersonnel">
     <rdfs:domain rdf:resource="#ProcessStep"/>
-    <rdfs:range rdf:resource="AM-CDM-base#Personnel"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Person"/>
   </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="#postProcessID">
     <rdfs:domain rdf:resource="#PostProcess"/>
