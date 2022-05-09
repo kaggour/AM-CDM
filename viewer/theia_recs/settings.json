@@ -1,0 +1,40 @@
+{
+     // Base URI.
+    "sadl.baseUri": "http://kdl.ge.com",
+     // Saved OWL model format.
+    "sadl.OWL_Format": "RDF/XML",
+     // Show import model list as either the model namespaces (ns) or thew SADL file names (fn).
+    "sadl.importBy": "ns",
+     // Show prefixes for imported concepts only when needed for disambiguation.
+    "sadl.prefixesOnlyAsNeeded": false,
+     // Validate before testing.
+    "sadl.validateBeforeTest": false,
+     // Test/Query with knowledge server.
+    "sadl.testWithKServer": false,
+     // Show Namespaces in Query Results
+    "sadl.namespacesInQueryResults": false,
+     // Show timing information for the build and the reasoning.
+    "sadl.showTimingInformation": false,
+     // Interpret date 10/11/2012 as MM/DD/YYYY (mdy) or DD/MM/YYYY (dmy).
+    "sadl.dmyOrder": "mdy",
+     // Disable the deep validation of the model.
+    "sadl.deepValidationOff": false,
+     // Include implicit elements in the graph.
+    "sadl.graphImplicitElements": false,
+     // Include implicit element instances in the graph.
+    "sadl.graphImplicitElementInstances": false,
+     // Check for ambiguous names during the validation.
+    "sadl.ambiguousNameCheckOn": true,
+     // Check for cardinality of property on specific domain.
+    "sadl.cardinalityCheck": false,
+     // Use indefinite and definite articles in validation and translation.
+    "sadl.useArticlesInValidation": false,
+     // Type checking issues as warning only.
+    "sadl.typeCheckingWarningOnly": false,
+     // Ignore Unitted Quantities (treat as numeric only) during translation.
+    "sadl.ignoreUnittedQuantities": false,
+     // Translate multiple-class domain or range as union class (owl:unionOf).
+    "sadl.domainAndRangeAsUnionClasses": true,
+     // Generate metrics report during project clean/build.
+    "sadl.generateMetricsReport": false
+}
