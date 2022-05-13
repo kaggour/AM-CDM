@@ -2,16 +2,17 @@ uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testI
 
 import "http://kdl.ge.com/AM-CDM-build".
 
-TestInspectionCharacterization (note "Any inspection or test performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of ProcessStep,
+TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of ProcessStep,
 	// acronyms bad :-(
 	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
-	described by ticName (note "A short description of the test/inspection/characterization.") with a single value of type string,
-	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type string,
+	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
+	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") must be one of {Tensile, Creep,
 	described by ticStandard (note "An identifier for the corresponding standard used.") with a single value of type string,
-	described by ticStartTime (note "Start time and date of the test.") with a single value of type dateTime,
-	described by ticEndTime (note "End time and date of the test.") with a single value of type dateTime,
+	described by ticSpecimen with single value ot type Specimen,
+	described by ticStartTime (note "Start time and date of the test, inspection, or characterization.") with a single value of type dateTime,
+	described by ticEndTime (note "End time and date of the test, inspection, or characterization.") with a single value of type dateTime,
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
-	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with a single value of type string,
+	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with values of type string,
 	described by ticOperator (note "Identifier of the operator who facilitated the test, inspection, or characterization linking to Personnel ID.") with a single value of type Operator,
 	described by ticPointOfContact (note "The name of the point of contact for the task being performed, if not the person performing the task.") with a single value of type PointOfContact,
 	described by ticVendor (note "Identifier of Vendor/Supplier/Contractor who physically performed the test, inspection, or characterization linking to Organization ID.") with a single value of type TICVendor,
@@ -26,37 +27,37 @@ TestInspectionCharacterization (note "Any inspection or test performed on any pa
 TestType is a class, must be one of {Destructive, NonDestructive}.
 
 TestResult is a class,
-	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type string,
-	described by ticRawData with values of type Document,
+	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") must be one of {Pass, Fail},
+	described by ticResultMeasurement with a single value of type Measurement,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
 NonPedigreedTestResult (note "Vendor-provided extrinsic or intrinsic material properties.") is a type of TestResult,
 	described by testedMaterial (note "Material that was tested by the vendor of the material.") with a single value of type Material.
 
-Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One build part may contain no specimens, one specimen, or multiple specimens.  A build part can also be the specimen without additional sectioning or post processing.") is a class,
+Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One part may contain no specimens, one specimen, or multiple specimens.  A part can also be the specimen without additional sectioning or post processing.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
 	described by specimenMass with a single value of type Measurement,
-	described by specimenProcessHistory with a single value of type Process,
-	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with a single value of type string.
+	described by specimenProcessHistory (note "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.") with a single value of type Process,
+	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
 
-PartSpecimen is a type of Specimen,
+PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a type of Specimen,
 	described by parentPart with a single value of type Part,
 	described by specimenCoordinate (note "The location that the specimen was extracted from the original part.") with values of type CartesianCoordinate,   //using part/CAD coordinate system
-	described by specimenTestLocation (note "Location of the test relative to the specimen.") with a single value of type CartesianCoordinate,
+	described by specimenTestLocation (note "Location of the test, inspection, or characterization relative to the specimen.") with a single value of type CartesianCoordinate,
 	// Future work: more robust definitions of orientations with respect to each other
 	described by specimenOrientation (note "The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation).") with a single value of type string,
 	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part.") with a single value of type string,
 	// Geometry could be specified by a standard for a test
 	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
 
-MaterialSpecimen is a type of Specimen,
+MaterialSpecimen (note "A specimen that is extracted from  a Material. Not to be confused with a PartSpecimen") is a type of Specimen,
 	described by specimenMaterialSource with a single value of type Material,
 	described by specimenSamplingMethod with a single value of type Process.
 
-TICEnvironment (note "The atmospheric conditions of the test environment.") is a class,
-	described by ticEnvironmentID (note "Uniqued identifier of TIC environmental conditions.") with a single value of type string,
+TICEnvironment (note "The atmospheric conditions of the test, inspection, or characterization environment.") is a class,
+	described by ticEnvironmentID (note "Unique identifier of test, inspection, or characterization environmental conditions.") with a single value of type string,
 	described by ticEnvironmentTemperature (note "The atmospheric temperature during the test, inspection, or characterization.") with a single value of type Measurement,
 	described by ticTemperatureControlMethod (note "The method for controlling the temperature during the test, inspection, or characterization.") with a single value of type string,
 	described by ticTemperatureMeasurementLocation (note "Where the temperature was measured during the test, inspection, or characterization.") with a single value of type string,
