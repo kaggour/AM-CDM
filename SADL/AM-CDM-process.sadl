@@ -48,14 +48,14 @@ HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pre
 
 HotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing (HIP).") is a type of ProcessParameters,
     described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel.") with a single value of type Material,
-    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process.") with a single value of type float,
-    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process.") with a single value of type float.
+    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process.") with a single value of type Measurement,
+    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process.") with a single value of type Measurement.
 
 HeatTreatment (note "Heat treatment process.") is a type of PostProcess,
     described by heatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") with a single value of type HeatTreatmentProcessParameters.
 
 HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") is a type of ProcessParameters,
-    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment.") with a single value of type float,
-    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process.") with values of type float,
-    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process.") with values of type float,
-    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process.") with values of type float.
+    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment.") with a single value of type string,
+    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process.") with values of type Measurement,
+    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process.") with values of type Measurement,
+    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process.") with values of type Measurement.
