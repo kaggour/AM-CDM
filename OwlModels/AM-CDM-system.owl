@@ -18,19 +18,39 @@
     <rdfs:comment xml:lang="en">This ontology was created from a SADL file 'AM-CDM-system.sadl' and should not be directly edited.</rdfs:comment>
   </owl:Ontology>
   <owl:Class rdf:ID="System">
+    <rdfs:comment xml:lang="en">System information.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="systemModel"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="systemPurchaseDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="SystemType"/>
+          <owl:Class rdf:ID="SystemCalibration"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="systemType"/>
+          <owl:ObjectProperty rdf:ID="systemCalibration"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">System information.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="AM-CDM-base#Address"/>
@@ -53,43 +73,11 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemPurchaseDate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemModel"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemID"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="SystemCalibration"/>
-        </owl:onClass>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="systemCalibration"/>
+          <owl:DatatypeProperty rdf:ID="systemSerialNumber"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -109,7 +97,17 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemSerialNumber"/>
+          <owl:DatatypeProperty rdf:about="#systemModel"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="systemID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -125,11 +123,13 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass>
+          <owl:Class rdf:ID="SystemType"/>
+        </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="#systemModel"/>
+          <owl:ObjectProperty rdf:ID="systemType"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -146,18 +146,17 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="MaintenanceEvent"/>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Calibration information.</rdfs:comment>
-    <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Person"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="calibrationOperator"/>
+          <owl:DatatypeProperty rdf:ID="calibrationId"/>
         </owl:onProperty>
       </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="MaintenanceEvent"/>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -171,21 +170,22 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass rdf:resource="AM-CDM-base#Person"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="calibrationPassFail"/>
+          <owl:ObjectProperty rdf:ID="calibrationOperator"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Calibration information.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="calibrationId"/>
+          <owl:DatatypeProperty rdf:ID="machineCalibrationNotes"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -205,7 +205,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="machineCalibrationNotes"/>
+          <owl:DatatypeProperty rdf:ID="calibrationPassFail"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -273,37 +273,6 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemSubprocessType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Additive Manufacturing System Machine and auxiliary equipment used for additive manufacturing.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="machineAcceptanceDate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemProcessType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
           <owl:DatatypeProperty rdf:ID="machineHazmatRequirements"/>
         </owl:onProperty>
       </owl:Restriction>
@@ -320,34 +289,32 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="machineAcceptanceDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Additive Manufacturing System Machine and auxiliary equipment used for additive manufacturing.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="systemOperationQualification"/>
+          <owl:DatatypeProperty rdf:ID="systemProcessType"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="MachineCapability"/>
-        </owl:onClass>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="machineCapability"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#System"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="systemFacility"/>
+          <owl:DatatypeProperty rdf:ID="systemSubprocessType"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -363,11 +330,24 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="machinePowerIntensity"/>
+          <owl:ObjectProperty rdf:ID="systemFacility"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#System"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="MachineCapability"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="machineCapability"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -378,6 +358,26 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:ID="systemInstallationQualification"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="systemOperationQualification"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="machinePowerIntensity"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -808,78 +808,12 @@
                   <AM-CDM-system:SpecificSubsystemType rdf:ID="LaserSystem">
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="maxLaserPower"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="numberOfLasers"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
                         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="laserSystemSerialNumber"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="beamDiameter"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="laserManufacturer"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="laserModelName"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="maxBeamSpotSize"/>
+                          <owl:DatatypeProperty rdf:ID="laserType"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -901,53 +835,7 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="minLaserPower"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="modeOfLaserOperation"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-material#Material"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="precisionLensMaterialType"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="minBeamSpotSize"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="laserType"/>
+                          <owl:ObjectProperty rdf:ID="maxBeamSpotSize"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -969,7 +857,73 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="beamShape"/>
+                          <owl:DatatypeProperty rdf:ID="laserSystemSerialNumber"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="laserManufacturer"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="maxLaserPower"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="minLaserPower"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="focusCorrectionType"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="minBeamSpotSize"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="modeOfLaserOperation"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -991,7 +945,53 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="focusCorrectionType"/>
+                          <owl:DatatypeProperty rdf:ID="beamShape"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="numberOfLasers"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-material#Material"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="precisionLensMaterialType"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="beamDiameter"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="laserModelName"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1063,11 +1063,22 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="maxScanAngleX"/>
+                          <owl:ObjectProperty rdf:ID="maxScanAngleY"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
                     <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="galvoScannerOrigin"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
@@ -1075,7 +1086,18 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="galvoScannerRepeatability"/>
+                          <owl:ObjectProperty rdf:ID="maxScanAngleX"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="galvoScannerModel"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1092,57 +1114,12 @@
                     </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="galvoScannerManufacturer"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
                         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="maxScanAngleY"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="galvoScannerOrigin"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="galvoScannerModel"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="galvoScannerCalibrationDate"/>
+                          <owl:ObjectProperty rdf:ID="galvoScannerRepeatability"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1157,8 +1134,7 @@
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                  </AM-CDM-system:SpecificSubsystemType>
-                  <AM-CDM-system:SpecificSubsystemType rdf:ID="Camera">
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -1166,11 +1142,23 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="cameraModel"/>
+                          <owl:DatatypeProperty rdf:ID="galvoScannerManufacturer"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                    <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="galvoScannerCalibrationDate"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                  </AM-CDM-system:SpecificSubsystemType>
+                  <AM-CDM-system:SpecificSubsystemType rdf:ID="Camera">
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
@@ -1184,38 +1172,16 @@
                     </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="lastCameraCalibration"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
                         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="cameraBitDepth"/>
+                          <owl:ObjectProperty rdf:ID="detectorPitchSize"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="cameraManufacturer"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:comment xml:lang="en">Optical system by which objects are imaged and recorded.</rdfs:comment>
+                    <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
@@ -1234,32 +1200,11 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="cameraImageWidth"/>
+                          <owl:ObjectProperty rdf:ID="cameraBitDepth"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="detectorPitchSize"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="cameraCenter"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
+                    <rdfs:comment xml:lang="en">Optical system by which objects are imaged and recorded.</rdfs:comment>
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
@@ -1273,12 +1218,23 @@
                     </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="minShutterSpeed"/>
+                          <owl:DatatypeProperty rdf:ID="cameraModel"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="cameraManufacturer"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1304,7 +1260,6 @@
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
                     <rdfs:subClassOf>
                       <owl:Restriction>
                         <owl:onClass rdf:resource="#CameraLens"/>
@@ -1313,6 +1268,51 @@
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
                           <owl:ObjectProperty rdf:ID="cameraLens"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="minShutterSpeed"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:DatatypeProperty rdf:ID="lastCameraCalibration"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="cameraImageWidth"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="cameraCenter"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1399,17 +1399,6 @@
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
-                    <rdfs:subClassOf>
-                      <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
-                        <owl:qualifiedCardinality rdf:datatype=
-                        "http://www.w3.org/2001/XMLSchema#long"
-                        >1</owl:qualifiedCardinality>
-                        <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="pyrometerBitDepth"/>
-                        </owl:onProperty>
-                      </owl:Restriction>
-                    </rdfs:subClassOf>
                     <rdfs:subClassOf rdf:resource="#SpecificSubsystem"/>
                     <rdfs:subClassOf>
                       <owl:Restriction>
@@ -1418,18 +1407,29 @@
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="pyrometerSamplingRate"/>
+                          <owl:ObjectProperty rdf:ID="pyrometerOpticalFilterBandwidth1"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
+                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="pyrometerManufacturer"/>
+                          <owl:DatatypeProperty rdf:ID="lastPyrometerCalibration"/>
+                        </owl:onProperty>
+                      </owl:Restriction>
+                    </rdfs:subClassOf>
+                    <rdfs:subClassOf>
+                      <owl:Restriction>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:qualifiedCardinality rdf:datatype=
+                        "http://www.w3.org/2001/XMLSchema#long"
+                        >1</owl:qualifiedCardinality>
+                        <owl:onProperty>
+                          <owl:ObjectProperty rdf:ID="pyrometerSamplingRate"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
@@ -1446,24 +1446,24 @@
                     </rdfs:subClassOf>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:DatatypeProperty rdf:ID="lastPyrometerCalibration"/>
+                          <owl:ObjectProperty rdf:ID="pyrometerBitDepth"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
                     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
                     <rdfs:subClassOf>
                       <owl:Restriction>
-                        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+                        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
                         <owl:qualifiedCardinality rdf:datatype=
                         "http://www.w3.org/2001/XMLSchema#long"
                         >1</owl:qualifiedCardinality>
                         <owl:onProperty>
-                          <owl:ObjectProperty rdf:ID="pyrometerOpticalFilterBandwidth1"/>
+                          <owl:ObjectProperty rdf:ID="pyrometerManufacturer"/>
                         </owl:onProperty>
                       </owl:Restriction>
                     </rdfs:subClassOf>
