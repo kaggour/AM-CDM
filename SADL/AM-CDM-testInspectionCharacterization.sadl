@@ -6,9 +6,9 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	// acronyms bad :-(
 	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
 	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
-	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") must be one of {Tensile, Creep,
-	described by ticStandard (note "An identifier for the corresponding standard used.") with a single value of type string,
-	described by ticSpecimen with single value ot type Specimen,
+	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
+	described by ticStandard (note "An identifier of the corresponding standard used.") with a single value of type string,
+	described by ticSpecimen with a single value of type Specimen,
 	described by ticStartTime (note "Start time and date of the test, inspection, or characterization.") with a single value of type dateTime,
 	described by ticEndTime (note "End time and date of the test, inspection, or characterization.") with a single value of type dateTime,
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
@@ -24,13 +24,17 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	described by ticEnvironment (note "The atmospheric conditions of the test environment.") with a single value of type TICEnvironment,
 	described by ticResult with a single value of type TestResult.
 
+TICType is a class, must be one of {Tensile, Creep}.
+
 TestType is a class, must be one of {Destructive, NonDestructive}.
 
 TestResult is a class,
-	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") must be one of {Pass, Fail},
+	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type ResultStatus,
 	described by ticResultMeasurement with a single value of type Measurement,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
+
+ResultStatus is a class, must be one of {Pass, Fail}.
 
 NonPedigreedTestResult (note "Vendor-provided extrinsic or intrinsic material properties.") is a type of TestResult,
 	described by testedMaterial (note "Material that was tested by the vendor of the material.") with a single value of type Material.

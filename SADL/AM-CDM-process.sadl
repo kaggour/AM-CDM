@@ -19,8 +19,8 @@ ProcessStep (note "Event performed as part of a sequence.  May include pre-proce
     described by outputMaterial with values of type Material,
     described by processStandard (note "Standards used to guide a process, e.g., AMS2774.") with values of type Document,
     described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with a single value of type Document,
-    described by startTime with value of type dateTime,
-    described by endTime with value of type dateTime.
+    described by startTime with a single value of type dateTime,
+    described by endTime with a single value of type dateTime.
 
 ProcessParameters (note "Process parameters used for build.") is a class,
     described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.
@@ -41,7 +41,7 @@ MachinePreparation (note "Operations to prepare an AM machine before a build sta
 BuildPlatformPreparation (note "Description of how the build platform was prepared before the AM process (ex. new or recycled).") is a type of PreProcess.
 
 PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.") is a type of ProcessStep,
-    described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string,
+    described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string.
 
 HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess,
     described by hotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing.") with a single value of type HotIsostaticPressingProcessParameters.
