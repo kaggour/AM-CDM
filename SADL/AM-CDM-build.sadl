@@ -42,13 +42,12 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInsituData,
 	described by buildDuration (note "Recorded duration of build cycle.") with a single value of type Measurement,
 	described by buildLocation (note "Place of an AM process.") with a single value of type Address,
-	described by buildStartTime (note "Time when an AM build cycle starts.") with a single value of type dateTime,
-	described by buildEndTime (note "Time when an AM build cycle ends.") with a single value of type dateTime,
 	described by buildCooldownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Measurement.
 
 Part (note "Instances of part designs in the as-built state.") is a class,
 	described by partID (note "Identifier for the built part.") with a single value of type string,
 	described by partName (note "Conventional name for the built part.") with a single value of type string,
+// what does process mean in this context, how do multiple parts in a single build have the same or different processes?
 	described by process with a single value of type Process,
 	described by partDesign (note "Design information for the built part.") with a single value of type PartDesign,
 	described by partCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,

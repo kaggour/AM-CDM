@@ -10,17 +10,15 @@ ProcessHistory (note "All stages of manufacturing processes of a part.") is a ty
 ProcessStep (note "Event performed as part of a sequence.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations.") is a type of Process,
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
     described by processID (note "Unique identifier for a processStep.") with a single value of type string,
+	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
+	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
     described by agentOrganization with a single value of type Organization,
 	described by agentPersonnel with values of type Person,
 	described by processMachine with a single value of type System,
     described by processData with a single value of type ProcessData,
 	described by processParameters with a single value of type ProcessParameters,
-    described by inputMaterial with values of type Material,
-    described by outputMaterial with values of type Material,
     described by processStandard (note "Standards used to guide a process, e.g., AMS2774.") with values of type Document,
-    described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with a single value of type Document,
-    described by startTime with a single value of type dateTime,
-    described by endTime with a single value of type dateTime.
+    described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with a single value of type Document.
 
 ProcessParameters (note "Process parameters used for build.") is a class,
     described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.

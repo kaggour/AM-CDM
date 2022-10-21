@@ -16,13 +16,15 @@ Organization (note "An organization of various types.") is a class,
 	described by organizationPhoneNumber (note "A phone number for the organization.") with a single value of type PhoneNumber,
 	described by organizationPointOfContact (note "Identification of the point of contact.") with a single value of type Person.
 
-OrganizationType is a class, must be one of {MaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester}.
+OrganizationType is a class, must be one of {eMaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTestr}.
 
-Person (note "Individuals and their credentials.") is a class,
+//Orientation - look for Pink comments in Google Docs file!
+
+Person (note "Individuals and their primary credentials and contact information.") is a class,
 	described by personID (note "Unique identifier of the person.") with a single value of type string,
 	described by personFirstName (note "First name of individual performing task.") with a single value of type string,
 	described by personLastName (note "Last name of individual performing task.") with a single value of type string,
-	described by personRole (note "Role of individual performing task.") with a single value of type string,
+	//described by personRole (note "Role of individual performing task.") with a single value of type string,
 	described by personEmail (note "The email for the individual.") with a single value of type string,
 	described by personPhoneNumber (note "The phone number for the individual.") with values of type PhoneNumber,
 	described by personQualification (note "Qualifications of person.") with values of type PersonQualification,
@@ -61,22 +63,17 @@ CartesianCoordinate is a class,
 	described by yCoordinate with a single value of type Measurement,
 	described by zCoordinate with a single value of type Measurement.
 
+Orientation is a class.
+//RotationThenTranslationOrientation?
+//TranslationThenRotationOrientation?
+//Can we replicate how Magics defines orientation?
+
 Measurement is a class,
 	described by measurementValue with a single value of type double,
 	described by measurementUnit with a single value of type string,
 	described by rawDataValues with values of type RawDataValue,
 	described by rawDataAggregationTechnique with a single value of type string.
 	// need to add measure(s) of uncertainty -- standard deviation, more?
-
-/*
-// GE's Measurement class
-Measurement is a class,
-	described by units with a single value of type string, // enumerated list!
-	described by measuredValue with a single value of type double,
-	described by stdDeviation with a single value of type double,
-	described by distribution with a single value of type string.
-	described by measurementTechnique with a single value of type MeasurementTechnique.
-*/
 
 RawDataValue is a class,
 	//described by rawDataTag with a single value of type string,
@@ -97,7 +94,7 @@ DatasetMetadata is a class,
 	described by datasetSize (note "The size of the dataset.") with a single value of type Measurement,
 	described by datesetType (note "Dataset type, raw data or synthesized data.") with values of type string,
 	described by datasetQuantityType (note "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.") with values of type string,
-	described by datasetKeyDataElements (note "Data elements of principal interest within a dataset, particularly useful for traceability applications.") with values of type string,
+	described by datasetKeyTags (note "Keywords and tags describing the data to facilitate search and findability.  Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'") with values of type string,
 	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.
 
-DatasetAccessControl is a class, must be one of {Restricted, Consent, Public}.
+DatasetAccessControl is a class, must be one of {Restricted, Public}.
