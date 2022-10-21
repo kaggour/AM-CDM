@@ -2,9 +2,9 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-system".
 
-ProcessHistory is a class.
+Process is a Occurent.
 
-Process (note "All stages of manufacturing processes of a part.") is a type of ProcessHistory,
+ProcessHistory (note "All stages of manufacturing processes of a part.") is a type of Process,
 	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List.
 
 ProcessStep (note "Event performed as part of a sequence.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations.") is a type of Process,
