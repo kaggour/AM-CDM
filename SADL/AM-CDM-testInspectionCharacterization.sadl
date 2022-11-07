@@ -8,7 +8,12 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
 	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
 	described by ticStandard (note "An identifier of the corresponding standard used.") with a single value of type string,
-	described by ticSpecimen with a single value of type Specimen,
+//	described by ticSpecimen with a single value of type Specimen,
+
+	described by ticMaterialSpecimen with a single value of type MaterialSpecimen,
+	described by ticPartExtract with a single value of type PartExtract,
+	described by ticPart with a single value of type Part,
+
 	described by ticStartTime (note "Start time and date of the test, inspection, or characterization.") with a single value of type dateTime,
 	described by ticEndTime (note "End time and date of the test, inspection, or characterization.") with a single value of type dateTime,
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
@@ -46,7 +51,9 @@ Specimen (note "Information specific to an individual specimen. A specimen refer
 	described by specimenProcessHistory (note "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.") with a single value of type Process,
 	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
 
-PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a type of Specimen,
+//PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a type of Specimen,
+PartExtract (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a class,
+// unique identifier...
 	described by parentPart with a single value of type Part,
 	described by specimenCoordinate (note "The location that the specimen was extracted from the original part.") with values of type CartesianCoordinate,   //using part/CAD coordinate system
 	described by specimenTestLocation (note "Location of the test, inspection, or characterization relative to the specimen.") with a single value of type CartesianCoordinate,
