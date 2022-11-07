@@ -1,0 +1,4417 @@
+{
+    "TestResult": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/TestResult",
+        "title": "TestResult",
+        "type": "object",
+        "properties": {
+            "ticPassFail": {
+                "description": "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.",
+                "$ref": "http://example-schema.org/cdm/ResultStatus"
+            },
+            "ticResultMeasurement": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ticReport": {
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "ticMaterialProperty": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            }
+        }
+    },
+    "Specimen": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Specimen",
+        "title": "Specimen",
+        "type": "object",
+        "properties": {
+            "specimenID": {
+                "description": "The identifier of the individual specimen.",
+                "type": "string"
+            },
+            "specimenDescription": {
+                "description": "A description of the specimen.",
+                "type": "string"
+            },
+            "specimenMass": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "specimenProcessHistory": {
+                "description": "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.",
+                "$ref": "http://example-schema.org/cdm/Process"
+            },
+            "specimenDeviations": {
+                "description": "Description of any differences from recommendations made in the standards for specimen configuration and preparation.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            }
+        },
+        "description": "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One part may contain no specimens, one specimen, or multiple specimens.  A part can also be the specimen without additional sectioning or post processing."
+    },
+    "TICEnvironment": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/TICEnvironment",
+        "title": "TICEnvironment",
+        "type": "object",
+        "properties": {
+            "ticEnvironmentID": {
+                "description": "Unique identifier of test, inspection, or characterization environmental conditions.",
+                "type": "string"
+            },
+            "ticEnvironmentTemperature": {
+                "description": "The atmospheric temperature during the test, inspection, or characterization.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ticTemperatureControlMethod": {
+                "description": "The method for controlling the temperature during the test, inspection, or characterization.",
+                "type": "string"
+            },
+            "ticTemperatureMeasurementLocation": {
+                "description": "Where the temperature was measured during the test, inspection, or characterization.",
+                "type": "string"
+            },
+            "ticHumidity": {
+                "description": "The humidity measurement during the test, inspection, or characterization.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        },
+        "description": "The atmospheric conditions of the test, inspection, or characterization environment."
+    },
+    "ProcessHistory": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ProcessHistory",
+        "title": "ProcessHistory",
+        "type": "object",
+        "properties": {}
+    },
+    "ProcessParameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ProcessParameters",
+        "title": "ProcessParameters",
+        "type": "object",
+        "properties": {
+            "processParameterID": {
+                "description": "Unique identifier for process parameters.",
+                "type": "string"
+            }
+        },
+        "description": "Process parameters used for build."
+    },
+    "ProcessData": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ProcessData",
+        "title": "ProcessData",
+        "type": "object",
+        "properties": {
+            "processMonitoringDataType": {
+                "description": "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video.",
+                "type": "string"
+            },
+            "samplingRate": {
+                "description": "Sampling frequency of the process monitoring.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "logFile": {
+                "description": "Data generated from the AM System, including log data.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "processDataMetadata": {
+                "$ref": "http://example-schema.org/cdm/DatasetMetadata"
+            }
+        },
+        "description": "The direct/derived output that is obtained from the AM system and in-situ monitoring system during a process. Note: the sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment)."
+    },
+    "Material": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Material",
+        "title": "Material",
+        "type": "object",
+        "properties": {
+            "materialID": {
+                "description": "Unique identifier for specific material instance.",
+                "type": "string"
+            },
+            "materialType": {
+                "description": "Generic material this specific instance is an instantiation of.",
+                "$ref": "http://example-schema.org/cdm/MaterialType"
+            },
+            "materialGrade": {
+                "description": "Standard grade the material product conforms to.",
+                "type": "string"
+            },
+            "actualChemistry": {
+                "description": "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.",
+                "$ref": "http://example-schema.org/cdm/Chemistry"
+            },
+            "materialStock": {
+                "description": "Stock information about the material from vendor/manufacturer.",
+                "$ref": "http://example-schema.org/cdm/MaterialStock"
+            },
+            "measuredMaterialProperties": {
+                "description": "Measured intrinsic properties of the material.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/IntrinsicMaterialProperties"
+                }
+            },
+            "specifiedMaterialProperties": {
+                "description": "Vendor-provided extrinsic or intrinsic material properties.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            },
+            "predictedMaterialProperties": {
+                "description": "Simulated properties for this specific material instance, which is going to be an imperfect instantiation of the ideal material and hence these properties may be slightly different from the predictedProperties found in the MaterialSpecification.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            },
+            "parents": {
+                "description": "Parent or parents of material, if it is blended or mixed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ParentMaterial"
+                }
+            }
+        },
+        "description": "Specific instance of a material utilized in an AM process."
+    },
+    "MaterialStock": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialStock",
+        "title": "MaterialStock",
+        "type": "object",
+        "properties": {
+            "materialStockForm": {
+                "description": "Form of a material stock.",
+                "$ref": "http://example-schema.org/cdm/MaterialStockForm"
+            },
+            "materialStockOwner": {
+                "description": "Owner/organization of a material stock.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "materialStockLocation": {
+                "description": "Physical location of a material stock.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "materialStockStorageEnvironment": {
+                "description": "Material stock storage environment details - temperature, humidity, light.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Information about a stock of material, including physical form, location, and purchasing information."
+    },
+    "ParentMaterial": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ParentMaterial",
+        "title": "ParentMaterial",
+        "type": "object",
+        "properties": {
+            "parentMaterial": {
+                "description": "The parent material used to create a new material.",
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "parentMaterialPercent": {
+                "description": "Percent of the new material that is comprised of this parent.",
+                "type": "number"
+            }
+        },
+        "description": "Parent materials used to generate a new material instance (e.g., through powder blending or mixing)."
+    },
+    "MaterialType": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialType",
+        "title": "MaterialType",
+        "type": "object",
+        "properties": {
+            "materialName": {
+                "description": "Name of material, e.g., Inconel 625.",
+                "type": "string"
+            },
+            "materialTypeDescription": {
+                "description": "Description of generic/ideal material.",
+                "type": "string"
+            },
+            "baseElement": {
+                "description": "Base element of material from periodic table.",
+                "$ref": "http://example-schema.org/cdm/PeriodicElement"
+            },
+            "materialSpecification": {
+                "description": "Ideal chemistry specification of generic material.",
+                "$ref": "http://example-schema.org/cdm/MaterialSpecification"
+            }
+        },
+        "description": "Generic/ideal material type."
+    },
+    "MaterialSpecification": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialSpecification",
+        "title": "MaterialSpecification",
+        "type": "object",
+        "properties": {
+            "specChemistry": {
+                "description": "The chemistry specification of the generic/ideal material.",
+                "$ref": "http://example-schema.org/cdm/Chemistry"
+            },
+            "predictedProperties": {
+                "description": "The predicted properties of the generic/ideal material.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            }
+        },
+        "description": "The ideal specification of a material, e.g., a perfect lot of Inconel 625."
+    },
+    "MaterialProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialProperties",
+        "title": "MaterialProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Base class of material properties. Can be sub-classed to define specific types of material properties."
+    },
+    "Chemistry": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Chemistry",
+        "title": "Chemistry",
+        "type": "object",
+        "properties": {
+            "chemistryMeasurementMethod": {
+                "description": "Measurement method for real chemistries, which may be different from nominal chemistries. Should not be included if this is a specified chemistry.",
+                "type": "string"
+            },
+            "chemistryPercentUnit": {
+                "$ref": "http://example-schema.org/cdm/ChemistryPercentUnit"
+            },
+            "elements": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ChemistryElement"
+                }
+            }
+        }
+    },
+    "ChemistryElement": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ChemistryElement",
+        "title": "ChemistryElement",
+        "type": "object",
+        "properties": {
+            "chemistryElement": {
+                "$ref": "http://example-schema.org/cdm/PeriodicElement"
+            },
+            "minWeightPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "maxWeightPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "avgWeightPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minAtomicPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "maxAtomicPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "avgAtomicPercent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "Project": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Project",
+        "title": "Project",
+        "type": "object",
+        "properties": {
+            "projectID": {
+                "description": "Reference to the associated Project that produced this build. Links to Project record.",
+                "type": "string"
+            },
+            "projectCreator": {
+                "description": "Organization that created the project.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "projectSponsor": {
+                "description": "Provider of money and requirements for the project.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "projectOwningOrganization": {
+                "description": "Organization that owns the project.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "projectDistributionStatement": {
+                "description": "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.",
+                "type": "string"
+            },
+            "projectDistributionControl": {
+                "description": "ITAR-like restrictions.",
+                "type": "string"
+            },
+            "projectRequirements": {
+                "description": "Documented requirements for the project.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "projectPlan": {
+                "description": "Document describing how project is to be conducted, organized, etc.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "projectStart": {
+                "description": "Start date of project.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "projectEnd": {
+                "description": "End date of project.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "projectBuilds": {
+                "description": "Build(s) associated with project.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Build"
+                }
+            },
+            "projectStandards": {
+                "description": "Set of standards used in project.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "projectQualityControlPlan": {
+                "description": "Document describing the quality control plan for the the site performing the project.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "projectQualityProcessControlPlan": {
+                "description": "Document describing the quality process control plan for the the site performing the project.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "projectDeliveryDate": {
+                "description": "Requested delivery date of project.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "projectDataset": {
+                "description": "Datsets generated from the project.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/DatasetMetadata"
+                }
+            },
+            "projectReport": {
+                "description": "Reports of the project.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "projectDataManagementPlan": {
+                "description": "Data management plan of the project.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not)."
+    },
+    "Part": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Part",
+        "title": "Part",
+        "type": "object",
+        "properties": {
+            "partID": {
+                "description": "Identifier for the built part.",
+                "type": "string"
+            },
+            "partName": {
+                "description": "Conventional name for the built part.",
+                "type": "string"
+            },
+            "process": {
+                "$ref": "http://example-schema.org/cdm/Process"
+            },
+            "partDesign": {
+                "description": "Design information for the built part.",
+                "$ref": "http://example-schema.org/cdm/PartDesign"
+            },
+            "partCoordinateOnBuild": {
+                "description": "The location of the box center of the part, or an accepted reference datum.",
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "partOrientation": {
+                "description": "The orientation of the box.",
+                "$ref": "http://example-schema.org/cdm/PartOrientation"
+            }
+        },
+        "description": "Instances of part designs in the as-built state."
+    },
+    "BuildPlatform": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildPlatform",
+        "title": "BuildPlatform",
+        "type": "object",
+        "properties": {
+            "buildPlatformID": {
+                "description": "Identifier of a build platform.",
+                "type": "string"
+            },
+            "buildPlatformMaterial": {
+                "description": "Material type of a build platform.",
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "buildPlatformMaterialGrade": {
+                "description": "Standard grade to which the build platform material product conforms.",
+                "type": "string"
+            },
+            "buildPlatformHeight": {
+                "description": "Height of the build platform/plate.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildPlatformWidth": {
+                "description": "Width of the build platform/plate.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildPlatformDepth": {
+                "description": "Depth of the build platform/plate.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "BuildLayout": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildLayout",
+        "title": "BuildLayout",
+        "type": "object",
+        "properties": {}
+    },
+    "PartOrientation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PartOrientation",
+        "title": "PartOrientation",
+        "type": "object",
+        "properties": {}
+    },
+    "PartDesign": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PartDesign",
+        "title": "PartDesign",
+        "type": "object",
+        "properties": {
+            "designID": {
+                "description": "An identifier for the part design.",
+                "type": "string"
+            },
+            "designDeveloper": {
+                "description": "Reference to personnel who created CAD file. Links to Personnel foreign key.",
+                "$ref": "http://example-schema.org/cdm/Person"
+            },
+            "designSoftware": {
+                "description": "Reference to CAD software name/version. Links to Software foreign key.",
+                "$ref": "http://example-schema.org/cdm/Software"
+            },
+            "partCriticality": {
+                "description": "Criticality designation of part or parts to be developed in this project.",
+                "type": "string"
+            },
+            "partRequrements": {
+                "description": "Document describing requirements or goals for components/specimens to be manufactured.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "partDesignAugmentedSource": {
+                "description": "File (or pointer to file) containing source CAD for the augmented part design, complete with augmentation for support structures and other AM-specific data.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "reverseEngineeredModel": {
+                "description": "Point cloud scanned AM part model brought back in to the CAD application for feedback and analysis.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "partRevNumber": {
+                "description": "Revision number of the part design.",
+                "type": "string"
+            },
+            "objectDefinitionFile": {
+                "description": "File that pertains to the part design description.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "partDesignPromarySourceFile": {
+                "description": "File (or pointer to file) containing source CAD for the primary part design, without augmentation for support structures.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "derivedFromPartDesign": {
+                "description": "Part Design of original part this object is derived from (if applicable).",
+                "$ref": "http://example-schema.org/cdm/PartDesign"
+            },
+            "originatingOrganization": {
+                "description": "Developer of the source CAD file. Links to Organization foreign key.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Organization"
+                }
+            },
+            "assmblyPartDesignList": {
+                "description": "list of part design and relative locations in this object - this is intended for part designs of assemblies, where the model is comprised of multiple individual part designs that are brought into the file via reference (like a build plate definition, for example).",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/PartDesign"
+                }
+            }
+        },
+        "description": "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system."
+    },
+    "BuildSimulation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildSimulation",
+        "title": "BuildSimulation",
+        "type": "object",
+        "properties": {
+            "simulationID": {
+                "description": "UID for specific simulation.",
+                "type": "string"
+            },
+            "simulationModel": {
+                "description": "Physical phenomenon covered, mathematical equations.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "simulationSoftware": {
+                "description": "Software information.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "simulationInputs": {
+                "description": "Parameters used for simulations.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "simulatioOutputs": {
+                "description": "Simulation results.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "modelDomain": {
+                "description": "Focal area of model.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "modelDefinition": {
+                "description": "Documentation of how model is constructed (equations, I/O).",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Data used and generated from computer programs using physics based models: including the models and the simulation outputs."
+    },
+    "System": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/System",
+        "title": "System",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            }
+        },
+        "description": "System information."
+    },
+    "BuildEnvironmentalControl": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildEnvironmentalControl",
+        "title": "BuildEnvironmentalControl",
+        "type": "object",
+        "properties": {
+            "shieldingGasType": {
+                "type": "string"
+            },
+            "maximumPreheatingTemperature": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "gasFlowNozzleType": {
+                "type": "string"
+            },
+            "shieldingDeviceType": {
+                "type": "string"
+            }
+        },
+        "description": "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation."
+    },
+    "BuildVolume": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildVolume",
+        "title": "BuildVolume",
+        "type": "object",
+        "properties": {
+            "volumeShape": {
+                "description": "Shape of a building volume, i.e., 'box' or 'cylinder'.",
+                "type": "string"
+            },
+            "volumeDimension": {
+                "description": "Width, Depth, Height of a building volume.",
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "volumeDiameter": {
+                "description": "Diameter of a building volume if of cylinder type.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machineOrigin": {
+                "description": "Origin X,Y,Z as defined by machine manufacturer relative to build volume center.",
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "totalBuildVolume": {
+                "description": "The total usable volume available in the AM System.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machineLastCleanoutDate": {
+                "description": "The date when the build volume was last cleaned.",
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Total usable volume available in the machine for building parts."
+    },
+    "MachineCapability": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MachineCapability",
+        "title": "MachineCapability",
+        "type": "object",
+        "properties": {
+            "processableRawMaterial": {
+                "description": "A processable raw material list of an AM machine.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "maximumBuildRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minimumLayerThickness": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "maximumLayerThickness": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minimumOxygenLevel": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minimumMoistureLevel": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        },
+        "description": "Vendor-provided AM machine specification."
+    },
+    "MaintenanceEvent": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaintenanceEvent",
+        "title": "MaintenanceEvent",
+        "type": "object",
+        "properties": {
+            "maintenanceDate": {
+                "description": "Date of last AM system Maintenance.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "maintenanceReport": {
+                "description": "Technical report from the maintenance.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        }
+    },
+    "Software": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Software",
+        "title": "Software",
+        "type": "object",
+        "properties": {
+            "softwareName": {
+                "description": "A unique identifier for the software.",
+                "type": "string"
+            },
+            "softwareID": {
+                "description": "Version/configuration/OS.",
+                "type": "string"
+            },
+            "softwareVendor": {
+                "description": "Software Vendor identification. Links to Organization foreign key.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "softwareVersion": {
+                "description": "The version number of the software.",
+                "type": "string"
+            },
+            "softwareConfigurationSettingsFile": {
+                "description": "specific software settings document, for this project/component.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "softwareFileType": {
+                "description": "File type (for automated processing).",
+                "type": "string"
+            }
+        }
+    },
+    "RecoatingBlade": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/RecoatingBlade",
+        "title": "RecoatingBlade",
+        "type": "object",
+        "properties": {
+            "bladeId": {
+                "type": "string"
+            },
+            "recoatingBladeMaterial": {
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "recoatingBladePartNumber": {
+                "type": "string"
+            },
+            "recoatingBladeMaterialSpecification": {
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "recoatingBladeDrawing": {
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "recoatingRakeAngle": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "recoatingClearanceAngle": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "recoatingMechanismType": {
+                "type": "string"
+            }
+        }
+    },
+    "Document": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Document",
+        "title": "Document",
+        "type": "object",
+        "properties": {
+            "documentName": {
+                "type": "string"
+            },
+            "documentLocation": {
+                "type": "string"
+            },
+            "documentClassificationLevel": {
+                "type": "string"
+            },
+            "documentClassificationIPClass": {
+                "type": "string"
+            },
+            "documentURI": {
+                "type": "string"
+            }
+        },
+        "description": "File of any type."
+    },
+    "Organization": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Organization",
+        "title": "Organization",
+        "type": "object",
+        "properties": {
+            "organizationID": {
+                "description": "The unique identifier of the organization.",
+                "type": "string"
+            },
+            "organizationName": {
+                "description": "The name of an organization.",
+                "type": "string"
+            },
+            "organizationType": {
+                "description": "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor.  One organization may have many types.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/OrganizationType"
+                }
+            },
+            "organizationQualification": {
+                "description": "Details of the organization's qualifications and certifications.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/OrganizationQualification"
+                }
+            },
+            "organizationAddress": {
+                "description": "The address of the organization.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "organizationPhoneNumber": {
+                "description": "A phone number for the organization.",
+                "$ref": "http://example-schema.org/cdm/PhoneNumber"
+            },
+            "organizationPointOfContact": {
+                "description": "Identification of the point of contact.",
+                "$ref": "http://example-schema.org/cdm/Person"
+            }
+        },
+        "description": "An organization of various types."
+    },
+    "Person": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Person",
+        "title": "Person",
+        "type": "object",
+        "properties": {
+            "personID": {
+                "description": "Unique identifier of the person.",
+                "type": "string"
+            },
+            "personFirstName": {
+                "description": "First name of individual performing task.",
+                "type": "string"
+            },
+            "personLastName": {
+                "description": "Last name of individual performing task.",
+                "type": "string"
+            },
+            "personRole": {
+                "description": "Role of individual performing task.",
+                "type": "string"
+            },
+            "personEmail": {
+                "description": "The email for the individual.",
+                "type": "string"
+            },
+            "personPhoneNumber": {
+                "description": "The phone number for the individual.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/PhoneNumber"
+                }
+            },
+            "personQualification": {
+                "description": "Qualifications of person.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/PersonQualification"
+                }
+            },
+            "personOrganization": {
+                "description": "Links person to an organization",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            }
+        },
+        "description": "Individuals and their credentials."
+    },
+    "Qualification": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Qualification",
+        "title": "Qualification",
+        "type": "object",
+        "properties": {
+            "qualificationType": {
+                "description": "The type of qualification/certification.",
+                "type": "string"
+            },
+            "qualificationLevel": {
+                "description": "The level of qualification/certification.",
+                "type": "string"
+            },
+            "qualifyingOrganization": {
+                "description": "The organization from which the qualification or certification originates.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            }
+        },
+        "description": "Details of qualification/certification (machine specific operator certificate, UL, ASTM)."
+    },
+    "Address": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Address",
+        "title": "Address",
+        "type": "object",
+        "properties": {
+            "addressLine1": {
+                "type": "string"
+            },
+            "addressLine2": {
+                "type": "string"
+            },
+            "city": {
+                "type": "string"
+            },
+            "stateProvince": {
+                "type": "string"
+            },
+            "postalCode": {
+                "type": "string"
+            },
+            "country": {
+                "$ref": "http://example-schema.org/cdm/Country"
+            }
+        }
+    },
+    "PhoneNumber": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PhoneNumber",
+        "title": "PhoneNumber",
+        "type": "object",
+        "properties": {
+            "phoneCountry": {
+                "$ref": "http://example-schema.org/cdm/Country"
+            },
+            "phoneNumber": {
+                "type": "string"
+            }
+        }
+    },
+    "Country": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Country",
+        "title": "Country",
+        "type": "object",
+        "properties": {
+            "countryName": {
+                "type": "string"
+            },
+            "countryAlpha2Code": {
+                "type": "string"
+            },
+            "countryAlpha3Code": {
+                "type": "string"
+            },
+            "countryCallingCode": {
+                "type": "integer"
+            }
+        }
+    },
+    "CartesianCoordinate": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/CartesianCoordinate",
+        "title": "CartesianCoordinate",
+        "type": "object",
+        "properties": {
+            "xCoordinate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "yCoordinate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "zCoordinate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "Measurement": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Measurement",
+        "title": "Measurement",
+        "type": "object",
+        "properties": {
+            "units": {
+                "type": "string"
+            },
+            "measuredValue": {
+                "type": "number"
+            },
+            "stdDeviation": {
+                "type": "number"
+            },
+            "distribution": {
+                "type": "string"
+            },
+            "measurementTechnique": {
+                "$ref": "http://example-schema.org/cdm/MeasurementTechnique"
+            }
+        }
+    },
+    "RawDataValue": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/RawDataValue",
+        "title": "RawDataValue",
+        "type": "object",
+        "properties": {
+            "rawDataTag": {
+                "type": "string"
+            },
+            "rawDataTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "rawDataValue": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "rawDataQuality": {
+                "type": "string"
+            }
+        }
+    },
+    "DatasetMetadata": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/DatasetMetadata",
+        "title": "DatasetMetadata",
+        "type": "object",
+        "properties": {
+            "datasetName": {
+                "description": "Name of the dataset.",
+                "type": "string"
+            },
+            "datasetID": {
+                "description": "Unique identifier of the dataset.",
+                "type": "string"
+            },
+            "datasetSubject": {
+                "description": "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetType": {
+                "description": "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications.",
+                "type": "string"
+            },
+            "datasetURI": {
+                "description": "URI location where a dataset can be found.",
+                "type": "string"
+            },
+            "datesetFormat": {
+                "description": "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetSchemaURI": {
+                "description": "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.",
+                "type": "string"
+            },
+            "datasetCreator": {
+                "description": "Creator of dataset and/or the metadata of the dataset.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "datasetCreationDateTime": {
+                "description": "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].",
+                "type": "string",
+                "format": "date-time"
+            },
+            "datasetSize": {
+                "description": "The size of the dataset.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "datesetType": {
+                "description": "Dataset type, raw data or synthesized data.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetQuantityType": {
+                "description": "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetKeyDataElements": {
+                "description": "Data elements of principal interest within a dataset, particularly useful for traceability applications.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetAccessControl": {
+                "description": "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.",
+                "$ref": "http://example-schema.org/cdm/DatasetAccessControl"
+            }
+        }
+    },
+    "OrganizationQualification": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/OrganizationQualification",
+        "title": "OrganizationQualification",
+        "type": "object",
+        "properties": {
+            "qualificationType": {
+                "description": "The type of qualification/certification.",
+                "type": "string"
+            },
+            "qualificationLevel": {
+                "description": "The level of qualification/certification.",
+                "type": "string"
+            },
+            "qualifyingOrganization": {
+                "description": "The organization from which the qualification or certification originates.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            }
+        },
+        "description": "Details of qualification/certification for an organization."
+    },
+    "PersonQualification": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PersonQualification",
+        "title": "PersonQualification",
+        "type": "object",
+        "properties": {
+            "qualificationType": {
+                "description": "The type of qualification/certification.",
+                "type": "string"
+            },
+            "qualificationLevel": {
+                "description": "The level of qualification/certification.",
+                "type": "string"
+            },
+            "qualifyingOrganization": {
+                "description": "The organization from which the qualification or certification originates.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "personQualificationNumberOfHours": {
+                "description": "The number of hours that this person has completed on this equipment/software/system.",
+                "type": "integer"
+            }
+        },
+        "description": "Details of qualification/certification for a person."
+    },
+    "AMInsituData": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/AMInsituData",
+        "title": "AMInsituData",
+        "type": "object",
+        "properties": {
+            "datasetName": {
+                "description": "Name of the dataset.",
+                "type": "string"
+            },
+            "datasetID": {
+                "description": "Unique identifier of the dataset.",
+                "type": "string"
+            },
+            "datasetSubject": {
+                "description": "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetType": {
+                "description": "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications.",
+                "type": "string"
+            },
+            "datasetURI": {
+                "description": "URI location where a dataset can be found.",
+                "type": "string"
+            },
+            "datesetFormat": {
+                "description": "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetSchemaURI": {
+                "description": "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.",
+                "type": "string"
+            },
+            "datasetCreator": {
+                "description": "Creator of dataset and/or the metadata of the dataset.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "datasetCreationDateTime": {
+                "description": "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].",
+                "type": "string",
+                "format": "date-time"
+            },
+            "datasetSize": {
+                "description": "The size of the dataset.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "datesetType": {
+                "description": "Dataset type, raw data or synthesized data.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetQuantityType": {
+                "description": "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetKeyDataElements": {
+                "description": "Data elements of principal interest within a dataset, particularly useful for traceability applications.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "datasetAccessControl": {
+                "description": "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.",
+                "$ref": "http://example-schema.org/cdm/DatasetAccessControl"
+            },
+            "characteristicsType": {
+                "description": "characteristics measured, eg, melt pool geometry, melt pool temperature, powder bed surface, exposure surface.",
+                "type": "string"
+            },
+            "measurementType": {
+                "description": "Technique used for the measurement, eg, co-axial optical camera.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "measurementLocation": {
+                "description": "The location of what is being monitored, eg, build surface, coaxial melt pool area.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "inSituDevice": {
+                "description": "Device used for the in-situ measuremen.",
+                "$ref": "http://example-schema.org/cdm/InSituMonitoringSystem"
+            },
+            "inSituDeviceSetting": {
+                "description": "in-situ device setting for the measurement, including acquisition settings, for example, camera model, sampling rate, protocol, etc.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Measurement"
+                }
+            },
+            "measurementDuration": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        },
+        "description": "Data generated by in-situ monitoring systems during an AM Build cycle."
+    },
+    "BuildParameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildParameters",
+        "title": "BuildParameters",
+        "type": "object",
+        "properties": {
+            "processParameterID": {
+                "description": "Unique identifier for process parameters.",
+                "type": "string"
+            },
+            "buildPlatformPreheatTemperature": {
+                "description": "Temperature setting the build platform is heated to prior to print.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildPlatformLevelingMethod": {
+                "description": "Description of the method of platform leveling  procedures and tools.",
+                "type": "string"
+            },
+            "buildPlatformZStartPosition": {
+                "description": "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildPlatformPreheatStrategy": {
+                "description": "Objective for the heating process.",
+                "type": "string"
+            },
+            "buildPlatformPreheatProfile": {
+                "description": "Heating profile setting for reaching pre-heat temperature.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "layerThickness": {
+                "description": "Setting for the incremental distance between built layers.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildEnvironmentTemperature": {
+                "description": "Build environment/chamber temperature is important to some FDM processes; Bob will provide a definition.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "buildCommandData": {
+                "$ref": "http://example-schema.org/cdm/DatasetMetadata"
+            }
+        }
+    },
+    "PowderLot": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PowderLot",
+        "title": "PowderLot",
+        "type": "object",
+        "properties": {
+            "materialID": {
+                "description": "Unique identifier for specific material instance.",
+                "type": "string"
+            },
+            "materialType": {
+                "description": "Generic material this specific instance is an instantiation of.",
+                "$ref": "http://example-schema.org/cdm/MaterialType"
+            },
+            "materialGrade": {
+                "description": "Standard grade the material product conforms to.",
+                "type": "string"
+            },
+            "actualChemistry": {
+                "description": "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.",
+                "$ref": "http://example-schema.org/cdm/Chemistry"
+            },
+            "materialStock": {
+                "description": "Stock information about the material from vendor/manufacturer.",
+                "$ref": "http://example-schema.org/cdm/MaterialStock"
+            },
+            "measuredMaterialProperties": {
+                "description": "Measured intrinsic properties of the material.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/IntrinsicMaterialProperties"
+                }
+            },
+            "specifiedMaterialProperties": {
+                "description": "Vendor-provided extrinsic or intrinsic material properties.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            },
+            "predictedMaterialProperties": {
+                "description": "Simulated properties for this specific material instance, which is going to be an imperfect instantiation of the ideal material and hence these properties may be slightly different from the predictedProperties found in the MaterialSpecification.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            },
+            "parents": {
+                "description": "Parent or parents of material, if it is blended or mixed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ParentMaterial"
+                }
+            },
+            "virginOrUsed": {
+                "description": "If the powder lot is new (virgin) or been used previously.",
+                "type": "string"
+            },
+            "reuseNumber": {
+                "description": "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused.  If 0 the powder has never been used, if 1 the powder has been used once, etc.",
+                "type": "integer"
+            }
+        },
+        "description": "Unique lot of powder material used in one or more builds."
+    },
+    "IntrinsicMaterialProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/IntrinsicMaterialProperties",
+        "title": "IntrinsicMaterialProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Properties that are independent of the AM processing/part characteristics, such as x-ray density, lattice structure, and heat capacity."
+    },
+    "ExtrinsicMaterialProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ExtrinsicMaterialProperties",
+        "title": "ExtrinsicMaterialProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Properties that are dependent upon the AM processing/part characteristics, such as tap density, and thermal conductivity."
+    },
+    "ThermodynamicProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ThermodynamicProperties",
+        "title": "ThermodynamicProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "electricalConductivity": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "thermalExpansionCoef": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "thermalConductivity": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "heatCapacity": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "meltingTemperature": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "glassTransitionTemperature": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "ParticleSizeDistribution": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ParticleSizeDistribution",
+        "title": "ParticleSizeDistribution",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "psdPrincipleOfMeasurement": {
+                "type": "string"
+            },
+            "psdParameterBasis": {
+                "type": "string"
+            },
+            "psdDispersionMedium": {
+                "type": "string"
+            },
+            "psdDispersionMethod": {
+                "type": "string"
+            },
+            "psdDispersionType": {
+                "type": "string"
+            },
+            "psdConcentration": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdIndexOfRefraction": {
+                "type": "number"
+            },
+            "psdScatteringModel": {
+                "type": "string"
+            },
+            "psdDiameter": {
+                "type": "string"
+            },
+            "psdPercent": {
+                "type": "string"
+            },
+            "psd_dv10": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psd_dv50": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psd_dv90": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdMean": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdMode": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdStandardDeviation": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdRange": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdSkewness": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "psdKurtosis": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "TensileProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/TensileProperties",
+        "title": "TensileProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "tensileTestStrainRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "tensileTestDisplacementRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "tensileTestControlMode": {
+                "type": "string"
+            },
+            "initialStrainRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "initialLoadingRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "finalStrainRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "finalLoadingRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "yieldStrengthZeroPoint2Percent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "yieldStrengthZeroPointZero2Percent": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ultimateTensileStrength": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "elongation": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "percentReductionInArea": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "youngsModulus": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "maximumLoad": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "CreepProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/CreepProperties",
+        "title": "CreepProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "creepPanLoad": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "creepLeverArmRatio": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "creepTestLoad": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "creepTestStress": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "creepTestDuration": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "elongationAtRuptureCreep": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "ChemicalProperties": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ChemicalProperties",
+        "title": "ChemicalProperties",
+        "type": "object",
+        "properties": {
+            "derivedBy": {
+                "description": "How property was determined.",
+                "$ref": "http://example-schema.org/cdm/PropertyDerivedBy"
+            },
+            "propertyReferenceStandard": {
+                "description": "ASTM or other standard measurement conforms to.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "propertyDataSheet": {
+                "description": "Reference document used to provide material properties.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "oxidationResistance": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        }
+    },
+    "Process": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Process",
+        "title": "Process",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            }
+        },
+        "description": "All stages of manufacturing processes of a part."
+    },
+    "ProcessStep": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ProcessStep",
+        "title": "ProcessStep",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Event performed as part of a sequence.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations."
+    },
+    "PreProcess": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PreProcess",
+        "title": "PreProcess",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Pre-processing steps."
+    },
+    "MaterialPreparation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialPreparation",
+        "title": "MaterialPreparation",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Sifting/blending material preparation."
+    },
+    "MachinePreparation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MachinePreparation",
+        "title": "MachinePreparation",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming."
+    },
+    "BuildPlatformPreparation": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildPlatformPreparation",
+        "title": "BuildPlatformPreparation",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            }
+        },
+        "description": "Description of how the build platform was prepared before the AM process (ex. new or recycled)."
+    },
+    "PostProcess": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PostProcess",
+        "title": "PostProcess",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "postProcessType": {
+                "description": "Type of a post process, e.g., heat treatment, HIP, etc.",
+                "type": "string"
+            }
+        },
+        "description": "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification."
+    },
+    "HotIsostaticPressing": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/HotIsostaticPressing",
+        "title": "HotIsostaticPressing",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "postProcessType": {
+                "description": "Type of a post process, e.g., heat treatment, HIP, etc.",
+                "type": "string"
+            },
+            "hotIsostaticPressingProcessParameters": {
+                "description": "Nominal process parameters used during hot isostatic pressing.",
+                "$ref": "http://example-schema.org/cdm/HotIsostaticPressingProcessParameters"
+            }
+        },
+        "description": "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties."
+    },
+    "HotIsostaticPressingProcessParameters": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/HotIsostaticPressingProcessParameters",
+        "title": "HotIsostaticPressingProcessParameters",
+        "type": "object",
+        "properties": {
+            "processParameterID": {
+                "description": "Unique identifier for process parameters.",
+                "type": "string"
+            },
+            "inertGas": {
+                "description": "A non-oxidizing gas used for pressurizing a HIP vessel.",
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "vesselPressure": {
+                "description": "Pressure measurement of the autoclave during the HIP Process.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "vesselTemperature": {
+                "description": "Temperature recorded of the autoclave during the HIP process.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            }
+        },
+        "description": "Nominal process parameters used during hot isostatic pressing (HIP)."
+    },
+    "HeatTreatment": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/HeatTreatment",
+        "title": "HeatTreatment",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "postProcessType": {
+                "description": "Type of a post process, e.g., heat treatment, HIP, etc.",
+                "type": "string"
+            },
+            "heatTreatmentProcessParameters": {
+                "description": "Nominal process parameters used during heat treatment.",
+                "$ref": "http://example-schema.org/cdm/HeatTreatmentProcessParameters"
+            }
+        },
+        "description": "Heat treatment process."
+    },
+    "SystemCalibration": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/SystemCalibration",
+        "title": "SystemCalibration",
+        "type": "object",
+        "properties": {
+            "maintenanceDate": {
+                "description": "Date of last AM system Maintenance.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "maintenanceReport": {
+                "description": "Technical report from the maintenance.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "calibrationId": {
+                "description": "ID of a calibration process.",
+                "type": "string"
+            },
+            "calibrationDate": {
+                "description": "Date of machine calibration.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "calibrationOperator": {
+                "description": "Person performing the machine calibration. Links to Personnel ID.",
+                "$ref": "http://example-schema.org/cdm/Person"
+            },
+            "calibrationPassFail": {
+                "description": "Pass / fail result.",
+                "type": "string"
+            },
+            "calibrationResults": {
+                "description": "The results of the equipment calibration (files, etc.).",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "machineCalibrationNotes": {
+                "description": "Comments of a machine calibration.",
+                "type": "string"
+            },
+            "machineCalibrationReport": {
+                "description": "Technical report from the calibration.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "Calibration information."
+    },
+    "NonAMSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/NonAMSystem",
+        "title": "NonAMSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            }
+        },
+        "description": "Non AM system equipment/devices required for pre/post processes and post inspection."
+    },
+    "AMSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/AMSystem",
+        "title": "AMSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "machineAcceptanceDate": {
+                "description": "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemProcessType": {
+                "description": "Process category of an AM system defined by ASTM 52900 process categories.",
+                "type": "string"
+            },
+            "systemSubprocessType": {
+                "description": "Sub Process category of an AM system.",
+                "type": "string"
+            },
+            "machineElectricVoltage": {
+                "description": "Voltage for an AM Machine's electrical connection.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerIntensity": {
+                "description": "Current intensity required to power an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerFrequency": {
+                "description": "Power frequency for the electrical connection of an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "systemInstallationQualification": {
+                "description": "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemOperationQualification": {
+                "description": "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemFacility": {
+                "description": "Name of the facility where an AM system is installed.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "machineHazmatRequirements": {
+                "description": "A document of a link to AM Machine HAZMAT Requirements.",
+                "type": "string"
+            },
+            "machineCapability": {
+                "description": "Vendor provided AM machine specification.",
+                "$ref": "http://example-schema.org/cdm/MachineCapability"
+            },
+            "inSituMonitoringSystem": {},
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            }
+        },
+        "description": "Additive Manufacturing System Machine and auxiliary equipment used for additive manufacturing."
+    },
+    "InSituMonitoringSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/InSituMonitoringSystem",
+        "title": "InSituMonitoringSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "inSituMonitoringSystemTechnology": {
+                "description": "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process.",
+                "$ref": "http://example-schema.org/cdm/InSituMonitoringSystemTechnology"
+            },
+            "inSituMonitoringSystemSensingType": {
+                "description": "The type of an in-situ monitoring sensing technique.",
+                "type": "string"
+            },
+            "inSituMonitoringSystemSamplingRate": {
+                "description": "Default sampling rate: Hz for time series data; fps for evenly sampled imaging system; images/layers for layerwise imaging system.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            }
+        },
+        "description": "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process as it occurs in real time.  Each individual piece of monitoring technology constitutes a separate in-situ monitoring system. An in-situ monitoring system may be built into an AM System by the AM System Manufacturer, or a third-party monitoring system may be attached by the owning organization."
+    },
+    "SpecificSubsystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/SpecificSubsystem",
+        "title": "SpecificSubsystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            }
+        },
+        "description": "Describes equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for a build."
+    },
+    "BuildChamber": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BuildChamber",
+        "title": "BuildChamber",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "buildEnvironmentalControl": {
+                "description": "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.",
+                "$ref": "http://example-schema.org/cdm/BuildEnvironmentalControl"
+            },
+            "buildVolume": {
+                "description": "total usable volume available in the machine for building parts.",
+                "$ref": "http://example-schema.org/cdm/BuildVolume"
+            }
+        },
+        "description": "Enclosed location within the additive manufacturing system where the parts are fabricated."
+    },
+    "LaserSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/LaserSystem",
+        "title": "LaserSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "numberOfLasers": {
+                "type": "integer"
+            },
+            "modeOfLaserOperation": {
+                "type": "string"
+            },
+            "laserType": {
+                "type": "string"
+            },
+            "maxLaserPower": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minLaserPower": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ratedWaveLength": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "beamShape": {
+                "type": "string"
+            },
+            "beamDiameter": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "laserBeamSpotSizeType": {
+                "type": "string"
+            },
+            "maxBeamSpotSize": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "minBeamSpotSize": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "focusCorrectionType": {
+                "type": "string"
+            },
+            "laserManufacturer": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "laserModelName": {
+                "type": "string"
+            },
+            "laserSystemSerialNumber": {
+                "type": "string"
+            },
+            "precisionLensMaterialType": {
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "laserBeamProfile": {
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        }
+    },
+    "RecoatingSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/RecoatingSystem",
+        "title": "RecoatingSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "recoatingSystemType": {
+                "type": "string"
+            },
+            "recoaterMaximumSpeed": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "recoaterMaxUsesAllowed": {
+                "$ref": "http://example-schema.org/cdm/integer"
+            },
+            "recoatingBlade": {
+                "$ref": "http://example-schema.org/cdm/RecoatingBlade"
+            },
+            "roller": {
+                "$ref": "http://example-schema.org/cdm/Roller"
+            }
+        }
+    },
+    "GalvoScanner": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/GalvoScanner",
+        "title": "GalvoScanner",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "galvoScannerManufacturer": {
+                "type": "string"
+            },
+            "galvoScannerModel": {
+                "type": "string"
+            },
+            "maxScanAngleX": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "maxScanAngleY": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "galvoScannerRepeatability": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "galvoScannerMaxScanSpeed": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "galvoScannerCalibrationDate": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "galvoScannerOrigin": {
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "galvoScannerType": {
+                "type": "string"
+            }
+        }
+    },
+    "Camera": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Camera",
+        "title": "Camera",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "cameraImageWidth": {
+                "description": "Camera image width in pixel.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "cameraBitDepth": {
+                "description": "Bit depth of pixel values.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lastCameraCalibration": {
+                "description": "Date of the last camera calibration.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "cameraModel": {
+                "description": "Model name of the camera defined by the manufacturer.",
+                "type": "string"
+            },
+            "cameraManufacturer": {
+                "description": "Manufacture name of the camera.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "cameraImageHeight": {
+                "description": "Camera image height in pixel.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "cameraCenter": {
+                "description": "Width, Height center position of a camera in pixels.",
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "cameraOpticalFilterBandwidth": {
+                "description": "Bandwidth of a camera's filter bandwidth.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "detectorPitchSize": {
+                "description": "Camera detection pitch size.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "cameraDigitalMagnification": {
+                "description": "Magnification factor setting of a camera.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lensOpticalMagnification": {
+                "type": "number"
+            },
+            "minShutterSpeed": {
+                "description": "Shutter speed of a camera.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "cameraFrameRate": {
+                "description": "Framerate of a camera setting.",
+                "$ref": "http://example-schema.org/cdm/Measuremen"
+            },
+            "cameraLens": {
+                "$ref": "http://example-schema.org/cdm/CameraLens"
+            }
+        },
+        "description": "Optical system by which objects are imaged and recorded."
+    },
+    "CameraSubsystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/CameraSubsystem",
+        "title": "CameraSubsystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            }
+        }
+    },
+    "CameraLens": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/CameraLens",
+        "title": "CameraLens",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "cameraLensAperature": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lensManufacturer": {
+                "type": "string"
+            }
+        }
+    },
+    "OpticalLensFilter": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/OpticalLensFilter",
+        "title": "OpticalLensFilter",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "cameraLensFilter": {
+                "type": "string"
+            }
+        }
+    },
+    "Photodiode": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Photodiode",
+        "title": "Photodiode",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "photodiodeModel": {
+                "type": "string"
+            },
+            "photodiodeManufacturer": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "photodiodeOpticalFilterBandwidth": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "photodiodeBitDepth": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "photodiodeSamplingRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lastPhotdiodeCalibration": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "pyrometerModel": {
+                "type": "string"
+            },
+            "pyrometerManufacturer": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "pyrometerOpticalFilterBandwidth1": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerOpticalFilterBandwidth2": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerBitDepth": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerSamplingRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lastPyrometerCalibration": {
+                "type": "string",
+                "format": "date-time"
+            }
+        }
+    },
+    "Pyrometer": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Pyrometer",
+        "title": "Pyrometer",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "pyrometerModel": {
+                "type": "string"
+            },
+            "pyrometerManufacturer": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "pyrometerOpticalFilterBandwidth1": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerOpticalFilterBandwidth2": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerBitDepth": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "pyrometerSamplingRate": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "lastPyrometerCalibration": {
+                "type": "string",
+                "format": "date-time"
+            }
+        }
+    },
+    "LaserPowderBedFusionSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/LaserPowderBedFusionSystem",
+        "title": "LaserPowderBedFusionSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "machineAcceptanceDate": {
+                "description": "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemProcessType": {
+                "description": "Process category of an AM system defined by ASTM 52900 process categories.",
+                "type": "string"
+            },
+            "systemSubprocessType": {
+                "description": "Sub Process category of an AM system.",
+                "type": "string"
+            },
+            "machineElectricVoltage": {
+                "description": "Voltage for an AM Machine's electrical connection.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerIntensity": {
+                "description": "Current intensity required to power an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerFrequency": {
+                "description": "Power frequency for the electrical connection of an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "systemInstallationQualification": {
+                "description": "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemOperationQualification": {
+                "description": "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemFacility": {
+                "description": "Name of the facility where an AM system is installed.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "machineHazmatRequirements": {
+                "description": "A document of a link to AM Machine HAZMAT Requirements.",
+                "type": "string"
+            },
+            "machineCapability": {
+                "description": "Vendor provided AM machine specification.",
+                "$ref": "http://example-schema.org/cdm/MachineCapability"
+            },
+            "inSituMonitoringSystem": {},
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            },
+            "laserPowderBedFusionSpecificAttribute": {
+                "type": "string"
+            }
+        }
+    },
+    "ElectronbeamPowderBedFusionSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/ElectronbeamPowderBedFusionSystem",
+        "title": "ElectronbeamPowderBedFusionSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "machineAcceptanceDate": {
+                "description": "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemProcessType": {
+                "description": "Process category of an AM system defined by ASTM 52900 process categories.",
+                "type": "string"
+            },
+            "systemSubprocessType": {
+                "description": "Sub Process category of an AM system.",
+                "type": "string"
+            },
+            "machineElectricVoltage": {
+                "description": "Voltage for an AM Machine's electrical connection.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerIntensity": {
+                "description": "Current intensity required to power an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerFrequency": {
+                "description": "Power frequency for the electrical connection of an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "systemInstallationQualification": {
+                "description": "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemOperationQualification": {
+                "description": "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemFacility": {
+                "description": "Name of the facility where an AM system is installed.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "machineHazmatRequirements": {
+                "description": "A document of a link to AM Machine HAZMAT Requirements.",
+                "type": "string"
+            },
+            "machineCapability": {
+                "description": "Vendor provided AM machine specification.",
+                "$ref": "http://example-schema.org/cdm/MachineCapability"
+            },
+            "inSituMonitoringSystem": {},
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            },
+            "electronbeamPowderBedFusionSpecificAttribute": {
+                "type": "string"
+            }
+        }
+    },
+    "DirectedEnergyDepositionSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/DirectedEnergyDepositionSystem",
+        "title": "DirectedEnergyDepositionSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "machineAcceptanceDate": {
+                "description": "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemProcessType": {
+                "description": "Process category of an AM system defined by ASTM 52900 process categories.",
+                "type": "string"
+            },
+            "systemSubprocessType": {
+                "description": "Sub Process category of an AM system.",
+                "type": "string"
+            },
+            "machineElectricVoltage": {
+                "description": "Voltage for an AM Machine's electrical connection.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerIntensity": {
+                "description": "Current intensity required to power an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerFrequency": {
+                "description": "Power frequency for the electrical connection of an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "systemInstallationQualification": {
+                "description": "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemOperationQualification": {
+                "description": "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemFacility": {
+                "description": "Name of the facility where an AM system is installed.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "machineHazmatRequirements": {
+                "description": "A document of a link to AM Machine HAZMAT Requirements.",
+                "type": "string"
+            },
+            "machineCapability": {
+                "description": "Vendor provided AM machine specification.",
+                "$ref": "http://example-schema.org/cdm/MachineCapability"
+            },
+            "inSituMonitoringSystem": {},
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            },
+            "directedEnergyDepositionSpecificAttribute": {
+                "type": "string"
+            }
+        }
+    },
+    "BinderJetSystem": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/BinderJetSystem",
+        "title": "BinderJetSystem",
+        "type": "object",
+        "properties": {
+            "systemID": {
+                "description": "Unique identifier of equipment.",
+                "type": "string"
+            },
+            "systemName": {
+                "description": "The name of the equipment.",
+                "type": "string"
+            },
+            "systemModel": {
+                "description": "The model name of the equipment.",
+                "type": "string"
+            },
+            "systemManufacturer": {
+                "description": "The manufacturer of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemType": {
+                "description": "The type of equipment.",
+                "$ref": "http://example-schema.org/cdm/SystemType"
+            },
+            "systemSerialNumber": {
+                "description": "The serial number of the equipment defined by the vendor.",
+                "type": "string"
+            },
+            "systemPurchaseDate": {
+                "description": "The purchase/certification date of the installed equipment.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemOwner": {
+                "description": "The owner/organization of the equipment.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "systemLocation": {
+                "description": "The location where the equipment is installed.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "systemCalibration": {
+                "description": "Calibration information. A calibration event triggers a revision to the system.",
+                "$ref": "http://example-schema.org/cdm/SystemCalibration"
+            },
+            "maintenanceEvent": {
+                "description": "Maintenance events performed on system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaintenanceEvent"
+                }
+            },
+            "software": {
+                "description": "Computer programs required for operation of this system.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Software"
+                }
+            },
+            "machineAcceptanceDate": {
+                "description": "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).",
+                "type": "string",
+                "format": "date-time"
+            },
+            "systemProcessType": {
+                "description": "Process category of an AM system defined by ASTM 52900 process categories.",
+                "type": "string"
+            },
+            "systemSubprocessType": {
+                "description": "Sub Process category of an AM system.",
+                "type": "string"
+            },
+            "machineElectricVoltage": {
+                "description": "Voltage for an AM Machine's electrical connection.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerIntensity": {
+                "description": "Current intensity required to power an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "machinePowerFrequency": {
+                "description": "Power frequency for the electrical connection of an AM Machine.",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "systemInstallationQualification": {
+                "description": "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemOperationQualification": {
+                "description": "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.",
+                "type": "string"
+            },
+            "systemFacility": {
+                "description": "Name of the facility where an AM system is installed.",
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "machineHazmatRequirements": {
+                "description": "A document of a link to AM Machine HAZMAT Requirements.",
+                "type": "string"
+            },
+            "machineCapability": {
+                "description": "Vendor provided AM machine specification.",
+                "$ref": "http://example-schema.org/cdm/MachineCapability"
+            },
+            "inSituMonitoringSystem": {},
+            "specificSubsystem": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/SpecificSubsystem"
+                }
+            },
+            "binderJetSpecificAttribute": {
+                "type": "string"
+            }
+        }
+    },
+    "TestInspectionCharacterization": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/TestInspectionCharacterization",
+        "title": "TestInspectionCharacterization",
+        "type": "object",
+        "properties": {
+            "processStep": {
+                "description": "Sequence of events performed.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/ProcessSte"
+                }
+            },
+            "sequenceNumber": {
+                "description": "Sequence identifier of processing steps in chronological order.",
+                "type": "integer"
+            },
+            "processID": {
+                "description": "Unique identifier for a processStep.",
+                "type": "string"
+            },
+            "agentOrganization": {
+                "$ref": "http://example-schema.org/cdm/Organization"
+            },
+            "agentPersonnel": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Person"
+                }
+            },
+            "processMachine": {
+                "$ref": "http://example-schema.org/cdm/System"
+            },
+            "processData": {
+                "$ref": "http://example-schema.org/cdm/ProcessData"
+            },
+            "processParameters": {
+                "$ref": "http://example-schema.org/cdm/ProcessParameters"
+            },
+            "inputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "outputMaterial": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Material"
+                }
+            },
+            "processStandard": {
+                "description": "Standards used to guide a process, e.g., AMS2774.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/Document"
+                }
+            },
+            "processControlPlan": {
+                "description": "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "startTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "endTime": {
+                "type": "string",
+                "format": "date-time"
+            },
+            "ticID": {
+                "description": "An identifier of the test, inspection or characterization type.",
+                "type": "string"
+            },
+            "ticName": {
+                "description": "A short description of the test, inspection, or characterization.",
+                "type": "string"
+            },
+            "ticType": {
+                "description": "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.",
+                "$ref": "http://example-schema.org/cdm/TICType"
+            },
+            "ticStandard": {
+                "description": "An identifier of the corresponding standard used.",
+                "type": "string"
+            },
+            "ticSpecimen": {
+                "$ref": "http://example-schema.org/cdm/Specimen"
+            },
+            "ticStartTime": {
+                "description": "Start time and date of the test, inspection, or characterization.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "ticEndTime": {
+                "description": "End time and date of the test, inspection, or characterization.",
+                "type": "string",
+                "format": "date-time"
+            },
+            "ticLocation": {
+                "description": "The physical location where the test was conducted.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "ticNotes": {
+                "description": "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "ticOperator": {
+                "description": "Identifier of the operator who facilitated the test, inspection, or characterization linking to Personnel ID.",
+                "$ref": "http://example-schema.org/cdm/Operator"
+            },
+            "ticPointOfContact": {
+                "description": "The name of the point of contact for the task being performed, if not the person performing the task.",
+                "$ref": "http://example-schema.org/cdm/PointOfContact"
+            },
+            "ticVendor": {
+                "description": "Identifier of Vendor/Supplier/Contractor who physically performed the test, inspection, or characterization linking to Organization ID.",
+                "$ref": "http://example-schema.org/cdm/TICVendor"
+            },
+            "ticEquipment": {
+                "description": "Identifier of Non-AM Equipment used during the test, inspection, or characterization.",
+                "$ref": "http://example-schema.org/cdm/NonAMSystem"
+            },
+            "ticSoftware": {
+                "description": "Identifier of any Software that was used during the test, inspection, or characterization.",
+                "$ref": "http://example-schema.org/cdm/Software"
+            },
+            "ticProcedure": {
+                "description": "The procedure used if it is not from an existing standard.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "ticDestructureVsNonDestructive": {
+                "description": "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen.",
+                "$ref": "http://example-schema.org/cdm/TestType"
+            },
+            "ticDuration": {
+                "description": "The time that the Test took (Test only).",
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ticEnvironment": {
+                "description": "The atmospheric conditions of the test environment.",
+                "$ref": "http://example-schema.org/cdm/TICEnvironment"
+            },
+            "ticResult": {
+                "$ref": "http://example-schema.org/cdm/TestResult"
+            }
+        },
+        "description": "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring)."
+    },
+    "NonPedigreedTestResult": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/NonPedigreedTestResult",
+        "title": "NonPedigreedTestResult",
+        "type": "object",
+        "properties": {
+            "ticPassFail": {
+                "description": "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.",
+                "$ref": "http://example-schema.org/cdm/ResultStatus"
+            },
+            "ticResultMeasurement": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "ticReport": {
+                "$ref": "http://example-schema.org/cdm/Document"
+            },
+            "ticMaterialProperty": {
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/MaterialProperties"
+                }
+            },
+            "testedMaterial": {
+                "description": "Material that was tested by the vendor of the material.",
+                "$ref": "http://example-schema.org/cdm/Material"
+            }
+        },
+        "description": "Vendor-provided extrinsic or intrinsic material properties."
+    },
+    "PartSpecimen": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/PartSpecimen",
+        "title": "PartSpecimen",
+        "type": "object",
+        "properties": {
+            "specimenID": {
+                "description": "The identifier of the individual specimen.",
+                "type": "string"
+            },
+            "specimenDescription": {
+                "description": "A description of the specimen.",
+                "type": "string"
+            },
+            "specimenMass": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "specimenProcessHistory": {
+                "description": "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.",
+                "$ref": "http://example-schema.org/cdm/Process"
+            },
+            "specimenDeviations": {
+                "description": "Description of any differences from recommendations made in the standards for specimen configuration and preparation.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "parentPart": {
+                "$ref": "http://example-schema.org/cdm/Part"
+            },
+            "specimenCoordinate": {
+                "description": "The location that the specimen was extracted from the original part.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+                }
+            },
+            "specimenTestLocation": {
+                "description": "Location of the test, inspection, or characterization relative to the specimen.",
+                "$ref": "http://example-schema.org/cdm/CartesianCoordinate"
+            },
+            "specimenOrientation": {
+                "description": "The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation).",
+                "type": "string"
+            },
+            "specimenExtractionMethod": {
+                "description": "The method in which the sample or specimen was extracted from the part.",
+                "type": "string"
+            },
+            "specimenGeometry": {
+                "description": "The geometry of the specimen.",
+                "$ref": "http://example-schema.org/cdm/Document"
+            }
+        },
+        "description": "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen"
+    },
+    "MaterialSpecimen": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/MaterialSpecimen",
+        "title": "MaterialSpecimen",
+        "type": "object",
+        "properties": {
+            "specimenID": {
+                "description": "The identifier of the individual specimen.",
+                "type": "string"
+            },
+            "specimenDescription": {
+                "description": "A description of the specimen.",
+                "type": "string"
+            },
+            "specimenMass": {
+                "$ref": "http://example-schema.org/cdm/Measurement"
+            },
+            "specimenProcessHistory": {
+                "description": "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.",
+                "$ref": "http://example-schema.org/cdm/Process"
+            },
+            "specimenDeviations": {
+                "description": "Description of any differences from recommendations made in the standards for specimen configuration and preparation.",
+                "type": "array",
+                "items": {
+                    "type": "string"
+                }
+            },
+            "specimenMaterialSource": {
+                "$ref": "http://example-schema.org/cdm/Material"
+            },
+            "specimenSamplingMethod": {
+                "$ref": "http://example-schema.org/cdm/Process"
+            }
+        },
+        "description": "A specimen that is extracted from  a Material. Not to be confused with a PartSpecimen"
+    },
+    "Vendor": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "$id": "http://example-schema.org/cdm/Vendor",
+        "title": "Vendor",
+        "type": "object",
+        "properties": {
+            "organizationID": {
+                "description": "The unique identifier of the organization.",
+                "type": "string"
+            },
+            "organizationName": {
+                "description": "The name of an organization.",
+                "type": "string"
+            },
+            "organizationType": {
+                "description": "The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor.  One organization may have many types.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/OrganizationType"
+                }
+            },
+            "organizationQualification": {
+                "description": "Details of the organization's qualifications and certifications.",
+                "type": "array",
+                "items": {
+                    "$ref": "http://example-schema.org/cdm/OrganizationQualification"
+                }
+            },
+            "organizationAddress": {
+                "description": "The address of the organization.",
+                "$ref": "http://example-schema.org/cdm/Address"
+            },
+            "organizationPhoneNumber": {
+                "description": "A phone number for the organization.",
+                "$ref": "http://example-schema.org/cdm/PhoneNumber"
+            },
+            "organizationPointOfContact": {
+                "description": "Identification of the point of contact.",
+                "$ref": "http://example-schema.org/cdm/Person"
+            }
+        }
+    }
+}
