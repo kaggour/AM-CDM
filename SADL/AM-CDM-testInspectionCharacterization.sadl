@@ -7,42 +7,37 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
 	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
 	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
-	described by ticStandard (note "An identifier of the corresponding standard used.") with a single value of type string,
-//	described by ticSpecimen with a single value of type Specimen,
-
-	described by ticMaterialSpecimen with a single value of type MaterialSpecimen,
-	described by ticPartExtract with a single value of type PartExtract,
-	described by ticPart with a single value of type Part,
-
-	described by ticStartTime (note "Start time and date of the test, inspection, or characterization.") with a single value of type dateTime,
-	described by ticEndTime (note "End time and date of the test, inspection, or characterization.") with a single value of type dateTime,
+	// A lot of information should be inherited from ProcessStep, including start and end time, personnel performing the process, equipment used, organization
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
 	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with values of type string,
-	described by ticOperator (note "Identifier of the operator who facilitated the test, inspection, or characterization linking to Personnel ID.") with a single value of type Operator,
-	described by ticPointOfContact (note "The name of the point of contact for the task being performed, if not the person performing the task.") with a single value of type PointOfContact,
-	described by ticVendor (note "Identifier of Vendor/Supplier/Contractor who physically performed the test, inspection, or characterization linking to Organization ID.") with a single value of type TICVendor,
-	described by ticEquipment (note "Identifier of Non-AM Equipment used during the test, inspection, or characterization.") with a single value of type NonAMSystem,
 	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization.") with a single value of type Software,
-	described by ticProcedure (note "The procedure used if it is not from an existing standard.") with a single value of type Document,
 	described by ticDestructureVsNonDestructive (note "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen.") with a single value of type TestType,
 	described by ticDuration (note "The time that the Test took (Test only).") with a single value of type Measurement,
-	described by ticEnvironment (note "The atmospheric conditions of the test environment.") with a single value of type TICEnvironment,
+	described by ticSpecification (note "The specification to use to run the test, inspection, or characterization.") with a single value of type TICSpecification,
 	described by ticResult with a single value of type TestResult.
 
-TICType is a class, must be one of {Tensile, Creep}.
+TICSpecification (note "A specification with the details necessary to perform a test, specification, or characterization.") is a type of ProcessSpecification,
+	// Process Specification should be defined in Process, and should include information such as Standard. Particular test specifications would include test parameters
+	described by ticProcedure (note "The procedure used if it is not from an existing standard.") with a single value of type Document.
+
+// TODO: Flesh out more common TICTypes
+TICType is a class, must be one of {Tensile, Creep, Fatigue, Thermal}.
 
 TestType is a class, must be one of {Destructive, NonDestructive}.
 
+Environment is a class.
+
 TestResult is a class,
+	// Suggest that Environment is defined in Base
+	// Specific types of test results would inherit from this and include more specific result types.
+	described by isPedigreed (note "Declares whether or not the result data is pedigreed.") with a single value of type boolean,
+	described by ticEnvironment (note "The measured environment in which the test was performed.") with a single value of type Environment,
+	described by ticNotes (note "Observations recorded during the performance of the test.") with a single value of type string,
 	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type ResultStatus,
-	described by ticResultMeasurement with a single value of type Measurement,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
 ResultStatus is a class, must be one of {Pass, Fail}.
-
-NonPedigreedTestResult (note "Vendor-provided extrinsic or intrinsic material properties.") is a type of TestResult,
-	described by testedMaterial (note "Material that was tested by the vendor of the material.") with a single value of type Material.
 
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One part may contain no specimens, one specimen, or multiple specimens.  A part can also be the specimen without additional sectioning or post processing.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
@@ -66,16 +61,3 @@ PartExtract (note "A specimen that is extracted from a Part. Not to be confused 
 MaterialSpecimen (note "A specimen that is extracted from  a Material. Not to be confused with a PartSpecimen") is a type of Specimen,
 	described by specimenMaterialSource with a single value of type Material,
 	described by specimenSamplingMethod with a single value of type Process.
-
-TICEnvironment (note "The atmospheric conditions of the test, inspection, or characterization environment.") is a class,
-	described by ticEnvironmentID (note "Unique identifier of test, inspection, or characterization environmental conditions.") with a single value of type string,
-	described by ticEnvironmentTemperature (note "The atmospheric temperature during the test, inspection, or characterization.") with a single value of type Measurement,
-	described by ticTemperatureControlMethod (note "The method for controlling the temperature during the test, inspection, or characterization.") with a single value of type string,
-	described by ticTemperatureMeasurementLocation (note "Where the temperature was measured during the test, inspection, or characterization.") with a single value of type string,
-	described by ticHumidity (note "The humidity measurement during the test, inspection, or characterization.") with a single value of type Measurement.
-
-TICVendor is a type of Vendor.
-Vendor is a type of Organization.
-
-PointOfContact is a type of Person.
-Operator is a type of Person.

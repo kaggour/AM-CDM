@@ -2,7 +2,10 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-system".
 
-Process is a Occurent.
+//Process is a Occurent.
+Process is a class.
+
+ProcessSpecification is a class. // needed for TIC
 
 ProcessHistory (note "All stages of manufacturing processes of a part.") is a type of Process,
 	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List.
@@ -12,7 +15,7 @@ ProcessStep (note "Event performed as part of a sequence.  May include pre-proce
     described by processID (note "Unique identifier for a processStep.") with a single value of type string,
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
-    described by agentOrganization with a single value of type Organization,
+    described by serviceProvider with a single value of type Organization,
 	described by agentPersonnel with values of type Person,
 	described by processMachine with a single value of type System,
     described by processData with a single value of type ProcessData,
@@ -41,16 +44,26 @@ BuildPlatformPreparation (note "Description of how the build platform was prepar
 PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.") is a type of ProcessStep,
     described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string.
 
+/*
+// The concept of Part doesn't exist yet -- that isn't defined until Build
 HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess,
-    described by hotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing.") with a single value of type HotIsostaticPressingProcessParameters.
+	described by hotIsostaticPressingPart with a single value of type Part,
+	described by hotIsostaticPressingPartExtract with a single value of type PartExtract,
+	described by hotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing.") with a single value of type HotIsostaticPressingProcessParameters.
+*/
 
 HotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing (HIP).") is a type of ProcessParameters,
     described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel.") with a single value of type Material,
     described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process.") with a single value of type Measurement,
     described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process.") with a single value of type Measurement.
 
+/*
+// The concept of Part doesn't exist yet -- that isn't defined until Build
 HeatTreatment (note "Heat treatment process.") is a type of PostProcess,
-    described by heatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") with a single value of type HeatTreatmentProcessParameters.
+ 	described by heatTreatmentPart with a single value of type Part,
+	described by heatTreatmentPartExtract with a single value of type PartExtract,
+	described by heatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") with a single value of type HeatTreatmentProcessParameters.
+*/
 
 HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") is a type of ProcessParameters,
     described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment.") with a single value of type string,
