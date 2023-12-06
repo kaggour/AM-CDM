@@ -2,35 +2,62 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-system".
 
-//Process is a Occurent.
-Process is a class.
+//From BFO and IOF (only class names)
+Entity is a class.
+Occurent is a Entity.
+Process is a Occurent.
+PlannedProcess is a Process.
 
-ProcessSpecification is a class. // needed for TIC
-
-ProcessHistory (note "All stages of manufacturing processes of a part.") is a type of Process,
+// From IOF/BFO: AM CDM "Process History" = IOF/BFO "History"
+ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity") is a type of Process,
 	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List.
 
-ProcessStep (note "Event performed as part of a sequence.  May include pre-processing, build, post-processing, and (destructive or non-destructuve) test, inspection, and/or characterization operations.") is a type of Process,
+// From IOF/BFO: AM CDM "ProcessStep" = IOF/BFO "ManufacturingProcess" although "ManufacturingProcess" does not apply to inspection (which is not transformative)
+ProcessStep (note "planned process that consists of a structured set of operations through which input material is transformed or modified") is a type of Process,
+    // Not captured in IOF/BFO
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
     described by processID (note "Unique identifier for a processStep.") with a single value of type string,
+
+    // AM CDM "processStartTime" and "processEndTime" = IOF/BFO "ProcessBoundary"? I'm not sure on this thought, I thought it woudld be "TemporalRegion"
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
-    described by serviceProvider with a single value of type Organization,
+
+    // Not explicit in IOF/BFO?
+    described by manufacturingOrganization (note "The organization which performs the process step.") with a single value of type Organization,
+
+    // AM CDM "agentPersonnenl" = IOF "Agent", but this is complicated by the use of Roles in IOF
 	described by agentPersonnel with values of type Person,
+
+    // AM CDM "System" could map onto IOF "Agent", "MaintableMaterialItem", "PieceOfEquipment". "ManufacturingProcess" only links to "Agent"
 	described by processMachine with a single value of type System,
-    described by processData with a single value of type ProcessData,
-	described by processParameters with a single value of type ProcessParameters,
-    described by processStandard (note "Standards used to guide a process, e.g., AMS2774.") with values of type Document,
-    described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with a single value of type Document.
 
-ProcessParameters (note "Process parameters used for build.") is a class,
+    // This was missing in AM CDM -> IOF/BFO 'MaterialEntity'
+    described by materialInput (note "Material that is an input to the process. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type ___.
+    described by consumables (note "Material which is used during the execution of a process, but does not, in a subtantial way, become part of material output.") with value of type __.
+
+    // This was missing in AM CDM -> IOF/BFO 'MaterialEntity' or 'MaterialArtefact'
+    described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type ___.
+
+    // Not explicit in IOF/BFO?
+    described by processData with a single value of type DatasetMetadata,
+
+    // AM CDM "ProcessSpecification" = IOF/BFO "Plan Specification"
+    described by processSpecification with value of type ProcessSpecification,
+
+ProcessSpecification (note "information content entity that has action specifications and objective specifications as parts") is a class. // needed for TIC
+    // AM CDM "ProcessParameters" + "processStandard" + "processProcedure" + "processControlPlan"  = IOF/BFO "ActionSpecification" = "information content entity that prescribes what participants shall do in a process"
+	described by processParameters (note "Nominal system settings used when the process is run") with a single value of type ProcessParameters,
+    described by processStandard (note "Standards which process should comply with, ex. AMS2774.") with values of type Document,
+    described by processProcedure (note "Procedure which should be followed when the process is run") with values of type Document,
+    described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document.
+
+    // AM CDM added "processObjective" = IOF/BFO "ObjectiveSpecification"
+    described by processObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document.
+
+ProcessParameters is a class,
     described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.
+    // Subclasses should extend with process specific process parameters
 
-ProcessData (note "The direct/derived output that is obtained from the AM system and in-situ monitoring system during a process. Note: the sensing data should be synchronized with the machine data and build progress (enabling temporal/spatial alignment).") is a class,
-    described by processMonitoringDataType (note "Type of the process monitoring data: Single Value; 1D Time Series; 2D Image; Video.") with a single value of type string,
-    described by samplingRate (note "Sampling frequency of the process monitoring.") with a single value of type Measurement,
-    described by logFile (note "Data generated from the AM System, including log data.") with a single value of type Document,
-    described by processDataMetadata with a single value of type DatasetMetadata.
 
 // Everything that follows should be fleshed out based on domain standards and domain experts. It is provided as an example here as additional use-context
 PreProcess (note "Pre-processing steps.") is a type of ProcessStep.
@@ -42,31 +69,7 @@ MachinePreparation (note "Operations to prepare an AM machine before a build sta
 BuildPlatformPreparation (note "Description of how the build platform was prepared before the AM process (ex. new or recycled).") is a type of PreProcess.
 
 PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.") is a type of ProcessStep,
-    described by postProcessType (note "Type of a post process, e.g., heat treatment, HIP, etc.") with a single value of type string.
 
-/*
-// The concept of Part doesn't exist yet -- that isn't defined until Build
 HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess,
-	described by hotIsostaticPressingPart with a single value of type Part,
-	described by hotIsostaticPressingPartExtract with a single value of type PartExtract,
-	described by hotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing.") with a single value of type HotIsostaticPressingProcessParameters.
-*/
 
-HotIsostaticPressingProcessParameters (note "Nominal process parameters used during hot isostatic pressing (HIP).") is a type of ProcessParameters,
-    described by inertGas (note "A non-oxidizing gas used for pressurizing a HIP vessel.") with a single value of type Material,
-    described by vesselPressure (note "Pressure measurement of the autoclave during the HIP Process.") with a single value of type Measurement,
-    described by vesselTemperature (note "Temperature recorded of the autoclave during the HIP process.") with a single value of type Measurement.
-
-/*
-// The concept of Part doesn't exist yet -- that isn't defined until Build
 HeatTreatment (note "Heat treatment process.") is a type of PostProcess,
- 	described by heatTreatmentPart with a single value of type Part,
-	described by heatTreatmentPartExtract with a single value of type PartExtract,
-	described by heatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") with a single value of type HeatTreatmentProcessParameters.
-*/
-
-HeatTreatmentProcessParameters (note "Nominal process parameters used during heat treatment.") is a type of ProcessParameters,
-    described by controlInstrumentType (note "Type of primary or secondary control instrumentation type of the thermal processing equipment.") with a single value of type string,
-    described by furnaceTemperature (note "Temperature recorded from each control zone in the furnace during a heat treatment process.") with values of type Measurement,
-    described by inertGasRampUpRate (note "Ramp up rate of the inert gas during a heat treatment process.") with values of type Measurement,
-    described by inertGasRampDownRate (note "Ramp down rate of the inert gas during a heat treatment process.") with values of type Measurement.
