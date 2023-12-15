@@ -6,13 +6,13 @@ import "http://kdl.ge.com/AM-CDM-system".
 Entity is a class.
 Occurent is a Entity.
 Process is a Occurent.
-PlannedProcess is a Process.
+ProcessStep is a Process.
 
-// From IOF/BFO: AM CDM "Process History" = IOF/BFO "History"
+// AM CDM "Process History" = IOF/BFO "History"
 ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity") is a type of Process,
 	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List.
 
-// From IOF/BFO: AM CDM "ProcessStep" = IOF/BFO "ManufacturingProcess" although "ManufacturingProcess" does not apply to inspection (which is not transformative)
+// AM CDM "ProcessStep" = IOF/BFO "ManufacturingProcess" although "ManufacturingProcess" does not apply to inspection (which is not transformative)
 ProcessStep (note "planned process that consists of a structured set of operations through which input material is transformed or modified") is a type of Process,
     // Not captured in IOF/BFO
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
@@ -32,14 +32,14 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 	described by processMachine with a single value of type System,
 
     // This was missing in AM CDM -> IOF/BFO 'MaterialEntity'
-    described by materialInput (note "Material that is an input to the process. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type ___.
-    described by consumables (note "Material which is used during the execution of a process, but does not, in a subtantial way, become part of material output.") with value of type __.
+    described by materialInput (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type ___.
+    described by consumables (note "Material which is used during the execution of a process, but does not, in a subtantial way, become part of material output. Example: Process Gas") with value of type __.
 
     // This was missing in AM CDM -> IOF/BFO 'MaterialEntity' or 'MaterialArtefact'
     described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type ___.
 
     // Not explicit in IOF/BFO?
-    described by processData with a single value of type DatasetMetadata,
+    described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type DatasetMetadata,
 
     // AM CDM "ProcessSpecification" = IOF/BFO "Plan Specification"
     described by processSpecification with value of type ProcessSpecification,
