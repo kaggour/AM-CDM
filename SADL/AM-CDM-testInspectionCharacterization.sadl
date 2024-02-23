@@ -7,17 +7,15 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
 	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
 	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
-	// A lot of information should be inherited from ProcessStep, including start and end time, personnel performing the process, equipment used, organization
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
 	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with values of type string,
 	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization.") with a single value of type Software,
 	described by ticDestructureVsNonDestructive (note "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen.") with a single value of type TestType,
 	described by ticDuration (note "The time that the Test took (Test only).") with a single value of type Measurement,
-	described by ticSpecification (note "The specification to use to run the test, inspection, or characterization.") with a single value of type TICSpecification,
+	described by ticSpecification (note "The specification to use to run the test, inspection, or characterization. Note that ticSpecification should override processSpecification") with a single value of type TICSpecification,
 	described by ticResult with a single value of type TestResult.
 
 TICSpecification (note "A specification with the details necessary to perform a test, specification, or characterization.") is a type of ProcessSpecification,
-	// Process Specification should be defined in Process, and should include information such as Standard. Particular test specifications would include test parameters
 	described by ticProcedure (note "The procedure used if it is not from an existing standard.") with a single value of type Document.
 
 // TODO: Flesh out more common TICTypes
@@ -25,14 +23,11 @@ TICType is a class, must be one of {Tensile, Creep, Fatigue, Thermal}.
 
 TestType is a class, must be one of {Destructive, NonDestructive}.
 
-Environment is a class.
-
 TestResult is a class,
-	// Suggest that Environment is defined in Base
 	// Specific types of test results would inherit from this and include more specific result types.
-	described by isPedigreed (note "Declares whether or not the result data is pedigreed.") with a single value of type boolean,
-	described by ticEnvironment (note "The measured environment in which the test was performed.") with a single value of type Environment,
-	described by ticNotes (note "Observations recorded during the performance of the test.") with a single value of type string,
+	described by isPedigreed (note "Declares whether or not the result data is pedigreed.") with a single value of type boolean.
+	described by ticEnvironment (note "The measured environment in which the test was performed.") with a single value of type Environment.
+	described by ticNotes (note "Observations recorded during the performance of the test.") with a single value of type string.
 	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type ResultStatus,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
@@ -46,18 +41,16 @@ Specimen (note "Information specific to an individual specimen. A specimen refer
 	described by specimenProcessHistory (note "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.") with a single value of type Process,
 	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
 
-//PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a type of Specimen,
-PartExtract (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a class,
-// unique identifier...
+PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen") is a type of Specimen,
 	described by parentPart with a single value of type Part,
-	described by specimenCoordinate (note "The location that the specimen was extracted from the original part.") with values of type CartesianCoordinate,   //using part/CAD coordinate system
-	described by specimenTestLocation (note "Location of the test, inspection, or characterization relative to the specimen.") with a single value of type CartesianCoordinate,
-	// Future work: more robust definitions of orientations with respect to each other
-	described by specimenOrientation (note "The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation).") with a single value of type string,
-	described by specimenExtractionMethod (note "The method in which the sample or specimen was extracted from the part.") with a single value of type string,
-	// Geometry could be specified by a standard for a test
+	described by specimenCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
+	described by specimenOrientationA (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	described by specimenOrientationB (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	described by specimenOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
 	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
+	
 
 MaterialSpecimen (note "A specimen that is extracted from  a Material. Not to be confused with a PartSpecimen") is a type of Specimen,
-	described by specimenMaterialSource with a single value of type Material,
-	described by specimenSamplingMethod with a single value of type Process.
+	described by specimenMaterialSource with a single value of type Material.
+
