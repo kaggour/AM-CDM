@@ -29,32 +29,6 @@
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="MaterialSpecimen">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-process#Process"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenSamplingMethod"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-material#Material"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenMaterialSource"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">A specimen that is extracted from  a Material. Not to be confused with a PartSpecimen</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="Specimen"/>
-    </rdfs:subClassOf>
-  </owl:Class>
   <owl:Class rdf:ID="TestResult">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -69,7 +43,7 @@
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="ResultStatus"/>
+          <owl:Class rdf:ID="TICResultStatus"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
@@ -111,89 +85,24 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="PartExtract">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenGeometry"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="specimenExtractionMethod"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="specimenOrientation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="specimenTestLocation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-build#Part"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="parentPart"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">A specimen that is extracted from a Part. Not to be confused with MaterialSpecimen</rdfs:comment>
+  <owl:Class rdf:about="#TICResultStatus">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <AM-CDM-testInspectionCharacterization:TICResultStatus rdf:ID="Pass"/>
+          <AM-CDM-testInspectionCharacterization:TICResultStatus rdf:ID="Fail"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
   </owl:Class>
   <owl:Class rdf:ID="TestInspectionCharacterization">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="TestType"/>
-        </owl:onClass>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticDestructureVsNonDestructive"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#TICType"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-system#Software"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticSoftware"/>
+          <owl:ObjectProperty rdf:ID="ticDuration"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -207,14 +116,25 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:onClass rdf:resource="AM-CDM-system#Software"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticDuration"/>
+          <owl:ObjectProperty rdf:ID="ticSoftware"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="AM-CDM-process#ProcessStep"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="ticID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -225,17 +145,6 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="ticLocation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="AM-CDM-process#ProcessStep"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -253,19 +162,41 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="TestType"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticDestructiveVsNonDestructive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#TICType"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticID"/>
+          <owl:DatatypeProperty rdf:ID="ticName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="#Specimen">
+  <owl:Class rdf:ID="Specimen">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-process#Process"/>
+        <owl:onClass rdf:resource="AM-CDM-process#ProcessHistory"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
@@ -303,7 +234,21 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization.  One part may contain no specimens, one specimen, or multiple specimens.  A part can also be the specimen without additional sectioning or post processing.</rdfs:comment>
+    <rdfs:comment xml:lang="en">Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="FeedstockSpecimen">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-material#Feedstock"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenFeedstockSource"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Specimen"/>
   </owl:Class>
   <owl:Class rdf:about="#TICSpecification">
     <rdfs:subClassOf>
@@ -329,23 +274,73 @@
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:about="#ResultStatus">
-    <owl:equivalentClass>
-      <owl:Class>
-        <owl:oneOf rdf:parseType="Collection">
-          <AM-CDM-testInspectionCharacterization:ResultStatus rdf:ID="Pass"/>
-          <AM-CDM-testInspectionCharacterization:ResultStatus rdf:ID="Fail"/>
-        </owl:oneOf>
-      </owl:Class>
-    </owl:equivalentClass>
+  <owl:Class rdf:ID="PartSpecimen">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenGeometry"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenOrientationC"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenOrientationB"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenOrientationA"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#CartesianCoordinate"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenCoordinateOnBuild"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-build#Part"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="specimenParentPart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Specimen"/>
   </owl:Class>
-  <owl:ObjectProperty rdf:about="#specimenMaterialSource">
-    <rdfs:domain rdf:resource="#MaterialSpecimen"/>
-    <rdfs:range rdf:resource="AM-CDM-material#Material"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#specimenTestLocation">
-    <rdfs:domain rdf:resource="#PartExtract"/>
-    <rdfs:comment xml:lang="en">Location of the test, inspection, or characterization relative to the specimen.</rdfs:comment>
+  <owl:ObjectProperty rdf:about="#specimenCoordinateOnBuild">
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
+    <rdfs:comment xml:lang="en">The location of the box center of the part, or an accepted reference datum.</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#CartesianCoordinate"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticType">
@@ -353,7 +348,7 @@
     <rdfs:comment xml:lang="en">Type of test/inspection/characterization, such as tensile test, fatigue test, etc.</rdfs:comment>
     <rdfs:range rdf:resource="#TICType"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#ticDestructureVsNonDestructive">
+  <owl:ObjectProperty rdf:about="#ticDestructiveVsNonDestructive">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
     <rdfs:comment xml:lang="en">Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen.</rdfs:comment>
     <rdfs:range rdf:resource="#TestType"/>
@@ -362,14 +357,37 @@
     <rdfs:domain rdf:resource="#TestResult"/>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenFeedstockSource">
+    <rdfs:domain rdf:resource="#FeedstockSpecimen"/>
+    <rdfs:range rdf:resource="AM-CDM-material#Feedstock"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenParentPart">
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
+    <rdfs:range rdf:resource="AM-CDM-build#Part"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenOrientationC">
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
+    <rdfs:comment xml:lang="en">The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenMass">
     <rdfs:domain rdf:resource="#Specimen"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenOrientationB">
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
+    <rdfs:comment xml:lang="en">The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenProcessHistory">
     <rdfs:domain rdf:resource="#Specimen"/>
     <rdfs:comment xml:lang="en">Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.</rdfs:comment>
-    <rdfs:range rdf:resource="AM-CDM-process#Process"/>
+    <rdfs:range rdf:resource="AM-CDM-process#ProcessHistory"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#specimenOrientationA">
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
+    <rdfs:comment xml:lang="en">The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticLocation">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
@@ -382,7 +400,7 @@
     <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenGeometry">
-    <rdfs:domain rdf:resource="#PartExtract"/>
+    <rdfs:domain rdf:resource="#PartSpecimen"/>
     <rdfs:comment xml:lang="en">The geometry of the specimen.</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
   </owl:ObjectProperty>
@@ -398,11 +416,7 @@
   <owl:ObjectProperty rdf:about="#ticPassFail">
     <rdfs:domain rdf:resource="#TestResult"/>
     <rdfs:comment xml:lang="en">Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.</rdfs:comment>
-    <rdfs:range rdf:resource="#ResultStatus"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#parentPart">
-    <rdfs:domain rdf:resource="#PartExtract"/>
-    <rdfs:range rdf:resource="AM-CDM-build#Part"/>
+    <rdfs:range rdf:resource="#TICResultStatus"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="ticMaterialProperty">
     <rdfs:domain rdf:resource="#TestResult"/>
@@ -415,7 +429,7 @@
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticSpecification">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
-    <rdfs:comment xml:lang="en">The specification to use to run the test, inspection, or characterization.</rdfs:comment>
+    <rdfs:comment xml:lang="en">The specification to use to run the test, inspection, or characterization. Note that ticSpecification should override processSpecification</rdfs:comment>
     <rdfs:range rdf:resource="#TICSpecification"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticSoftware">
@@ -423,23 +437,9 @@
     <rdfs:comment xml:lang="en">Identifier of any Software that was used during the test, inspection, or characterization.</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-system#Software"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#specimenSamplingMethod">
-    <rdfs:domain rdf:resource="#MaterialSpecimen"/>
-    <rdfs:range rdf:resource="AM-CDM-process#Process"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="specimenCoordinate">
-    <rdfs:domain rdf:resource="#PartExtract"/>
-    <rdfs:comment xml:lang="en">The location that the specimen was extracted from the original part.</rdfs:comment>
-    <rdfs:range rdf:resource="AM-CDM-base#CartesianCoordinate"/>
-  </owl:ObjectProperty>
   <owl:DatatypeProperty rdf:about="#ticID">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
     <rdfs:comment xml:lang="en">An identifier of the test, inspection or characterization type.</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#specimenOrientation">
-    <rdfs:domain rdf:resource="#PartExtract"/>
-    <rdfs:comment xml:lang="en">The orientation of the specimen relative to the AM part (the orientation with respect to the build platform can be traced through the part's orientation).</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#ticNotes">
@@ -453,11 +453,6 @@
     </rdfs:domain>
     <rdfs:comment xml:lang="en">Observations recorded during the performance of the test.</rdfs:comment>
     <rdfs:comment xml:lang="en">Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#specimenExtractionMethod">
-    <rdfs:domain rdf:resource="#PartExtract"/>
-    <rdfs:comment xml:lang="en">The method in which the sample or specimen was extracted from the part.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="#specimenDescription">
