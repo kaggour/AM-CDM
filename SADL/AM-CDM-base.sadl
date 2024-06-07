@@ -20,8 +20,6 @@ Organization (note "An organization of various types.") is a class,
 
 OrganizationType (note "Possible types of an organization.") is a class, must be one of {eMaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester}.
 
-//Orientation - look for Pink comments in Google Docs file!
-
 Person (note "An Individual and their primary credentials and contact information.") is a class,
 	described by personID (note "Unique identifier of the person.") with a single value of type string,
 	described by personFirstName (note "First name of person.") with a single value of type string,
@@ -116,4 +114,4 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetKeyTags (note "Keywords and tags describing the data to facilitate search and findability. Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'") with values of type string,
 	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.
 
-DatasetAccessControl (note "Possible types of data access control.") is a class, must be one of {Restricted, Public}.
+DatasetAccessControl (note "Possible types of data access control.") is a class, must be one of {Restricted, Consent, Public}.

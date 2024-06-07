@@ -7,20 +7,16 @@ System (note "System information.") is a class,
 	described by systemName (note "The name of the equipment.") with a single value of type string,
 	described by systemModel (note "Model name of a machine defined by the machine manufacturer.") with a single value of type string,
 	described by systemManufacturer (note "The manufacturer of the equipment.") with a single value of type Organization,
-	described by systemType (note "The type of equipment.") with a single value of type SystemType,
 	described by systemSerialNumber (note "The serial number of the equipment defined by the vendor.") with a single value of type string,
 	described by systemPurchaseDate (note "The purchase/certification date of the installed equipment.") with a single value of type dateTime,
 	described by systemOwner (note "The owner/organization of the equipment.") with a single value of type Organization,
 	described by systemLocation (note "The location where the equipment is installed.") with a single value of type Address,
-	described by systemModel (note "The model name of the equipment.") with a single value of type string,
 	described by systemCalibration (note "Calibration information. A calibration event triggers a revision to the system.") with a single value of type SystemCalibration,
 	described by maintenanceEvent (note "Maintenance events performed on system.") with values of type MaintenanceEvent,
 	described by software (note "Computer programs required for operation of this system.") with values of type Software.
 
-SystemType is a class, must be one of {AMSystemType, NonAMSystemType, InSituMonitoringSystemType, SpecificSubsystemType}.
-
 SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent,
-	described by calibrationId (note "ID of a calibration process.") with a single value of type string,
+	described by calibrationID (note "ID of a calibration process.") with a single value of type string,
 	described by calibrationDate (note "Date of machine calibration.") with a single value of type dateTime,
 	described by calibrationOperator (note "Person performing the machine calibration. Links to Personnel ID.") with a single value of type Person,
 	described by calibrationPassFail (note "Pass / fail result.") with a single value of type string,
@@ -37,25 +33,21 @@ AMSystem (note "Additive Manufacturing System Machine and auxiliary equipment us
 	described by machineElectricVoltage (note "Voltage for an AM Machine's electrical connection.") with a single value of type Measurement,
 	described by machinePowerIntensity (note "Current intensity required to power an AM Machine.") with a single value of type Measurement,
 	described by machinePowerFrequency (note "Power frequency for the electrical connection of an AM Machine.") with a single value of type Measurement,
-	described by systemInstallationQualification (note "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report,  tied to a machine serial number.") with a single value of type string,
+	described by systemInstallationQualification (note "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report, tied to a machine serial number.") with a single value of type string,
 	described by systemOperationQualification (note "A certification capturing process control, maintenance, calibration to ensure a stable process that meets the requirements of a material specification; tied to a machine serial number.") with a single value of type string,
 	described by systemFacility (note "Name of the facility where an AM system is installed.") with a single value of type Organization,
 	described by machineHazmatRequirements (note "A document of a link to AM Machine HAZMAT Requirements.") with a single value of type string,
 	described by machineCapability (note "Vendor provided AM machine specification.") with a single value of type MachineCapability,
-	described by inSituMonitoringSystem with values  of type InSituMonitoringSystem,
+	described by inSituMonitoringSystem with values of type InSituMonitoringSystem,
 	described by specificSubsystem with values of type SpecificSubsystem.
 
-InSituMonitoringSystem (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process as it occurs in real time.  Each individual piece of monitoring technology constitutes a separate in-situ monitoring system. An in-situ monitoring system may be built into an AM System by the AM System Manufacturer, or a third-party monitoring system may be attached by the owning organization.") is a type of System,
-	described by inSituMonitoringSystemTechnology (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process.") with a single value of type InSituMonitoringSystemTechnology,
+InSituMonitoringSystem (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process as it occurs in real time. Each individual piece of monitoring technology constitutes a separate in-situ monitoring system. An in-situ monitoring system may be built into an AM System by the AM System Manufacturer, or a third-party monitoring system may be attached by the owning organization.") is a type of System,
+	described by inSituMonitoringSystemTechnology (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process.") with a single value of type string,
 	described by inSituMonitoringSystemSensingType (note "The type of an in-situ monitoring sensing technique.") with a single value of type string,
 	described by inSituMonitoringSystemSamplingRate (note "Default sampling rate: Hz for time series data; fps for evenly sampled imaging system; images/layers for layerwise imaging system.") with a single value of type Measurement,
 	described by specificSubsystem with values of type SpecificSubsystem.
 
-InSituMonitoringSystemTechnology is a class, must be one of {PhotonicTechnology, ThermalTechnology, OpticalTechnology, AcousticTechnology, UltrasonicTechnology, EnvironmentalTechnology}.
-
 SpecificSubsystem (note "Describes equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for a build.") is a type of System.
-
-SpecificSubsystemType is a class, must be one of {BuildChamber, LaserSystem, RecoatingSystem, GalvoScanner, Camera, Photodiode, Pyrometer}.
 
 //Build Specific Subsystems
 BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated.") is a type of SpecificSubsystem,
@@ -78,15 +70,27 @@ LaserSystem is a type of SpecificSubsystem,
 	described by laserManufacturer with a single value of type Organization,
 	described by laserModelName with a single value of type string,
 	described by laserSystemSerialNumber with a single value of type string,
-	described by precisionLensMaterialType with a single value of type Material,
+	described by precisionLensMaterialType with a single value of type MaterialType,
 	described by laserBeamProfile with a single value of type Document.
 
 RecoatingSystem is a type of SpecificSubsystem,
 	described by recoatingSystemType with a single value of type string,
 	described by recoaterMaximumSpeed with a single value of type Measurement,
 	described by recoaterMaxUsesAllowed with a single value of type integer,
-	described by recoatingBlade with a single value of type RecoatingBlade,
-	described by roller with a single value of type Roller.
+	described by bladeID with a single value of type string,
+	described by recoatingBladeMaterialType with a single value of type MaterialType,
+	described by recoatingBladePartNumber with a single value of type string,
+	described by recoatingBladeMaterialSpecification with a single value of type Document,
+	described by recoatingBladeDrawing with a single value of type Document,
+	described by recoatingRakeAngle with a single value of type Measurement,
+	described by recoatingClearanceAngle with a single value of type Measurement,
+	described by recoatingMechanismType with a single value of type string,
+	described by rollerID with a single value of type string,
+	described by rollerMaterialType with a single value of type MaterialType,
+	described by rollerDiameter with a single value of type Measurement,
+	described by maxRollingAngularSpeed with a single value of type Measurement,
+	described by rollerSpinDirection with a single value of type string,
+	described by dateOfLastRollerCleaning with a single value of type dateTime.
 
 GalvoScanner is a type of SpecificSubsystem,
 	described by galvoScannerManufacturer with a single value of type string,
@@ -113,15 +117,8 @@ Camera (note "Optical system by which objects are imaged and recorded.") is a ty
 	described by lensOpticalMagnification with a single value of type float,
 	described by minShutterSpeed (note "Shutter speed of a camera.") with a single value of type Measurement,
 	described by cameraFrameRate (note "Framerate of a camera setting.") with a single value of type Measurement
-	described by cameraLens with a single value of type CameraLens.
-	
-CameraSubsystem is a type of SpecificSubsystem.
-
-CameraLens is a type of CameraSubsystem,
-	described by cameraLensAperature with a single value of type Measurement,
-	described by lensManufacturer with a single value of type string.
-
-OpticalLensFilter is a type of CameraSubsystem,
+	described by cameraLensAperture with a single value of type Measurement,
+	described by lensManufacturer with a single value of type string,
 	described by cameraLensFilter with a single value of type string.
 
 Photodiode is a type of SpecificSubsystem,
@@ -130,8 +127,8 @@ Photodiode is a type of SpecificSubsystem,
 	described by photodiodeOpticalFilterBandwidth with a single value of type Measurement,
 	described by photodiodeBitDepth with a single value of type Measurement,
 	described by photodiodeSamplingRate with a single value of type Measurement,
-	described by lastPhotdiodeCalibration with a single value of type dateTime.
-	
+	described by lastPhotodiodeCalibration with a single value of type dateTime.
+
 Pyrometer is a type of SpecificSubsystem,
 	described by pyrometerModel with a single value of type string,
 	described by pyrometerManufacturer with a single value of type Organization,
@@ -170,7 +167,7 @@ BuildVolume (note "Total usable volume available in the machine for building par
 	described by machineLastCleanoutDate (note "The date when the build volume was last cleaned.") with a single value of type dateTime.
 
 MachineCapability (note "Vendor-provided AM machine specification.") is a class,
-	described by processableRawMaterial (note "A processable raw material list of an AM machine.") with values of type Material,
+	described by processableRawMaterial (note "A processable raw material list of an AM machine.") with values of type MaterialType,
 	described by maximumBuildRate with a single value of type Measurement,
 	described by minimumLayerThickness with a single value of type Measurement,
 	described by maximumLayerThickness with a single value of type Measurement,
@@ -188,22 +185,3 @@ Software is a class,
 	described by softwareVersion (note "The version number of the software.") with a single value of type string,
 	described by softwareConfigurationSettingsFile (note "specific software settings document, for this project/component.") with a single value of type Document,
 	described by softwareFileType (note "File type (for automated processing).") with a single value of type string.
-
-//Subsystems of SpecificSubsystem; maybe roll-up into RecoatingSystem OR separate out into their own SpecificSubsystem, depending on interchangeability
-RecoatingBlade is a class,
-	described by bladeId with a single value of type string,
-	described by recoatingBladeMaterial with a single value of type Material,
-	described by recoatingBladePartNumber with a single value of type string,
-	described by recoatingBladeMaterialSpecification with a single value of type Document,
-	described by recoatingBladeDrawing with a single value of type Document,
-	described by recoatingRakeAngle with a single value of type Measurement,
-	described by recoatingClearanceAngle with a single value of type Measurement,
-	described by recoatingMechanismType with a single value of type string.
-
-Roller is a class,
-	described by rollerId with a single value of type string,
-	described by rollerMaterial with a single value of type Material,
-	described by rollerDiameter with a single value of type Measurement,
-	described by maxRollingAngularSpeed with a single value of type Measurement,
-	described by rollerSpinDirection with a single value of type string,
-	described by dateOfLastRollerCleaning with a single value of type dateTime.
