@@ -60,10 +60,11 @@ Part (note "Instances of part designs in the as-built state.") is a class,
 	described by partCoordinateOnBuildX (note "The location X of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
 	described by partCoordinateOnBuildY (note "The location Y of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
 	described by partCoordinateOnBuildZ (note "The location Z of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
-	described by basePartOrientation (note "One of {XYZ, XZY, YXZ, YZX, ZXY, ZYX} defined in ISO/ASTM 52921") with a single value of type string,
-	described by partOrientationA (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by partOrientationB (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by partOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement.
+	described by partOrientation (note "The orientation defined in ISO 52921.") with a single value of type Orientation.
+	//described by basePartOrientation (note "One of {XYZ, XZY, YXZ, YZX, ZXY, ZYX} defined in ISO/ASTM 52921") with a single value of type string,
+	//described by partOrientationA (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	//described by partOrientationB (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	//described by partOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement.
 
 BuildPlatform is a type of MaterialType,
 	described by buildPlatformID (note "Identifier of a build platform.") with a single value of type string,

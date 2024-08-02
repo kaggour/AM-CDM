@@ -69,12 +69,13 @@ CartesianCoordinate (note "A Cartesian coordinate.") is a type of Coordinate,
 RotaryCoordinate (note "A rotary coordinate.") is a type of Coordinate,
 	described by aAngle (note "The rotation of the A angle in a rotary coordinate system.") with a single value of type Measurement,
 	described by bAngle (note "The rotation of the B angle in a rotary coordinate system.") with a single value of type Measurement,
-	described by cAngle (note "The rotation of the C angle in a rotary coordinate system.") with a single value of type Measurement.
+	described by cAngle (note "The rotation of the C angle in a rotarycoordinate system.") with a single value of type Measurement.
+	
+InitialOrientation is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
 
-Orientation (note "The orientation of an object to some frame of reference.") is a class.
-//RotationThenTranslationOrientation?
-//TranslationThenRotationOrientation?
-//Can we replicate how Magics defines orientation?
+Orientation (note "The orientation of an object to some frame of reference.") isa class,
+	described by initialOrientation (note "The orientation of the part as first placed in the build volume. Becomes the reference for any further part reorientation. See ISO/ASTM 52921.") with a single value of typeInitialOrientation,
+	described by reorientation (note "The reorientation of parts within the build volume shall be specified by rotation around the geometric center of the part's arbitrarily oriented minimum bounding box in the sequence of A, B, and C from a specified initial build orientation of that part. See ISO/ASTM 52921.") with a single value of type RotaryCoordinate.
 
 Measurement (note "A specific data value, possibly with units. May be a single measurement, aggregate from multiple measurements, or may be a non-measured value. Label Measurement is used for all numerical values as a catch-all.") is a class,
 	described by measurementValue (note "Numerical value.") with a single value of type double,
