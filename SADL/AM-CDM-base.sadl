@@ -57,7 +57,7 @@ Country (note "A country.") is a class,
 	described by countryName (note "The country's name.") with a single value of type string,
 	described by countryAlpha2Code (note "Two-digit country code.") with a single value of type string,
 	described by countryAlpha3Code (note "Three-digit country code.") with a single value of type string,
-	described by countryCallingCode (note "The calling code for the country.") with a single value of type int.
+	described by countryCallingCode (note "The calling code for the country.") with a single value of type string.
 
 Coordinate (note "A coordinate to position an object in reference to something.") is a class.
 
