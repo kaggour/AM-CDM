@@ -7,9 +7,10 @@ PowderLot (note "Unique lot of powder material used in one or more builds.") is 
 	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused. If 0 the powder has never been used, if 1 the powder has been used once, etc.") with a single value of type int.
 
 Feedstock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
-	described by feedstockID (note "Unique identifier for specific material instance.") with a single value of type string,
-	described by materialName (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,
-	described by materialGrade (note "Standard grade the material product conforms to.") with a single value of type string,
+	described by feedstockID (note "Unique identifier for specific material instance.  For example, a unique lot number.") with a single value of type string,
+	described by feedstockName (note "") with a single value of type string,
+	described by materialType (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,
+	described by materialGrade (note "Standard grade to which the material product conforms.") with a single value of type string,
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
 	described by feedstockForm (note "Form of a material stock.") with a single value of type FeedstockFormType,
 	described by feedstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
@@ -37,7 +38,7 @@ ParentFeedstock (note "Parent feedstock used to generate a new feedstock instanc
 	described by mixingMethod (note "Method used to mix or blend parent feedstock into the new feedstock.") with a single value of type string.
 
 OriginatedFeedstockType (note "Feedstock used as a parent to generate a new feedstock.") is a class,
-	described by parentFeedstockID (note "Percent of the new material that is comprised of this parent.") with a single value of type string,
+	described by parentFeedstock (note "Percent of the new material that is comprised of this parent.") with a single value of type Feedstock,
 	described by parentFeedstockPercent (note "Percent of the new material that is comprised of this parent.") with a single value of type double.
 
 MaterialType (note "Generic/ideal material type.") is a class,

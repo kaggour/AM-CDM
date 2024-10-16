@@ -24,7 +24,7 @@ SystemCalibration (note "Calibration information.") is a type of MaintenanceEven
 	described by machineCalibrationNotes (note "Comments of a machine calibration.") with a single value of type string,
 	described by machineCalibrationReport (note "Technical report from the calibration.") with a single value of type Document.
 
-NonAMSystem (note "Non AM system equipment/devices required for pre/post processes and post inspection.") is a type of System.
+//NonAMSystem (note "Non AM system equipment/devices required for pre/post processes and post inspection.") is a type of System.
 
 AMSystem (note "Additive Manufacturing System Machine and auxiliary equipment used for additive manufacturing.") is a type of System,
 	described by machineAcceptanceDate (note "Date when an AM machine is certified as Installation Qualified (passes the site acceptance test, or Installation qualification).") with a single value of type dateTime,
@@ -39,22 +39,26 @@ AMSystem (note "Additive Manufacturing System Machine and auxiliary equipment us
 	described by machineHazmatRequirements (note "A document of a link to AM Machine HAZMAT Requirements.") with a single value of type string,
 	described by machineCapability (note "Vendor provided AM machine specification.") with a single value of type MachineCapability,
 	described by inSituMonitoringSystem with values of type InSituMonitoringSystem,
-	described by specificSubsystem with values of type SpecificSubsystem.
+//	described by specificSubsystem with values of type SpecificSubsystem.
+	described by componentSystem with values of type System.
 
 InSituMonitoringSystem (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process as it occurs in real time. Each individual piece of monitoring technology constitutes a separate in-situ monitoring system. An in-situ monitoring system may be built into an AM System by the AM System Manufacturer, or a third-party monitoring system may be attached by the owning organization.") is a type of System,
 	described by inSituMonitoringSystemTechnology (note "The technology, including both hardware and software, used to observe and record the progress of an additive manufacturing process.") with a single value of type string,
 	described by inSituMonitoringSystemSensingType (note "The type of an in-situ monitoring sensing technique.") with a single value of type string,
 	described by inSituMonitoringSystemSamplingRate (note "Default sampling rate: Hz for time series data; fps for evenly sampled imaging system; images/layers for layerwise imaging system.") with a single value of type Measurement,
-	described by specificSubsystem with values of type SpecificSubsystem.
+//	described by specificSubsystem with values of type SpecificSubsystem.
+	described by componentSystem with values of type System.
 
-SpecificSubsystem (note "Describes equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for a build.") is a type of System.
+//SpecificSubsystem (note "Describes equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for a build.") is a type of System.
 
 //Build Specific Subsystems
-BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated.") is a type of SpecificSubsystem,
+//BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated.") is a type of SpecificSubsystem,
+BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated.") is a type of System,
 	described by buildEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.") with a single value of type BuildEnvironmentalControl,
 	described by buildVolume (note "total usable volume available in the machine for building parts.") with a single value of type BuildVolume.
 
-LaserSystem is a type of SpecificSubsystem,
+//LaserSystem is a type of SpecificSubsystem,
+LaserSystem is a type of System,
 	described by numberOfLasers with a single value of type int,
 	described by modeOfLaserOperation with a single value of type string,
 	described by laserType with a single value of type string,
@@ -73,7 +77,8 @@ LaserSystem is a type of SpecificSubsystem,
 	described by precisionLensMaterialType with a single value of type MaterialType,
 	described by laserBeamProfile with a single value of type Document.
 
-RecoatingSystem is a type of SpecificSubsystem,
+//RecoatingSystem is a type of SpecificSubsystem,
+RecoatingSystem is a type of System,
 	described by recoatingSystemType with a single value of type string,
 	described by recoaterMaximumSpeed with a single value of type Measurement,
 	described by recoaterMaxUsesAllowed with a single value of type integer,
@@ -92,7 +97,8 @@ RecoatingSystem is a type of SpecificSubsystem,
 	described by rollerSpinDirection with a single value of type string,
 	described by dateOfLastRollerCleaning with a single value of type dateTime.
 
-GalvoScanner is a type of SpecificSubsystem,
+//GalvoScanner is a type of SpecificSubsystem,
+GalvoScanner is a type of System,
 	described by galvoScannerManufacturer with a single value of type string,
 	described by galvoScannerModel with a single value of type string,
 	described by maxScanAngleX with a single value of type Measurement,
@@ -103,7 +109,8 @@ GalvoScanner is a type of SpecificSubsystem,
 	described by galvoScannerOrigin with a single value of type CartesianCoordinate,
 	described by galvoScannerType with a single value of type string.
 
-Camera (note "Optical system by which objects are imaged and recorded.") is a type of SpecificSubsystem,
+//Camera (note "Optical system by which objects are imaged and recorded.") is a type of SpecificSubsystem,
+Camera (note "Optical system by which objects are imaged and recorded.") is a type of System,
 	described by cameraImageWidth (note "Camera image width in pixel.") with a single value of type Measurement,
 	described by cameraBitDepth (note "Bit depth of pixel values.") with a single value of type Measurement,
 	described by lastCameraCalibration (note "Date of the last camera calibration.") with a single value of type dateTime,
@@ -121,7 +128,8 @@ Camera (note "Optical system by which objects are imaged and recorded.") is a ty
 	described by lensManufacturer with a single value of type string,
 	described by cameraLensFilter with a single value of type string.
 
-Photodiode is a type of SpecificSubsystem,
+//Photodiode is a type of SpecificSubsystem,
+Photodiode is a type of System,
 	described by photodiodeModel with a single value of type string,
 	described by photodiodeManufacturer with a single value of type Organization,
 	described by photodiodeOpticalFilterBandwidth with a single value of type Measurement,
@@ -129,7 +137,8 @@ Photodiode is a type of SpecificSubsystem,
 	described by photodiodeSamplingRate with a single value of type Measurement,
 	described by lastPhotodiodeCalibration with a single value of type dateTime.
 
-Pyrometer is a type of SpecificSubsystem,
+//Pyrometer is a type of SpecificSubsystem,
+Pyrometer is a type of System,
 	described by pyrometerModel with a single value of type string,
 	described by pyrometerManufacturer with a single value of type Organization,
 	described by pyrometerOpticalFilterBandwidth1 with a single value of type Measurement,

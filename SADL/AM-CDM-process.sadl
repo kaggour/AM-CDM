@@ -18,9 +18,12 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
 	described by processID (note "Unique identifier for a processStep.") with a single value of type string,
 
-	// AM CDM "processStartTime" and "processEndTime" = IOF/BFO "ProcessBoundary"? I'm not sure on this thought, I thought it woudld be "TemporalRegion"
+	// AM CDM "processStartTime" and "processEndTime" = IOF/BFO "ProcessBoundary"? I'm not sure on this thought, I thought it would be "TemporalRegion"
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
+
+	described by targetEnvironment with a single value of type Environment,
+	described by measuredEnvironment with a single value of type Environment,
 
 	// Not explicit in IOF/BFO?
 	described by processStepOrganization (note "The organization which performs the process step.") with a single value of type Organization,
@@ -33,7 +36,7 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 
 	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity'
 	described by materialInput (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type Feedstock,
-	described by consumables (note "Material which is used during the execution of a process, but does not, in a subtantial way, become part of material output. Example: Process Gas") with values of type Feedstock,
+	described by consumables (note "Material which is used during the execution of a process, but does not, in a substantial way, become part of material output. Example: Process Gas") with values of type Feedstock,
 
 	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity' or 'MaterialArtefact'
 	described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type Feedstock,
@@ -72,3 +75,7 @@ PostProcess (note "Note: The scope of post-processes is broad, which could inclu
 HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess.
 
 HeatTreatment (note "Heat treatment process.") is a type of PostProcess.
+
+Environment is a class,
+	described by ambientTemperature with a single value of type Measurement,
+	described by ambientPressure with a single value of type Measurement.

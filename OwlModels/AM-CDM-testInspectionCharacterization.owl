@@ -64,9 +64,7 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="Environment"/>
-        </owl:onClass>
+        <owl:onClass rdf:resource="AM-CDM-process#Environment"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
@@ -98,6 +96,28 @@
   <owl:Class rdf:ID="TestInspectionCharacterization">
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="TestType"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticDestructiveVsNonDestructive"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="ticID"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
@@ -126,28 +146,6 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="AM-CDM-process#ProcessStep"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="ticID"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="AM-CDM-base#Address"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticLocation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
@@ -160,18 +158,7 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="TestType"/>
-        </owl:onClass>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="ticDestructiveVsNonDestructive"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="#TICType"/>
@@ -179,6 +166,29 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:ID="ticType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:ID="Specimen"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticSpecimen"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="AM-CDM-process#ProcessStep"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Address"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ticLocation"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -193,7 +203,7 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="Specimen">
+  <owl:Class rdf:about="#Specimen">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="AM-CDM-process#ProcessHistory"/>
@@ -338,6 +348,10 @@
     <rdfs:comment xml:lang="en">A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="#Specimen"/>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="#ticSpecimen">
+    <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>
+    <rdfs:range rdf:resource="#Specimen"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#specimenCoordinateOnBuild">
     <rdfs:domain rdf:resource="#PartSpecimen"/>
     <rdfs:comment xml:lang="en">The location of the box center of the part, or an accepted reference datum.</rdfs:comment>
@@ -425,7 +439,7 @@
   <owl:ObjectProperty rdf:about="#ticEnvironment">
     <rdfs:domain rdf:resource="#TestResult"/>
     <rdfs:comment xml:lang="en">The measured environment in which the test was performed.</rdfs:comment>
-    <rdfs:range rdf:resource="#Environment"/>
+    <rdfs:range rdf:resource="AM-CDM-process#Environment"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#ticSpecification">
     <rdfs:domain rdf:resource="#TestInspectionCharacterization"/>

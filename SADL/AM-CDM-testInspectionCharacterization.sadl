@@ -6,6 +6,7 @@ TestInspectionCharacterization (note "Any test, inspection, or characterization 
 	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
 	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
 	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
+	described by ticSpecimen with a single value of type Specimen,
 	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
 	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with values of type string,
 	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization.") with a single value of type Software,
@@ -32,8 +33,6 @@ TestResult is a class,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
-
-Environment is a class.
 
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,

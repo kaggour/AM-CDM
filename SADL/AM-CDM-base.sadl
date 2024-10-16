@@ -18,7 +18,7 @@ Organization (note "An organization of various types.") is a class,
 	described by organizationPhoneNumber (note "A phone number for the organization.") with a single value of type PhoneNumber,
 	described by organizationPointOfContact (note "Identification of the point of contact. You may wish to reference by ID to avoid possible circular references.") with a single value of type Person.
 
-OrganizationType (note "Possible types of an organization.") is a class, must be one of {eMaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester}.
+OrganizationType (note "An OrganizationType is a recognized capability of an Organization.") is a class, must be one of {MaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester, Regulator, Buyer, FundingAgency, Other}.
 
 Person (note "An Individual and their primary credentials and contact information.") is a class,
 	described by personID (note "Unique identifier of the person.") with a single value of type string,
@@ -71,14 +71,24 @@ RotaryCoordinate (note "A rotary coordinate.") is a type of Coordinate,
 	described by bAngle (note "The rotation of the B angle in a rotary coordinate system.") with a single value of type Measurement,
 	described by cAngle (note "The rotation of the C angle in a rotary coordinate system.") with a single value of type Measurement.
 
-Orientation (note "The orientation of an object to some frame of reference.") is a class.
-//RotationThenTranslationOrientation?
-//TranslationThenRotationOrientation?
-//Can we replicate how Magics defines orientation?
+Orientation (note "The orientation of an object as defined in ISO/ASTM 52921.") is a class,
+	described by orthogonalNotationDescription (note "Description of orientation, one of XYZ, XZY, YXZ, YZX, ZXY, ZYX.") with a single value of type string,
+	//described by buildVolumeX with a single value of type Measurement,
+	//described by buildVolumeY with a single value of type Measurement,
+	//described by buildVolumeZ with a single value of type Measurement,
+	described by orientationAngleA (note "The orientation angle defined in ISO 52921, in A of the minimal bounding box orientation.") with a single value of type Measurement,
+	described by orientationAngleB (note "The orientation angle defined in ISO 52921, in B of the minimal bounding box orientation.") with a single value of type Measurement,
+	described by orientationAngleC (note "The orientation angle defined in ISO 52921, in C of the minimal bounding box orientation.") with a single value of type Measurement.
 
-Measurement (note "A specific data value, possibly with units. May be a single measurement, aggregate from multiple measurements, or may be a non-measured value. Label Measurement is used for all numerical values as a catch-all.") is a class,
+//UnittedQuantity
+Measurement (note "... make clear this is an abstract class.") is a class,
+	described by measurementUnit (note "Units associated with the numerical value.") with a single value of type string.
+
+SingleValue is a type of Measurement,
 	described by measurementValue (note "Numerical value.") with a single value of type double,
-	described by measurementUnit (note "Units associated with the numerical value.") with a single value of type string,
+	described by measureOfUncertainty (note "") with a single value of type double.
+
+StatisticalValue is a type of Measurement,
 	described by meanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by medianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by modeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
@@ -86,7 +96,8 @@ Measurement (note "A specific data value, possibly with units. May be a single m
 	described by minValue (note "Minimum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by maxValue (note "Maximum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by numberOfValues (note "Number (count) of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by dataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string.
+	described by dataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
+	described by aggregatedValues (note "") with values of type SingleValue.
 //	described by rawDataValues with values of type RawDataValue,
 //	described by rawDataAggregationTechnique with a single value of type string.
 
@@ -104,7 +115,8 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetSubject (note "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).") with values of type string,
 	described by datasetType (note "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications.") with a single value of type string,
 	described by datasetURI (note "URI location where a dataset can be found.") with a single value of type string,
-	described by datasetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12 and so forth.") with values of type string,
+	described by datasetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12, HDF5, ZIP, and so forth.") with values of type string,
+	described by datasetStructure (note "Detailed text description of the format of the data, e.g., the XML file format, JSON file format, HDf5 format, etc.") with a single value of type string,
 	described by datasetSchemaURI (note "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.") with a single value of type string,
 	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Person,
 	described by datasetCreationDateTime (note "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].") with a single value of type dateTime,

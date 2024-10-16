@@ -45,6 +45,28 @@
       <owl:Class rdf:ID="PostProcess"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="Environment">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ambientPressure"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Measurement"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="ambientTemperature"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:Class rdf:about="#ProcessParameters">
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -57,15 +79,15 @@
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class rdf:ID="BuildPlatformPreparation">
+    <rdfs:comment xml:lang="en">Description of how the build platform was prepared before the AM process (ex. new or recycled).</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#PreProcess"/>
+  </owl:Class>
   <owl:Class rdf:ID="HeatTreatment">
     <rdfs:comment xml:lang="en">Heat treatment process.</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Class rdf:about="#PostProcess"/>
     </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:ID="BuildPlatformPreparation">
-    <rdfs:comment xml:lang="en">Description of how the build platform was prepared before the AM process (ex. new or recycled).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#PreProcess"/>
   </owl:Class>
   <owl:Class rdf:ID="MaterialPreparation">
     <rdfs:comment xml:lang="en">Sifting/blending material preparation.</rdfs:comment>
@@ -84,6 +106,10 @@
     <rdfs:comment xml:lang="en">information content entity that prescribes what the outcome of some process should be</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ambientPressure">
+    <rdfs:domain rdf:resource="#Environment"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="processStandard">
     <rdfs:domain rdf:resource="#ProcessSpecification"/>
     <rdfs:comment xml:lang="en">Standards which process should comply with, ex. AMS2774.</rdfs:comment>
@@ -93,6 +119,10 @@
     <rdfs:domain rdf:resource="#ProcessSpecification"/>
     <rdfs:comment xml:lang="en">Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#ambientTemperature">
+    <rdfs:domain rdf:resource="#Environment"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Measurement"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#processParameters">
     <rdfs:domain rdf:resource="#ProcessSpecification"/>
