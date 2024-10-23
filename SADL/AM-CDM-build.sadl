@@ -2,6 +2,7 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-process".
 
+// Recommend moving this to base or to process
 Project (note "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not).") is a class,
 	described by projectID (note "Reference to the associated Project that produced this build. Links to Project record.") with a single value of type string,
 	described by projectCreator (note "Organization that created the project.") with a single value of type Organization,
@@ -13,6 +14,7 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 	described by projectPlan (note "Document describing how project is to be conducted, organized, etc.") with a single value of type Document,
 	described by projectStart (note "Start date of project.") with a single value of type dateTime,
 	described by projectEnd (note "End date of project.") with a single value of type dateTime,
+	// Generalize to procesessSteps?
 	described by projectBuilds (note "Build(s) associated with project.") with values of type Build,
 	described by projectStandards (note "Set of standards used in project.") with values of type string,
 	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project.") with a single value of type Document,
@@ -24,43 +26,68 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 	described by projectDataManagementPlan (note "Data management plan of the project.") with a single value of type Document.
 
 Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ProcessStep,
-	described by project (note "the project a build is made for") with a single value of type Project,
+	// Maps to ProcessStep.processID (identical)
 	described by buildID (note "An identifier for an AM build.") with a single value of type string,
-	described by buildType (note "Description of the primary purpose of the Build (end use component, specimens, research, etc.).") with a single value of type string,
-	described by buildSimulation (note "Reference to Simulation records associated with this build.") with values of type BuildSimulation,
+
+	// Maps to ProcessStep.project (added to process)
+	described by project (note "the project a build is made for") with a single value of type Project,
+
+	// Maps to ProcessStep.processEndTime - ProcessStep.processStartTime
+	described by buildDuration (note "Recorded duration of build cycle.") with a single value of type Measurement,
+
+	// Maps to ProcessStep.processStepOrganization (identical)
+	described by buildOrganization (note "Production organization for this build.") with a single value of type Organization,
+
+	// Maps to ProcessStep.processAddress (added to process)
+	described by buildLocation (note "Place of an AM process.") with a single value of type Address,
+
+	// Maps to ProcessStep.processMachine
+	described by amSystem (note "AM system used for this build.") with a single value of type AMSystem,
+
+	// Maps to ProcessStep.materialInput
 	described by feedstockMaterial (note "Material consumed during build.") with a single value of type Feedstock,
 	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Measurement,
-	described by processingMaterial (note "Ancillary material used for build, e.g., environmental gas.") with a single value of type Feedstock,
 	described by buildPlatform with a single value of type BuildPlatform,
+	
+	// Maps to ProcessStep.consumable
+	described by processingMaterial (note "Ancillary material used for build, e.g., environmental gas.") with a single value of type Feedstock,
+	
+	// Maps to ProcessStep.materialOutput
 	described by part (note "Parts built from this build. One build can have multiple built parts.") with values of type Part,
-	described by buildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
-	described by buildParameters (note "Build parameters such as layer thickness, including environment setting") with values of type BuildParameters,
-	described by buildID (note "An identifier for an AM build.") with a single value of type string,
-	described by buildSoftware (note "Software used in build.") with values of type Software,
-	described by buildOrganization (note "Production organization for this build.") with a single value of type Organization,
-	described by buildLayout with a single value of type Document,
-	described by buildJobFile with a single value of type Document,
-	described by amSystem (note "AM system used for this build.") with a single value of type AMSystem,
-	//described by buildSpecificSubsystems (note "equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for the duration of a build.") with values of type BuildSpecificSubsystem,
+	
+	// Maps to ProcessStep.processData
 	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,
  	described by buildInterruptions (note "logs of build interruptions") with values of type BuildInterruption,
-	described by buildDuration (note "Recorded duration of build cycle.") with a single value of type Measurement,
-	described by buildLocation (note "Place of an AM process.") with a single value of type Address,
+	// Not camel case
 	described by buildCooldownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Measurement,
+	// (Bad notes)
+	described by buildJobFile with a single value of type Document,
 	described by buildImages(note "Time from build completion to cooling to 100 degrees C.") with values of type Document,
 	described by buildNote (note "Time from build completion to cooling to 100 degrees C.") with a single value of type string.
 
+	// Maps to ProcessStep.processSpecification
+	described by buildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
+	described by buildParameters (note "Build parameters such as layer thickness, including environment setting") with values of type BuildParameters,
+	described by buildLayout with a single value of type Document,
+	
+	// No direct match -- Should we generalize to process?
+	described by buildType (note "Description of the primary purpose of the Build (end use component, specimens, research, etc.).") with a single value of type string,
+	described by buildSimulation (note "Reference to Simulation records associated with this build.") with values of type BuildSimulation,
+	described by buildSoftware (note "Software used in build.") with values of type Software,
+
+	// Not sure, was commented
+	//described by buildSpecificSubsystems (note "equipment that can be interchanged from AMSystem or InSituMonitoringSystem that would be in use for the duration of a build.") with values of type BuildSpecificSubsystem,
+	
+	
+// Recommend generalizing this to Base or Process
 Part (note "Instances of part designs in the as-built state.") is a class,
 	described by partID (note "Identifier for the built part.") with a single value of type string,
 	described by partName (note "Conventional name for the built part.") with a single value of type string,
 	described by processHistory with a single value of type ProcessHistory,
-	described by partID (note "Identifier for the built part.") with a single value of type string,
-	described by partDesign (note "Design information for the built part.") with a single value of type PartDesign,
+	described by partDesign (note "Design information for the finished part.") with a single value of type PartDesign,
+	TODO
 	described by partProcessParameters (note "Part-specific, reusable process parameters associated with printing this part.") with values of type ProcessParameters,
-	described by partCoordinateOnBuildX (note "The location X of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
-	described by partCoordinateOnBuildY (note "The location Y of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
-	described by partCoordinateOnBuildZ (note "The location Z of the box center of the part, or an accepted reference datum using the build coordinate system defined in ISO/ASTM 52921") with a single value of type Measurement,
-	described by partOrientationOnBuild (note "The orientation defined in ISO 52921.") with a single value of type Orientation.
+
 
 BuildPlatform is a type of MaterialType,
 	described by buildPlatformID (note "Identifier of a build platform.") with a single value of type string,
@@ -105,6 +132,7 @@ BuildParameters is a type of ProcessParameters,
 	described by buildEnvironmentTemperature (note "Build environment/chamber temperature is important to some FDM processes; Bob will provide a definition.") with a single value of type Measurement,
 	described by buildCommandData with a single value of type DatasetMetadata.
 
+// Recommend generalizing to wherever Part should live
 PartDesign (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a class,
 	described by designID (note "An identifier for the part design.") with a single value of type string,
 	described by designDeveloper (note "Reference to personnel who created CAD file. Links to Personnel foreign key.") with a single value of type Person,
