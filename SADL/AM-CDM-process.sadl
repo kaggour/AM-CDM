@@ -4,8 +4,8 @@ import "http://kdl.ge.com/AM-CDM-system".
 
 //From BFO and IOF (only class names)
 Entity is a class.
-Occurent is a Entity.
-Process is a Occurent.
+Occurrent is a Entity.
+Process is a Occurrent.
 ProcessStep is a Process.
 
 // AM CDM "Process History" = IOF/BFO "History"
@@ -17,16 +17,19 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 	// Not captured in IOF/BFO
 	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
 	described by processID (note "Unique identifier for a processStep.") with a single value of type string,
+	described by project (note "the project this process was performed under") with a single value of type Project,
 
 	// AM CDM "processStartTime" and "processEndTime" = IOF/BFO "ProcessBoundary"? I'm not sure on this thought, I thought it would be "TemporalRegion"
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
 
+	// I'm honestly not sure what these are
 	described by targetEnvironment with a single value of type Environment,
 	described by measuredEnvironment with a single value of type Environment,
 
 	// Not explicit in IOF/BFO?
 	described by processStepOrganization (note "The organization which performs the process step.") with a single value of type Organization,
+	described by processAddress (note "Address where process was performed.") with a single value of type Address,
 
 	// AM CDM "agentPersonnenl" = IOF "Agent", but this is complicated by the use of Roles in IOF
 	described by processStepPersonnel with values of type Person,
@@ -45,7 +48,11 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type DatasetMetadata,
 
 	// AM CDM "ProcessSpecification" = IOF/BFO "Plan Specification"
-	described by processSpecification with a single value of type ProcessSpecification.
+	// Matched to AM Build
+	described by processSpecifications note("Prescribed process specification for this process occurrence.") with values of type ProcessSpecification,
+
+	// NEW!
+	described by partOrientations with values of type Orientation.
 
 ProcessSpecification (note "information content entity that has action specifications and objective specifications as parts") is a class, // needed for TIC
 	// AM CDM "ProcessParameters" + "processStandard" + "processProcedure" + "processControlPlan" = IOF/BFO "ActionSpecification" = "information content entity that prescribes what participants shall do in a process"
@@ -55,11 +62,21 @@ ProcessSpecification (note "information content entity that has action specifica
 	described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
 
 	// AM CDM added "processObjective" = IOF/BFO "ObjectiveSpecification"
-	described by processObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document.
+	described by processObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document,
+
+	described by partSpecified (note "The part that was prescribed to be oriented in this way") with values of type ProcessParameters.
 
 ProcessParameters is a class,
 	described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.
 	// Subclasses should extend with process-specific process parameters
+
+// Prescribe vs describe or both??
+Orientation is a class,
+	described by partCoordinateOnBuildX (note "The location X of the box center of the part, or an accepted reference datum using the process coordinate system defined as in ISO/ASTM 52921") with a single value of type Measurement,
+	described by partCoordinateOnBuildY (note "The location Y of the box center of the part, or an accepted reference datum using the process coordinate system defined as in ISO/ASTM 52921") with a single value of type Measurement,
+	described by partCoordinateOnBuildZ (note "The location Z of the box center of the part, or an accepted reference datum using the process coordinate system defined as in ISO/ASTM 52921") with a single value of type Measurement,
+	described by partOrientationOnBuild (note "The orientation defined in ISO 52921.") with a single value of type Orientation,
+	described by partOriented (note "The part that was prescribed to be oriented in this way") with a single value of type Orientation.
 
 // Everything that follows should be fleshed out based on domain standards and domain experts. It is provided as an example here as additional use-context
 PreProcess (note "Pre-processing steps.") is a type of ProcessStep.
