@@ -5,6 +5,7 @@ Document (note "File of any type.") is a class,
 	described by documentFileName (note "File name of the document.") with a single value of type string,
 	described by documentAuthor (note "One or more authors of the document.") with values of type Person,
 	described by documentLocation (note "Physical location of the document.") with a single value of type string,
+	described by documentFormat (note "Defines the file structure, not the file type.") with a single value of type string,
 	described by documentClassificationLevel (note "Classification level of the document.") with a single value of type string,
 	described by documentClassificationIPClass (note "IP class classification of the document.") with a single value of type string,
 	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string.
@@ -59,6 +60,10 @@ Country (note "A country.") is a class,
 	described by countryAlpha3Code (note "Three-digit country code.") with a single value of type string,
 	described by countryCallingCode (note "The calling code for the country.") with a single value of type string.
 
+Environment is a class,
+	described by ambientTemperature with a single value of type Measurement,
+	described by ambientPressure with a single value of type Measurement.
+
 Coordinate (note "A coordinate to position an object in reference to something.") is a class.
 
 CartesianCoordinate (note "A Cartesian coordinate.") is a type of Coordinate,
@@ -82,15 +87,16 @@ Orientation (note "The orientation of an object as defined in ISO/ASTM 52921.") 
 	described by orientationAngleB (note "The orientation angle defined in ISO 52921, in B of the minimal bounding box orientation.") with a single value of type Measurement,
 	described by orientationAngleC (note "The orientation angle defined in ISO 52921, in C of the minimal bounding box orientation.") with a single value of type Measurement.
 
-//UnittedQuantity
+//UnittedQuantity or Quantity
 Measurement (note "... make clear this is an abstract class.") is a class,
 	described by measurementUnit (note "Units associated with the numerical value.") with a single value of type string.
 
 SingleValue is a type of Measurement,
-	described by measurementValue (note "Numerical value.") with a single value of type double,
-	described by measureOfUncertainty (note "") with a single value of type double.
+	described by measurementValue (note "Numerical value.") with a single value of type double.
+	//described by measureOfUncertainty (note "") with a single value of type double.
+	//described by uncertaintyQuantificationMethod (note "Description of measurement of uncertainty method.") with a single value of type string.
 
-StatisticalValue is a type of Measurement,
+StatisticalValue (note "These are example values that one would capture.") is a type of Measurement,
 	described by meanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by medianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by modeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
@@ -115,7 +121,7 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetName (note "Name of the dataset.") with a single value of type string,
 	described by datasetID (note "Unique identifier of the dataset.") with a single value of type string,
 	described by datasetSubject (note "Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).") with values of type string,
-	described by datasetType (note "Media type, formerly known as MIME Type, a two-part identifier for file formats and format contents transmitted on the Internet. The Internet Assigned Numbers Authority (IANA) is the official authority for the standardization and publication of these classifications.") with a single value of type string,
+	described by datasetType (note "Dataset type, i.e., raw, AI-generated, or synthesized data.") with a single value of type string,
 	described by datasetURI (note "URI location where a dataset can be found.") with a single value of type string,
 	described by datasetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12, HDF5, ZIP, and so forth.") with values of type string,
 	described by datasetStructure (note "Detailed text description of the format of the data, e.g., the XML file format, JSON file format, HDf5 format, etc.") with a single value of type string,
@@ -123,7 +129,6 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Person,
 	described by datasetCreationDateTime (note "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].") with a single value of type dateTime,
 	described by datasetSize (note "The size of the dataset.") with a single value of type Measurement,
-	described by datasetType (note "Dataset type, raw data or synthesized data.") with values of type string,
 	described by datasetQuantityType (note "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.") with values of type string,
 	described by datasetKeyTags (note "Keywords and tags describing the data to facilitate search and findability. Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'") with values of type string,
 	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.

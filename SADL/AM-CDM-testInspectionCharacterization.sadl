@@ -34,21 +34,31 @@ TestResult is a class,
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
-Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
+PartSpecimenDesign is a type of Design.
+
+CustomSpecimenDesign is a type of PartSpecimenDesign.
+
+StandardSpecimenDesign is a type of PartSpecimenDesign,
+	described by standardName with a single value of type string,
+	described by specimenType with a single value of type string.
+
+Specimen (note "Information specific to an individual specimen.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
 	described by specimenMass with a single value of type Measurement,
 	described by specimenProcessHistory (note "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.") with a single value of type ProcessHistory,
 	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
 
-PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.") is a type of Specimen,
-	described by specimenParentPart with a single value of type Part,
-	described by specimenCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
+PartSpecimen (note "A specimen that is extracted from a Part or is a full coupon. A part can also be the specimen without additional sectioning or post processing. Not to be confused with a FeedstockSpecimen.") is a type of Specimen,
+	described by partSpecimenParentPart with a single value of type Part,
+	described by partSpecimenDesign (note "The geometry of the specimen.") with a single value of type PartSpecimenDesign,
+	described by partExtractionStep with a single value of type PartExtractionStep.
+
+PartExtractionStep is a type of ProcessStep,
+	described by specimenCoordinateOnPart (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
 	described by specimenOrientationA (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
 	described by specimenOrientationB (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by specimenOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
-	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
+	described by specimenOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement.
 
 FeedstockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
-	described by specimenFeedstockSource with a single value of type Feedstock.
+	described by specimenFeedstockSource with a single value of type MaterialStock.

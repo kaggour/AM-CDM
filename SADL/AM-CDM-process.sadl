@@ -1,6 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-system".
+import "http://kdl.ge.com/AM-CDM-base".
 
 //From BFO and IOF (only class names)
 Entity is a class.
@@ -32,14 +32,14 @@ ProcessStep (note "planned process that consists of a structured set of operatio
 	described by processStepPersonnel with values of type Person,
 
 	// AM CDM "System" could map onto IOF "Agent", "MaintableMaterialItem", "PieceOfEquipment". "ManufacturingProcess" only links to "Agent"
-	described by processMachine with a single value of type System,
+//	described by processMachine with a single value of type System,
 
 	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity'
-	described by materialInput (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type Feedstock,
-	described by consumables (note "Material which is used during the execution of a process, but does not, in a substantial way, become part of material output. Example: Process Gas") with values of type Feedstock,
+//	described by materialInput (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type Feedstock,
+//	described by consumables (note "Material which is used during the execution of a process, but does not, in a substantial way, become part of material output. Example: Process Gas") with values of type Feedstock,
 
 	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity' or 'MaterialArtefact'
-	described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type Feedstock,
+//	described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type Feedstock,
 
 	// Not explicit in IOF/BFO?
 	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type DatasetMetadata,
@@ -75,7 +75,3 @@ PostProcess (note "Note: The scope of post-processes is broad, which could inclu
 HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess.
 
 HeatTreatment (note "Heat treatment process.") is a type of PostProcess.
-
-Environment is a class,
-	described by ambientTemperature with a single value of type Measurement,
-	described by ambientPressure with a single value of type Measurement.
