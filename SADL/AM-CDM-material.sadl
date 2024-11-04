@@ -30,6 +30,11 @@ Feedstock (note "Information about a feedstock used as input to an additive manu
 	described by materialProperties (note "Measured properties of the material.") with values of type MaterialPropertiesType,
 	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock.
 
+ContinuousMaterial is a class,
+	described by feedstockMaterial (note "Material consumed during build.") with a single value of type Feedstock,
+	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Measurement,
+
+
 FeedstockFormType (note "Form of a feedstock.") is a class, must be one of {Powder, Wire, BulkSolid}.
 
 ParentFeedstock (note "Parent feedstock used to generate a new feedstock instance (e.g., through powder blending or mixing).") is a class,
