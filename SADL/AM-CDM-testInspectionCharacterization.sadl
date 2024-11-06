@@ -1,39 +1,23 @@
 uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testInspectionCharacterization version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-build".
+import "http://kdl.ge.com/AM-CDM-Base".
+import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 
-TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of ProcessStep,
-	described by ticID (note "An identifier of the test, inspection or characterization type.") with a single value of type string,
-	described by ticName (note "A short description of the test, inspection, or characterization.") with a single value of type string,
-	described by ticType (note "Type of test/inspection/characterization, such as tensile test, fatigue test, etc.") with a single value of type TICType,
-	described by ticSpecimen with a single value of type Specimen,
-	described by ticLocation (note "The physical location where the test was conducted.") with a single value of type Address,
-	described by ticNotes (note "Itemized descriptions of observations relating to the individual test, inspection, or characterization of an individual specimen.") with values of type string,
-	described by ticSoftware (note "Identifier of any Software that was used during the test, inspection, or characterization.") with a single value of type Software,
-	described by ticDestructiveVsNonDestructive (note "Indication of whether the test, inspection, or characterization irreversibly changed the nature of the specimen.") with a single value of type TestType,
-	described by ticDuration (note "The time that the Test took (Test only).") with a single value of type Measurement,
-	described by ticSpecification (note "The specification to use to run the test, inspection, or characterization. Note that ticSpecification should override processSpecification") with a single value of type TICSpecification,
+TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of ManufacturingProcessStep,
 	described by ticResult with a single value of type TestResult.
 
-TICSpecification (note "A specification with the details necessary to perform a test, specification, or characterization.") is a type of ProcessSpecification,
-	described by ticProcedure (note "The procedure used if it is not from an existing standard.") with a single value of type Document.
+NonDestructiveExamination (note "A process step in which a part in inspected non-destructively") is a TestInspectionCharacterization.
 
-// TODO: Flesh out more common TICTypes
-TICType is a class, must be one of {Tensile, Creep, Fatigue, Thermal}.
+DestructiveTest (note "A process step in which a part in tested destructively") is a TestInspectionCharacterization.
 
-TestType is a class, must be one of {Destructive, NonDestructive}.
-
-// Specific types of test results would inherit from this and include more specific result types.
 TestResult is a class,
-	described by isPedigreed (note "Declares whether or not the result data is pedigreed.") with a single value of type boolean,
-	described by ticEnvironment (note "The measured environment in which the test was performed.") with a single value of type Environment,
-	described by ticNotes (note "Observations recorded during the performance of the test.") with a single value of type string,
 	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
 	described by ticReport with a single value of type Document,
 	described by ticMaterialProperty with values of type MaterialProperties.
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
+// Note: I did not edit these yet
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
