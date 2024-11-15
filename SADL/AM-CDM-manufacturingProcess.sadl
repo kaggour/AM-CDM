@@ -4,7 +4,7 @@ import "http://kdl.ge.com/AM-CDM-process".
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-material".
 
-ManufacturingProcessStep (note "Planned process in which input material is transformed or modified") is a ProcessStep,
+ManufacturingProcessStep (note "Planned process in which input material is transformed or modified") is a PlannedProcessStep,
 	described by name (note 'Human readable name which designates this process step.') with a single value of type string,
 	described by processStepSpecification with a single value of type ManufacturingSpecification,
 	described by processMachine (note "The machine used to transform the input material.") with a single value of type System,

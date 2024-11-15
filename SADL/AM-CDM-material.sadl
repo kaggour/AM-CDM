@@ -6,7 +6,7 @@ PowderLot (note "Unique lot of powder material used in one or more builds.") is 
 	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously.") with a single value of type string,
 	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused. If 0 the powder has never been used, if 1 the powder has been used once, etc.") with a single value of type int.
 
-Feedstock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
+MaterialStock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
 	described by feedstockID (note "Unique identifier for specific material instance.  For example, a unique lot number.") with a single value of type string,
 	described by feedstockName (note "") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,

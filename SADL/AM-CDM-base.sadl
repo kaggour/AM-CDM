@@ -148,8 +148,7 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 	described by projectDistributionControl (note "ITAR-like restrictions.") with a single value of type string,
 	described by projectDataset (note "Datasets generated from the project.") with values of type DatasetMetadata,
 	described by projectReport (note "Reports of the project.") with values of type Document,
-	described by projectDataManagementPlan (note "Data management plan of the project.") with a single value of type Document,
-	described by parts (note "Parts created in this project") with values of type Part.
+	described by projectDataManagementPlan (note "Data management plan of the project.") with a single value of type Document.
 
 SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.") is a type of DatasetMetadata,
 	described by synthesizedDataMethod (note "The method used to synthesize the data.") with values of type string,

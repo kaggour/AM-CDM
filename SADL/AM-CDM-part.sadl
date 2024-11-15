@@ -1,10 +1,14 @@
 uri "http://kdl.ge.com/AM-CDM-part" alias AM-CDM-part version "$Revision:$ Last modified on   $Date:$".
 
+import "http://kdl.ge.com/AM-CDM-base".
+
 Part (note "Instances of part designs in the as-built state.") is a MaterialStock,
 	described by name (note 'Human readable name which designates this part.') with a single value of type string,
 	described by processHistory with a single value of type ProcessHistory,
 	described by partDesignSpecification (note "Design information for the finished part.") with a single value of type DesignSpecification,
-	described by partSpecification (note "Part-specific, reusable process parameters associated with printing this part.") with values of type PartSpecificProcessParameters.
+	described by partSpecification (note "Part-specific, reusable process parameters associated with printing this part.") with values of type PartSpecificProcessParameters,
+	described by project (note "The project that this part is associated with") with values of type Project.
+
 
 DesignSpecification (note "Specification for a part.") is a class,
     described by name (note 'Human readable name which designates this design specification.') with a single value of type string,
