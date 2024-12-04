@@ -3,7 +3,7 @@ uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testI
 import "http://kdl.ge.com/AM-CDM-Base".
 import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 
-TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of ManufacturingProcessStep,
+TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of PlannedProcessStep,
 	described by ticResult with a single value of type TestResult.
 
 NonDestructiveExamination (note "A process step in which a part in inspected non-destructively") is a TestInspectionCharacterization.
@@ -28,9 +28,7 @@ Specimen (note "Information specific to an individual specimen. A specimen refer
 PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.") is a type of Specimen,
 	described by specimenParentPart with a single value of type Part,
 	described by specimenCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
-	described by specimenOrientationA (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by specimenOrientationB (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by specimenOrientationC (note "The orientation defined in ISO 52921, in A, B, C of the minimal bounding box orientation.") with a single value of type Measurement,
+	described by specimenOrientation (note "Orientation of the specimen within the parent part.") with a single value of type Orientation,
 	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
 	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
 

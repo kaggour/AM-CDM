@@ -74,13 +74,12 @@ RotaryCoordinate (note "A rotary coordinate.") is a type of Coordinate,
 InitialOrientation is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
 
 Orientation (note "The orientation of an object as defined in ISO/ASTM 52921.") is a class,
-	described by orthogonalNotationDescription (note "Description of orientation, one of XYZ, XZY, YXZ, YZX, ZXY, ZYX.") with a single value of type string,
-	//described by buildVolumeX with a single value of type Measurement,
-	//described by buildVolumeY with a single value of type Measurement,
-	//described by buildVolumeZ with a single value of type Measurement,
-	described by orientationAngleA (note "The orientation angle defined in ISO 52921, in A of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by orientationAngleB (note "The orientation angle defined in ISO 52921, in B of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by orientationAngleC (note "The orientation angle defined in ISO 52921, in C of the minimal bounding box orientation.") with a single value of type Measurement.
+	described by partLocationX (note "The x-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partLocationY (note "The y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partLocationZ (note "The z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partReorientationA (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationB (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationC (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity.
 
 //UnittedQuantity
 Measurement (note "... make clear this is an abstract class.") is a class,

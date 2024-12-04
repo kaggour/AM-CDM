@@ -53,8 +53,7 @@ BuildParameters is a type of GlobalProcessParameters,
 	described by buildEnvironmentTemperature (note "Build environment/chamber temperature is important to some FDM processes; Bob will provide a definition.") with a single value of type Quantity,
 	described by buildCommandData with a single value of type DatasetMetadata.
 
-AMPartParameter is a type of PartSpecificProcessParameters,
-	described by partOrientation with values of type Orientation.
+AMPartParameter is a type of PartSpecificProcessParameters.
 
 AMProcessData is a ProcessStepData,
 	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,

@@ -4,16 +4,16 @@ import "http://kdl.ge.com/AM-CDM-process".
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-material".
 
-ManufacturingProcessStep (note "Planned process in which input material is transformed or modified") is a PlannedProcessStep,
+ManufacturingProcessStep (note "Planned process in which input material is transformed or modified") is a type of PlannedProcessStep,
 	described by name (note 'Human readable name which designates this process step.') with a single value of type string,
 	described by processStepSpecification with a single value of type ManufacturingSpecification,
 	described by processMachine (note "The machine used to transform the input material.") with a single value of type System,
 	described by controlSoftware (note "Software used to control the process.") with values of type Software,
-	described by consumables (note "Material which is used during the execution of a process, but does not, in a substantial way, become part of material output. Example: Process Gas") with values of type MaterialStock,
-	described by materialInputs (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") with values of type MaterialStock,
+	described by consumables (note "Consumables used during this process step.") with values of type Consumables,
+	described by materialInputs ("Material inputs for this process step") with values of type MaterialInputs,
 	described by processSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
 
-ManufacturingSpecification (note "A specification for a manufacturing process") is a ProcessStepSpecification,
+ManufacturingSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
 	described by globalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step." ) with value of type GlobalProcessParameters,
 	described by partSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed." ) with values of type PartSpecificProcessParameters,
  	described by specifiedEnvironment with a single value of type Environment.
@@ -29,17 +29,9 @@ PartSpecificProcessParameters is a class,
 	described by orientation (note "Specified orientation for the specific part." ) with a single value of type Orientation,
 	described by design (note "design file which prescribes the changes to the part which are specific to this process." ) with a single value of type Design.
 
-Orientation is a class,
-	described by partLocationX (note "The x-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
-	described by partLocationY (note "The y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
-	described by partLocationZ (note "The z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
-	described by partReorientationA (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
-	described by partReorientationB (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
-	described by partReorientationC (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity.
+Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class,
 
-Consumables is a class.
-
-MaterialInputs is a class.
+MaterialInputs (note "Materials that are an input to the process and becomes a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
 
 ProcessSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs.") is a class,
 	described by simulationID (note "UID for specific simulation.") with a single value of type string,
@@ -50,7 +42,7 @@ ProcessSimulation (note "Data used and generated from computer programs using ph
 	described by modelDomain (note "Focal area of model.") with values of type string,
 	described by modelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
 
-ManufacturingCreationProcessStep (note "Manufacturing process in which a new material stock or part is created" ) is a ManufacturingProcessStep,
+ManufacturingCreationProcessStep (note "Manufacturing process in which a new material stock or part is created" ) is a type of ManufacturingProcessStep,
 	described by materialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
 
 MaterialOutputs is a class.
