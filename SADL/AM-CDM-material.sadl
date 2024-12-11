@@ -3,36 +3,39 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 import "http://kdl.ge.com/AM-CDM-base".
 
 PowderLot (note "Unique lot of powder material used in one or more builds.") is a type of Feedstock,
-	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously.") with a single value of type string,
+	described by virginOrUsed (note "If the powder lot is new (virgin) or been used previously. The suggested values are Virgin or Used.") with a single value of type string,
 	described by reuseNumber (note "The number of times the powder lot has been used, 0 if virgin or 1 or more if reused. If 0 the powder has never been used, if 1 the powder has been used once, etc.") with a single value of type int.
 
-MaterialStock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
-	described by feedstockID (note "Unique identifier for specific material instance.  For example, a unique lot number.") with a single value of type string,
-	described by feedstockName (note "") with a single value of type string,
-	described by materialType (note "Generic material this specific instance is an instantiation of.") with a single value of type MaterialType,
-	described by materialGrade (note "Standard grade to which the material product conforms.") with a single value of type string,
+Materialstock (note "Information about a material.") is a class,
+	described by materialstockID (note "Unique identifier for specific material instance.  For example, a unique lot number.") with a single value of type string,
+	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
+	described by materialGrade (note "Standard grade to which the material product conforms, such as 718 or 17-4 PH steel.") with a single value of type string,
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
-	described by feedstockForm (note "Form of a material stock.") with a single value of type FeedstockFormType,
-	described by feedstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
-	described by feedstockLocation (note "Physical location of a material stock.") with a single value of type Address,
-	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light.") with a single value of type Document,
-	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
+	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
+	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
+	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
 	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document,
-	described by productSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
-
+	described by materialstockSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
 	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
-	described by feedstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
-	described by feedstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
+	described by materialstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
+	described by materialstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
 	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
 	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement,
-	described by feedstockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
-	described by feedstockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime,
-	described by materialProperties (note "Measured properties of the material.") with values of type MaterialPropertiesType,
+	described by materialstockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
+	described by materialstockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime,
+	described by materialProperties (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
+	described by Feedstock (note "feedstock") with a single value of type FeedstockType
+// *** Missing: build substrate preparation
+
+FeedstockType (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
+	described by feedstockName (note "A name for operational purposes") with a single value of type string,
+	described by feedstockForm (note "Form of a material stock, and the potential values are defined in FeedstockFormType.") with a single value of type FeedstockFormType,
+	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
 	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock.
 
 ContinuousMaterial is a class,
-	described by feedstockMaterial (note "Material consumed during build.") with a single value of type Feedstock,
-	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Measurement,
+	described by materialstockMaterial (note "Material consumed during build.") with a single value of type Feedstock,
+	described by quantityOfMaterialstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Measurement,
 
 
 FeedstockFormType (note "Form of a feedstock.") is a class, must be one of {Powder, Wire, BulkSolid}.
@@ -47,7 +50,7 @@ OriginatedFeedstockType (note "Feedstock used as a parent to generate a new feed
 	described by parentFeedstockPercent (note "Percent of the new material that is comprised of this parent.") with a single value of type double.
 
 MaterialType (note "Generic/ideal material type.") is a class,
-	described by materialTypeName (note "Name of material, e.g., Inconel 625.") with a single value of type string,
+	described by materialGrade (note "Standard grade to which the material product conforms, such as 718 or 17-4 PH steel.") with a single value of type string,
 	described by materialTypeDescription (note "Description of generic/ideal material.") with a single value of type string,
 	described by materialBaseElement (note "Base element of material from periodic table.") with a single value of type PeriodicElement,
 	described by materialSpecification (note "Ideal chemistry specification of generic material.") with a single value of type MaterialSpecification.
