@@ -4,13 +4,14 @@ import "http://kdl.ge.com/AM-CDM-process".
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-material".
 
-ManufacturingProcessStep (note "Planned process in which input material is transformed or modified") is a type of PlannedProcessStep,
-	described by name (note 'Human readable name which designates this process step.') with a single value of type string,
+ManufacturingProcess (note "Planned process in which input material is transformed or modified") is a type of PlannedProcessStep,
+	described by processStepName (note 'Human readable name which designates this process step.') with a single value of type string,
 	described by processStepSpecification with a single value of type ManufacturingSpecification,
-	described by processMachine (note "The machine used to transform the input material.") with a single value of type System,
-	described by controlSoftware (note "Software used to control the process.") with values of type Software,
+	described by processStepMachine (note "The machine used to transform the input material.") with a single value of type System,
+	described by processStepControlSoftware (note "Software used to control the process.") with values of type Software,
 	described by consumables (note "Consumables used during this process step.") with values of type Consumables,
 	described by materialInputs ("Material inputs for this process step") with values of type MaterialInputs,
+	described by materialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
 	described by processSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
 
 ManufacturingSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
@@ -41,8 +42,5 @@ ProcessSimulation (note "Data used and generated from computer programs using ph
 	described by simulationOutputs (note "Simulation results.") with a single value of type Document,
 	described by modelDomain (note "Focal area of model.") with values of type string,
 	described by modelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
-
-ManufacturingCreationProcessStep (note "Manufacturing process in which a new material stock or part is created" ) is a type of ManufacturingProcessStep,
-	described by materialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
 
 MaterialOutputs is a class.

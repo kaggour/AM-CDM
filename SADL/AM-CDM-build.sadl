@@ -6,35 +6,51 @@ import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 import "http://kdl.ge.com/AM-CDM-material".
 import "http://kdl.ge.com/AM-CDM-system".
 
-Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingCreationProcessStep,
+Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcessStep,
 	described by processMachine (note "AM system used for this build.") with a single value of type AMSystem,
 	described by materialInputs with a single value of type AMMaterialInput,
 	described by materialOutputs with a single value of type AMMaterialOutput,
 	described by processStepSpecification with a single value of type AMProcessSpecification,
 	described by processStepData with a single value of type AMProcessData.
 
-AMMaterialInput is a MaterialInputs,
+AMMaterialInput is type of a MaterialInputs,
 	described by feedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
 	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
 	described by buildPlate with a single value of type BuildPlate.
 
+Part is a class,
+	described by name with a single value of type string.
+
+Button is a class,
+	described by name with a single value of type string.
+
+Part is a class,
+	described by partName with a single value of type string.
+
+Button is a class,
+	described by buttonName with a single value of type string.
+
 // Does this replace the 'Build Product' concept we discussed at NIST
-AMMaterialOutput is a MaterialOutputs,
+AMMaterialOutput is a type of MaterialOutputs,
+	described by reclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
+	described by buildProduct with a single value of type BuildProduct.
+
+BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
 	described by buildPlate with a single value of type BuildPlate,
 	described by parts with values of type Part.
 
-BuildPlate is a type of Part,
-	described by buildPlatformID (note "Identifier of a build platform.") with a single value of type string,
-	described by buildPlatformMaterial (note "Material type of a build platform.") with a single value of type MaterialType,
-	described by buildPlatformMaterialGrade (note "Standard grade to which the build platform material product conforms.") with a single value of type string,
-	described by buildPlatformHeight (note "Height of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlatformWidth (note "Width of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlatformDepth (note "Depth of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlatformProcessingMethods (note "Post processing methods of a build platform, e.g., hot rolled and annealed.") with a single value of type string,
-	described by buildPlatformSurfaceFinish (note "Surface roughness description of the build plate.") with a single value of type string,
-	described by buildPlatformManufacturer (note "Build platform manufacturer, links to Organization.") with a single value of type Organization,
-	described by buildPlatformCertificationDate (note "The purchase/certification date of the build platform.") with a single value of type dateTime,
-	described by buildPlatformCertification (note "Link to the build plate certificate.") with a single value of type Document.
+BuildPlate (note "Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process") is a type of Part,
+	described by buildPlateID (note "Identifier of a build platform.") with a single value of type string,
+	described by buildPlateMaterial (note "Material type of a build platform.") with a single value of type MaterialType,
+	described by buildPlateMaterialGrade (note "Standard grade to which the build platform material product conforms.") with a single value of type string,
+	described by buildPlateHeight (note "Height of the build platform/plate.") with a single value of type Quantity,
+	described by buildPlateWidth (note "Width of the build platform/plate.") with a single value of type Quantity,
+	described by buildPlateDepth (note "Depth of the build platform/plate.") with a single value of type Quantity,
+	described by buildPlateProcessingMethods (note "Post processing methods of a build platform, e.g., hot rolled and annealed.") with a single value of type string,
+	described by buildPlateSurfaceFinish (note "Surface roughness description of the build plate.") with a single value of type string,
+	described by buildPlateManufacturer (note "Build platform manufacturer, links to Organization.") with a single value of type Organization,
+	described by buildPlateCertificationDate (note "The purchase/certification date of the build platform.") with a single value of type dateTime,
+	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
 AMProcessSpecification is a ManufacturingSpecification,
 	described by globalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,

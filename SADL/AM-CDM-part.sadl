@@ -1,6 +1,7 @@
 uri "http://kdl.ge.com/AM-CDM-part" alias AM-CDM-part version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-base".
+import "http://kdl.ge.com/AM-CDM-build".
 
 Part (note "Instances of part designs in the as-built state.") is a MaterialStock,
 	described by name (note 'Human readable name which designates this part.') with a single value of type string,
