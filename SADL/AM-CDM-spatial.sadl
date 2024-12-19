@@ -1,0 +1,34 @@
+Vector3 is a class,
+  Vector3forward of type float,
+  Vector3right of type float,
+  Vector3up of type float.
+
+Vector2 is a class,
+  Vector3Forward of type float,
+  Vector3Right of type float.
+
+CoordinateSystem (note "forward, right, and up should all be perpendicular vectors") is a class,
+  described by CoordinateSystemReference (note "coordinate system that this position is relative to using the XY plane"),
+  described by CoordinateSystemForward (note "forward direction of the coordinate system") with a single value of type Vector3,
+  described by CoordinateSystemRight (note "right direction of the coordinate system") with a single value of type Vector3,
+  described by CoordinateSystemUp (note "up direction of the coordinate system") with a single value of type Vector3,
+  described by CoordinateSystemOriginForward (note "forward direction of the coordinate system relative to reference") with a single value of type float,
+  described by CoordinateSystemOriginRight (note "right direction of the coordinate system relative to reference") with a single value of type float,
+  described by CoordinateSystemOriginUp (note "up direction of the coordinate system relative to reference") with a single value of type float.
+
+Position2D (note "position in a 2D space") is a class,
+  described by Position2DReference (note "coordinate system that this position is relative to using the XY plane"),
+  described by Position2DForward (note "forward direction of the coordinate system") with a single value of type float,
+  described by Position2DRight (note "right direction of the coordinate system") with a single value of type float.
+
+Position3D (note "position in a 3D space") is a class,
+  described by Position3DReference (note "coordinate system that this position is relative to using the XY plane"),
+  described by Position3DForward (note "forward direction of the coordinate system") with a single value of type float,
+  described by Position3DRight (note "right direction of the coordinate system") with a single value of type float.
+  described by Position3DUp (note "up direction of the coordinate system") with a single value of type float.
+
+Orientation (note "direction of an object in 3D space. The right hand rule should be used to determine polarity") is a class,
+  described by OrientationReference (note "coordinate system used for axis rotations"),
+  described by OrientationForwardRotation (note "rotation around the forward axis expressed as radians") with a single value of type float,
+  described by OrientationRightRotation (note "rotation around the right axis expressed as radians") with a single value of type float,
+  described by OrientationUpRotation (note "rotation around the up axis expressed as radians") with a single value of type float.
