@@ -7,26 +7,26 @@ Part (note "Instances of part designs in the as-built state.") is a MaterialStoc
 	described by name (note 'Human readable name which designates this part.') with a single value of type string,
 	described by processHistory with a single value of type ProcessHistory,
 	described by partDesignSpecification (note "Design information for the finished part.") with a single value of type DesignSpecification,
-	described by partSpecification (note "Part-specific, reusable process parameters associated with printing this part.") with values of type PartSpecificProcessParameters,
+	described by processSpecificPartDesign (note "A design file which specifies the part at the completion of a manufacturing process step. This is not the specification for completed part.") with values of type PartSpecificProcessParameters,
 	described by project (note "The project that this part is associated with") with values of type Project.
 
 
 DesignSpecification (note "Specification for a part.") is a class,
     described by name (note 'Human readable name which designates this design specification.') with a single value of type string,
 	described by author (note "Author of design specification.") with a single value of type Person,
-    described by partCriticality (note "Criticality designzation of part or parts to be developed in this project.") with a single value of type string,
+    described by partCriticality (note "Criticality designation of part or parts to be developed in this project.") with a single value of type string,
 	described by partRequirements (note "Document describing requirements or goals for components/specimens to be manufactured.") with a single value of type Document,
-    described by design (note "Design files which specify this component") with values of type PartDesign.
+    described by design (note "Design files which specify this component") with values of type Design.
 	
 // There might be further harmonization with Document
 Design (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a Document,
     described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key.") with a single value of type Software,
 	described by revNumber (note "Revision number of the part design.") with a single value of type string,
 	described by originatingOrganization (note "Developer of the source CAD file. Links to Organization foreign key.") with values of type Organization,
-	described by derivedFromPartDesign (note "Part Design of original part this object is derived from (if applicable).") with a single value of type PartDesign.
+	described by derivedFromPartDesign (note "Part Design of original part this object is derived from (if applicable).") with a single value of type Design.
 	
 ReverseEngineeredModel (note "Point cloud scanned AM part model brought back in to the CAD application for feedback and analysis.") is a Design.
 
-PrimarySourceModel (note "Primary Source Model") is a Design.
+PrimarySourceModel (note "The original part design not accounting for design for additive manufacturing.") is a Design.
 
 AugmentedSourceModel (note "") is a Design.

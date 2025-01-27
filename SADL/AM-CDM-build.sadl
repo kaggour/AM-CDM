@@ -18,18 +18,6 @@ AMMaterialInput is type of a MaterialInputs,
 	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
 	described by buildPlate with a single value of type BuildPlate.
 
-Part is a class,
-	described by name with a single value of type string.
-
-Button is a class,
-	described by name with a single value of type string.
-
-Part is a class,
-	described by partName with a single value of type string.
-
-Button is a class,
-	described by buttonName with a single value of type string.
-
 // Does this replace the 'Build Product' concept we discussed at NIST
 AMMaterialOutput is a type of MaterialOutputs,
 	described by reclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
@@ -66,7 +54,7 @@ BuildParameters is a type of GlobalProcessParameters,
 	described by buildPlatformPreheatStrategy (note "Objective for the heating process.") with a single value of type string,
 	described by buildPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature.") with a single value of type Document,
 	described by layerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
-	described by buildEnvironmentTemperature (note "Build environment/chamber temperature is important to some FDM processes; Bob will provide a definition.") with a single value of type Quantity,
+	described by buildEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity,
 	described by buildCommandData with a single value of type DatasetMetadata.
 
 AMPartParameter is a type of PartSpecificProcessParameters.
