@@ -6,17 +6,10 @@ Materialstock (note "Information about a material covering feedstock, reusables,
 	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string, 
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
 	described by Feedstock (note "feedstock") with a single value of type FeedstockType
-	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
-	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
-	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
-	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document,
 	described by materialstockSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
+	described by materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") with a single value of type Document,
 	described by numberReused (note "The number of times the material, such as build substrate or powder lot, has been used. 0 if first time using, or 1 or more if reused.") with a single value of type int.
-	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
-	described by materialstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
-	described by materialstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
-	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
-	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement,
+	described by materialStorage (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
 	described by materialstockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
 	described by materialstockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime,
 	described by materialProperties (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
@@ -28,6 +21,20 @@ FeedstockType (note "Information about a feedstock used as input to an additive 
 	described by feedstockForm (note "Form of a material stock, and the potential values are defined in FeedstockFormType.") with a single value of type FeedstockFormType,
 	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
 	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock.
+
+materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") is a class,
+	described by materialstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
+	described by materialstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
+	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
+	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
+	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement,
+
+materialStorage (note "details about how to store the material") is a class,
+	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
+	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
+	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
+	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document,
+
 
 FeedstockFormType (note "Form of a feedstock.") is a class, must be one of {Powder, Wire, BulkSolid}.
 
