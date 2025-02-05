@@ -2,10 +2,9 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 
 import "http://kdl.ge.com/AM-CDM-base".
 	
-Materialstock (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
+MaterialStockType (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
 	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string, 
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
-	described by Feedstock (note "feedstock") with a single value of type FeedstockType
 	described by materialstockSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
 	described by materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") with a single value of type Document,
 	described by numberReused (note "The number of times the material, such as build substrate or powder lot, has been used. 0 if first time using, or 1 or more if reused.") with a single value of type int.
@@ -14,13 +13,14 @@ Materialstock (note "Information about a material covering feedstock, reusables,
 	described by materialstockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime,
 	described by materialProperties (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
 
-FeedstockType (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
+Feedstock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
 	described by feedstockName (note "A name for operational purposes") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
 	described by materialGrade (note "Standard grade to which the material product conforms, such as 718 or 17-4 PH steel.") with a single value of type string,
 	described by feedstockForm (note "Form of a material stock, and the potential values are defined in FeedstockFormType.") with a single value of type FeedstockFormType,
 	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
 	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock.
+	described by materialStock (note "Material stock information") with a single value of type MaterialStockType
 
 materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") is a class,
 	described by materialstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
