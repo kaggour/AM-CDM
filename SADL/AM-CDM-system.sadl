@@ -4,6 +4,7 @@ import "http://kdl.ge.com/AM-CDM-material".
 
 System (note "A manufacturing system that may be an aggregate of subsystems.") is a class,
 	described by systemID (note "Unique identifier of equipment.") with a single value of type string,
+	described by systemSerialNumber (note "The serial number of the equipment defined by the vendor.") with a single value of type string,
 	described by systemName (note "The name of the equipment.") with a single value of type string,
 	described by systemPurchaseDate (note "The purchase/certification date of the installed equipment.") with a single value of type dateTime,
 	described by systemOwner (note "The owner/organization of the equipment.") with a single value of type Organization,
@@ -16,7 +17,6 @@ System (note "A manufacturing system that may be an aggregate of subsystems.") i
 SystemSpecification is a class,
 	described by systemModel (note "Model name of a machine defined by the machine manufacturer.") with a single value of type string,
 	described by systemManufacturer (note "The manufacturer of the equipment.") with a single value of type Organization,
-	described by systemSerialNumber (note "The serial number of the equipment defined by the vendor.") with a single value of type string,
 	described by systemSpecElectricVoltage (note "Voltage for an AM Machine's electrical connection.") with a single value of type Measurement,
 	described by systemSpecPowerIntensity (note "Current intensity required to power an AM Machine.") with a single value of type Measurement,
 	described by systemSpecPowerFrequency (note "Power frequency for the electrical connection of an AM Machine.") with a single value of type Measurement,
