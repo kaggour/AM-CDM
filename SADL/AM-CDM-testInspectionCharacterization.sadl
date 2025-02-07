@@ -11,9 +11,9 @@ NonDestructiveExamination (note "A process step in which a part in inspected non
 DestructiveTest (note "A process step in which a part in tested destructively") is a TestInspectionCharacterization.
 
 TestResult is a class,
-	described by ticPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
-	described by ticReport with a single value of type Document,
-	described by ticMaterialProperty with values of type MaterialProperties.
+	described by ticResultPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
+	described by ticResultReport with a single value of type Document,
+	described by ticResultMaterialProperty with values of type MaterialProperties.
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
@@ -26,11 +26,11 @@ Specimen (note "Information specific to an individual specimen. A specimen refer
 	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
 
 PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.") is a type of Specimen,
-	described by specimenParentPart with a single value of type Part,
-	described by specimenCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
-	described by specimenOrientation (note "Orientation of the specimen within the parent part.") with a single value of type Orientation,
+	described by PartSpecimenParentPart with a single value of type Part,
+	described by PartSpecimenCoordinateOnBuild (note "The location of the box center of the part, or an accepted reference datum.") with a single value of type CartesianCoordinate,
+	described by PartSpecimenOrientation (note "Orientation of the specimen within the parent part.") with a single value of type Orientation,
 	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
-	described by specimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
+	described by PartSpecimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
 
 FeedstockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
-	described by specimenFeedstockSource with a single value of type Feedstock.
+	described by feedstockSpecimenSource with a single value of type Feedstock.

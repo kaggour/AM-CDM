@@ -6,26 +6,25 @@ import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 import "http://kdl.ge.com/AM-CDM-material".
 import "http://kdl.ge.com/AM-CDM-system".
 
-Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcessStep,
-	described by processMachine (note "AM system used for this build.") with a single value of type AMSystem,
-	described by materialInputs with a single value of type AMMaterialInput,
-	described by materialOutputs with a single value of type AMMaterialOutput,
-	described by processStepSpecification with a single value of type AMProcessSpecification,
-	described by processStepData with a single value of type AMProcessData.
+Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess,
+	described by manProcessMachine (note "AM system used for this build.") with a single value of type AMSystem,
+	described by manProcessMaterialInputs with a single value of type AMMaterialInput,
+	described by manProcessMaterialOutputs with a single value of type AMMaterialOutput,
+	described by processSpecification with a single value of type AMProcessSpecification,
+	described by processData with a single value of type AMProcessData.
 
 AMMaterialInput is type of a MaterialInputs,
-	described by feedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
-	described by quantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
-	described by buildPlate with a single value of type BuildPlate.
+	described by amMatInputFeedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
+	described by amMatInputQuantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
+	described by amMatInputBuildPlate with a single value of type BuildPlate.
 
-// Does this replace the 'Build Product' concept we discussed at NIST
 AMMaterialOutput is a type of MaterialOutputs,
-	described by reclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
-	described by buildProduct with a single value of type BuildProduct.
+	described by amMatOutputReclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
+	described by amMatOutputBuildProduct with a single value of type BuildProduct.
 
 BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
-	described by buildPlate with a single value of type BuildPlate,
-	described by parts with values of type Part.
+	described by buildProdBuildPlate with a single value of type BuildPlate,
+	described by buildProdParts with values of type Part.
 
 BuildPlate (note "Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process") is a type of Part,
 	described by buildPlateID (note "Identifier of a build platform.") with a single value of type string,
@@ -41,41 +40,41 @@ BuildPlate (note "Material input which provides a surface upon which the buildin
 	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
 AMProcessSpecification is a ManufacturingSpecification,
-	described by globalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
-	described by partSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with value of type AMPartParameter,
-	described by buildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
-	described by buildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
-	described by buildJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
-	described by buildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the 3D printer during the printing process, for example, xy2-100 commands and G-code etc") with a single value of type DatasetMetadata.
+	described by manSpecGlobalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
+	described by manSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with value of type AMPartParameter,
+	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
+	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
+	described by amSpecJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
+	described by amSpecBuildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the 3D printer during the printing process, for example, xy2-100 commands and G-code etc") with a single value of type DatasetMetadata.
 
 BuildParameters is a type of GlobalProcessParameters,
-	described by buildPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Quantity,
-	described by buildPlatformLevelingMethod (note "Description of the method of platform leveling procedures and tools.") with a single value of type string, 
-	described by buildPlatformZStartPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.") with a single value of type Quantity,
-	described by buildPlatformPreheatStrategy (note "Objective for the heating process.") with a single value of type string,
-	described by buildPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature.") with a single value of type Document,
-	described by layerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
-	described by buildEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity,
+	described by buildParamPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Quantity,
+	described by buildParamPlatformLevelingMethod (note "Description of the method of platform leveling procedures and tools.") with a single value of type string, 
+	described by buildParamPlatformZStartPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.") with a single value of type Quantity,
+	described by buildParamPlatformPreheatStrategy (note "Objective for the heating process.") with a single value of type string,
+	described by buildParamPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature.") with a single value of type Document,
+	described by buildParamLayerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
+	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity,
 
 AMPartParameter is a type of PartSpecificProcessParameters.
 
 AMProcessData is a ProcessStepData,
-	described by amInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,
- 	described by buildInterruptions (note "logs of build interruptions") with values of type BuildInterruption,
-	described by buildCoolDownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Quantity,
-	described by buildImages (note "Images collected during the build process, usually capturing the build surface") with values of type Document.
+	described by amDataInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,
+ 	described by amDataBuildInterruptions (note "logs of build interruptions") with values of type BuildInterruption,
+	described by amDataBuildCoolDownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Quantity,
+	described by amDataBuildImages (note "Images collected during the build process, usually capturing the build surface") with values of type Document.
 
 AMInSituData (note "Data generated by in-situ monitoring systems during an AM Build cycle.") is a type of DatasetMetadata,
-	described by characteristicsType (note "characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
-	described by measurementType (note "Technique used for the measurement, e.g., co-axial optical camera.") with values of type string,
-	described by measurementLocation (note "The location of what is being monitored, e.g., build surface, coaxial melt pool area.") with values of type string,
-	described by inSituDevice (note "Device used for the in-situ measurement.") with a single value of type InSituMonitoringSystem,
-	described by inSituDeviceSetting (note "in-situ device setting for the measurement, including acquisition settings, for example, camera model, sampling rate, protocol, etc.") with values of type Quantity,
-	described by measurementDuration (note "Time from the start of data collection to the completion") with a single value of type Quantity.
+	described by amInSituCharacteristicsType (note "characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
+	described by amInSituMeasurementType (note "Technique used for the measurement, e.g., co-axial optical camera.") with values of type string,
+	described by amInSituMeasurementLocation (note "The location of what is being monitored, e.g., build surface, coaxial melt pool area.") with values of type string,
+	described by amInSituDevice (note "Device used for the in-situ measurement.") with a single value of type InSituMonitoringSystem,
+	described by amInSituDeviceSetting (note "in-situ device setting for the measurement, including acquisition settings, for example, camera model, sampling rate, protocol, etc.") with values of type Quantity,
+	described by amInSituMeasurementDuration (note "Time from the start of data collection to the completion") with a single value of type Quantity.
 
 BuildInterruption is a class,
-	described by startTime (note "Start time is the time when interruption reported by machine or operator.") with a single value of type dateTime,
-	described by endTime (note "End time is the time when the process is resumed or aborted") with a single value of type dateTime,
-	described by layerNumber (note "Unique identifier") with a single value of type integer,
-	described by interruptionReason (note "Reason of interruption") with a single value of type string,
-	described by interruptionHandling (note "How the interruption is handled") with a single value of type string.
+	described by buildInterruptStartTime (note "Start time is the time when interruption reported by machine or operator.") with a single value of type dateTime,
+	described by buildInterruptEndTime (note "End time is the time when the process is resumed or aborted") with a single value of type dateTime,
+	described by buildInterruptLayerNumber (note "Unique identifier") with a single value of type integer,
+	described by buildInterruptReason (note "Reason of interruption") with a single value of type string,
+	described by buildInterruptHandling (note "How the interruption is handled") with a single value of type string.
