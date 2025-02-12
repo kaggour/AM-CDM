@@ -7,9 +7,9 @@ import "http://kdl.ge.com/AM-CDM-material".
 import "http://kdl.ge.com/AM-CDM-system".
 
 Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess,
-	described by manProcessMachine (note "AM system used for this build.") with a single value of type AMSystem,
-	described by manProcessMaterialInputs with a single value of type AMMaterialInput,
-	described by manProcessMaterialOutputs with a single value of type AMMaterialOutput,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type AMSystem,
+	described by mfgProcessMaterialInputs with a single value of type AMMaterialInput,
+	described by mfgProcessMaterialOutputs with a single value of type AMMaterialOutput,
 	described by processSpecification with a single value of type AMProcessSpecification,
 	described by processData with a single value of type AMProcessData.
 
@@ -40,8 +40,8 @@ BuildPlate (note "Material input which provides a surface upon which the buildin
 	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
 AMProcessSpecification is a ManufacturingSpecification,
-	described by manSpecGlobalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
-	described by manSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with value of type AMPartParameter,
+	described by mfgSpecGlobalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
+	described by mfgSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with value of type AMPartParameter,
 	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
 	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
 	described by amSpecJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,

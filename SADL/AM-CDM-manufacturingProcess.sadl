@@ -6,17 +6,17 @@ import "http://kdl.ge.com/AM-CDM-material".
 
 ManufacturingProcess (note "Planned process in which input material is transformed or modified") is a type of PlannedProcessStep,
 	described by processSpecification with a single value of type ManufacturingSpecification,
-	described by manProcessMachine (note "The machine used to transform the input material.") with a single value of type System,
-	described by manProcessControlSoftware (note "Software used to control the process.") with values of type Software,
-	described by manProcessConsumables (note "Consumables used during this process step.") with values of type Consumables,
-	described by manProcessMaterialInputs ("Material inputs for this process step") with values of type MaterialInputs,
-	described by manProcessMaterialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
-	described by manProcessSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
+	described by mfgProcessMachine (note "The machine used to transform the input material.") with a single value of type System,
+	described by mfgProcessControlSoftware (note "Software used to control the process.") with values of type Software,
+	described by mfgProcessConsumables (note "Consumables used during this process step.") with values of type Consumables,
+	described by mfgProcessMaterialInputs ("Material inputs for this process step") with values of type MaterialInputs,
+	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
+	described by mfgProcessSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
 
 ManufacturingSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
-	described by manSpecGlobalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step." ) with value of type GlobalProcessParameters,
-	described by manSpecPartSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed." ) with values of type PartSpecificProcessParameters,
- 	described by manSpecEnvironment with a single value of type Environment.
+	described by mfgSpecGlobalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step." ) with value of type GlobalProcessParameters,
+	described by mfgSpecPartSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed." ) with values of type PartSpecificProcessParameters,
+ 	described by mfgSpecEnvironment with a single value of type Environment.
 
 Environment is a class,
 	described by environmentAmbientTemperature with a single value of type SpecifiedQuantity,
