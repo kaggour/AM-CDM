@@ -1,10 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-base".
 import "http://kdl.ge.com/AM-CDM-part".
-import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
-import "http://kdl.ge.com/AM-CDM-material".
-import "http://kdl.ge.com/AM-CDM-system".
 
 Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess,
 	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type AMSystem,
@@ -13,13 +9,13 @@ Build (note "A Build is an action to make one or more objects in a single action
 	described by processSpecification with a single value of type AMProcessSpecification,
 	described by processData with a single value of type AMProcessData.
 
-AMMaterialInput is type of a MaterialInputs,
-	described by amMatInputFeedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
+AMMaterialInput is a type of MaterialInputs,
+	described by amMatInputFeedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStockType,
 	described by amMatInputQuantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
 	described by amMatInputBuildPlate with a single value of type BuildPlate.
 
 AMMaterialOutput is a type of MaterialOutputs,
-	described by amMatOutputReclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
+	described by amMatOutputReclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStockType,
 	described by amMatOutputBuildProduct with a single value of type BuildProduct.
 
 BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
@@ -39,9 +35,9 @@ BuildPlate (note "Material input which provides a surface upon which the buildin
 	described by buildPlateCertificationDate (note "The purchase/certification date of the build platform.") with a single value of type dateTime,
 	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
-AMProcessSpecification is a ManufacturingSpecification,
+AMProcessSpecification is a type of ManufacturingSpecification,
 	described by mfgSpecGlobalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
-	described by mfgSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with value of type AMPartParameter,
+	described by mfgSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with a single value of type AMPartParameter,
 	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
 	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
 	described by amSpecJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
@@ -49,16 +45,16 @@ AMProcessSpecification is a ManufacturingSpecification,
 
 BuildParameters is a type of GlobalProcessParameters,
 	described by buildParamPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Quantity,
-	described by buildParamPlatformLevelingMethod (note "Description of the method of platform leveling procedures and tools.") with a single value of type string, 
+	described by buildParamPlatformLevelingMethod (note "Description of the method of platform leveling procedures and tools.") with a single value of type string,
 	described by buildParamPlatformZStartPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.") with a single value of type Quantity,
 	described by buildParamPlatformPreheatStrategy (note "Objective for the heating process.") with a single value of type string,
 	described by buildParamPlatformPreheatProfile (note "Heating profile setting for reaching pre-heat temperature.") with a single value of type Document,
 	described by buildParamLayerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
-	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity,
+	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity.
 
 AMPartParameter is a type of PartSpecificProcessParameters.
 
-AMProcessData is a ProcessStepData,
+AMProcessData is a type of ProcessStepData,
 	described by amDataInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,
  	described by amDataBuildInterruptions (note "logs of build interruptions") with values of type BuildInterruption,
 	described by amDataBuildCoolDownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Quantity,
@@ -68,7 +64,7 @@ AMInSituData (note "Data generated by in-situ monitoring systems during an AM Bu
 	described by amInSituCharacteristicsType (note "characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
 	described by amInSituMeasurementType (note "Technique used for the measurement, e.g., co-axial optical camera.") with values of type string,
 	described by amInSituMeasurementLocation (note "The location of what is being monitored, e.g., build surface, coaxial melt pool area.") with values of type string,
-	described by amInSituDevice (note "Device used for the in-situ measurement.") with a single value of type InSituMonitoringSystem,
+	//described by amInSituDevice (note "Device used for the in-situ measurement.") with a single value of type InSituMonitoringSystem,
 	described by amInSituDeviceSetting (note "in-situ device setting for the measurement, including acquisition settings, for example, camera model, sampling rate, protocol, etc.") with values of type Quantity,
 	described by amInSituMeasurementDuration (note "Time from the start of data collection to the completion") with a single value of type Quantity.
 

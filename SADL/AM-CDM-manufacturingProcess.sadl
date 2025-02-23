@@ -1,36 +1,36 @@
 uri "http://kdl.ge.com/AM-CDM-manufacturingProcess" alias AM-CDM-manufacturingProcess version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-process".
 import "http://kdl.ge.com/AM-CDM-system".
-import "http://kdl.ge.com/AM-CDM-material".
 
-ManufacturingProcess (note "Planned process in which input material is transformed or modified") is a type of PlannedProcessStep,
+ManufacturingProcess (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
 	described by processSpecification with a single value of type ManufacturingSpecification,
 	described by mfgProcessMachine (note "The machine used to transform the input material.") with a single value of type System,
 	described by mfgProcessControlSoftware (note "Software used to control the process.") with values of type Software,
 	described by mfgProcessConsumables (note "Consumables used during this process step.") with values of type Consumables,
-	described by mfgProcessMaterialInputs ("Material inputs for this process step") with values of type MaterialInputs,
-	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process" ) with values of type MaterialOutputs.
+	described by mfgProcessMaterialInputs (note "Material inputs for this process step") with values of type MaterialInputs,
+	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process") with values of type MaterialOutputs,
 	described by mfgProcessSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
 
 ManufacturingSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
-	described by mfgSpecGlobalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step." ) with value of type GlobalProcessParameters,
-	described by mfgSpecPartSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed." ) with values of type PartSpecificProcessParameters,
+	described by mfgSpecGlobalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step.") with values of type GlobalProcessParameters,
+	described by mfgSpecPartSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed.") with values of type PartSpecificProcessParameters,
  	described by mfgSpecEnvironment with a single value of type Environment.
-
-Environment is a class,
-	described by environmentAmbientTemperature with a single value of type SpecifiedQuantity,
-	described by environmentAmbientPressure with a single value of type SpecifiedQuantity.
 
 GlobalProcessParameters is a class.
 
 PartSpecificProcessParameters is a class,
-	described by partSpecOrientation (note "Specified orientation for the specific part." ) with a single value of type Orientation,
-	described by partSpecDesign (note "design file which prescribes the changes to the part which are specific to this process." ) with a single value of type Design.
+	described by partSpecOrientation (note "Specified orientation for the specific part.") with a single value of type Orientation,
+	described by partSpecDesign (note "design file which prescribes the changes to the part which are specific to this process.") with a single value of type Design.
 
-Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class,
+Design (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a type of Document,
+    described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key.") with a single value of type Software,
+	described by designRevNumber (note "Revision number of the part design.") with a single value of type string,
+	described by designOriginatingOrganization (note "Developer of the source CAD file. Links to Organization foreign key.") with values of type Organization,
+	described by designDerivedFromPartDesign (note "Part Design of original part this object is derived from (if applicable).") with a single value of type Design.
 
-MaterialInputs (note "Materials that are an input to the process and becomes a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
+Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class.
+
+MaterialInputs (note "Materials that are an input to the process and become a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
 
 ProcessSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs.") is a class,
 	described by simulationID (note "UID for specific simulation.") with a single value of type string,

@@ -1,7 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-base".
-import "http://kdl.ge.com/AM-CDM-system".
 
 ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity") is a class,
 	described by historyProcessStep (note "Sequence of events performed.") with values of type PlannedProcessStep.
@@ -14,14 +13,14 @@ PlannedProcessStep (note "a process that is planned") is a class,
 	described by processAddress (note "Address where process was performed.") with a single value of type Address,
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
-	described by processSpecification note("Prescribed process specification for this process occurrence.") with a single value of type ProcessSpecification,
-	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type ProcessStepData,
+	described by processStepSpecification (note "Prescribed process specification for this process occurrence.") with a single value of type ProcessStepSpecification,
+	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type ProcessStepData.
 
-ProcessStepSpecification (note "A prescription of how a planned process step should be performed") is a class, 
+ProcessStepSpecification (note "A prescription of how a planned process step should be performed") is a class,
 	described by specStandard (note "Standards which process should comply with, ex. AMS2774.") with values of type Document,
 	described by specProcedure (note "Procedure which should be followed when the process is run") with values of type Document,
 	described by specControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
-	described by specControlPlanObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document,
+	described by specControlPlanObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document.
 
-ProcessStepData is a Class,
+ProcessStepData is a class,
 	described by dataOperatorNotes (note "Observations recorded by the personnel involved in the process step.") with a single value of type string.

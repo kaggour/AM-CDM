@@ -61,20 +61,20 @@ Country (note "A country.") is a class,
 	described by countryCallingCode (note "The calling code for the country.") with a single value of type string.
 
 Environment is a class,
-	described by ambientTemperature with a single value of type Measurement,
-	described by ambientPressure with a single value of type Measurement.
+	described by environmentAmbientTemperature with a single value of type Quantity,
+	described by environmentAmbientPressure with a single value of type Quantity.
 
 Coordinate (note "A coordinate to position an object in reference to something.") is a class.
 
 CartesianCoordinate (note "A Cartesian coordinate.") is a type of Coordinate,
-	described by xCoordinate (note "The position on the x-axis in a Cartesian coordinate system.") with a single value of type Measurement,
-	described by yCoordinate (note "The position on the y-axis in a Cartesian coordinate system.") with a single value of type Measurement,
-	described by zCoordinate (note "The position on the z-axis in a Cartesian coordinate system.") with a single value of type Measurement.
+	described by xCoordinate (note "The position on the x-axis in a Cartesian coordinate system.") with a single value of type Quantity,
+	described by yCoordinate (note "The position on the y-axis in a Cartesian coordinate system.") with a single value of type Quantity,
+	described by zCoordinate (note "The position on the z-axis in a Cartesian coordinate system.") with a single value of type Quantity.
 
 RotaryCoordinate (note "A rotary coordinate.") is a type of Coordinate,
-	described by aAngle (note "The rotation of the A angle in a rotary coordinate system.") with a single value of type Measurement,
-	described by bAngle (note "The rotation of the B angle in a rotary coordinate system.") with a single value of type Measurement,
-	described by cAngle (note "The rotation of the C angle in a rotary coordinate system.") with a single value of type Measurement.
+	described by aAngle (note "The rotation of the A angle in a rotary coordinate system.") with a single value of type Quantity,
+	described by bAngle (note "The rotation of the B angle in a rotary coordinate system.") with a single value of type Quantity,
+	described by cAngle (note "The rotation of the C angle in a rotary coordinate system.") with a single value of type Quantity.
 
 InitialOrientation is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
 
@@ -86,15 +86,14 @@ Orientation (note "The orientation of an object as defined in ISO/ASTM 52921.") 
 	described by partReorientationB (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
 	described by partReorientationC (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity.
 
-//UnittedQuantity or Quantity
-Measurement (note "... make clear this is an abstract class.") is a class,
-	described by measurementUnit (note "Units associated with the numerical value.") with a single value of type string.
+Quantity (note "Abstract class representing a numerical quantity with a unit.  This class should not be used directly, rather one should use either the SingleValue or StatisticalValue classes.") is a class,
+	described by quantityUnit (note "Units associated with the numerical value.") with a single value of type string.
 
-SingleValue is a type of Measurement,
+SingleValue (note "A single quantity value with a value, a single measure of uncertainty, and a unit.") is a type of Quantity,
 	described by valueValue (note "Numerical value.") with a single value of type double,
 	described by valueUncertaintyMeasure (note "") with a single value of type double.
 
-StatisticalValue is a type of Measurement,
+StatisticalValue (note "A statistical quantity value with a variety of statistical measures.") is a type of Quantity,
 	described by statMeanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by statMedianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by statModeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
@@ -104,16 +103,6 @@ StatisticalValue is a type of Measurement,
 	described by statNumberOfValues (note "Number (count) of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
 	described by statDataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
 	described by statAggregatedValues (note "") with values of type SingleValue.
-//	described by statRawDataValues with values of type RawDataValue,
-//	described by statRawDataAggregationTechnique with a single value of type string.
-
-/*
-RawDataValue is a class,
-	//described by rawDataTag with a single value of type string,
-	described by rawDataTime with a single value of type dateTime,
-	described by rawDataValue with a single value of type Measurement,
-	described by rawDataQuality with a single value of type string.
-*/
 
 DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetName (note "Name of the dataset.") with a single value of type string,
@@ -126,7 +115,7 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetSchemaURI (note "Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.") with a single value of type string,
 	described by datasetCreator (note "Creator of dataset and/or the metadata of the dataset.") with values of type Person,
 	described by datasetCreationDateTime (note "Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].") with a single value of type dateTime,
-	described by datasetSize (note "The size of the dataset.") with a single value of type Measurement,
+	described by datasetSize (note "The size of the dataset.") with a single value of type Quantity,
 	described by datasetQuantityType (note "Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.") with values of type string,
 	described by datasetKeyTags (note "Keywords and tags describing the data to facilitate search and findability. Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'") with values of type string,
 	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.
@@ -155,5 +144,5 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 
 SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.") is a type of DatasetMetadata,
 	described by synthesizedDataMethod (note "The method used to synthesize the data.") with values of type string,
-	described by synthesizedDataSoftware (note "The software used to synthesize the data.") with values of type Software,
+	//described by synthesizedDataSoftware (note "The software used to synthesize the data.") with values of type Software,
 	described by synthesizedDocument with a single value of type Document.

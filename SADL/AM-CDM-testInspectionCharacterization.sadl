@@ -1,14 +1,13 @@
 uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testInspectionCharacterization version "$Revision:$ Last modified on   $Date:$".
 
-import "http://kdl.ge.com/AM-CDM-Base".
-import "http://kdl.ge.com/AM-CDM-process".
+import "http://kdl.ge.com/AM-CDM-build".
 
 TestInspectionCharacterization (note "Any test, inspection, or characterization performed on any part or material specimen from any stage of the additive manufacturing fabrication process (excluding in-process monitoring).") is a type of PlannedProcessStep,
 	described by ticResult with a single value of type TestResult.
 
-NonDestructiveExamination (note "A process step in which a part in inspected non-destructively") is a TestInspectionCharacterization.
+NonDestructiveExamination (note "A process step in which a part in inspected non-destructively") is a type of TestInspectionCharacterization.
 
-DestructiveTest (note "A process step in which a part in tested destructively") is a TestInspectionCharacterization.
+DestructiveTest (note "A process step in which a part in tested destructively") is a type of TestInspectionCharacterization.
 
 TestResult is a class,
 	described by ticResultPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
@@ -17,16 +16,13 @@ TestResult is a class,
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
-
 // Note: I did not edit these yet
 Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
-
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
-	described by specimenMass with a single value of type Measurement,
+	described by specimenMass with a single value of type Quantity,
 	described by specimenProcessHistory (note "Events in chronological order that occurred to a specimen after it existed in the base geometric form as specified in the applicable standard. For example, surface preparations, mounting, dye penetrant application, etc.") with a single value of type ProcessHistory,
 	described by specimenDeviations (note "Description of any differences from recommendations made in the standards for specimen configuration and preparation.") with values of type string.
-
 
 PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused with FeedstockSpecimen.") is a type of Specimen,
 	described by PartSpecimenParentPart with a single value of type Part,

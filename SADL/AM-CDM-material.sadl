@@ -1,17 +1,17 @@
 uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-base".
-	
+
 MaterialStockType (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
 	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string, 
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
 	described by materialstockSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
-	described by materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") with a single value of type Document,
-	described by numberReused (note "The number of times the material, such as build substrate or powder lot, has been used. 0 if first time using, or 1 or more if reused.") with a single value of type int.
-	described by materialStorage (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
+	described by materialPurchaseHistory (note "Information about purchasing material, including vendor, manufacturer, etc.") with a single value of type MaterialPurchaseHistory,
+	described by numberReused (note "The number of times the material, such as build substrate or powder lot, has been used. 0 if first time using, or 1 or more if reused.") with a single value of type int,
+	described by materialStorage (note "Measured properties of the feedstock.") with values of type MaterialStorage,
 	described by materialstockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
 	described by materialstockCertificationDate (note "Purchase/certification date of a material stock.") with a single value of type dateTime,
-	described by materialProperties (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType,
+	described by materialProperties (note "Measured properties of the feedstock.") with values of type MaterialPropertiesType.
 
 Feedstock (note "Information about a feedstock used as input to an additive manufacturing machine, including physical form, location, and purchasing information.") is a class,
 	described by feedstockName (note "A name for operational purposes") with a single value of type string,
@@ -19,17 +19,17 @@ Feedstock (note "Information about a feedstock used as input to an additive manu
 	described by materialGrade (note "Standard grade to which the material product conforms, such as 718 or 17-4 PH steel.") with a single value of type string,
 	described by feedstockForm (note "Form of a material stock, and the potential values are defined in FeedstockFormType.") with a single value of type FeedstockFormType,
 	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
-	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock.
-	described by materialStock (note "Material stock information") with a single value of type MaterialStockType
+	described by mixedFeedstock (note "Parent or parents of feedstock, if it is blended or mixed.") with values of type ParentFeedstock,
+	described by materialStock (note "Material stock information") with a single value of type MaterialStockType.
 
-materialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") is a class,
+MaterialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") is a class,
 	described by materialstockVendor (note "Name of the feedstock vendor. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
 	described by materialstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
 	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
 	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
-	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement.
+	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Quantity.
 
-materialStorage (note "details about how to store the material") is a class,
+MaterialStorage (note "details about how to store the material") is a class,
 	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
 	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
 	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
@@ -70,12 +70,12 @@ MaterialPropertyType is a class, must be one of {Intrinsic, Extrinsic}.
 
 //ThermodynamicProperties is a type of IntrinsicMaterialProperties,
 ThermodynamicProperties is a type of MaterialProperties,
-	described by electricalConductivity with a single value of type Measurement,
-	described by thermalExpansionCoef with a single value of type Measurement,
+	described by electricalConductivity with a single value of type Quantity,
+	described by thermalExpansionCoef with a single value of type Quantity,
 	//described by thermalConductivity with a single value of type Measurement,
-	described by heatCapacity with a single value of type Measurement,
-	described by meltingTemperature with a single value of type Measurement,
-	described by glassTransitionTemperature with a single value of type Measurement.
+	described by heatCapacity with a single value of type Quantity,
+	described by meltingTemperature with a single value of type Quantity,
+	described by glassTransitionTemperature with a single value of type Quantity.
 
 //ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 ParticleSizeDistribution is a type of MaterialProperties,
@@ -84,48 +84,48 @@ ParticleSizeDistribution is a type of MaterialProperties,
 	described by psdDispersionMedium with a single value of type string,
 	described by psdDispersionMethod with a single value of type string,
 	described by psdDispersionType with a single value of type string,
-	described by psdConcentration with a single value of type Measurement,
+	described by psdConcentration with a single value of type Quantity,
 	described by psdIndexOfRefraction with a single value of type double,
 	described by psdScatteringModel with a single value of type string,
-	described by psd_dv10 with a single value of type Measurement,
-	described by psd_dv50 with a single value of type Measurement,
-	described by psd_dv90 with a single value of type Measurement,
-	described by psdMean with a single value of type Measurement,
-	described by psdMode with a single value of type Measurement,
-	described by psdStandardDeviation with a single value of type Measurement,
-	described by psdRange with a single value of type Measurement,
-	described by psdSkewness with a single value of type Measurement,
-	described by psdKurtosis with a single value of type Measurement.
+	described by psd_dv10 with a single value of type Quantity,
+	described by psd_dv50 with a single value of type Quantity,
+	described by psd_dv90 with a single value of type Quantity,
+	described by psdMean with a single value of type Quantity,
+	described by psdMode with a single value of type Quantity,
+	described by psdStandardDeviation with a single value of type Quantity,
+	described by psdRange with a single value of type Quantity,
+	described by psdSkewness with a single value of type Quantity,
+	described by psdKurtosis with a single value of type Quantity.
 
 //TensileProperties is a type of ExtrinsicMaterialProperties,
 TensileProperties is a type of MaterialProperties,
-	described by tensileTestStrainRate with a single value of type Measurement,
-	described by tensileTestDisplacementRate with a single value of type Measurement,
+	described by tensileTestStrainRate with a single value of type Quantity,
+	described by tensileTestDisplacementRate with a single value of type Quantity,
 	described by tensileTestControlMode with a single value of type string,
-	described by initialStrainRate with a single value of type Measurement,
-	described by initialLoadingRate with a single value of type Measurement,
-	described by finalStrainRate with a single value of type Measurement,
-	described by finalLoadingRate with a single value of type Measurement,
-	described by yieldStrengthZeroPoint2Percent with a single value of type Measurement,
-	described by yieldStrengthZeroPointZero2Percent with a single value of type Measurement,
-	described by ultimateTensileStrength with a single value of type Measurement,
-	described by elongation with a single value of type Measurement,
-	described by percentReductionInArea with a single value of type Measurement,
-	described by youngsModulus with a single value of type Measurement,
-	described by maximumLoad with a single value of type Measurement.
+	described by initialStrainRate with a single value of type Quantity,
+	described by initialLoadingRate with a single value of type Quantity,
+	described by finalStrainRate with a single value of type Quantity,
+	described by finalLoadingRate with a single value of type Quantity,
+	described by yieldStrengthZeroPoint2Percent with a single value of type Quantity,
+	described by yieldStrengthZeroPointZero2Percent with a single value of type Quantity,
+	described by ultimateTensileStrength with a single value of type Quantity,
+	described by elongation with a single value of type Quantity,
+	described by percentReductionInArea with a single value of type Quantity,
+	described by youngsModulus with a single value of type Quantity,
+	described by maximumLoad with a single value of type Quantity.
 
 //CreepProperties is a type of ExtrinsicMaterialProperties,
 CreepProperties is a type of MaterialProperties,
-	described by creepPanLoad with a single value of type Measurement,
-	described by creepLeverArmRatio with a single value of type Measurement,
-	described by creepTestLoad with a single value of type Measurement,
-	described by creepTestStress with a single value of type Measurement,
-	described by creepTestDuration with a single value of type Measurement,
-	described by elongationAtRuptureCreep with a single value of type Measurement.
+	described by creepPanLoad with a single value of type Quantity,
+	described by creepLeverArmRatio with a single value of type Quantity,
+	described by creepTestLoad with a single value of type Quantity,
+	described by creepTestStress with a single value of type Quantity,
+	described by creepTestDuration with a single value of type Quantity,
+	described by elongationAtRuptureCreep with a single value of type Quantity.
 
 //ChemicalProperties is a type of ExtrinsicMaterialProperties,
 ChemicalProperties is a type of MaterialProperties,
-	described by oxidationResistance with a single value of type Measurement.
+	described by oxidationResistance with a single value of type Quantity.
 
 Chemistry is a class,
 	described by chemistryMeasurementMethod (note "Measurement method for real chemistries, which may be different from nominal chemistries. Should not be included if this is a specified chemistry.") with a single value of type string,
@@ -143,17 +143,17 @@ ChemistryElement is a class,
 ChemistryElement is a class,
 	described by chemistryElement with a single value of type PeriodicElement,
 	// could do the below or have an attribute that defines whether the percent is weight or atomic
-	described by minWeightPercent with a single value of type Measurement,
-	described by maxWeightPercent with a single value of type Measurement,
-	described by avgWeightPercent with a single value of type Measurement,
-	described by minAtomicPercent with a single value of type Measurement,
-	described by maxAtomicPercent with a single value of type Measurement,
-	described by avgAtomicPercent with a single value of type Measurement.
+	described by minWeightPercent with a single value of type Quantity,
+	described by maxWeightPercent with a single value of type Quantity,
+	described by avgWeightPercent with a single value of type Quantity,
+	described by minAtomicPercent with a single value of type Quantity,
+	described by maxAtomicPercent with a single value of type Quantity,
+	described by avgAtomicPercent with a single value of type Quantity.
 */
 
 PeriodicElement (note "Information about individual elements.") is a class,
 	described by elementName (note "element name, e.g., Carbon.") with a single value of type string,
 	described by elementSymbol (note "element symbol, e.g., C.") with a single value of type string,
 	described by atomicNumber (note "element atomic number, e.g., 6.") with a single value of type int,
-	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu.") with a single value of type Measurement,
-	described by elementMeltingPoint (note "element melting point, e.g., 3500.0	degrees Celsius.") with a single value of type Measurement.
+	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu.") with a single value of type Quantity,
+	described by elementMeltingPoint (note "element melting point, e.g., 3500.0	degrees Celsius.") with a single value of type Quantity.

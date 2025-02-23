@@ -1,5 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-system" alias AM-CDM-system version "$Revision:$ Last modified on   $Date:$".
 
+import "http://kdl.ge.com/AM-CDM-process".
 import "http://kdl.ge.com/AM-CDM-material".
 
 System (note "A manufacturing system that may be an aggregate of subsystems.") is a class,
@@ -11,109 +12,109 @@ System (note "A manufacturing system that may be an aggregate of subsystems.") i
 	described by systemLocation (note "The location where the equipment is installed.") with a single value of type Address,
 	described by systemSpecification with a single value of type SystemSpecification,
 	described by systemProcessHistory with a single value of type ProcessHistory,
-	described by systemComponents with values of type System.
-	described by amSystemMachineCapability (note "Vendor provided AM machine specification.") with a single value of type MachineCapability,
+	described by systemComponents with values of type System,
+	described by systemMachineCapability (note "Vendor provided AM machine specification.") with a single value of type MachineCapability.
 
 SystemSpecification is a class,
 	described by systemModel (note "Model name of a machine defined by the machine manufacturer.") with a single value of type string,
 	described by systemManufacturer (note "The manufacturer of the equipment.") with a single value of type Organization,
-	described by systemSpecElectricVoltage (note "Voltage for an AM Machine's electrical connection.") with a single value of type Measurement,
-	described by systemSpecPowerIntensity (note "Current intensity required to power an AM Machine.") with a single value of type Measurement,
-	described by systemSpecPowerFrequency (note "Power frequency for the electrical connection of an AM Machine.") with a single value of type Measurement,
+	described by systemSpecElectricVoltage (note "Voltage for an AM Machine's electrical connection.") with a single value of type Quantity,
+	described by systemSpecPowerIntensity (note "Current intensity required to power an AM Machine.") with a single value of type Quantity,
+	described by systemSpecPowerFrequency (note "Power frequency for the electrical connection of an AM Machine.") with a single value of type Quantity,
 	described by systemSoftware (note "Computer programs required for operation of this system.") with values of type Software.
 
-AMSystem is a System,
-	described by systemSpecification with a single value of type AMSystemSpecification,
+AMSystem is a type of System,
+	described by systemSpecification with a single value of type AMSystemSpecification.
 
 AMSystemSpecification is a type of SystemSpecification,
 	described by amSystemMachineHazmatRequirements (note "A document of a link to AM Machine HAZMAT Requirements.") with a single value of type string.
 
-Sensor is a System,
-	described by systemSpecification with a single value of type SensorSpecification.
+Sensor is a type of System,
+	described by sensorSystemSpecification with a single value of type SensorSpecification.
 
 SensorSpecification is a type of SystemSpecification,
-	described by samplingRateMin with a single value of type Measurement,
-	described by samplingRateMax with a single value of type Measurement.
+	described by samplingRateMin with a single value of type Quantity,
+	described by samplingRateMax with a single value of type Quantity.
 
 BuildChamber (note "Enclosed location within the additive manufacturing system where the parts are fabricated.") is a type of System,
 	described by buildChamberEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.") with a single value of type BuildEnvironmentalControl,
 	described by buildChamberVolume (note "total usable volume available in the machine for building parts.") with a single value of type BuildVolume.
 
-LaserSystem is a System,
-	described by systemSpecification with a single value of type LaserSystemSpecification,
+LaserSystem is a type of System,
+	described by laserSystemSpecification with a single value of type LaserSystemSpecification,
 	// BeamProfile should be the output of a maintenance event
 	described by laserSystemLaserBeamProfile with a single value of type Document.
 
 LaserSystemSpecification is a type of SystemSpecification,
 	described by laserSystemNumberOfLasers with a single value of type int,
 	described by laserSystemModeOfLaserOperation with a single value of type string,
-	described by laserSystemMaxLaserPower with a single value of type Measurement,
-	described by laserSystemMinLaserPower with a single value of type Measurement,
-	described by laserSystemRatedWaveLength with a single value of type Measurement,
+	described by laserSystemMaxLaserPower with a single value of type Quantity,
+	described by laserSystemMinLaserPower with a single value of type Quantity,
+	described by laserSystemRatedWaveLength with a single value of type Quantity,
 	described by laserSystemBeamShape with a single value of type string,
-	described by laserSystemMaxBeamSpotSize with a single value of type Measurement,
-	described by laserSystemMinBeamSpotSize with a single value of type Measurement,
-	described by laserSystemFocusCorrectionType with a single value of type string,
+	described by laserSystemMaxBeamSpotSize with a single value of type Quantity,
+	described by laserSystemMinBeamSpotSize with a single value of type Quantity,
+	described by laserSystemFocusCorrectionType with a single value of type string.
 
-Recoater is a System,
+Recoater is a type of System,
 	described by systemSpecification with a single value of type RecoaterSpecification.
 
 RecoaterSpecification is a type of SystemSpecification,
-	described by samplingRateMin with a single value of type Measurement,
-	described by samplingRateMax with a single value of type Measurement.
-	described by recoaterMaximumSpeed with a single value of type Measurement,
+	described by samplingRateMin with a single value of type Quantity,
+	described by samplingRateMax with a single value of type Quantity,
+	described by recoaterMaximumSpeed with a single value of type Quantity,
 	described by recoaterMaxUsesAllowed with a single value of type integer,
 	described by recoatingBladeMaterialType with a single value of type MaterialType,
 	described by recoatingBladeMaterialSpecification with a single value of type Document.
 
-GalvoScanner is a System,
+GalvoScanner is a type of System,
 	described by systemSpecification with a single value of type GalvoScannerSpecification.
 
 GalvoScannerSpecification is a type of SystemSpecification,
-	described by galvoScannerMaxScanAngleX with a single value of type Measurement,
-	described by galvoScannerMaxScanAngleY with a single value of type Measurement,
-	described by galvoScannerRepeatability with a single value of type Measurement,
-	described by galvoScannerMaxScanSpeed with a single value of type Measurement,
+	described by galvoScannerMaxScanAngleX with a single value of type Quantity,
+	described by galvoScannerMaxScanAngleY with a single value of type Quantity,
+	described by galvoScannerRepeatability with a single value of type Quantity,
+	described by galvoScannerMaxScanSpeed with a single value of type Quantity,
 	// Key question for data registration: How do we track system coordinate frames
 	described by galvoScannerOrigin with a single value of type CartesianCoordinate,
 	described by galvoScannerType with a single value of type string.
 
-Camera is a Sensor,
+Camera is a type of Sensor,
 	described by systemSpecification with a single value of type CameraSpecification.
 
 CameraSpecification is a type of SensorSpecification,
-	described by cameraImageWidth (note "Camera image width in pixel.") with a single value of type Measurement,
-	described by cameraBitDepth (note "Bit depth of pixel values.") with a single value of type Measurement,
-	described by cameraImageHeight (note "Camera image height in pixel.") with a single value of type Measurement,
+	described by cameraImageWidth (note "Camera image width in pixel.") with a single value of type Quantity,
+	described by cameraBitDepth (note "Bit depth of pixel values.") with a single value of type Quantity,
+	described by cameraImageHeight (note "Camera image height in pixel.") with a single value of type Quantity,
 	// What does cameraCenter mean?
 	described by cameraCenter (note "Width, Height center position of a camera in pixels.") with a single value of type CartesianCoordinate,
-	described by cameraOpticalFilterBandwidth (note "Bandwidth of a camera's filter bandwidth.") with a single value of type Measurement,
-	described by cameraDetectorPitchSize (note "Camera detection pitch size.") with a single value of type Measurement,
-	described by cameraDigitalMagnification (note "Magnification factor setting of a camera.") with a single value of type Measurement,
+	described by cameraOpticalFilterBandwidth (note "Bandwidth of a camera's filter bandwidth.") with a single value of type Quantity,
+	described by cameraDetectorPitchSize (note "Camera detection pitch size.") with a single value of type Quantity,
+	described by cameraDigitalMagnification (note "Magnification factor setting of a camera.") with a single value of type Quantity,
 	described by cameraLensOpticalMagnification with a single value of type float,
-	described by cameraMinShutterSpeed (note "Shutter speed of a camera.") with a single value of type Measurement,
+	described by cameraMinShutterSpeed (note "Shutter speed of a camera.") with a single value of type Quantity.
 
-Lens is a Sensor,
+Lens is a type of Sensor,
 	described by systemSpecification with a single value of type LensSpecification.
 
 LensSpecification is a type of SensorSpecification,
-	described by lensAperture with a single value of type Measurement,
+	described by lensAperture with a single value of type Quantity,
 	described by lensFilter with a single value of type string.
 
-photoDiode is a Sensor,
+photoDiode is a type of Sensor,
 	described by systemSpecification with a single value of type photoDiodeSpecification.
 
 photoDiodeSpecification is a type of SensorSpecification,
-	described by photodiodeOpticalFilterBandwidth with a single value of type Measurement,
-	described by photodiodeBitDepth with a single value of type Measurement,
+	described by photodiodeOpticalFilterBandwidth with a single value of type Quantity,
+	described by photodiodeBitDepth with a single value of type Quantity.
 
-Pyrometer is a Sensor,
+Pyrometer is a type of Sensor,
 	described by systemSpecification with a single value of type PyrometerSpecification.
 
 PyrometerSpecification is a type of SensorSpecification,
-	described by pyrometerOpticalFilterBandwidth1 with a single value of type Measurement,
-	described by pyrometerOpticalFilterBandwidth2 with a single value of type Measurement,
-	described by pyrometerBitDepth with a single value of type Measurement,
+	described by pyrometerOpticalFilterBandwidth1 with a single value of type Quantity,
+	described by pyrometerOpticalFilterBandwidth2 with a single value of type Quantity,
+	described by pyrometerBitDepth with a single value of type Quantity.
 
 LaserPowderBedFusionSystem is a type of AMSystem.
 
@@ -125,30 +126,30 @@ BinderJetSystem is a type of AMSystem.
 
 BuildEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.") is a class,
 	described by buildEnvironmentControlShieldingGasType with a single value of type string,
-	described by buildEnvironmentControlMaximumPreheatingTemperature with a single value of type Measurement,
+	described by buildEnvironmentControlMaximumPreheatingTemperature with a single value of type Quantity,
 	described by buildEnvironmentControlGasFlowNozzleType with a single value of type string,
 	described by buildEnvironmentControlShieldingDeviceType with a single value of type string.
 
 BuildVolume (note "Total usable volume available in the machine for building parts.") is a class,
 	described by buildVolumeShape (note "Shape of a building volume, i.e., 'box' or 'cylinder'.") with a single value of type string,
 	described by buildVolumeDimension (note "Width, Depth, Height of a building volume.") with a single value of type CartesianCoordinate,
-	described by buildVolumeDiameter (note "Diameter of a building volume if of cylinder type.") with a single value of type Measurement,
+	described by buildVolumeDiameter (note "Diameter of a building volume if of cylinder type.") with a single value of type Quantity,
 	described by buildVolumeMachineOrigin (note "Origin X,Y,Z as defined by machine manufacturer relative to build volume center.") with a single value of type CartesianCoordinate,
-	described by buildVolumeTotalBuildVolume (note "The total usable volume available in the AM System.") with a single value of type Measurement,
+	described by buildVolumeTotalBuildVolume (note "The total usable volume available in the AM System.") with a single value of type Quantity,
 	described by buildVolumeMachineLastCleanoutDate (note "The date when the build volume was last cleaned.") with a single value of type dateTime.
 
 MachineCapability (note "Vendor-provided AM machine specification.") is a class,
 	described by machineCapabilityProcessableRawMaterial (note "A processable raw material list of an AM machine.") with values of type MaterialType,
-	described by machineCapabilityMaximumBuildRate with a single value of type Measurement,
-	described by machineCapabilityMinimumLayerThickness with a single value of type Measurement,
-	described by machineCapabilityMaximumLayerThickness with a single value of type Measurement,
-	described by machineCapabilityMinimumOxygenLevel with a single value of type Measurement,
-	described by machineCapabilityMinimumMoistureLevel with a single value of type Measurement.
+	described by machineCapabilityMaximumBuildRate with a single value of type Quantity,
+	described by machineCapabilityMinimumLayerThickness with a single value of type Quantity,
+	described by machineCapabilityMaximumLayerThickness with a single value of type Quantity,
+	described by machineCapabilityMinimumOxygenLevel with a single value of type Quantity,
+	described by machineCapabilityMinimumMoistureLevel with a single value of type Quantity.
 
 SystemQualificationEvent is a type of PlannedProcessStep,
-	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemQualificationEventData.
+	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemQualificationEventData.
 
-SystemQualificationEventData is a type of ProcessData,
+SystemQualificationEventData is a type of ProcessStepData,
 	described by systemQualDataPassFail (note "Pass / fail result.") with a single value of type string,
 	described by systemQualDataResults (note "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report, tied to a machine serial number.") with a single value of type string.
 
@@ -159,17 +160,17 @@ OperationalQualification is a type of SystemQualificationEvent.
 PerformanceQualification is a type of SystemQualificationEvent.
 
 MaintenanceEvent is a type of PlannedProcessStep,
-	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type MaintenanceEventData.
+	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type MaintenanceEventData.
 
-MaintenanceEventData is a type of ProcessData,
+MaintenanceEventData is a type of ProcessStepData,
 	described by maintenanceDataReport (note "Technical report from the maintenance.") with a single value of type Document.
 
 SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent,
-	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemCalibrationData.
+	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemCalibrationData.
 
-SystemCalibrationData is a type of ProcessData,
+SystemCalibrationData is a type of ProcessStepData,
 	described by calibrationPassFail (note "Pass / fail result.") with a single value of type string,
-	described by calibrationDataResults (note "The results of the equipment calibration (files, etc.).") with a single value of type Document,
+	described by calibrationDataResults (note "The results of the equipment calibration (files, etc.).") with a single value of type Document.
 
 Software is a class,
 	described by softwareName (note "A unique identifier for the software.") with a single value of type string,
