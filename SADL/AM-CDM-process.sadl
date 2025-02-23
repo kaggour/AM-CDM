@@ -1,77 +1,27 @@
 uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-base".
+import "http://kdl.ge.com/AM-CDM-system".
 
-//From BFO and IOF (only class names)
-Entity is a class.
-Occurent is a Entity.
-Process is a Occurent.
-ProcessStep is a Process.
+ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity") is a class,
+	described by historyProcessStep (note "Sequence of events performed.") with values of type PlannedProcessStep.
 
-// AM CDM "Process History" = IOF/BFO "History"
-ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity") is a type of Process,
-	described by processStep (note "Sequence of events performed.") with values of type ProcessStep List.
-
-// AM CDM "ProcessStep" = IOF/BFO "ManufacturingProcess" although "ManufacturingProcess" does not apply to inspection (which is not transformative)
-ProcessStep (note "planned process that consists of a structured set of operations through which input material is transformed or modified") is a type of Process,
-	// Not captured in IOF/BFO
-	described by sequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
-	described by processID (note "Unique identifier for a processStep.") with a single value of type string,
-
-	// AM CDM "processStartTime" and "processEndTime" = IOF/BFO "ProcessBoundary"? I'm not sure on this thought, I thought it would be "TemporalRegion"
+PlannedProcessStep (note "a process that is planned") is a class,
+	described by processName (note 'Human readable name which designates this process step.') with a single value of type string,
+	described by processSequenceNumber (note "Sequence identifier of processing steps in chronological order.") with a single value of type int,
+	described by processPersonnel with values of type Person,
+	described by processOrganization (note "The organization which performs the process step.") with a single value of type Organization,
+	described by processAddress (note "Address where process was performed.") with a single value of type Address,
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
+	described by processSpecification note("Prescribed process specification for this process occurrence.") with a single value of type ProcessSpecification,
+	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type ProcessStepData,
 
-	described by targetEnvironment with a single value of type Environment,
-	described by measuredEnvironment with a single value of type Environment,
+ProcessStepSpecification (note "A prescription of how a planned process step should be performed") is a class, 
+	described by specStandard (note "Standards which process should comply with, ex. AMS2774.") with values of type Document,
+	described by specProcedure (note "Procedure which should be followed when the process is run") with values of type Document,
+	described by specControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
+	described by specControlPlanObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document,
 
-	// Not explicit in IOF/BFO?
-	described by processStepOrganization (note "The organization which performs the process step.") with a single value of type Organization,
-
-	// AM CDM "agentPersonnenl" = IOF "Agent", but this is complicated by the use of Roles in IOF
-	described by processStepPersonnel with values of type Person,
-
-	// AM CDM "System" could map onto IOF "Agent", "MaintableMaterialItem", "PieceOfEquipment". "ManufacturingProcess" only links to "Agent"
-//	described by processMachine with a single value of type System,
-
-	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity'
-//	described by materialInput (note "Material that is an input to the process and because a part of the material output in a substantial way. Examples: Powder Feedstock, billet, subcomponents to be assembled.") with values of type Feedstock,
-//	described by consumables (note "Material which is used during the execution of a process, but does not, in a substantial way, become part of material output. Example: Process Gas") with values of type Feedstock,
-
-	// This was missing in AM CDM -> IOF/BFO 'MaterialEntity' or 'MaterialArtefact'
-//	described by materialOutput (note "Material that is the desired output of the process. Examples: Built part, machined part, product") with values of type Feedstock,
-
-	// Not explicit in IOF/BFO?
-	described by processData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type DatasetMetadata,
-
-	// AM CDM "ProcessSpecification" = IOF/BFO "Plan Specification"
-	described by processSpecification with a single value of type ProcessSpecification.
-
-ProcessSpecification (note "information content entity that has action specifications and objective specifications as parts") is a class, // needed for TIC
-	// AM CDM "ProcessParameters" + "processStandard" + "processProcedure" + "processControlPlan" = IOF/BFO "ActionSpecification" = "information content entity that prescribes what participants shall do in a process"
-	described by processParameters (note "Nominal system settings used when the process is run") with a single value of type ProcessParameters,
-	described by processStandard (note "Standards which process should comply with, ex. AMS2774.") with values of type Document,
-	described by processProcedure (note "Procedure which should be followed when the process is run") with values of type Document,
-	described by processControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
-
-	// AM CDM added "processObjective" = IOF/BFO "ObjectiveSpecification"
-	described by processObjective (note "information content entity that prescribes what the outcome of some process should be") with values of type Document.
-
-ProcessParameters is a class,
-	described by processParameterID (note "Unique identifier for process parameters.") with a single value of type string.
-	// Subclasses should extend with process-specific process parameters
-
-// Everything that follows should be fleshed out based on domain standards and domain experts. It is provided as an example here as additional use-context
-PreProcess (note "Pre-processing steps.") is a type of ProcessStep.
-
-MaterialPreparation (note "Sifting/blending material preparation.") is a type of PreProcess.
-
-MachinePreparation (note "Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming.") is a type of PreProcess.
-
-BuildPlatformPreparation (note "Description of how the build platform was prepared before the AM process (ex. new or recycled).") is a type of PreProcess.
-
-PostProcess (note "Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.") is a type of ProcessStep.
-
-HotIsostaticPressing (note "Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.") is a type of PostProcess.
-
-HeatTreatment (note "Heat treatment process.") is a type of PostProcess.
+ProcessStepData is a Class,
+	described by dataOperatorNotes (note "Observations recorded by the personnel involved in the process step.") with a single value of type string.

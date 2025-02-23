@@ -45,10 +45,10 @@ Qualification (note "Details of qualification/certification (machine specific op
 Address (note "A physical address where someone or something is located.") is a class,
 	described by addressLine1 (note "First line in address.") with a single value of type string,
 	described by addressLine2 (note "Second line in address.") with a single value of type string,
-	described by city (note "City in address.") with a single value of type string,
-	described by stateProvince (note "State or Province in address.") with a single value of type string,
-	described by postalCode (note "Zip or postal code in address.") with a single value of type string,
-	described by country (note "Country in address.") with a single value of type Country.
+	described by addressCity (note "City in address.") with a single value of type string,
+	described by addressStateProvince (note "State or Province in address.") with a single value of type string,
+	described by adderssPostalCode (note "Zip or postal code in address.") with a single value of type string,
+	described by addressCountry (note "Country in address.") with a single value of type Country.
 
 PhoneNumber (note "A phone number.") is a class,
 	described by phoneCountry (note "Country phone number is in.") with a single value of type Country,
@@ -79,35 +79,33 @@ RotaryCoordinate (note "A rotary coordinate.") is a type of Coordinate,
 InitialOrientation is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
 
 Orientation (note "The orientation of an object as defined in ISO/ASTM 52921.") is a class,
-	described by orthogonalNotationDescription (note "Description of orientation, one of XYZ, XZY, YXZ, YZX, ZXY, ZYX.") with a single value of type string,
-	//described by buildVolumeX with a single value of type Measurement,
-	//described by buildVolumeY with a single value of type Measurement,
-	//described by buildVolumeZ with a single value of type Measurement,
-	described by orientationAngleA (note "The orientation angle defined in ISO 52921, in A of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by orientationAngleB (note "The orientation angle defined in ISO 52921, in B of the minimal bounding box orientation.") with a single value of type Measurement,
-	described by orientationAngleC (note "The orientation angle defined in ISO 52921, in C of the minimal bounding box orientation.") with a single value of type Measurement.
+	described by partLocationX (note "The x-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partLocationY (note "The y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partLocationZ (note "The z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921") with a single value of type Quantity,
+	described by partReorientationA (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationB (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationC (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.") with a single value of type Quantity.
 
 //UnittedQuantity or Quantity
 Measurement (note "... make clear this is an abstract class.") is a class,
 	described by measurementUnit (note "Units associated with the numerical value.") with a single value of type string.
 
 SingleValue is a type of Measurement,
-	described by measurementValue (note "Numerical value.") with a single value of type double.
-	//described by measureOfUncertainty (note "") with a single value of type double.
-	//described by uncertaintyQuantificationMethod (note "Description of measurement of uncertainty method.") with a single value of type string.
+	described by valueValue (note "Numerical value.") with a single value of type double,
+	described by valueUncertaintyMeasure (note "") with a single value of type double.
 
-StatisticalValue (note "These are example values that one would capture.") is a type of Measurement,
-	described by meanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by medianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by modeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by standardDeviationValue (note "Standard deviation of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by minValue (note "Minimum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by maxValue (note "Maximum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by numberOfValues (note "Number (count) of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by dataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
-	described by aggregatedValues (note "") with values of type SingleValue.
-//	described by rawDataValues with values of type RawDataValue,
-//	described by rawDataAggregationTechnique with a single value of type string.
+StatisticalValue is a type of Measurement,
+	described by statMeanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMedianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statModeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statStandardDeviationValue (note "Standard deviation of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMinValue (note "Minimum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMaxValue (note "Maximum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statNumberOfValues (note "Number (count) of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statDataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
+	described by statAggregatedValues (note "") with values of type SingleValue.
+//	described by statRawDataValues with values of type RawDataValue,
+//	described by statRawDataAggregationTechnique with a single value of type string.
 
 /*
 RawDataValue is a class,
@@ -134,3 +132,28 @@ DatasetMetadata (note "Metadata associated with a dataset.") is a class,
 	described by datasetAccessControl (note "How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.") with a single value of type DatasetAccessControl.
 
 DatasetAccessControl (note "Possible types of data access control.") is a class, must be one of {Restricted, Consent, Public}.
+
+Project (note "A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not).") is a class,
+	described by projectID (note "Reference to the associated Project that produced this build. Links to Project record.") with a single value of type string,
+	described by projectCreator (note "Organization that created the project.") with a single value of type Organization,
+	described by projectSponsor (note "Provider of money and requirements for the project.") with a single value of type Organization,
+	described by projectOwningOrganization (note "Organization that owns the project.") with a single value of type Organization,
+	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.") with a single value of type string,
+	//described by projectDistributionControl (note "ITAR-like restrictions") with a single value of type string,
+	described by projectRequirements (note "Documented requirements for the project.") with a single value of type Document,
+	described by projectPlan (note "Document describing how project is to be conducted, organized, etc.") with a single value of type Document,
+	described by projectStart (note "Start date of project.") with a single value of type dateTime,
+	described by projectEnd (note "End date of project.") with a single value of type dateTime,
+	described by projectStandards (note "Set of standards used in project.") with values of type string,
+	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project.") with a single value of type Document,
+	described by projectQualityProcessControlPlan (note "Document describing the quality process control plan for the the site performing the project.") with a single value of type Document,
+	described by projectDeliveryDate (note "Requested delivery date of project.") with a single value of type dateTime,
+	described by projectDistributionControl (note "ITAR-like restrictions.") with a single value of type string,
+	described by projectDataset (note "Datasets generated from the project.") with values of type DatasetMetadata,
+	described by projectReport (note "Reports of the project.") with values of type Document,
+	described by projectDataManagementPlan (note "Data management plan of the project.") with a single value of type Document.
+
+SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.") is a type of DatasetMetadata,
+	described by synthesizedDataMethod (note "The method used to synthesize the data.") with values of type string,
+	described by synthesizedDataSoftware (note "The software used to synthesize the data.") with values of type Software,
+	described by synthesizedDocument with a single value of type Document.
