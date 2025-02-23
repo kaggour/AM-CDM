@@ -27,14 +27,13 @@ materialPurchaseHistory (note "information about purchasing material, including 
 	described by materialstockManufacturer (note "Name of the feedstock manufacturer. Not specified if feedstock is a blend from multiple lots.") with a single value of type Organization,
 	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
 	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
-	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement,
+	described by quantityPurchased (note "Purchased quantity of a material stock.") with a single value of type Measurement.
 
 materialStorage (note "details about how to store the material") is a class,
 	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
 	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
 	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
-	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document,
-
+	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document.
 
 FeedstockFormType (note "Form of a feedstock.") is a class, must be one of {Powder, Wire, BulkSolid}.
 
@@ -59,19 +58,18 @@ MaterialSpecification (note "The ideal specification of a material, e.g., a perf
 MaterialPropertiesType (note "Base class of material properties. Can be sub-classed to define specific types of material properties.") is a class,
 	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
 	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to.") with a single value of type Document,
-	described by intrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as x-ray density, lattice structure, and heat capacity.") with values of type IntrinsicMaterialProperties,
-	described by extrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as tap density, and thermal conductivity.") with values of type ExtrinsicMaterialProperties,
+	described by materialProperties with values of type MaterialProperties,
 	described by propertyDataSheet (note "Reference document used to provide material properties.") with a single value of type Document.
 
 PropertyDerivedBy is a class, must be one of {Measured, Predicted}.
 
-IntrinsicMaterialProperties (note "Properties that are independent of the AM processing/part characteristics, such as x-ray density, lattice structure, and heat capacity.") is a type of MaterialProperties.
+MaterialProperties is a class,
+	described by propertyType with a single value of type MaterialPropertyType.
 
-ExtrinsicMaterialProperties (note "Properties that are dependent upon the AM processing/part characteristics, such as tap density, and thermal conductivity.") is a type of MaterialProperties.
+MaterialPropertyType is a class, must be one of {Intrinsic, Extrinsic}.
 
-MaterialProperties is a class.
-
-ThermodynamicProperties is a type of IntrinsicMaterialProperties,
+//ThermodynamicProperties is a type of IntrinsicMaterialProperties,
+ThermodynamicProperties is a type of MaterialProperties,
 	described by electricalConductivity with a single value of type Measurement,
 	described by thermalExpansionCoef with a single value of type Measurement,
 	//described by thermalConductivity with a single value of type Measurement,
@@ -79,7 +77,8 @@ ThermodynamicProperties is a type of IntrinsicMaterialProperties,
 	described by meltingTemperature with a single value of type Measurement,
 	described by glassTransitionTemperature with a single value of type Measurement.
 
-ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
+//ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
+ParticleSizeDistribution is a type of MaterialProperties,
 	described by psdPrincipleOfMeasurement with a single value of type string,
 	described by psdParameterBasis with a single value of type string,
 	described by psdDispersionMedium with a single value of type string,
@@ -98,7 +97,8 @@ ParticleSizeDistribution is a type of IntrinsicMaterialProperties,
 	described by psdSkewness with a single value of type Measurement,
 	described by psdKurtosis with a single value of type Measurement.
 
-TensileProperties is a type of ExtrinsicMaterialProperties,
+//TensileProperties is a type of ExtrinsicMaterialProperties,
+TensileProperties is a type of MaterialProperties,
 	described by tensileTestStrainRate with a single value of type Measurement,
 	described by tensileTestDisplacementRate with a single value of type Measurement,
 	described by tensileTestControlMode with a single value of type string,
@@ -114,7 +114,8 @@ TensileProperties is a type of ExtrinsicMaterialProperties,
 	described by youngsModulus with a single value of type Measurement,
 	described by maximumLoad with a single value of type Measurement.
 
-CreepProperties is a type of ExtrinsicMaterialProperties,
+//CreepProperties is a type of ExtrinsicMaterialProperties,
+CreepProperties is a type of MaterialProperties,
 	described by creepPanLoad with a single value of type Measurement,
 	described by creepLeverArmRatio with a single value of type Measurement,
 	described by creepTestLoad with a single value of type Measurement,
@@ -122,7 +123,8 @@ CreepProperties is a type of ExtrinsicMaterialProperties,
 	described by creepTestDuration with a single value of type Measurement,
 	described by elongationAtRuptureCreep with a single value of type Measurement.
 
-ChemicalProperties is a type of ExtrinsicMaterialProperties,
+//ChemicalProperties is a type of ExtrinsicMaterialProperties,
+ChemicalProperties is a type of MaterialProperties,
 	described by oxidationResistance with a single value of type Measurement.
 
 Chemistry is a class,
