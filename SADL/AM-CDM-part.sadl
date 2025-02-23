@@ -10,7 +10,6 @@ Part (note "Instances of part designs in the as-built state.") is a MaterialStoc
 	described by partProcessSpecificPartDesign (note "A design file which specifies the part at the completion of a manufacturing process step. This is not the specification for completed part.") with values of type PartSpecificProcessParameters,
 	described by partProject (note "The project that this part is associated with") with values of type Project.
 
-
 DesignSpecification (note "Specification for a part.") is a class,
     described by designSpecName (note 'Human readable name which designates this design specification.') with a single value of type string,
 	described by designSpecAuthor (note "Author of design specification.") with a single value of type Person,
