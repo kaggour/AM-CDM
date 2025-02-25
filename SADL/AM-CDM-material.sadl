@@ -2,8 +2,7 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 
 import "http://kdl.ge.com/AM-CDM-base".
 
-PowderStock (note "Material stock in the form of powder.") is a class,
-	described by materialStock (note "Information about a material covering feedstock, reusables, and consumables.") with a single value of MaterialStock,
+PowderStock (note "Material stock in the form of powder.") is a MaterialStock,
 	described by particleSizeDistribution with a single value of ParticleSizeDistribution,
 	
 SheetStock (note "Material stock in the form of sheet.") is a MaterialStock,
@@ -33,7 +32,7 @@ MaterialPurchaseHistory (note "information about purchasing material, including 
 
 MaterialStorage (note "details about how to store the material") is a class,
 	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
-	described by materialstockLocation (note "Physical location of a material stock.") with a single value of type Address,
+	described by materialstockLocation (note "Current physical location of a material stock.") with a single value of type Address,
 	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
 	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document.
 
