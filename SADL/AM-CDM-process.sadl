@@ -25,37 +25,11 @@ ProcessStepSpecification (note "A prescription of how a planned process step sho
 ProcessStepData is a class,
 	described by dataOperatorNotes (note "Observations recorded by the personnel involved in the process step.") with a single value of type string.
 
-/*
-Blending is a class,
-	described by blendMaterialInput with values of PowderStock,
-	described by blendMaterialOutput with a single value of PowderStock,
+MaterialSeparation (note "one material stock splited into multiple stocks, including powder sampling scenario, but not including part extraction") is a PlannedProcessStep,
+	described by materialInput with a single value of MaterialStock,
+	described by materialOutput with values of MaterialStock,
 
-Sieving is a class,
-	described by sievingMaterialInput with a single value of PowderStock,
-	described by sievingMaterialOutput with a single value of PowderStock,
-
-HeatTreatment is a class,
-	described by heatTreatmentMaterialInput with a single value of MaterialStock,
-	described by heatTreatmentMaterialOutput with a single value of MaterialStock,
-
-ThermoMechanicalTreatment is a class,
-	described by thermoMechanicalMaterialInput with a single value of MaterialStock,
-	described by thermoMechanicalMaterialOutput with a single value of MaterialStock,
-
-MaterialRecycling is a class,
+MaterialTransfer (note "material stock moved from one owner to another owner at a different location") is a PlannedProcessStep,
 	described by materialInput with a single value of MaterialStock,
 	described by materialOutput with a single value of MaterialStock,
 
-//Separating
-PartExtraction is a class,
-	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
-
-PowderSampling is a class,
-	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
-
-Transfer is a class,
-	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
-*/
