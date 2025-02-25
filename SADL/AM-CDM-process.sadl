@@ -27,9 +27,9 @@ ProcessStepData is a class,
 
 MaterialSeparation (note "one material stock splited into multiple stocks, including powder sampling scenario, but not including part extraction") is a PlannedProcessStep,
 	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with values of MaterialStock,
+	described by materialOutput with values of MaterialStock.
 
 MaterialTransfer (note "material stock moved from one owner to another owner at a different location") is a PlannedProcessStep,
 	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
+	described by materialOutput with a single value of MaterialStock.
 
