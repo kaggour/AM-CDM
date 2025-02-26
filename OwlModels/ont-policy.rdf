@@ -2,27 +2,12 @@
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:j.0="http://jena.hpl.hp.com/schemas/2003/03/ont-manager#">
   <j.0:OntologySpec>
-    <j.0:publicURI rdf:resource="http://sadl.org/sadlbasemodel"/>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlBaseModel.owl"/>
-    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-process.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-process</j.0:prefix>
     <j.0:createdBy>SADL</j.0:createdBy>
-    <j.0:prefix>sadlbasemodel</j.0:prefix>
-  </j.0:OntologySpec>
-  <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/ImplicitModel/SadlImplicitModel.sadl</j.0:sadlSourceURL>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlImplicitModel.owl"/>
     <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:createdBy>SADL</j.0:createdBy>
-    <j.0:prefix>sadlimplicitmodel</j.0:prefix>
-    <j.0:publicURI rdf:resource="http://sadl.org/sadlimplicitmodel"/>
-  </j.0:OntologySpec>
-  <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/ImplicitModel/SadlBuiltinFunctions.sadl</j.0:sadlSourceURL>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlBuiltinFunctions.owl"/>
-    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:createdBy>SADL</j.0:createdBy>
-    <j.0:prefix>builtinfunctions</j.0:prefix>
-    <j.0:publicURI rdf:resource="http://sadl.org/builtinfunctions"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-process.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-process"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
     <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-system.sadl</j.0:sadlSourceURL>
@@ -33,20 +18,36 @@
     <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-system"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-process.sadl</j.0:sadlSourceURL>
-    <j.0:prefix>AM-CDM-process</j.0:prefix>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-testInspectionCharacterization.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-testInspectionCharacterization</j.0:prefix>
     <j.0:createdBy>SADL</j.0:createdBy>
     <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-process.owl"/>
-    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-process"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-testInspectionCharacterization.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-testInspectionCharacterization"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-base.sadl</j.0:sadlSourceURL>
-    <j.0:prefix>AM-CDM-base</j.0:prefix>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-material.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-material</j.0:prefix>
     <j.0:createdBy>SADL</j.0:createdBy>
     <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-base.owl"/>
-    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-base"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-material.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-material"/>
+  </j.0:OntologySpec>
+  <j.0:OntologySpec>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/ImplicitModel/SadlImplicitModel.sadl</j.0:sadlSourceURL>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlImplicitModel.owl"/>
+    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:createdBy>SADL</j.0:createdBy>
+    <j.0:prefix>sadlimplicitmodel</j.0:prefix>
+    <j.0:publicURI rdf:resource="http://sadl.org/sadlimplicitmodel"/>
+  </j.0:OntologySpec>
+  <j.0:OntologySpec>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-manufacturingProcess.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-manufacturingProcess</j.0:prefix>
+    <j.0:createdBy>SADL</j.0:createdBy>
+    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-manufacturingProcess.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-manufacturingProcess"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
     <j.0:publicURI rdf:resource="http://sadl.org/sadllistmodel"/>
@@ -54,14 +55,6 @@
     <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
     <j.0:createdBy>SADL</j.0:createdBy>
     <j.0:prefix>sadllistmodel</j.0:prefix>
-  </j.0:OntologySpec>
-  <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-testInspectionCharacterization.sadl</j.0:sadlSourceURL>
-    <j.0:prefix>AM-CDM-testInspectionCharacterization</j.0:prefix>
-    <j.0:createdBy>SADL</j.0:createdBy>
-    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-testInspectionCharacterization.owl"/>
-    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-testInspectionCharacterization"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
     <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-build.sadl</j.0:sadlSourceURL>
@@ -72,11 +65,34 @@
     <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-build"/>
   </j.0:OntologySpec>
   <j.0:OntologySpec>
-    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-material.sadl</j.0:sadlSourceURL>
-    <j.0:prefix>AM-CDM-material</j.0:prefix>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-part.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-part</j.0:prefix>
     <j.0:createdBy>SADL</j.0:createdBy>
     <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
-    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-material.owl"/>
-    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-material"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-part.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-part"/>
+  </j.0:OntologySpec>
+  <j.0:OntologySpec>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/SADL/AM-CDM-base.sadl</j.0:sadlSourceURL>
+    <j.0:prefix>AM-CDM-base</j.0:prefix>
+    <j.0:createdBy>SADL</j.0:createdBy>
+    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/AM-CDM-base.owl"/>
+    <j.0:publicURI rdf:resource="http://kdl.ge.com/AM-CDM-base"/>
+  </j.0:OntologySpec>
+  <j.0:OntologySpec>
+    <j.0:publicURI rdf:resource="http://sadl.org/sadlbasemodel"/>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlBaseModel.owl"/>
+    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:createdBy>SADL</j.0:createdBy>
+    <j.0:prefix>sadlbasemodel</j.0:prefix>
+  </j.0:OntologySpec>
+  <j.0:OntologySpec>
+    <j.0:sadlSourceURL>platform:/resource/AM-CDM/ImplicitModel/SadlBuiltinFunctions.sadl</j.0:sadlSourceURL>
+    <j.0:altURL rdf:resource="file:/I:/additive/AM-CDM/OwlModels/SadlBuiltinFunctions.owl"/>
+    <j.0:language rdf:resource="http://www.w3.org/2002/07/owl"/>
+    <j.0:createdBy>SADL</j.0:createdBy>
+    <j.0:prefix>builtinfunctions</j.0:prefix>
+    <j.0:publicURI rdf:resource="http://sadl.org/builtinfunctions"/>
   </j.0:OntologySpec>
 </rdf:RDF>

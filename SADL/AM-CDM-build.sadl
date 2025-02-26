@@ -2,12 +2,13 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-part".
 
-Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess,
-	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type AMSystem,
-	described by mfgProcessMaterialInputs with a single value of type AMMaterialInput,
-	described by mfgProcessMaterialOutputs with a single value of type AMMaterialOutput,
-	described by processSpecification with a single value of type AMProcessSpecification,
-	described by processData with a single value of type AMProcessData.
+Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess.
+
+mfgProcessMachine of Build only has values of type AMSystem.
+mfgProcessMaterialInputs of Build only has values of type AMMaterialInput.
+mfgProcessMaterialOutputs of Build only has values of type AMMaterialOutput.
+processSpecification of Build only has values of type AMProcessSpecification.
+processData of Build only has values of type AMProcessData.
 
 AMMaterialInput is a type of MaterialInputs,
 	described by amMatInputFeedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStockType,
@@ -36,12 +37,13 @@ BuildPlate (note "Material input which provides a surface upon which the buildin
 	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
 AMProcessSpecification is a type of ManufacturingSpecification,
-	described by mfgSpecGlobalProcessParameters (note "Parameters which apply to all parts on a build") with values of type BuildParameters,
-	described by mfgSpecPartSpecificProcessParameters (note "Process Parameter which apply to a specific part to be built in the build") with a single value of type AMPartParameter,
 	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
 	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
 	described by amSpecJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
 	described by amSpecBuildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the 3D printer during the printing process, for example, xy2-100 commands and G-code etc") with a single value of type DatasetMetadata.
+
+mfgSpecGlobalProcessParameters of AMProcessSpecification only has values of type BuildParameters.
+mfgSpecPartSpecificProcessParameters of AMProcessSpecification only has values of type AMPartParameters.
 
 BuildParameters is a type of GlobalProcessParameters,
 	described by buildParamPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Quantity,
@@ -52,7 +54,7 @@ BuildParameters is a type of GlobalProcessParameters,
 	described by buildParamLayerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
 	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity.
 
-AMPartParameter is a type of PartSpecificProcessParameters.
+AMPartParameters is a type of PartSpecificProcessParameters.
 
 AMProcessData is a type of ProcessStepData,
 	described by amDataInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processData.") with values of type AMInSituData,

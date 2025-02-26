@@ -17,97 +17,181 @@
     <owl:versionInfo>$Revision:$ Last modified on   $Date:$</owl:versionInfo>
     <rdfs:comment xml:lang="en">This ontology was created from a SADL file 'AM-CDM-process.sadl' and should not be directly edited.</rdfs:comment>
   </owl:Ontology>
-  <owl:Class rdf:ID="PreProcess">
-    <rdfs:comment xml:lang="en">Pre-processing steps.</rdfs:comment>
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="ProcessStep"/>
-    </rdfs:subClassOf>
+  <owl:Class rdf:ID="ProcessStepSpecification">
+    <rdfs:comment xml:lang="en">A prescription of how a planned process step should be performed</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="ProcessSpecification">
+  <owl:Class rdf:ID="PlannedProcessStep">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="ProcessParameters"/>
+          <owl:Class rdf:ID="ProcessStepData"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="processParameters"/>
+          <owl:ObjectProperty rdf:ID="processData"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">information content entity that has action specifications and objective specifications as parts</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="Entity"/>
-  <owl:Class rdf:ID="HotIsostaticPressing">
-    <rdfs:comment xml:lang="en">Hot isostatic processing, which applies heat and pressure simultaneously to objects in an autoclave via an inert gas in such a way as to eliminate internal voids and obtain desired properties.</rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="PostProcess"/>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="processStartTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
     </rdfs:subClassOf>
-  </owl:Class>
-  <owl:Class rdf:about="#ProcessParameters">
+    <rdfs:comment xml:lang="en">a process that is planned</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="#ProcessStepSpecification"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processStepSpecification"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Organization"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processOrganization"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="processSequenceNumber"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="AM-CDM-base#Address"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="processAddress"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="processEndTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="processParameterID"/>
+          <owl:DatatypeProperty rdf:ID="processName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="HeatTreatment">
-    <rdfs:comment xml:lang="en">Heat treatment process.</rdfs:comment>
+  <owl:Class rdf:about="#ProcessStepData">
     <rdfs:subClassOf>
-      <owl:Class rdf:about="#PostProcess"/>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:ID="dataOperatorNotes"/>
+        </owl:onProperty>
+      </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="BuildPlatformPreparation">
-    <rdfs:comment xml:lang="en">Description of how the build platform was prepared before the AM process (ex. new or recycled).</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#PreProcess"/>
+  <owl:Class rdf:ID="ProcessHistory">
+    <rdfs:comment xml:lang="en">(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="MaterialPreparation">
-    <rdfs:comment xml:lang="en">Sifting/blending material preparation.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#PreProcess"/>
-  </owl:Class>
-  <owl:Class rdf:ID="MachinePreparation">
-    <rdfs:comment xml:lang="en">Operations to prepare an AM machine before a build starts, e.g., cleaning, pre-warming.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#PreProcess"/>
-  </owl:Class>
-  <owl:Class rdf:about="#PostProcess">
-    <rdfs:comment xml:lang="en">Note: The scope of post-processes is broad, which could include assembly as necessary for a part test/certification.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#ProcessStep"/>
-  </owl:Class>
-  <owl:ObjectProperty rdf:ID="processObjective">
-    <rdfs:domain rdf:resource="#ProcessSpecification"/>
-    <rdfs:comment xml:lang="en">information content entity that prescribes what the outcome of some process should be</rdfs:comment>
-    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  <owl:ObjectProperty rdf:ID="historyProcessStep">
+    <rdfs:domain rdf:resource="#ProcessHistory"/>
+    <rdfs:comment xml:lang="en">Sequence of events performed.</rdfs:comment>
+    <rdfs:range rdf:resource="#PlannedProcessStep"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="processStandard">
-    <rdfs:domain rdf:resource="#ProcessSpecification"/>
-    <rdfs:comment xml:lang="en">Standards which process should comply with, ex. AMS2774.</rdfs:comment>
-    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="processControlPlan">
-    <rdfs:domain rdf:resource="#ProcessSpecification"/>
-    <rdfs:comment xml:lang="en">Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.</rdfs:comment>
-    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#processParameters">
-    <rdfs:domain rdf:resource="#ProcessSpecification"/>
-    <rdfs:comment xml:lang="en">Nominal system settings used when the process is run</rdfs:comment>
-    <rdfs:range rdf:resource="#ProcessParameters"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="processProcedure">
-    <rdfs:domain rdf:resource="#ProcessSpecification"/>
+  <owl:ObjectProperty rdf:ID="specProcedure">
+    <rdfs:domain rdf:resource="#ProcessStepSpecification"/>
     <rdfs:comment xml:lang="en">Procedure which should be followed when the process is run</rdfs:comment>
     <rdfs:range rdf:resource="AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="#processParameterID">
-    <rdfs:domain rdf:resource="#ProcessParameters"/>
-    <rdfs:comment xml:lang="en">Unique identifier for process parameters.</rdfs:comment>
+  <owl:ObjectProperty rdf:about="#processAddress">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Address where process was performed.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Address"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="specStandard">
+    <rdfs:domain rdf:resource="#ProcessStepSpecification"/>
+    <rdfs:comment xml:lang="en">Standards which process should comply with, ex. AMS2774.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="processPersonnel">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:range rdf:resource="AM-CDM-base#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="specControlPlanObjective">
+    <rdfs:domain rdf:resource="#ProcessStepSpecification"/>
+    <rdfs:comment xml:lang="en">information content entity that prescribes what the outcome of some process should be</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processData">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.</rdfs:comment>
+    <rdfs:range rdf:resource="#ProcessStepData"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processOrganization">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">The organization which performs the process step.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Organization"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#processStepSpecification">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Prescribed process specification for this process occurrence.</rdfs:comment>
+    <rdfs:range rdf:resource="#ProcessStepSpecification"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="specControlPlan">
+    <rdfs:domain rdf:resource="#ProcessStepSpecification"/>
+    <rdfs:comment xml:lang="en">Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.</rdfs:comment>
+    <rdfs:range rdf:resource="AM-CDM-base#Document"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="#processEndTime">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Time when process step ends.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#processStartTime">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Time when process step starts.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#processName">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Human readable name which designates this process step.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <AM-CDM-process:Entity rdf:ID="Occurent"/>
+  <owl:DatatypeProperty rdf:about="#processSequenceNumber">
+    <rdfs:domain rdf:resource="#PlannedProcessStep"/>
+    <rdfs:comment xml:lang="en">Sequence identifier of processing steps in chronological order.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#dataOperatorNotes">
+    <rdfs:domain rdf:resource="#ProcessStepData"/>
+    <rdfs:comment xml:lang="en">Observations recorded by the personnel involved in the process step.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
 </rdf:RDF>

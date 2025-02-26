@@ -23,9 +23,10 @@ SystemSpecification is a class,
 	described by systemSpecPowerFrequency (note "Power frequency for the electrical connection of an AM Machine.") with a single value of type Quantity,
 	described by systemSoftware (note "Computer programs required for operation of this system.") with values of type Software.
 
-AMSystem is a type of System,
-	described by systemSpecification with a single value of type AMSystemSpecification.
+AMSystem is a type of System.
 
+systemSpecification of AMSystem only has values of type AMSystemSpecification.
+ 
 AMSystemSpecification is a type of SystemSpecification,
 	described by amSystemMachineHazmatRequirements (note "A document of a link to AM Machine HAZMAT Requirements.") with a single value of type string.
 
@@ -56,8 +57,9 @@ LaserSystemSpecification is a type of SystemSpecification,
 	described by laserSystemMinBeamSpotSize with a single value of type Quantity,
 	described by laserSystemFocusCorrectionType with a single value of type string.
 
-Recoater is a type of System,
-	described by systemSpecification with a single value of type RecoaterSpecification.
+Recoater is a type of System.
+
+systemSpecification of Recoater only has values of type RecoaterSpecification.
 
 RecoaterSpecification is a type of SystemSpecification,
 	described by samplingRateMin with a single value of type Quantity,
@@ -67,8 +69,9 @@ RecoaterSpecification is a type of SystemSpecification,
 	described by recoatingBladeMaterialType with a single value of type MaterialType,
 	described by recoatingBladeMaterialSpecification with a single value of type Document.
 
-GalvoScanner is a type of System,
-	described by systemSpecification with a single value of type GalvoScannerSpecification.
+GalvoScanner is a type of System.
+
+systemSpecification of GalvoScanner only has values of type GalvoScannerSpecification.
 
 GalvoScannerSpecification is a type of SystemSpecification,
 	described by galvoScannerMaxScanAngleX with a single value of type Quantity,
@@ -79,8 +82,9 @@ GalvoScannerSpecification is a type of SystemSpecification,
 	described by galvoScannerOrigin with a single value of type CartesianCoordinate,
 	described by galvoScannerType with a single value of type string.
 
-Camera is a type of Sensor,
-	described by systemSpecification with a single value of type CameraSpecification.
+Camera is a type of Sensor.
+
+systemSpecification of Camera only has values of type CameraSpecification.
 
 CameraSpecification is a type of SensorSpecification,
 	described by cameraImageWidth (note "Camera image width in pixel.") with a single value of type Quantity,
@@ -94,22 +98,25 @@ CameraSpecification is a type of SensorSpecification,
 	described by cameraLensOpticalMagnification with a single value of type float,
 	described by cameraMinShutterSpeed (note "Shutter speed of a camera.") with a single value of type Quantity.
 
-Lens is a type of Sensor,
-	described by systemSpecification with a single value of type LensSpecification.
+Lens is a type of Sensor.
+
+systemSpecification of Lens only has values of type LensSpecification.
 
 LensSpecification is a type of SensorSpecification,
 	described by lensAperture with a single value of type Quantity,
 	described by lensFilter with a single value of type string.
 
-photoDiode is a type of Sensor,
-	described by systemSpecification with a single value of type photoDiodeSpecification.
+PhotoDiode is a type of Sensor.
 
-photoDiodeSpecification is a type of SensorSpecification,
+systemSpecification of PhotoDiode only has values of type PhotoDiodeSpecification.
+
+PhotoDiodeSpecification is a type of SensorSpecification,
 	described by photodiodeOpticalFilterBandwidth with a single value of type Quantity,
 	described by photodiodeBitDepth with a single value of type Quantity.
 
-Pyrometer is a type of Sensor,
-	described by systemSpecification with a single value of type PyrometerSpecification.
+Pyrometer is a type of Sensor.
+
+systemSpecification of Pyrometer only has values of type PyrometerSpecification.
 
 PyrometerSpecification is a type of SensorSpecification,
 	described by pyrometerOpticalFilterBandwidth1 with a single value of type Quantity,
@@ -165,8 +172,9 @@ MaintenanceEvent is a type of PlannedProcessStep,
 MaintenanceEventData is a type of ProcessStepData,
 	described by maintenanceDataReport (note "Technical report from the maintenance.") with a single value of type Document.
 
-SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent,
-	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemCalibrationData.
+SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent.
+
+processEventData of SystemCalibration only has values of type SystemCalibrationData.
 
 SystemCalibrationData is a type of ProcessStepData,
 	described by calibrationPassFail (note "Pass / fail result.") with a single value of type string,
