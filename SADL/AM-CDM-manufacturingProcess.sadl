@@ -1,6 +1,7 @@
 uri "http://kdl.ge.com/AM-CDM-manufacturingProcess" alias AM-CDM-manufacturingProcess version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-system".
+import "http://kdl.ge.com/AM-CDM-part".
 
 ManufacturingProcess (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
 	described by processSpecification with a single value of type ManufacturingSpecification,
@@ -48,27 +49,41 @@ Blending (note "The process of mixing metal powders.") is a type of Manufacturin
 	described by blendMaterialInput with values of PowderStock,
 	described by blendMaterialOutput with a single value of PowderStock.
 
-/*
-HeatTreatmentSpecification (note ".") is a type of ManufacturingSpecification,
-	described by HeatTreatmentGlobalProcessParameters.
-
-HeatTreatmentGlobalProcessParameters is a class.
 
 
-HeatTreatment is a type of ManufacturingProcess,
-	described by heatTreatmentMaterialInput with a single value of MaterialStock,
-	described by heatTreatmentMaterialOutput with a single value of MaterialStock.
+MaterialHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HTSystem,
+	described by processSpecification with a single value of type HTProcessSpecification,
+	described by processData with a single value of type HTProcessData,
+	described by mfgProcessMaterialInputs with values of type of MaterialStock,
+	described by mfgProcessMaterialOutput with values of type of MaterialStock.
+HIPProcessSpecification is a class.
+HIPProcessData is a class.
 
-ThermoMechanicalTreatment is a type of ManufacturingProcess,
-	described by thermoMechanicalMaterialInput with a single value of MaterialStock,
-	described by thermoMechanicalMaterialOutput with a single value of MaterialStock,
-*/
+PartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HTSystem,
+	described by processSpecification with a single value of type HTProcessSpecification,
+	described by processData with a single value of type HTProcessData,
+	described by mfgProcessMaterialInputs with values of type of Part,
+	described by mfgProcessMaterialOutput with values of type of Part.
 
-MaterialRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess,
-	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
+MaterialHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HIPSystem,
+	described by processSpecification with a single value of type HIPProcessSpecification,
+	described by processData with a single value of type HIPProcessData,
+	described by mfgProcessMaterialInputs with values of type of MaterialStock,
+	described by mfgProcessMaterialOutput with values of type of MaterialStock.
+
+HIPProcessSpecification is a class.
+HIPProcessData is a class.
+
+PartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HIPSystem,
+	described by processSpecification with a single value of type HIPProcessSpecification,
+	described by processData with a single value of type HIPProcessData,
+	described by mfgProcessMaterialInputs with values of type of Part,
+	described by mfgProcessMaterialOutput with values of type of Part.
 
 
-PartExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by materialInput with a single value of MaterialStock,
-	described by materialOutput with a single value of MaterialStock,
+
+
