@@ -179,3 +179,8 @@ Software is a class,
 	described by softwareVersion (note "The version number of the software.") with a single value of type string,
 	described by softwareConfigurationSettingsFile (note "specific software settings document, for this project/component.") with a single value of type Document,
 	described by softwareFileType (note "File type (for automated processing).") with a single value of type string.
+
+
+HTSystem is a class.
+HITSystem is a class.
+PartExtractionSystem is a class.
