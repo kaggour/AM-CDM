@@ -31,5 +31,19 @@ PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused
 	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
 	described by PartSpecimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
 
-FeedstockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
-	described by feedstockSpecimenSource with a single value of type Feedstock.
+MaterialStockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
+	described by feedstockSpecimenSource with a single value of type MaterialStock.
+
+PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type PartExtractionSystem,
+	described by processSpecification with a single value of type PartExtractionProcessSpecification,
+	described by processData with a single value of type PartExtractionProcessData,
+	described by mfgProcessMaterialInputs with a single value of type of Part,
+	described by mfgProcessMaterialOutput with a single value of type of PartSpecimen.
+
+
+MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMaterialInputs with a single value of type of MaterialStock,
+	described by mfgProcessMaterialOutput with a single value of type of MaterialStockSpecimen.
+
+
