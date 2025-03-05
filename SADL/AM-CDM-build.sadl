@@ -18,7 +18,7 @@ AMMaterialOutput is a type of MaterialOutputs,
 	described by amMatOutputReclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
 	described by amMatOutputBuildProduct with a single value of type BuildProduct.
 
-BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
+BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a type of MaterialEntity,
 	described by buildProdBuildPlate with a single value of type BuildPlate,
 	described by buildProdParts with values of type Part.
 
@@ -75,36 +75,22 @@ BuildInterruption is a class,
 	described by buildInterruptReason (note "Reason of interruption") with a single value of type string,
 	described by buildInterruptHandling (note "How the interruption is handled") with a single value of type string.
 
-
-
 AMPartExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
 	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type PartExtractionSystem,
 	described by processSpecification with a single value of type PartExtractionProcessSpecification,
 	described by processData with a single value of type PartExtractionProcessData,
 	described by mfgProcessMaterialInputs with a single value of type of BuildProduct,
 	described by mfgProcessMaterialOutput with a single value of type of AMPartExtractionMaterialOutput,
-PartExtractionProcessSpecification is a class.
+PartExtractionProcessSpecification is a type of ManufacturingSpecification.
 PartExtractionProcessData is a class.
 
 AMPartExtractionMaterialOutput is a type of MaterialOutputs,
 	described by amAMPartExtractionParts (note "feedstock reclaimed upon the completion of the AM process.") with values of type Part,
 	described by amAMPartExtractionBuildPlate with a single value of type BuildPlate.
 
-AMPartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HTSystem,
-	described by processSpecification with a single value of type HTProcessSpecification,
-	described by processData with a single value of type HTProcessData,
-	described by mfgProcessMaterialInputs with values of type of Part,
-	described by mfgProcessMaterialOutput with values of type of Part.
-
-AMBuildProductHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by mfgProcessMaterialInputs with values of type of BuildProduct,
-	described by mfgProcessMaterialOutput with values of type of BuildProduc.,
-
-AMPartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by mfgProcessMaterialInputs with values of type of Part,
-	described by mfgProcessMaterialOutput with values of type of Part.
-
-AMMaterialRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess,
+PowderRecycleRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess,
+	described by processSpecification with a single value of type PowderRecycleProcessSpecification,
 	described by recyclingFrom with a single value of AMBuild,
 	described by materialOutput with a single value of MaterialStock.
+
+PowderRecycleProcessSpecification is a type of ManufacturingSpecification.
