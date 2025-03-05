@@ -46,8 +46,8 @@ MaterialOutputs is a class.
 
 
 Blending (note "The process of mixing metal powders.") is a type of ManufacturingProcess,
-	described by blendMaterialInput with values of PowderStock,
-	described by blendMaterialOutput with a single value of PowderStock.
+	described by mfgProcessMaterialInputs with values of PowderStock,
+	described by mfgProcessMaterialOutput with a single value of PowderStock.
 
 
 
