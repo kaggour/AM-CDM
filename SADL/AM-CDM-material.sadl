@@ -2,13 +2,14 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 
 import "http://kdl.ge.com/AM-CDM-base".
 
+MaterialEntity is a class.
 PowderStock (note "Material stock in the form of powder.") is a MaterialStock,
 	described by particleSizeDistribution with a single value of ParticleSizeDistribution,
 	
 SheetStock (note "Material stock in the form of sheet.") is a MaterialStock,
 FilamentStock (note "Material stock in the form of filament.") is a MaterialStock,
 
-MaterialStock (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
+MaterialStock (note "Information about a material covering feedstock, reusables, and consumables.") is a MaterialEntity,
 	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string, 
 	described by materialStockName (note "A name for operational purposes") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
