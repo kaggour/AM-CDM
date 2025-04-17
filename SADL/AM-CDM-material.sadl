@@ -48,7 +48,6 @@ MaterialSpecification (note "The ideal specification of a material, e.g., a perf
 MaterialProperty (note "Base class of material properties. Can be sub-classed to define specific types of material properties.") is a class,
 	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
 	described by propertyReferenceStandard (note "ASTM or other standard measurement conforms to.") with a single value of type Document,
-	described by materialProperties with values of type MaterialProperties,
 	described by propertyDataSheet (note "Reference document used to provide material properties.") with a single value of type Document.
 
 PropertyDerivedBy (note "the type of approach, from experiment or simulation, to obtain the property.") is a class, must be one of {Measured, Predicted}.
