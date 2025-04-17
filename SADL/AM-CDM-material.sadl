@@ -43,7 +43,7 @@ MaterialType (note "Generic/ideal material type.") is a class,
 
 MaterialSpecification (note "The ideal specification of a material, e.g., a perfect lot of Inconel 625.") is a class,
 	described by specChemistry (note "The chemistry specification of the generic/ideal material.") with a single value of type Chemistry,
-	described by predictedProperties (note "The predicted properties of the generic/ideal material.") with values of type MaterialProperties.
+	described by predictedProperties (note "The predicted properties of the generic/ideal material.") with values of type MaterialProperty.
 
 MaterialProperty (note "Base class of material properties. Can be sub-classed to define specific types of material properties.") is a class,
 	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
@@ -52,7 +52,7 @@ MaterialProperty (note "Base class of material properties. Can be sub-classed to
 
 PropertyDerivedBy (note "the type of approach, from experiment or simulation, to obtain the property.") is a class, must be one of {Measured, Predicted}.
 
-ThermodynamicProperty (note "thermodynamic property of the material") is a type of MaterialProperties,
+ThermodynamicProperty (note "thermodynamic property of the material") is a type of MaterialProperty,
 	described by electricalConductivity (note "electrical conductivity of the material") with a single value of type Quantity,
 	described by thermalExpansionCoef (note "thermal expension coefficient of the material") with a single value of type Quantity,
 	described by thermalConductivity (note "thermal conductivity of the material") with a single value of type Measurement,
@@ -60,7 +60,7 @@ ThermodynamicProperty (note "thermodynamic property of the material") is a type 
 	described by meltingTemperature (note "melting temperature of the material") with a single value of type Quantity,
 	described by glassTransitionTemperature (note "glass transition temperature of the material") with a single value of type Quantity.
 
-ParticleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") is a type of MaterialProperties,
+ParticleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") is a type of MaterialProperty,
 	described by psdPrincipleOfMeasurement (note "method to measure particle size distribution") with a single value of type string,
 	described by psdParameterBasis (note "parameter for particle size distribution measurement") with a single value of type string,
 	described by psdDispersionMedium (note "medium value of the particle size distribution") with a single value of type string,
@@ -79,7 +79,7 @@ ParticleSizeDistribution (note "Particle size of the feedstock for tpyes of proc
 	described by psdSkewness (note "Skewness, (mean-median)/(standard deviation) of the particle size distribution") with a single value of type Quantity,
 	described by psdKurtosis (note "Kurtosis of the particle size distribution") with a single value of type Quantity.
 
-TensileProperties (note "tensile propertues of the material or part") is a type of MaterialProperties,
+TensileProperties (note "tensile propertues of the material or part") is a type of MaterialProperty,
 	described by tensileTestStrainRate (note "Strain rate applied for tensile test") with a single value of type Quantity,
 	described by tensileTestDisplacementRate (note "rate of displacement applied for tensile test") with a single value of type Quantity,
 	described by tensileTestControlMode (note "control of measurement for tensile test") with a single value of type string,
@@ -95,7 +95,7 @@ TensileProperties (note "tensile propertues of the material or part") is a type 
 	described by youngsModulus (note "Young's modulus of the material") with a single value of type Quantity,
 	described by maximumLoad (note "maximum loading from tensile test") with a single value of type Quantity.
 
-CreepProperties (note "Details about the creep properties of a material") is a type of MaterialProperties,
+CreepProperties (note "Details about the creep properties of a material") is a type of MaterialProperty,
 	described by creepPanLoad (note "the loading for creep test") with a single value of type Quantity,
 	described by creepLeverArmRatio (note "the setup details about the lever arm for creep test") with a single value of type Quantity,
 	described by creepTestLoad (note "the loading for creep test") with a single value of type Quantity,
@@ -103,7 +103,7 @@ CreepProperties (note "Details about the creep properties of a material") is a t
 	described by creepTestDuration (note "the testing time for creep test") with a single value of type Quantity,
 	described by elongationAtRuptureCreep (note "the elongation at the end of the creep test") with a single value of type Quantity.
 
-ChemicalProperties (note "chemical properties of the material") is a type of MaterialProperties,
+ChemicalProperties (note "chemical properties of the material") is a type of MaterialProperty,
 	described by oxidationResistance (note "oxidation resistance of the material") with a single value of type Quantity.
 
 Chemistry (note "the chemistry of the material") is a class,
