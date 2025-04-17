@@ -12,7 +12,7 @@ DestructiveTest (note "A process step in which a part in tested destructively") 
 TestResult is a class,
 	described by ticResultPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
 	described by ticResultReport with a single value of type Document,
-	described by ticResultMaterialProperty with values of type MaterialProperties.
+	described by ticResultMaterialProperty with values of type MaterialProperty.
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
