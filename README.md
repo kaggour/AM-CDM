@@ -9,6 +9,9 @@ Additive Manufacturing - Common Data Model
 *2.	Developer Guide (readme proper) - Ben to lead this activity*  
 *3.	Standard – hold for later (express?)*  
 
+*Use CDM Chapter from ASM Handbook as a good primary reference for information*
+*https://doi.org/10.31399/asm.hb.v24A.a0006963*
+
 ## What is the AM CDM
 
 ### What is it for/Why was it created
@@ -57,7 +60,7 @@ Additive Manufacturing - Common Data Model
 ## References
 
 1. ASTM F3490
-2. 
+2. https://doi.org/10.31399/asm.hb.v24A.a0006963
 
 
 
