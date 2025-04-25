@@ -12,12 +12,12 @@ DestructiveTest (note "A process step in which a part in tested destructively") 
 TestResult is a class,
 	described by ticResultPassFail (note "Indication of whether the results of the test, inspection, or characterization passed or failed and is for informational purposes only.") with a single value of type TICResultStatus,
 	described by ticResultReport with a single value of type Document,
-	described by ticResultMaterialProperty with values of type MaterialProperties.
+	described by ticResultMaterialProperty with values of type MaterialProperty.
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
 // Note: I did not edit these yet
-Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
+Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a type of MaterialEntity,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
 	described by specimenMass with a single value of type Quantity,
@@ -31,5 +31,16 @@ PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused
 	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
 	described by PartSpecimenGeometry (note "The geometry of the specimen.") with a single value of type Document.
 
-FeedstockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
-	described by feedstockSpecimenSource with a single value of type Feedstock.
+MaterialStockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
+	described by feedstockSpecimenSource with a single value of type MaterialStock.
+
+PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMaterialInputs with a single value of type of Part,
+	described by mfgProcessMaterialOutput with a single value of type of PartSpecimen.
+
+
+MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMaterialInputs with a single value of type of MaterialStock,
+	described by mfgProcessMaterialOutput with a single value of type of MaterialStockSpecimen.
+
+
