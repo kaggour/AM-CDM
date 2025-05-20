@@ -119,9 +119,13 @@ ChemistryElement (note "chemical element from periodic table") is a class,
 	described by maxPercent (note "maximum percentage of the element from measurements") with a single value of type double,
 	described by avgPercent (note "average percentage of the element from measurements") with a single value of type double.
 
+PeriodicElement (note "element symbol, e.g., C.") is a class, must be one of {Ac,Al,Ag,Am,Ar,As,At,Au,B,Ba,Bh,Bi,Be,Bk,Br,C,Ca,Cd,Ce,Cf,Cl,Cm,Co,Cr,Cs,Cu,Db,Dy,Er,Es,Eu,F,Fe,Fm,Fr,Ga,Gd,Ge,H,He,Hf,Hg,Ho,Hs,I,In,Ir,K,Kr,La,Li,Lr,Lu,Md,Mg,Mn,Mo,Mt,N,Na,Nb,Nd,Ne,Ni,No,Np,O,Os,P,Pa,Pb,Pd,Pm,Po,Pr,Pt,Pu,Ra,Rb,Re,Rf,Rh,Rn,Ru,S,Sb,Sc,Se,Sg,Si,Sm,Sn,Sr,Ta,Tb,Tc,Te,Th,Ti,Tl,Tm,U,V,W,Xe,Y,Yb,Zn,Zr}.
+
+/*
 PeriodicElement (note "Information about individual elements.") is a class,
 	described by elementName (note "element name, e.g., Carbon.") with a single value of type string,
 	described by elementSymbol (note "element symbol, e.g., C.") with a single value of type string,
 	described by atomicNumber (note "element atomic number, e.g., 6.") with a single value of type int,
 	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu.") with a single value of type Quantity,
 	described by elementMeltingPoint (note "element melting point, e.g., 3500.0 degrees Celsius.") with a single value of type Quantity.
+*/
