@@ -9,6 +9,7 @@ Document (note "File of any type.") is a class,
 	described by documentClassificationLevel (note "Classification level of the document.") with a single value of type string,
 	described by documentClassificationIPClass (note "IP class classification of the document.") with a single value of type string,
 	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string.
+	described by documentCreationTime (note "Time of the document is created.") with a single value of type string.
 
 Organization (note "An organization of various types.") is a class,
 	described by organizationID (note "The unique identifier of the organization.") with a single value of type string,
