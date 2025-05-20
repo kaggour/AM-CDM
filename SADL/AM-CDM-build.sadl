@@ -88,7 +88,7 @@ AMPartExtractionMaterialOutput is a type of MaterialOutputs,
 	described by amAMPartExtractionParts (note "feedstock reclaimed upon the completion of the AM process.") with values of type Part,
 	described by amAMPartExtractionBuildPlate with a single value of type BuildPlate.
 
-PowderRecycleRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess,
+PowderRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess,
 	described by processSpecification with a single value of type PowderRecycleProcessSpecification,
 	described by recyclingFrom with a single value of AMBuild,
 	described by materialOutput with a single value of MaterialStock.
