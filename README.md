@@ -12,6 +12,8 @@ Additive Manufacturing - Common Data Model
 *Use CDM Chapter from ASM Handbook as a good primary reference for information*
 *https://doi.org/10.31399/asm.hb.v24A.a0006963*
 
+*Keep writing in each section down to a few sentences - goal is to allow people to understand quickly what this is and direct them to other sources (ASM handbook) for more context.
+
 ## What is the AM CDM
 
 ### What is it for/Why was it created
