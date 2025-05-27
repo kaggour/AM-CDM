@@ -12,9 +12,10 @@ Additive Manufacturing - Common Data Model
 *Use CDM Chapter from ASM Handbook as a good primary reference for information*
 *https://doi.org/10.31399/asm.hb.v24A.a0006963*
 
-*Keep writing in each section down to a few sentences - goal is to allow people to understand quickly what this is and direct them to other sources (ASM handbook) for more context.
+*Keep writing in each section down to a few sentences - goal is to allow people to understand quickly what this is and direct them to other sources (ASM handbook) for more context.*
 
-## What is the AM CDM
+## What is the AM CDM - Lead: Kareem or Peter
+*pull info from Kareem's ASM Handbook Chapter*
 
 ### What is it for/Why was it created
 ### Where did it come from
@@ -22,44 +23,44 @@ Additive Manufacturing - Common Data Model
 ### CDD Progression to CDM
 ### Who created it
 
-## What is the scope of the AM CDM
+## What is the scope of the AM CDM - Lead: Peter Coutts
 
 (Process agnostic AM - not all concepts are AM specific, but were deemed necessary to include..)
 
-## How to use the AM CDM
+## How to use the AM CDM - Lead: ? Peter (All contribute ideas?)
 
 ### What is the use case for a general AM practitioner?
 ### How a non-data person may apply the CDM in their organization, even if not implemented in a database, etc.
 ### Minimum viable data, enable data pedigree via data connectivity
 
-## What is SADL
+## What is SADL - Lead: Kareem Aggour
 
 ### SADL File Structure
 ### How to use SADL Files
 ### Tips for Human consumption of SADL Files
 
-## How to reference the AM-CDM
+## How to reference the AM-CDM - Lead: Kareem Aggour
 
 ### Citing
 ### Versioning
 
-## CDM Structure
+## CDM Structure - Lead: Alex Kitt
 
 ### Inheritance/Meta-Rules
 
-## Who is using the AM CDM
+## Who is using the AM CDM - Lead: Kareem Aggour
 
 ### Current users
 ### Examples of use
 ### How to submit record of use
 
-## Future Work
+## Future Work - Lead: Yan Lu
 
 ### Standardization
 ### Expansion to sub-domains (PBF, DED, specific TICs, etc.)
 ### How to get involved and/or provide feedback
 
-## References
+## References - Lead: ALL
 
 1. ASTM F3490
 2. https://doi.org/10.31399/asm.hb.v24A.a0006963
