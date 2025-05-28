@@ -15,7 +15,9 @@ Additive Manufacturing - Common Data Model
 
 *Keep writing in each section down to a few sentences - goal is to allow people to understand quickly (10-15 minute read time) what this is and direct them to other sources (ASM handbook, Wiki Pages) for more context.*  
 
-*More detailed information, graphics, links, etc. could be contained in the Wiki pages - see for reference: https://github.com/idaholab/Deep-Lynx/wiki*
+*More detailed information, graphics, links, etc. could be contained in the Wiki pages - see for reference: https://github.com/idaholab/Deep-Lynx/wiki*  
+
+*This content could be put into a PPT/PDF for sharing outside of the Github environment*  
 
 ## What is the AM CDM - Lead: Kareem Aggour
 *pull info from Kareem's ASM Handbook Chapter*
