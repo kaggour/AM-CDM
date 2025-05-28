@@ -6,32 +6,43 @@ Additive Manufacturing - Common Data Model
 
 *Objective: Create 3 versions of documentation for different CDM users/viewpoints:*  
 *1.	General AM Practitioner (this README document) – Peter to lead, people to volunteer for writing sections*  
-*2.	Developer Guide (readme proper) - Ben to lead this activity*  
-*3.	Standard – hold for later (express?)*  
+*2. Wiki Pages (more detailed versions of certain important sections of the README, we decide which sections, page for each module, etc.) - Benjamin to lead outline for this*
+*3.	Developer Guide (readme proper) - Ben to lead this activity*  
+*4.	Standard – hold for later (express?)*  
 
 *Use CDM Chapter from ASM Handbook as a good primary reference for information*
 *https://doi.org/10.31399/asm.hb.v24A.a0006963*
 
 *Keep writing in each section down to a few sentences - goal is to allow people to understand quickly what this is and direct them to other sources (ASM handbook) for more context.*
+*More detailed information, graphics, links, etc. could be contained in the Wiki page - see for reference: https://github.com/idaholab/Deep-Lynx/wiki*
 
-## What is the AM CDM - Lead: Kareem or Peter
+## What is the AM CDM - Lead: Kareem Aggour
 *pull info from Kareem's ASM Handbook Chapter*
 
-### What is it for/Why was it created
+### What is it for/Why was it created (motivation)
 ### Where did it come from
 ### CDD -> ASTM F3490
 ### CDD Progression to CDM
 ### Who created it
+### How is CDM different from a data exchange format
 
 ## What is the scope of the AM CDM - Lead: Peter Coutts
 
 (Process agnostic AM - not all concepts are AM specific, but were deemed necessary to include..)
 
-## How to use the AM CDM - Lead: ? Peter (All contribute ideas?)
+## AM CDM Structure - Lead: Alex Kuan
+*insert some graphics of the AM CDM to help visualize the organization and structure*
+*focus on most important classes*
+
+## How to use the AM CDM - Lead: Richard Huff, supporting Benjamin Standfield (All contribute ideas?)
 
 ### What is the use case for a general AM practitioner?
 ### How a non-data person may apply the CDM in their organization, even if not implemented in a database, etc.
 ### Minimum viable data, enable data pedigree via data connectivity
+### How the CDM relates to data exchange formats
+*should we define conformance to the AM CDM? If so, include loose rules*
+
+## How to Derive Data Exchange Formats from the CDM - Lead: Shengyen Li (Hunter and Luke?)
 
 ## What is SADL - Lead: Kareem Aggour
 
@@ -48,7 +59,7 @@ Additive Manufacturing - Common Data Model
 
 ### Inheritance/Meta-Rules
 
-## Who is using the AM CDM - Lead: Kareem Aggour
+## Who is using the AM CDM - Lead: Yan Lu
 
 ### Current users
 ### Examples of use
