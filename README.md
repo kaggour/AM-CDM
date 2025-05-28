@@ -13,7 +13,7 @@ Additive Manufacturing - Common Data Model
 *Use CDM Chapter from ASM Handbook as a good primary reference for information*
 *https://doi.org/10.31399/asm.hb.v24A.a0006963*
 
-*Keep writing in each section down to a few sentences - goal is to allow people to understand quickly (10-15 minute read time) what this is and direct them to other sources (ASM handbook) for more context.*  
+*Keep writing in each section down to a few sentences - goal is to allow people to understand quickly (10-15 minute read time) what this is and direct them to other sources (ASM handbook, Wiki Pages) for more context.*  
 
 *More detailed information, graphics, links, etc. could be contained in the Wiki pages - see for reference: https://github.com/idaholab/Deep-Lynx/wiki*
 
