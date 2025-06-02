@@ -1,6 +1,7 @@
 uri "http://kdl.ge.com/AM-CDM-manufacturingProcess" alias AM-CDM-manufacturingProcess version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-system".
+import "http://kdl.ge.com/AM-CDM-part".
 
 ManufacturingProcess (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
 	described by processSpecification with a single value of type ManufacturingSpecification,
@@ -42,3 +43,47 @@ ProcessSimulation (note "Data used and generated from computer programs using ph
 	described by simulationModelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
 
 MaterialOutputs is a class.
+
+
+Blending (note "The process of mixing metal powders.") is a type of ManufacturingProcess,
+	described by mfgProcessMaterialInputs with values of PowderStock,
+	described by mfgProcessMaterialOutput with a single value of PowderStock.
+
+
+
+MaterialHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HTSystem,
+	described by processSpecification with a single value of type HTProcessSpecification,
+	described by processData with a single value of type HTProcessData,
+	described by mfgProcessMaterialInputs with values of type of MaterialStock,
+	described by mfgProcessMaterialOutput with values of type of MaterialStock.
+HIPProcessSpecification is a class.
+HIPProcessData is a class.
+
+PartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HTSystem,
+	described by processSpecification with a single value of type HTProcessSpecification,
+	described by processData with a single value of type HTProcessData,
+	described by mfgProcessMaterialInputs with values of type of Part,
+	described by mfgProcessMaterialOutput with values of type of Part.
+
+MaterialHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HIPSystem,
+	described by processSpecification with a single value of type HIPProcessSpecification,
+	described by processData with a single value of type HIPProcessData,
+	described by mfgProcessMaterialInputs with values of type of MaterialStock,
+	described by mfgProcessMaterialOutput with values of type of MaterialStock.
+
+HIPProcessSpecification is a class.
+HIPProcessData is a class.
+
+PartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
+	described by mfgProcessMachine (note "AM system used for this build.") with a single value of type HIPSystem,
+	described by processSpecification with a single value of type HIPProcessSpecification,
+	described by processData with a single value of type HIPProcessData,
+	described by mfgProcessMaterialInputs with values of type of Part,
+	described by mfgProcessMaterialOutput with values of type of Part.
+
+
+
+

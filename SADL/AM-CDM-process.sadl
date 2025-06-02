@@ -24,3 +24,12 @@ ProcessStepSpecification (note "A prescription of how a planned process step sho
 
 ProcessStepData is a class,
 	described by dataOperatorNotes (note "Observations recorded by the personnel involved in the process step.") with a single value of type string.
+
+MaterialSeparation (note "one material stock splited into multiple stocks, including powder sampling scenario, but not including part extraction") is a PlannedProcessStep,
+	described by materialInput with a single value of MaterialStock,
+	described by materialOutput with values of MaterialStock.
+
+MaterialTransfer (note "material stock moved from one owner to another owner at a different location") is a PlannedProcessStep,
+	described by materialInput with a single value of MaterialStock,
+	described by materialOutput with a single value of MaterialStock.
+
