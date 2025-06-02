@@ -8,8 +8,8 @@ Document (note "File of any type.") is a class,
 	described by documentFormat (note "Defines the file structure, not the file type.") with a single value of type string,
 	described by documentClassificationLevel (note "Classification level of the document.") with a single value of type string,
 	described by documentClassificationIPClass (note "IP class classification of the document.") with a single value of type string,
-	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string.
-	described by documentCreationTime (note "Time of the document is created.") with a single value of type string.
+	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string,
+	described by documentCreationTime (note "Time the document is created.") with a single value of type string.
 
 Organization (note "An organization of various types.") is a class,
 	described by organizationID (note "The unique identifier of the organization.") with a single value of type string,
@@ -129,7 +129,6 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 	described by projectSponsor (note "Provider of money and requirements for the project.") with a single value of type Organization,
 	described by projectOwningOrganization (note "Organization that owns the project.") with a single value of type Organization,
 	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.") with a single value of type string,
-	//described by projectDistributionControl (note "ITAR-like restrictions") with a single value of type string,
 	described by projectRequirements (note "Documented requirements for the project.") with a single value of type Document,
 	described by projectPlan (note "Document describing how project is to be conducted, organized, etc.") with a single value of type Document,
 	described by projectStart (note "Start date of project.") with a single value of type dateTime,
@@ -145,5 +144,4 @@ Project (note "A temporary endeavor undertaken to create one or more unique AM p
 
 SynthesizedData (note "Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.") is a type of DatasetMetadata,
 	described by synthesizedDataMethod (note "The method used to synthesize the data.") with values of type string,
-	//described by synthesizedDataSoftware (note "The software used to synthesize the data.") with values of type Software,
 	described by synthesizedDocument with a single value of type Document.

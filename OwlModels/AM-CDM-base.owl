@@ -6,127 +6,126 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:AM-CDM-base="http://kdl.ge.com/AM-CDM-base#"
     xmlns:sadlbasemodel="http://sadl.org/sadlbasemodel#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-  xml:base="http://kdl.ge.com/AM-CDM-base">
-  <owl:Ontology rdf:about="">
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://kdl.ge.com/AM-CDM-base">
     <owl:imports rdf:resource="http://sadl.org/builtinfunctions"/>
     <owl:imports rdf:resource="http://sadl.org/sadlimplicitmodel"/>
     <owl:imports rdf:resource="http://sadl.org/sadlbasemodel"/>
     <owl:versionInfo>$Revision:$ Last modified on   $Date:$</owl:versionInfo>
     <rdfs:comment xml:lang="en">This ontology was created from a SADL file 'AM-CDM-base.sadl' and should not be directly edited.</rdfs:comment>
   </owl:Ontology>
-  <owl:Class rdf:ID="RotaryCoordinate">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#RotaryCoordinate">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="cAngle"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#cAngle"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:about="#Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="bAngle"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#bAngle"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:about="#Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="aAngle"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#aAngle"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A rotary coordinate.</rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:ID="Coordinate"/>
+      <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Coordinate"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="CartesianCoordinate">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#CartesianCoordinate">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:about="#Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="zCoordinate"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#zCoordinate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:about="#Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="yCoordinate"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#yCoordinate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:about="#Quantity"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="xCoordinate"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#xCoordinate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A Cartesian coordinate.</rdfs:comment>
     <rdfs:subClassOf>
-      <owl:Class rdf:about="#Coordinate"/>
+      <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Coordinate"/>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="OrganizationType">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#OrganizationType">
     <owl:equivalentClass>
       <owl:Class>
         <owl:oneOf rdf:parseType="Collection">
-          <AM-CDM-base:OrganizationType rdf:ID="MaterialManufacturer"/>
-          <AM-CDM-base:OrganizationType rdf:ID="MaterialSupplier"/>
-          <AM-CDM-base:OrganizationType rdf:ID="PartDesigner"/>
-          <AM-CDM-base:OrganizationType rdf:ID="PartManufacturer"/>
-          <AM-CDM-base:OrganizationType rdf:ID="MachineManufacturer"/>
-          <AM-CDM-base:OrganizationType rdf:ID="SystemIntegrator"/>
-          <AM-CDM-base:OrganizationType rdf:ID="PartTester"/>
-          <AM-CDM-base:OrganizationType rdf:ID="Regulator"/>
-          <AM-CDM-base:OrganizationType rdf:ID="Buyer"/>
-          <AM-CDM-base:OrganizationType rdf:ID="FundingAgency"/>
-          <AM-CDM-base:OrganizationType rdf:ID="Other"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#MaterialManufacturer"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#MaterialSupplier"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#PartDesigner"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#PartManufacturer"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#MachineManufacturer"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#SystemIntegrator"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#PartTester"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#Regulator"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#Buyer"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#FundingAgency"/>
+          <AM-CDM-base:OrganizationType rdf:about="http://kdl.ge.com/AM-CDM-base#Other"/>
         </owl:oneOf>
       </owl:Class>
     </owl:equivalentClass>
     <rdfs:comment xml:lang="en">An OrganizationType is a recognized capability of an Organization.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Country">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Country">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="countryCallingCode"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryCallingCode"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -136,7 +135,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="countryAlpha3Code"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryAlpha3Code"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -146,7 +145,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="countryAlpha2Code"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryAlpha2Code"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -156,33 +155,45 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="countryName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A country.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="#Quantity">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Quantity">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="quantityUnit"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#quantityUnit"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Abstract class representing a numerical quantity with a unit.  This class should not be used directly, rather one should use either the SingleValue or StatisticalValue classes.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="DatasetMetadata">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#DatasetMetadata">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#DatasetAccessControl"/>
+        </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetStructure"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetAccessControl"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetCreationDateTime"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -192,17 +203,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetID"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetSchemaURI"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetStructure"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -213,7 +214,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -223,29 +224,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="datasetSize"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:ID="DatasetAccessControl"/>
-        </owl:onClass>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="datasetAccessControl"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetSchemaURI"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -255,127 +234,157 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetURI"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="datasetCreationDateTime"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetSize"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetURI"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:ID="Document">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Document">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentURI"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentClassificationIPClass"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentClassificationLevel"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentFormat"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentLocation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentFileName"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="documentTitle"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentClassificationIPClass"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">File of any type.</rdfs:comment>
-  </owl:Class>
-  <owl:Class rdf:ID="PhoneNumber">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="phoneNumber"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentLocation"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Country"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="phoneCountry"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentTitle"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentClassificationLevel"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentFileName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentFormat"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentURI"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentCreationTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#PhoneNumber">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#phoneNumber"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#phoneCountry"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A phone number.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Qualification">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Qualification">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="Organization"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Organization"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="qualifyingOrganization"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualifyingOrganization"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -385,7 +394,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="qualificationLevel"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualificationLevel"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -395,87 +404,87 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="qualificationType"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualificationType"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Details of qualification/certification (machine specific operator certificate, UL, ASTM).</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Orientation">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Orientation">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partReorientationC"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationC"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partReorientationB"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationB"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partReorientationA"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationA"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partLocationZ"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationZ"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partLocationY"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationY"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="partLocationX"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationX"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">The orientation of an object as defined in ISO/ASTM 52921.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="OrganizationQualification">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#OrganizationQualification">
     <rdfs:comment xml:lang="en">Details of qualification/certification for an individual or organization.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Qualification"/>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-base#Qualification"/>
   </owl:Class>
-  <owl:Class rdf:ID="StatisticalValue">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#StatisticalValue">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statMaxValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMeanValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -485,7 +494,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statMinValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMedianValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -495,7 +504,18 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statModeValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statModeValue"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statStandardDeviationValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -505,7 +525,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statMeanValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statNumberOfValues"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -515,18 +535,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statMedianValue"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf rdf:resource="#Quantity"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statStandardDeviationValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMaxValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -536,7 +545,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statNumberOfValues"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMinValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -546,44 +555,44 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="statDataAggregationTechnique"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statDataAggregationTechnique"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A statistical quantity value with a variety of statistical measures.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:about="#Organization">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Organization">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="Person"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Person"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="organizationPointOfContact"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationPointOfContact"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#PhoneNumber"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#PhoneNumber"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="organizationPhoneNumber"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationPhoneNumber"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass>
-          <owl:Class rdf:ID="Address"/>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Address"/>
         </owl:onClass>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="organizationAddress"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationAddress"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -593,7 +602,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="organizationName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -603,34 +612,34 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="organizationID"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">An organization of various types.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="SynthesizedData">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#SynthesizedData">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="synthesizedDocument"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#synthesizedDocument"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Data that has been reduced from its original raw form and often indicates clearer, more human-friendly, interpretable results. This could include; statistical or trend related results, material cards (for design/simulation), or similar.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#DatasetMetadata"/>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
   </owl:Class>
-  <owl:Class rdf:about="#Person">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Person">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Organization"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="personOrganization"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personOrganization"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -640,7 +649,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personEmail"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personEmail"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -650,7 +659,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personFullName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personFullName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -660,7 +669,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personLastName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personLastName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -670,7 +679,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personFirstName"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personFirstName"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -680,81 +689,101 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personID"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personID"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">An Individual and their primary credentials and contact information.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="PersonQualification">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#PersonQualification">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="personQualificationNumberOfHours"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personQualificationNumberOfHours"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Details of qualification/certification for a person.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Qualification"/>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-base#Qualification"/>
   </owl:Class>
-  <owl:Class rdf:about="#DatasetAccessControl">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#DatasetAccessControl">
     <owl:equivalentClass>
       <owl:Class>
         <owl:oneOf rdf:parseType="Collection">
-          <AM-CDM-base:DatasetAccessControl rdf:ID="Restricted"/>
-          <AM-CDM-base:DatasetAccessControl rdf:ID="Consent"/>
-          <AM-CDM-base:DatasetAccessControl rdf:ID="Public"/>
+          <AM-CDM-base:DatasetAccessControl rdf:about="http://kdl.ge.com/AM-CDM-base#Restricted"/>
+          <AM-CDM-base:DatasetAccessControl rdf:about="http://kdl.ge.com/AM-CDM-base#Consent"/>
+          <AM-CDM-base:DatasetAccessControl rdf:about="http://kdl.ge.com/AM-CDM-base#Public"/>
         </owl:oneOf>
       </owl:Class>
     </owl:equivalentClass>
     <rdfs:comment xml:lang="en">Possible types of data access control.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Environment">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Environment">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="environmentAmbientPressure"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#environmentAmbientPressure"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Quantity"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="environmentAmbientTemperature"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#environmentAmbientTemperature"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="#Coordinate">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Coordinate">
     <rdfs:comment xml:lang="en">A coordinate to position an object in reference to something.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="Project">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Project">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectDataManagementPlan"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectQualityProcessControlPlan"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectQualityProcessControlPlan"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectCreator"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectRequirements"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectEnd"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -764,7 +793,17 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectID"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectID"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectQualityControlPlan"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -774,120 +813,90 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectDistributionControl"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Organization"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectOwningOrganization"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectPlan"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDistributionControl"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A temporary endeavor undertaken to create one or more unique AM products or AM services. Links to all other information; may include platform, criticality, sponsors, material DB ID, organization, distribution control (e.g., ITAR restricted or not).</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Organization"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectSponsor"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectStart"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectDeliveryDate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectEnd"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectQualityControlPlan"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="#Organization"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectCreator"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="projectDistributionStatement"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDistributionStatement"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Document"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="projectRequirements"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDeliveryDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectStart"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectOwningOrganization"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDataManagementPlan"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectSponsor"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectPlan"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
   </owl:Class>
-  <owl:Class rdf:about="#Address">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#Address">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="#Country"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:ID="addressCountry"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressCountry"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -897,7 +906,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="adderssPostalCode"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#adderssPostalCode"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -907,7 +916,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="addressStateProvince"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressStateProvince"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -917,7 +926,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="addressCity"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressCity"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -927,7 +936,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="addressLine2"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressLine2"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -937,43 +946,43 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="addressLine1"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressLine1"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A physical address where someone or something is located.</rdfs:comment>
   </owl:Class>
-  <owl:Class rdf:ID="InitialOrientation">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#InitialOrientation">
     <owl:equivalentClass>
       <owl:Class>
         <owl:oneOf rdf:parseType="Collection">
-          <AM-CDM-base:InitialOrientation rdf:ID="XYZ"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="XY"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="XZY"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="XZ"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="YXZ"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="YX"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="YZX"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="YZ"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="ZXY"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="ZX"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="ZYX"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="ZY"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="X"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="Y"/>
-          <AM-CDM-base:InitialOrientation rdf:ID="Z"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#XYZ"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#XY"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#XZY"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#XZ"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#YXZ"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#YX"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#YZX"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#YZ"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#ZXY"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#ZX"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#ZYX"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#ZY"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#X"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#Y"/>
+          <AM-CDM-base:InitialOrientation rdf:about="http://kdl.ge.com/AM-CDM-base#Z"/>
         </owl:oneOf>
       </owl:Class>
     </owl:equivalentClass>
   </owl:Class>
-  <owl:Class rdf:ID="SingleValue">
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-base#SingleValue">
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="valueUncertaintyMeasure"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#valueUncertaintyMeasure"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -983,497 +992,502 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:ID="valueValue"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#valueValue"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">A single quantity value with a value, a single measure of uncertainty, and a unit.</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="#Quantity"/>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:Class>
-  <owl:ObjectProperty rdf:ID="documentAuthor">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentAuthor">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">One or more authors of the document.</rdfs:comment>
-    <rdfs:range rdf:resource="#Person"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="organizationType">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationType">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">The type or roles of an organization, whether it is a manufacturer, vendor, supplier, or contractor. One organization may have many types.</rdfs:comment>
-    <rdfs:range rdf:resource="#OrganizationType"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#OrganizationType"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partReorientationB">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationB">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#addressCountry">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressCountry">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">Country in address.</rdfs:comment>
-    <rdfs:range rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="personQualification">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personQualification">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">Qualifications of person.</rdfs:comment>
-    <rdfs:range rdf:resource="#PersonQualification"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#PersonQualification"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#yCoordinate">
-    <rdfs:domain rdf:resource="#CartesianCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#yCoordinate">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#CartesianCoordinate"/>
     <rdfs:comment xml:lang="en">The position on the y-axis in a Cartesian coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectPlan">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectPlan">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Document describing how project is to be conducted, organized, etc.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#bAngle">
-    <rdfs:domain rdf:resource="#RotaryCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#bAngle">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#RotaryCoordinate"/>
     <rdfs:comment xml:lang="en">The rotation of the B angle in a rotary coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectRequirements">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectRequirements">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Documented requirements for the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partLocationY">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationY">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">The y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="projectDataset">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDataset">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Datasets generated from the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#DatasetMetadata"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#datasetSize">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetSize">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">The size of the dataset.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectQualityControlPlan">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectQualityControlPlan">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Document describing the quality control plan for the the site performing the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#organizationPhoneNumber">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationPhoneNumber">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">A phone number for the organization.</rdfs:comment>
-    <rdfs:range rdf:resource="#PhoneNumber"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#PhoneNumber"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#aAngle">
-    <rdfs:domain rdf:resource="#RotaryCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#aAngle">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#RotaryCoordinate"/>
     <rdfs:comment xml:lang="en">The rotation of the A angle in a rotary coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#synthesizedDocument">
-    <rdfs:domain rdf:resource="#SynthesizedData"/>
-    <rdfs:range rdf:resource="#Document"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#synthesizedDocument">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#SynthesizedData"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#xCoordinate">
-    <rdfs:domain rdf:resource="#CartesianCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#xCoordinate">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#CartesianCoordinate"/>
     <rdfs:comment xml:lang="en">The position on the x-axis in a Cartesian coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="organizationQualification">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationQualification">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">Details of the organization's qualifications and certifications.</rdfs:comment>
-    <rdfs:range rdf:resource="#OrganizationQualification"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#OrganizationQualification"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#personOrganization">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personOrganization">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">Links person to an organization. You may wish to reference by ID to avoid possible circular references.</rdfs:comment>
-    <rdfs:range rdf:resource="#Organization"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="projectReport">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectReport">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Reports of the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#organizationAddress">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationAddress">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">The address of the organization.</rdfs:comment>
-    <rdfs:range rdf:resource="#Address"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectOwningOrganization">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectOwningOrganization">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Organization that owns the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Organization"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#zCoordinate">
-    <rdfs:domain rdf:resource="#CartesianCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#zCoordinate">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#CartesianCoordinate"/>
     <rdfs:comment xml:lang="en">The position on the z-axis in a Cartesian coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectDataManagementPlan">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDataManagementPlan">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Data management plan of the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="statAggregatedValues">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statAggregatedValues">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en"></rdfs:comment>
-    <rdfs:range rdf:resource="#SingleValue"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#SingleValue"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partReorientationC">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationC">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#organizationPointOfContact">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationPointOfContact">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">Identification of the point of contact. You may wish to reference by ID to avoid possible circular references.</rdfs:comment>
-    <rdfs:range rdf:resource="#Person"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#cAngle">
-    <rdfs:domain rdf:resource="#RotaryCoordinate"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#cAngle">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#RotaryCoordinate"/>
     <rdfs:comment xml:lang="en">The rotation of the C angle in a rotary coordinate system.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partReorientationA">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partReorientationA">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z). ISO/ASTM 52921.</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#environmentAmbientPressure">
-    <rdfs:domain rdf:resource="#Environment"/>
-    <rdfs:range rdf:resource="#Quantity"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#environmentAmbientPressure">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Environment"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partLocationZ">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationZ">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">The z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="datasetCreator">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetCreator">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Creator of dataset and/or the metadata of the dataset.</rdfs:comment>
-    <rdfs:range rdf:resource="#Person"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectCreator">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectCreator">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Organization that created the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Organization"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectSponsor">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectSponsor">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Provider of money and requirements for the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Organization"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="personPhoneNumber">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personPhoneNumber">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">The phone number for the individual.</rdfs:comment>
-    <rdfs:range rdf:resource="#PhoneNumber"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#PhoneNumber"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#partLocationX">
-    <rdfs:domain rdf:resource="#Orientation"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#partLocationX">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
     <rdfs:comment xml:lang="en">The x-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin. ISO/ASTM 52921</rdfs:comment>
-    <rdfs:range rdf:resource="#Quantity"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#phoneCountry">
-    <rdfs:domain rdf:resource="#PhoneNumber"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#phoneCountry">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#PhoneNumber"/>
     <rdfs:comment xml:lang="en">Country phone number is in.</rdfs:comment>
-    <rdfs:range rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#projectQualityProcessControlPlan">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectQualityProcessControlPlan">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Document describing the quality process control plan for the the site performing the project.</rdfs:comment>
-    <rdfs:range rdf:resource="#Document"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#datasetAccessControl">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetAccessControl">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">How to get access to the dataset. Control Code Type is used to communicate 'Restricted', 'Consent', and 'Public'.</rdfs:comment>
-    <rdfs:range rdf:resource="#DatasetAccessControl"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetAccessControl"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#environmentAmbientTemperature">
-    <rdfs:domain rdf:resource="#Environment"/>
-    <rdfs:range rdf:resource="#Quantity"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#environmentAmbientTemperature">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Environment"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="#qualifyingOrganization">
-    <rdfs:domain rdf:resource="#Qualification"/>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualifyingOrganization">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Qualification"/>
     <rdfs:comment xml:lang="en">The organization from which the qualification or certification originates. You may wish to reference by ID to avoid possible circular references.</rdfs:comment>
-    <rdfs:range rdf:resource="#Organization"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:about="#datasetSchemaURI">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetSchemaURI">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Location via a URI pointer to the specific Content Format Specification that describes how to parse the content in a repository; i.e., defines the schema of the content in the repository.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentURI">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentURI">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">URI of the document pointing to its digital location.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statModeValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statModeValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Mode of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statNumberOfValues">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statNumberOfValues">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Number (count) of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentLocation">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentLocation">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">Physical location of the document.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personEmail">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personEmail">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">The email for the individual.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#organizationName">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">The name of an organization.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentClassificationLevel">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentClassificationLevel">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">Classification level of the document.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statStandardDeviationValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statStandardDeviationValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Standard deviation of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#quantityUnit">
-    <rdfs:domain rdf:resource="#Quantity"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#quantityUnit">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
     <rdfs:comment xml:lang="en">Units associated with the numerical value.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentTitle">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentTitle">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">Title of the document.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personFirstName">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personFirstName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">First name of person.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#countryName">
-    <rdfs:domain rdf:resource="#Country"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
     <rdfs:comment xml:lang="en">The country's name.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#addressLine2">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressLine2">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">Second line in address.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#organizationID">
-    <rdfs:domain rdf:resource="#Organization"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#organizationID">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
     <rdfs:comment xml:lang="en">The unique identifier of the organization.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#addressStateProvince">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressStateProvince">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">State or Province in address.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#countryCallingCode">
-    <rdfs:domain rdf:resource="#Country"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryCallingCode">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
     <rdfs:comment xml:lang="en">The calling code for the country.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personQualificationNumberOfHours">
-    <rdfs:domain rdf:resource="#PersonQualification"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personQualificationNumberOfHours">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#PersonQualification"/>
     <rdfs:comment xml:lang="en">The number of hours that this person has completed on this equipment/software/system.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetStructure">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetStructure">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Detailed text description of the format of the data, e.g., the XML file format, JSON file format, HDf5 format, etc.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statDataAggregationTechnique">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statDataAggregationTechnique">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Data aggregation technique, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentFormat">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentFormat">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">Defines the file structure, not the file type.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetName">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Name of the dataset.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectStart">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectStart">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Start date of project.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="synthesizedDataMethod">
-    <rdfs:domain rdf:resource="#SynthesizedData"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#synthesizedDataMethod">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#SynthesizedData"/>
     <rdfs:comment xml:lang="en">The method used to synthesize the data.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentFileName">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentFileName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">File name of the document.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectDistributionStatement">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDistributionStatement">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personID">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentCreationTime">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+    <rdfs:comment xml:lang="en">Time the document is created.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personID">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">Unique identifier of the person.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="datasetFormat">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetFormat">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12, HDF5, ZIP, and so forth.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="datasetKeyTags">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetKeyTags">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Keywords and tags describing the data to facilitate search and findability. Examples include 'meltpool temperature', 'meltpool size', and 'layer-wise image.'</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#addressLine1">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressLine1">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">First line in address.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#adderssPostalCode">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#adderssPostalCode">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">Zip or postal code in address.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#documentClassificationIPClass">
-    <rdfs:domain rdf:resource="#Document"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#documentClassificationIPClass">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
     <rdfs:comment xml:lang="en">IP class classification of the document.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectEnd">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectEnd">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">End date of project.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectID">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectID">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Reference to the associated Project that produced this build. Links to Project record.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="datasetSubject">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetSubject">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Classification, keyword, or phrase that describes the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="projectStandards">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectStandards">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Set of standards used in project.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#phoneNumber">
-    <rdfs:domain rdf:resource="#PhoneNumber"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#phoneNumber">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#PhoneNumber"/>
     <rdfs:comment xml:lang="en">Actual phone number.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personLastName">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personLastName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">Last name of person.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#valueUncertaintyMeasure">
-    <rdfs:domain rdf:resource="#SingleValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#valueUncertaintyMeasure">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#SingleValue"/>
     <rdfs:comment xml:lang="en"></rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetID">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetID">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Unique identifier of the dataset.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#personFullName">
-    <rdfs:domain rdf:resource="#Person"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#personFullName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
     <rdfs:comment xml:lang="en">Full name of person if not split into first and last names.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#valueValue">
-    <rdfs:domain rdf:resource="#SingleValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#valueValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#SingleValue"/>
     <rdfs:comment xml:lang="en">Numerical value.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#countryAlpha3Code">
-    <rdfs:domain rdf:resource="#Country"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryAlpha3Code">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
     <rdfs:comment xml:lang="en">Three-digit country code.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetCreationDateTime">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetCreationDateTime">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Point of time associated with creation of the dataset. May be used at any level of granularity. Recommended best practice is to use an encoding scheme, such as the W3CDTF profile of ISO 8601 [W3CDTF].</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetType">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetType">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Dataset type, i.e., raw, AI-generated, or synthesized data.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectDistributionControl">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDistributionControl">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">ITAR-like restrictions.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#datasetURI">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetURI">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">URI location where a dataset can be found.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statMedianValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMedianValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Median value of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#qualificationType">
-    <rdfs:domain rdf:resource="#Qualification"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualificationType">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Qualification"/>
     <rdfs:comment xml:lang="en">The type of qualification/certification.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#countryAlpha2Code">
-    <rdfs:domain rdf:resource="#Country"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#countryAlpha2Code">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Country"/>
     <rdfs:comment xml:lang="en">Two-digit country code.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#qualificationLevel">
-    <rdfs:domain rdf:resource="#Qualification"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#qualificationLevel">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Qualification"/>
     <rdfs:comment xml:lang="en">The level of qualification/certification.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#projectDeliveryDate">
-    <rdfs:domain rdf:resource="#Project"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#projectDeliveryDate">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Project"/>
     <rdfs:comment xml:lang="en">Requested delivery date of project.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="datasetQuantityType">
-    <rdfs:domain rdf:resource="#DatasetMetadata"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#datasetQuantityType">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#DatasetMetadata"/>
     <rdfs:comment xml:lang="en">Type of Measurement(s) that would appear in a dataset; e.g., pH, Moisture, Temperature, requiring an industry group to define the enumerated list/controlled vocabulary for the specific business context.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statMaxValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMaxValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Maximum value of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#addressCity">
-    <rdfs:domain rdf:resource="#Address"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#addressCity">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
     <rdfs:comment xml:lang="en">City in address.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statMeanValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMeanValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Mean (average) value of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#statMinValue">
-    <rdfs:domain rdf:resource="#StatisticalValue"/>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-base#statMinValue">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-base#StatisticalValue"/>
     <rdfs:comment xml:lang="en">Minimum value of the multiple values, if the numerical value was derived multiple values.</rdfs:comment>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
   </owl:DatatypeProperty>

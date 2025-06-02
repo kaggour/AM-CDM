@@ -2,15 +2,15 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 
 import "http://kdl.ge.com/AM-CDM-base".
 
-//MaterialEntity is a class.
-PowderStock (note "Material stock in the form of powder.") is a MaterialStock,
-	described by particleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") with a single value of ParticleSizeDistribution,
-	
-SheetStock (note "Material stock in the form of sheet.") is a MaterialStock,
-FilamentStock (note "Material stock in the form of filament.") is a MaterialStock,
+PowderStock (note "Material stock in the form of powder.") is a type of MaterialStock,
+	described by particleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") with a single value of type ParticleSizeDistribution.
 
-MaterialStock (note "Information about a material covering feedstock, reusables, and consumables.") is a MaterialEntity,
-	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string, 
+SheetStock (note "Material stock in the form of sheet.") is a type of MaterialStock.
+
+FilamentStock (note "Material stock in the form of filament.") is a type of MaterialStock.
+
+MaterialStock (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
+	described by materialstockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string,
 	described by materialStockName (note "A name of material for operational purposes, and using UNS number is recommended.") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
@@ -19,19 +19,19 @@ MaterialStock (note "Information about a material covering feedstock, reusables,
 	described by materialStorage (note "Details about how to store the material") with values of type MaterialStorage,
 	described by materialstockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
 	described by materialstockCertificationDate (note "Date that the material is certified.") with a single value of type dateTime,
-	described by materialProperties (note "Property of the material, which can be measured or calculated.") with values of type MaterialProperty.
-	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document,
+	described by materialProperties (note "Property of the material, which can be measured or calculated.") with values of type MaterialProperty,
+	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document.
 
 MaterialPurchaseHistory (note "information about purchasing material, including vendor, manufacturer etc.") is a class,
 	described by materialstockVendor (note "Name of the material stock vendor. Not specified if material stock is a blend from multiple lots.") with a single value of type Organization,
 	described by materialstockManufacturer (note "Name of the material stock manufacturer. Not specified if material stock is a blend from multiple lots.") with a single value of type Organization,
 	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
-	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string,
+	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string.
 
 MaterialStorage (note "details about how to store the material") is a class,
 	described by materialstockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
 	described by materialstockLocation (note "Current physical location of material stock.") with a single value of type Address,
-	described by materialstockQuantity (note "Quantity of material stock.") with a single value of type Quantity.
+	described by materialstockQuantity (note "Quantity of material stock.") with a single value of type Quantity,
 	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light etc.") with a single value of type Document,
 	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document.
 
@@ -55,7 +55,7 @@ PropertyDerivedBy (note "the type of approach, from experiment or simulation, to
 ThermodynamicProperty (note "thermodynamic property of the material") is a type of MaterialProperty,
 	described by electricalConductivity (note "electrical conductivity of the material") with a single value of type Quantity,
 	described by thermalExpansionCoef (note "thermal expension coefficient of the material") with a single value of type Quantity,
-	described by thermalConductivity (note "thermal conductivity of the material") with a single value of type Measurement,
+	described by thermalConductivity (note "thermal conductivity of the material") with a single value of type Quantity,
 	described by heatCapacity (note "heat capacity of the material") with a single value of type Quantity,
 	described by meltingTemperature (note "melting temperature of the material") with a single value of type Quantity,
 	described by glassTransitionTemperature (note "glass transition temperature of the material") with a single value of type Quantity.
@@ -108,18 +108,22 @@ ChemicalProperties (note "chemical properties of the material") is a type of Mat
 
 Chemistry (note "the chemistry of the material") is a class,
 	described by chemistryMeasurementMethod (note "Measurement method for real chemistries, which may be different from nominal chemistries. Should not be included if this is a specified chemistry.") with a single value of type string,
-	described by chemistryPercentUnit (note "the unit of the chemistry, like weight percent or volume percent") with a single value of type ChemistryPercentUnit,
-	described by elements (note "chemical element from periodic table") with values of type ChemistryElement.
+	described by chemistryPercentUnit (note "The unit of the chemistry, like weight percent or volume percent") with a single value of type ChemistryPercentUnit,
+	described by chemistryComposition (note "Elements from periodic table and percents") with values of type Composition.
 
 ChemistryPercentUnit (note "percent unit of the chemistry") is a class, must be one of {WeightPercent, AtomicPercent}.
 
-Composition (note "chemical element from periodic table") is a class,
+Composition (note "Chemical element from periodic table") is a class,
 	described by chemistryElement (note "chemical element from periodic table") with a single value of type PeriodicElement,
 	described by minPercent (note "minimum percentage of the element from measurements") with a single value of type double,
 	described by maxPercent (note "maximum percentage of the element from measurements") with a single value of type double,
 	described by avgPercent (note "average percentage of the element from measurements") with a single value of type double.
 
-PeriodicElement (note "element symbol, e.g., C.") is a class, must be one of {Ac,Al,Ag,Am,Ar,As,At,Au,B,Ba,Bh,Bi,Be,Bk,Br,C,Ca,Cd,Ce,Cf,Cl,Cm,Co,Cr,Cs,Cu,Db,Dy,Er,Es,Eu,F,Fe,Fm,Fr,Ga,Gd,Ge,H,He,Hf,Hg,Ho,Hs,I,In,Ir,K,Kr,La,Li,Lr,Lu,Md,Mg,Mn,Mo,Mt,N,Na,Nb,Nd,Ne,Ni,No,Np,O,Os,P,Pa,Pb,Pd,Pm,Po,Pr,Pt,Pu,Ra,Rb,Re,Rf,Rh,Rn,Ru,S,Sb,Sc,Se,Sg,Si,Sm,Sn,Sr,Ta,Tb,Tc,Te,Th,Ti,Tl,Tm,U,V,W,Xe,Y,Yb,Zn,Zr}.
+PeriodicElement (note "element symbol, e.g., C.") is a class, must be one of {Ac, Al, Ag, Am, Ar, As, At, Au, B, Ba, Bh, Bi, Be, Bk, Br, 
+				C, Ca, Cd, Ce, Cf, Cl, Cm, Co, Cr, Cs, Cu, Db, Dy, Er, Es, Eu, F, Fe, Fm, Fr, Ga, Gd, Ge, H, He, Hf, Hg, Ho, Hs, I, In, 
+				Ir, K, Kr, La, Li, Lr, Lu, Md, Mg, Mn, Mo, Mt, N, Na, Nb, Nd, Ne, Ni, No, Np, O, Os, P, Pa, Pb, Pd, Pm, Po, Pr, Pt, Pu, 
+				Ra, Rb, Re, Rf, Rh, Rn, Ru, S, Sb, Sc, Se, Sg, Si, Sm, Sn, Sr, Ta, Tb, Tc, Te, Th, Ti, Tl, Tm, U, V, W, Xe, Y, Yb, Zn, Zr
+}.
 
 /*
 PeriodicElement (note "Information about individual elements.") is a class,

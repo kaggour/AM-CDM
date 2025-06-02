@@ -16,8 +16,7 @@ TestResult is a class,
 
 TICResultStatus is a class, must be one of {Pass, Fail}.
 
-// Note: I did not edit these yet
-Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a type of MaterialEntity,
+Specimen (note "Information specific to an individual specimen. A specimen refers to the actual coupon used for a test, inspection, or characterization. One part may contain no specimens, one specimen, or multiple specimens. A part can also be the specimen without additional sectioning or post processing.") is a class,
 	described by specimenID (note "The identifier of the individual specimen.") with a single value of type string,
 	described by specimenDescription (note "A description of the specimen.") with a single value of type string,
 	described by specimenMass with a single value of type Quantity,
@@ -34,13 +33,13 @@ PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused
 MaterialStockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
 	described by feedstockSpecimenSource with a single value of type MaterialStock.
 
-PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by mfgProcessMaterialInputs with a single value of type of Part,
-	described by mfgProcessMaterialOutput with a single value of type of PartSpecimen.
+PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
 
+mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type Part.
+mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type PartSpecimen.
 
-MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess,
-	described by mfgProcessMaterialInputs with a single value of type of MaterialStock,
-	described by mfgProcessMaterialOutput with a single value of type of MaterialStockSpecimen.
+MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
 
+mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type MaterialStock.
+mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type MaterialStockSpecimen.
 

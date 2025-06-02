@@ -1,7 +1,6 @@
 uri "http://kdl.ge.com/AM-CDM-system" alias AM-CDM-system version "$Revision:$ Last modified on   $Date:$".
 
 import "http://kdl.ge.com/AM-CDM-process".
-import "http://kdl.ge.com/AM-CDM-material".
 
 System (note "A manufacturing system that may be an aggregate of subsystems.") is a class,
 	described by systemID (note "Unique identifier of equipment.") with a single value of type string,
@@ -188,7 +187,6 @@ Software is a class,
 	described by softwareConfigurationSettingsFile (note "specific software settings document, for this project/component.") with a single value of type Document,
 	described by softwareFileType (note "File type (for automated processing).") with a single value of type string.
 
-
-HTSystem is a class.
-HITSystem is a class.
-PartExtractionSystem is a class.
+HTSystem is a type of System.
+HIPSystem is a type of System.
+PartExtractionSystem is a type of System.
