@@ -89,6 +89,8 @@ Additive Manufacturing - Common Data Model
 
 1. ASTM F3490
 2. https://doi.org/10.31399/asm.hb.v24A.a0006963
+3. https://rdcu.be/dEl5G
+4. https://www.nist.gov/publications/enabling-fair-data-additive-manufacturing-accelerate-industrialization
 
 
 
