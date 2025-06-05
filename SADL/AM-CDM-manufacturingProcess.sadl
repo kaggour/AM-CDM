@@ -3,13 +3,13 @@ uri "http://kdl.ge.com/AM-CDM-manufacturingProcess" alias AM-CDM-manufacturingPr
 import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-part".
 
-ManufacturingProcess (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
+ManufacturingProcessStep (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
 	described by processSpecification with a single value of type ManufacturingSpecification,
 	described by mfgProcessMachine (note "The machine used to transform the input material.") with a single value of type System,
 	described by mfgProcessControlSoftware (note "Software used to control the process.") with values of type Software,
 	described by mfgProcessConsumables (note "Consumables used during this process step.") with values of type Consumables,
-	described by mfgProcessMaterialInputs (note "Material inputs for this process step") with values of type class,
-	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process") with values of type class,
+	described by mfgProcessMaterialInputs (note "Material inputs for this process step") with values of type MaterialInputs,
+	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process") with values of type MaterialOutputs,
 	described by mfgProcessSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
 
 ManufacturingSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
@@ -25,8 +25,8 @@ PartSpecificProcessParameters is a class,
 
 Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class.
 
-//MaterialInputs (note "Materials that are an input to the process and become a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
-//MaterialOutputs is a class.
+MaterialInputs (note "Materials that are an input to the process and become a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
+MaterialOutputs is a class.
 
 ProcessSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs.") is a class,
 	described by simulationID (note "UID for specific simulation.") with a single value of type string,
@@ -37,40 +37,58 @@ ProcessSimulation (note "Data used and generated from computer programs using ph
 	described by simulationModelDomain (note "Focal area of model.") with values of type string,
 	described by simulationModelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
 
-Blending (note "The process of mixing metal powders.") is a type of ManufacturingProcess.
+PowderStockInput is a type of MaterialInputs,
+	described by powderStockInput with values of type PowderStock.
 
-mfgProcessMaterialInputs of Blending only has values of type PowderStock.
-mfgProcessMaterialOutputs of Blending only has values of type PowderStock.
+PowderStockOutput is a type of MaterialOutputs,
+	described by powderStockOutput with values of type PowderStock.
 
-MaterialHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+Blending (note "The process of mixing metal powders.") is a type of ManufacturingProcessStep.
+
+mfgProcessMaterialInputs of Blending only has values of type PowderStockInput.
+mfgProcessMaterialOutputs of Blending only has values of type PowderStockOutput.
+
+MaterialStockInput is a type of MaterialInputs,
+	described by materialStockInput with values of type MaterialStock.
+
+MaterialStockOutput is a type of MaterialOutputs,
+	described by materialStockOutput with values of type MaterialStock.
+
+MaterialHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHT only has values of type HTProcessStepSpecification.
 processData of MaterialHT only has values of type HTProcessStepData.
 mfgProcessMachine of MaterialHT only has values of type HTSystem.
-mfgProcessMaterialInputs of MaterialHT only has values of type MaterialStock.
-mfgProcessMaterialOutputs of MaterialHT only has values of type MaterialStock.
+mfgProcessMaterialInputs of MaterialHT only has values of type MaterialStockInput.
+mfgProcessMaterialOutputs of MaterialHT only has values of type MaterialStockOutput.
  
-PartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+PartMaterialInput is a type of MaterialInputs,
+	described by partInput with values of type Part.
+
+PartMaterialOutput is a type of MaterialOutputs,
+	described by partOutput with values of type Part.
+
+PartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
 processSpecification of PartHT only has values of type HTProcessStepSpecification.
 processData of PartHT only has values of type HTProcessStepData.
 mfgProcessMachine of PartHT only has values of type HTSystem.
-mfgProcessMaterialInputs of PartHT only has values of type Part.
-mfgProcessMaterialOutputs of PartHT only has values of type Part.
+mfgProcessMaterialInputs of PartHT only has values of type PartMaterialInput.
+mfgProcessMaterialOutputs of PartHT only has values of type PartMaterialOutput.
 
-MaterialHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+MaterialHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHIP only has values of type HIPProcessStepSpecification.
 processData of MaterialHIP only has values of type HIPProcessStepData.
 mfgProcessMachine of MaterialHIP only has values of type HIPSystem.
-mfgProcessMaterialInputs of MaterialHIP only has values of type MaterialStock.
-mfgProcessMaterialOutputs of MaterialHIP only has values of type MaterialStock.
+mfgProcessMaterialInputs of MaterialHIP only has values of type MaterialStockInput.
+mfgProcessMaterialOutputs of MaterialHIP only has values of type MaterialStockOutput.
 
-PartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+PartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
 processSpecification of PartHIP only has values of type HTProcessStepSpecification.
 processData of PartHIP only has values of type HTProcessStepData.
 mfgProcessMachine of PartHIP only has values of type HIPSystem.
-mfgProcessMaterialInputs of PartHIP only has values of type Part.
-mfgProcessMaterialOutputs of PartHIP only has values of type Part.
+mfgProcessMaterialInputs of PartHIP only has values of type PartMaterialInput.
+mfgProcessMaterialOutputs of PartHIP only has values of type PartMaterialOutput.
 

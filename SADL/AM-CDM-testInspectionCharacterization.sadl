@@ -33,13 +33,13 @@ PartSpecimen (note "A specimen that is extracted from a Part. Not to be confused
 MaterialStockSpecimen (note "A specimen that is extracted from a Feedstock. Not to be confused with a PartSpecimen.") is a type of Specimen,
 	described by feedstockSpecimenSource with a single value of type MaterialStock.
 
-PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+PartSpecimenExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
-mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type Part.
-mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type PartSpecimen.
+mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type PartMaterialInput.
+mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type PartMaterialOutput.
 
-MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+MaterialStockSampling (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
-mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type MaterialStock.
-mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type MaterialStockSpecimen.
+mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type MaterialStockInput.
+mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type MaterialStockOutput.
 

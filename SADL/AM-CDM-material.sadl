@@ -3,7 +3,8 @@ uri "http://kdl.ge.com/AM-CDM-material" alias AM-CDM-material version "$Revision
 import "http://kdl.ge.com/AM-CDM-base".
 
 PowderStock (note "Material stock in the form of powder.") is a type of MaterialStock,
-	described by particleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") with a single value of type ParticleSizeDistribution.
+	described by reuseNumber (note "Number of times the powder stock has been reused, with zero indicating the powder is virgin") with a single value of type int,
+	described by particleSizeDistribution (note "Particle size of the feedstock for types of processes, like powderbed fusion or powder DED") with a single value of type ParticleSizeDistribution.
 
 SheetStock (note "Material stock in the form of sheet.") is a type of MaterialStock.
 
@@ -54,13 +55,13 @@ PropertyDerivedBy (note "the type of approach, from experiment or simulation, to
 
 ThermodynamicProperty (note "thermodynamic property of the material") is a type of MaterialProperty,
 	described by electricalConductivity (note "electrical conductivity of the material") with a single value of type Quantity,
-	described by thermalExpansionCoef (note "thermal expension coefficient of the material") with a single value of type Quantity,
+	described by thermalExpansionCoef (note "thermal expansion coefficient of the material") with a single value of type Quantity,
 	described by thermalConductivity (note "thermal conductivity of the material") with a single value of type Quantity,
 	described by heatCapacity (note "heat capacity of the material") with a single value of type Quantity,
 	described by meltingTemperature (note "melting temperature of the material") with a single value of type Quantity,
 	described by glassTransitionTemperature (note "glass transition temperature of the material") with a single value of type Quantity.
 
-ParticleSizeDistribution (note "Particle size of the feedstock for tpyes of processes, like powerbed fusion or powder DED") is a type of MaterialProperty,
+ParticleSizeDistribution (note "Particle size of the feedstock for types of processes, like powerbed fusion or powder DED") is a type of MaterialProperty,
 	described by psdPrincipleOfMeasurement (note "method to measure particle size distribution") with a single value of type string,
 	described by psdParameterBasis (note "parameter for particle size distribution measurement") with a single value of type string,
 	described by psdDispersionMedium (note "medium value of the particle size distribution") with a single value of type string,
@@ -75,11 +76,11 @@ ParticleSizeDistribution (note "Particle size of the feedstock for tpyes of proc
 	described by psdMean (note "mean value of the particle size distribution") with a single value of type Quantity,
 	described by psdMode (note "mode of the particle size distribution") with a single value of type Quantity,
 	described by psdStandardDeviation (note "standard deviation of the particle size distribution") with a single value of type Quantity,
-	described by psdRange (note "the value range of the measurred particle size distribution") with a single value of type Quantity,
+	described by psdRange (note "the value range of the measured particle size distribution") with a single value of type Quantity,
 	described by psdSkewness (note "Skewness, (mean-median)/(standard deviation) of the particle size distribution") with a single value of type Quantity,
 	described by psdKurtosis (note "Kurtosis of the particle size distribution") with a single value of type Quantity.
 
-TensileProperties (note "tensile propertues of the material or part") is a type of MaterialProperty,
+TensileProperties (note "tensile properties of the material or part") is a type of MaterialProperty,
 	described by tensileTestStrainRate (note "Strain rate applied for tensile test") with a single value of type Quantity,
 	described by tensileTestDisplacementRate (note "rate of displacement applied for tensile test") with a single value of type Quantity,
 	described by tensileTestControlMode (note "control of measurement for tensile test") with a single value of type string,

@@ -2,7 +2,7 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 
-Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcess.
+Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcessStep.
 
 mfgProcessMachine of Build only has values of type AMSystem.
 mfgProcessMaterialInputs of Build only has values of type AMMaterialInput.
@@ -10,14 +10,12 @@ mfgProcessMaterialOutputs of Build only has values of type AMMaterialOutput.
 processSpecification of Build only has values of type AMProcessSpecification.
 processData of Build only has values of type AMProcessData.
 
-//AMMaterialInput is a type of MaterialInputs,
-AMMaterialInput is a class,
+AMMaterialInput is a type of MaterialInputs,
 	described by amMatInputFeedstockMaterial (note "bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
 	described by amMatInputQuantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
 	described by amMatInputBuildPlate with a single value of type BuildPlate.
 
-//AMMaterialOutput is a type of MaterialOutputs,
-AMMaterialOutput is a class,
+AMMaterialOutput is a type of MaterialOutputs,
 	described by amMatOutputReclaimedFeedstockMaterial (note "feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
 	described by amMatOutputBuildProduct with a single value of type BuildProduct.
 
@@ -41,7 +39,7 @@ BuildPlate (note "Material input which provides a surface upon which the buildin
 AMProcessSpecification is a type of ManufacturingSpecification,
 	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
 	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
-	described by amSpecJobFile (note "Digital and propriatary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
+	described by amSpecJobFile (note "Digital and proprietary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object") with a single value of type Document,
 	described by amSpecBuildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the 3D printer during the printing process, for example, xy2-100 commands and G-code etc") with a single value of type DatasetMetadata.
 
 mfgSpecGlobalProcessParameters of AMProcessSpecification only has values of type BuildParameters.
@@ -79,10 +77,13 @@ BuildInterruption is a class,
 	described by buildInterruptReason (note "Reason of interruption") with a single value of type string,
 	described by buildInterruptHandling (note "How the interruption is handled") with a single value of type string.
 
-AMPartExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcess.
+BuildProductInput is a type of MaterialInputs,
+	described by buildProductInput with values of type BuildProduct.
+
+AMPartExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
 
 mfgProcessMachine of AMPartExtraction only has values of type PartExtractionSystem.
-mfgProcessMaterialInputs of AMPartExtraction only has values of type BuildProduct.
+mfgProcessMaterialInputs of AMPartExtraction only has values of type BuildProductInput.
 mfgProcessMaterialOutputs of AMPartExtraction only has values of type AMPartExtractionMaterialOutput.
 processStepSpecification of AMPartExtraction only has values of type PartExtractionProcessSpecification.
 processData of AMPartExtraction only has values of type PartExtractionProcessData.
@@ -94,11 +95,11 @@ AMPartExtractionMaterialOutput is a type of AMMaterialOutput,
 	described by amAMPartExtractionParts (note "feedstock reclaimed upon the completion of the AM process.") with values of type Part,
 	described by amAMPartExtractionBuildPlate with a single value of type BuildPlate.
 
-PowderRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcess.
+PowderRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcessStep.
 
 //mfgProcessMachine of PowderRecycling only has values of type .
 //mfgProcessMaterialInputs of PowderRecycling only has values of type .
-mfgProcessMaterialOutputs of PowderRecycling only has values of type MaterialStock.
+mfgProcessMaterialOutputs of PowderRecycling only has values of type MaterialStockOutput.
 processSpecification of PowderRecycling only has values of type PowderRecycleProcessSpecification.
 //processData of PowderRecycling only has values of type .
 
