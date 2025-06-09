@@ -20,14 +20,15 @@ Additive Manufacturing - Common Data Model
 *This content could be put into a PPT/PDF for sharing outside of the Github environment*  
 
 ## What is the AM CDM - Lead: Kareem Aggour
-*pull info from Kareem's ASM Handbook Chapter*
+Additive manufacturing (AM), as a fully digital process, relies heavily on data spanning input materials, process parameters, post-processing steps, and inspections. Despite its potential, AM remains a developing field, requiring collaboration among academia, corporations, national labs, professional societies, and more. These partnerships depend on extensive data sharing across the AM ecosystem, including material vendors, equipment manufacturers, part suppliers, and customers.
 
-### What is it for/Why was it created (motivation)
-### Where did it come from
-### CDD -> ASTM F3490
-### CDD Progression to CDM
-### Who created it
-### How is CDM different from a data exchange format
+However, effective data management and sharing is challenging. To address this, many organizations are adopting the FAIR Guiding Principles (ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 standard Common Data Dictionary (CDD), to develop a common vocabulary around the key terms in the AM space (ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange across systems.
+
+To achieve seamless data interoperability by systems, AM developers need a common data representation. A Common Data Model (CDM) solves this by defining the logical structure and relationships of the terms in the CDD (ref3). An effective CDM must be both human-readable, enabling users to understand and utilize the data, and machine-computable, allowing systems to process data automatically. Semantic models (ontologies) are the preferred technology for creating such CDMs. The CDM is not a data schema, so organizations adopting it do not need to change their internal data storage systems. Instead, they must map and translate their internal data representations to the CDM for external data sharing. In this way, the CDM acts as a "lingua franca," allowing systems to maintain their internal data structures while using a shared language for communication across boundaries (ref4).
+
+While the CDM enables humans and machines to communicate about AM data, a key challenge remains--the format used for data exchange. A Common Data Exchange Format (CDEF), aligned with the CDM's structure, enables data exchange in formats like XML or JSON. This eliminates the need for creating individual mappings between each party wishing to exchange AM data.
+
+Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures the vocabulary for machine usability, and CDEFs enable machines to exchange data based on the structure of the CDM.
 
 
 ## What is the scope of the AM CDM - Lead: Peter Coutts
@@ -87,10 +88,11 @@ Additive Manufacturing - Common Data Model
 
 ## References - Lead: ALL
 
-1. ASTM F3490
-2. https://doi.org/10.31399/asm.hb.v24A.a0006963
-3. https://rdcu.be/dEl5G
-4. https://www.nist.gov/publications/enabling-fair-data-additive-manufacturing-accelerate-industrialization
+1. https://www.nature.com/articles/sdata201618
+2. [ASTM F3490](https://store.astm.org/f3490-21.html)
+3. https://doi.org/10.31399/asm.hb.v24A.a0006963
+4. https://rdcu.be/dEl5G
+5. https://www.nist.gov/publications/enabling-fair-data-additive-manufacturing-accelerate-industrialization
 
 
 
