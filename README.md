@@ -31,10 +31,8 @@ While the CDM enables humans and machines to communicate about AM data, a key ch
 Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures the vocabulary for machine usability, and CDEFs enable machines to exchange data based on the structure of the CDM.
 
 
-## What is the scope of the AM CDM - Lead: Peter Coutts
-
-*(Process agnostic AM - not all concepts are AM specific, but were deemed necessary to include..)*  
-
+## AM CDM Scope - Lead: Peter Coutts
+The AM-CDM is currently AM process-agnostic, meaning that it does not include AM domain-specific information, such as data related specifically to Metallic Laser Powder Bed Fusion or Metallic Wire-Arc Directed Energy Deposition. Future efforts can focus on the creation of extensions to the AM CDM for these specific domains, relying on the domain Subject Matter Experts (SMEs) to define and organize the data of that domain.  By creating a process-agnositic AM data model, the framework for extension to more specific domains should be enabled. For instance, SADL data models representing specific destructive testing types (e.g. tensile testing) or specific thermal treatments (e.g. stress relief) could be constructed that build on the AM CDM. It is worth noting that certain non-AM concepts (e.g. organization, personnel, system) needed to be included in the AM CDM in order to create a wholistic picture of the AM data pedigree.
 
 ## AM CDM Structure - Lead: Alex Kuan
 *insert some graphics of the AM CDM to help visualize the organization and structure*
