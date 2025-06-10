@@ -22,11 +22,11 @@ Additive Manufacturing - Common Data Model
 ## What is the AM CDM - Lead: Kareem Aggour
 Additive manufacturing (AM), as a fully digital process, relies heavily on data spanning input materials, process parameters, post-processing steps, and inspections. Despite its potential, AM remains a developing field, requiring collaboration among academia, corporations, national labs, professional societies, and more. These partnerships depend on extensive data sharing across the AM ecosystem, including material vendors, equipment manufacturers, part suppliers, and customers.
 
-However, effective data management and sharing is challenging. To address this, many organizations are adopting the FAIR Guiding Principles (ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 standard Common Data Dictionary (CDD), to develop a common vocabulary around the key terms in the AM space (ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange across systems.
+However, effective data management and data sharing is challenging. To address this, many organizations are adopting the FAIR Guiding Principles (ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 standard Common Data Dictionary (CDD), to develop a common vocabulary around the key terms in the AM space (ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange across systems.
 
 To achieve seamless data interoperability by systems, AM developers need a common data representation. A Common Data Model (CDM) solves this by defining the logical structure and relationships of the terms in the CDD (ref3). An effective CDM must be both human-readable, enabling users to understand and utilize the data, and machine-computable, allowing systems to process data automatically. Semantic models (ontologies) are the preferred technology for creating such CDMs. The CDM is not a data schema, so organizations adopting it do not need to change their internal data storage systems. Instead, they must map and translate their internal data representations to the CDM for external data sharing. In this way, the CDM acts as a "lingua franca," allowing systems to maintain their internal data structures while using a shared language for communication across boundaries (ref4).
 
-While the CDM enables humans and machines to communicate about AM data, a key challenge remains--the format used for data exchange. A Common Data Exchange Format (CDEF), aligned with the CDM's structure, enables data exchange in formats like XML or JSON. This eliminates the need for creating individual mappings between each party wishing to exchange AM data.
+While the CDM enables humans and machines to communicate about AM data, a key challenge remains--the format used for data exchange. A Common Data Exchange Format (CDEF), aligned with the CDM's structure, enables data exchange in formats like XML or JSON. This eliminates the need for creating individual mappings between each party wishing to exchange AM data (ref5).
 
 Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures the vocabulary for machine usability, and CDEFs enable machines to exchange data based on the structure of the CDM.
 
@@ -88,12 +88,12 @@ Each class may also have a type, allowing for the inheritance of attributes betw
 
 ## References - Lead: ALL
 
-1. https://www.nature.com/articles/sdata201618
+1. M. Wilkinson, M. Dumontier, I. Aalbersberg, _et al_. (2016), The FAIR Guiding Principles for scientific data management and stewardship. _Scientific Data_ (3), article no. 160018. https://doi.org/10.1038/sdata.2016.18
 2. [ASTM F3490](https://store.astm.org/f3490-21.html)
-3. https://doi.org/10.31399/asm.hb.v24A.a0006963
-4. https://rdcu.be/dEl5G
-5. https://www.nist.gov/publications/enabling-fair-data-additive-manufacturing-accelerate-industrialization
-6. A. Crapo and A. Moitra, Toward a Unified English-like Representation of Semantic Models, Data, and Graph Patterns for Subject Matter Experts, Intl. J. Semantic Comp., 7(3):215-236, (2013)
+3. K.S. Aggour. (2023), Evolution of Data Management and Common Data Models for Additive Manufacturing. _Additive Manufacturing Design and Applications_, ASM Handbook, vol. 24A, pp. 210-218. https://doi.org/10.31399/asm.hb.v24A.a0006963
+4. A. Kuan, K.S. Aggour, S. Li, _et al_. (2024), A Common Data Dictionary and Common Data Model for Additive Manufacturing. _Integrating Materials and Manufacturing Innovation_, vol. 13, pp. 105-119. https://doi.org/10.1007/s40192-024-00341-x, https://rdcu.be/dEl5G
+5. S. Li, Y. Lu, K.S. Aggour, _et al_. (2023), Enabling FAIR Data in Additive Manufacturing to Accelerate Industrialization. _Advanced Manufacturing Series (NIST AMS)_, National Institute of Standards and Technology, Gaithersburg, MD, https://doi.org/10.6028/NIST.AMS.500-1, https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=936454
+6. A. Crapo and A. Moitra. (2013), Toward a Unified English-like Representation of Semantic Models, Data, and Graph Patterns for Subject Matter Experts. _International Journal of Semantic Computing_, vol. 7, no. 3, pp. 215-236. http://dx.doi.org/10.1142/S1793351X13500025
 7. W3C Web Ontology Language: https://www.w3.org/OWL/
 
 
