@@ -54,11 +54,11 @@ Overall, the CDD standardizes the AM vocabulary for human use, the CDM structure
 
 
 ## What is SADL - Lead: Kareem Aggour
+The AM-CDM is designed and developed in the Semantic Application Design Language (SADL). SADL is both a language and an Eclipse plugin designed to simplify ontology creation. SADL uses a formal, English-like syntax and grammar, enabling users to author ontologies that are automatically converted into the Web Ontology Language (OWL), the W3C standard for semantic modeling. SADL was specifically developed to make ontologies accessible to non-semantic domain experts, allowing them to read and understand these models with ease. Its intuitive design makes it straightforward for domain experts such as additive engineers and materials scientists to collaborate with computer scientists to rapidly develop ontologies, without requiring those domain experts to become proficient in semantic modeling.
 
-### SADL File Structure
-### How to use SADL Files
-### Tips for Human consumption of SADL Files
+Each SADL file contains a collection of classes, which are comprised of zero to many attributes. These attributes can be of a primitive type, such as string, int, double, and more, or can be of a complex type, and be defined by a class name. In this way, classes can be linked to each other through attributes, creating a potentially complex graph network. The cardinality of each attribute is also defined, as each attribute is specified to be single-valued (‘with a single value of type’) or multi-valued (‘with values of type’).
 
+Each class may also have a type, allowing for the inheritance of attributes between classes.
 
 ## How to reference the AM-CDM - Lead: Kareem Aggour
 
