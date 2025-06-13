@@ -19,6 +19,16 @@
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-process#PlannedProcessStep">
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processStartTime"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onClass>
           <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-process#ProcessStepData"/>
         </owl:onClass>
@@ -41,32 +51,22 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processOrganization"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processAddress"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">a process that is planned</rdfs:comment>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processSequenceNumber"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processEndTime"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processOrganization"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -84,21 +84,21 @@
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Address"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processAddress"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processEndTime"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processStartTime"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-process#processSequenceNumber"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>

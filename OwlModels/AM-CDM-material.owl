@@ -140,31 +140,31 @@
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#ParticleSizeDistribution">
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdScatteringModel"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdKurtosis"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionMethod"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdMode"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionType"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psd_dv50"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -184,7 +184,17 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdPrincipleOfMeasurement"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionMedium"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -199,47 +209,7 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdKurtosis"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
       <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#MaterialProperty"/>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psd_dv50"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdMode"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionMedium"/>
-        </owl:onProperty>
-      </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
@@ -257,27 +227,37 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdConcentration"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdPrincipleOfMeasurement"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdRange"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdMean"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdStandardDeviation"/>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdScatteringModel"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -297,7 +277,17 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdConcentration"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psd_dv90"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdDispersionMethod"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -307,63 +297,23 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psd_dv90"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdStandardDeviation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#psdMean"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Particle size of the feedstock for types of processes, like powerbed fusion or powder DED</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#TensileProperties">
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#finalLoadingRate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#youngsModulus"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#yieldStrengthZeroPointZero2Percent"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#elongation"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#initialLoadingRate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
@@ -390,7 +340,57 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#initialStrainRate"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#elongation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#finalLoadingRate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#yieldStrengthZeroPoint2Percent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#maximumLoad"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#finalStrainRate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#initialLoadingRate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -403,7 +403,37 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#yieldStrengthZeroPoint2Percent"/>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#initialStrainRate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#tensileTestDisplacementRate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#yieldStrengthZeroPointZero2Percent"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#youngsModulus"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -424,36 +454,6 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#ultimateTensileStrength"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#finalStrainRate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#tensileTestDisplacementRate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#maximumLoad"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -539,11 +539,51 @@
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#MaterialStock">
     <rdfs:subClassOf>
       <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialStockName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#packagingRequirements"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
         <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-material#Chemistry"/>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#actualChemistry"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialstockCertificationDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialstockSpecification"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -563,59 +603,7 @@
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialstockSpecification"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass>
-          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#MaterialType"/>
-        </owl:onClass>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialType"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#packagingRequirements"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialStockName"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Document"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialstockCertificate"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialstockCertificationDate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -630,6 +618,18 @@
       </owl:Restriction>
     </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">Information about a material covering feedstock, reusables, and consumables.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass>
+          <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#MaterialType"/>
+        </owl:onClass>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-material#materialType"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-material#CreepProperties">
     <rdfs:subClassOf>

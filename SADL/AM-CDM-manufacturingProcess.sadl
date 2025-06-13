@@ -19,10 +19,6 @@ ManufacturingSpecification (note "A specification for a manufacturing process") 
 
 GlobalProcessParameters is a class.
 
-PartSpecificProcessParameters is a class,
-	described by partSpecOrientation (note "Specified orientation for the specific part.") with a single value of type Orientation,
-	described by partSpecDesign (note "design file which prescribes the changes to the part which are specific to this process.") with a single value of type Design.
-
 Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class.
 
 MaterialInputs (note "Materials that are an input to the process and become a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
@@ -54,7 +50,7 @@ MaterialStockInput is a type of MaterialInputs,
 MaterialStockOutput is a type of MaterialOutputs,
 	described by materialStockOutput with values of type MaterialStock.
 
-MaterialHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
+MaterialHT is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHT only has values of type HTProcessStepSpecification.
 processData of MaterialHT only has values of type HTProcessStepData.
@@ -68,7 +64,7 @@ PartMaterialInput is a type of MaterialInputs,
 PartMaterialOutput is a type of MaterialOutputs,
 	described by partOutput with values of type Part.
 
-PartHT(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
+PartHT is a type of ManufacturingProcessStep.
 
 processSpecification of PartHT only has values of type HTProcessStepSpecification.
 processData of PartHT only has values of type HTProcessStepData.
@@ -76,7 +72,7 @@ mfgProcessMachine of PartHT only has values of type HTSystem.
 mfgProcessMaterialInputs of PartHT only has values of type PartMaterialInput.
 mfgProcessMaterialOutputs of PartHT only has values of type PartMaterialOutput.
 
-MaterialHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
+MaterialHIP is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHIP only has values of type HIPProcessStepSpecification.
 processData of MaterialHIP only has values of type HIPProcessStepData.
@@ -84,7 +80,7 @@ mfgProcessMachine of MaterialHIP only has values of type HIPSystem.
 mfgProcessMaterialInputs of MaterialHIP only has values of type MaterialStockInput.
 mfgProcessMaterialOutputs of MaterialHIP only has values of type MaterialStockOutput.
 
-PartHIP(note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
+PartHIP is a type of ManufacturingProcessStep.
 
 processSpecification of PartHIP only has values of type HTProcessStepSpecification.
 processData of PartHIP only has values of type HTProcessStepData.

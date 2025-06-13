@@ -233,7 +233,7 @@
     <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-process#ProcessStepData"/>
   </owl:Class>
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-build#AMPartParameters">
-    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-manufacturingProcess#PartSpecificProcessParameters"/>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-part#PartSpecificProcessParameters"/>
   </owl:Class>
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-build#PowderRecycling">
     <rdfs:subClassOf>
@@ -390,9 +390,49 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-process#ProcessHistory"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildProdProcessHistory"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildProdName"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:comment xml:lang="en">The build plate with parts connected to it. The build product is specified by the BuildLayout.</rdfs:comment>
   </owl:Class>
   <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-build#BuildPlate">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateID"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateProcessingMethods"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
@@ -400,6 +440,68 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateDepth"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateWidth"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateHeight"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateCertificationDate"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateSurfaceFinish"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-part#Part"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-material#MaterialType"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateMaterial"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateManufacturer"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -420,88 +522,6 @@
         >1</owl:qualifiedCardinality>
         <owl:onProperty>
           <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateMaterialGrade"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Organization"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateManufacturer"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateSurfaceFinish"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateID"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateHeight"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-material#MaterialType"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateMaterial"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateProcessingMethods"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:comment xml:lang="en">Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process</rdfs:comment>
-    <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-part#Part"/>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Quantity"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateWidth"/>
-        </owl:onProperty>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
-        >1</owl:qualifiedCardinality>
-        <owl:onProperty>
-          <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildPlateCertificationDate"/>
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
@@ -674,6 +694,10 @@
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-build#BuildProduct"/>
     <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-build#BuildPlate"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildProdProcessHistory">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-build#BuildProduct"/>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-process#ProcessHistory"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-build#amSpecBuildLayout">
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-build#AMProcessSpecification"/>
     <rdfs:comment xml:lang="en">Document that describe the arrangement or positioning of multiple parts or objects on the build platform </rdfs:comment>
@@ -736,6 +760,10 @@
   <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#amInSituCharacteristicsType">
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-build#AMInSituData"/>
     <rdfs:comment xml:lang="en">characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildProdName">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-build#BuildProduct"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://kdl.ge.com/AM-CDM-build#buildInterruptReason">

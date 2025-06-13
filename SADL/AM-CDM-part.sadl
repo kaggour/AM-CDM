@@ -1,13 +1,12 @@
 uri "http://kdl.ge.com/AM-CDM-part" alias AM-CDM-part version "$Revision:$ Last modified on   $Date:$".
 
-//import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 import "http://kdl.ge.com/AM-CDM-system".
 
 Part (note "Instances of part designs in the as-built state.") is a class,
 	described by partName (note "Human readable name which designates this part.") with a single value of type string,
 	described by partProcessHistory with a single value of type ProcessHistory,
 	described by partDesignSpecification (note "Design information for the finished part.") with a single value of type DesignSpecification,
-	//described by partProcessSpecificPartDesign (note "A design file which specifies the part at the completion of a manufacturing process step. This is not the specification for completed part.") with values of type PartSpecificProcessParameters,
+	described by partProcessSpecificPartDesign (note "A design file which specifies the part at the completion of a manufacturing process step. This is not the specification for completed part.") with values of type PartSpecificProcessParameters,
 	described by partProject (note "The project that this part is associated with") with values of type Project.
 
 DesignSpecification (note "Specification for a part.") is a class,
@@ -16,6 +15,10 @@ DesignSpecification (note "Specification for a part.") is a class,
 	described by designSpecCriticality (note "Criticality designation of part or parts to be developed in this project.") with a single value of type string,
 	described by designSpecRequirements (note "Document describing requirements or goals for components/specimens to be manufactured.") with a single value of type Document,
 	described by designSpecDesign (note "Design files which specify this component") with values of type Design.
+
+PartSpecificProcessParameters is a class,
+	described by partSpecOrientation (note "Specified orientation for the specific part.") with a single value of type Orientation,
+	described by partSpecDesign (note "design file which prescribes the changes to the part which are specific to this process.") with a single value of type Design.
 
 Design (note "Detailed information for the design of a part - STL, AM CAD, reverse engineered model. The part design, from which a physical object can be printed on an AM system.") is a type of Document,
 	described by designSoftware (note "Reference to CAD software name/version. Links to Software foreign key.") with a single value of type Software,

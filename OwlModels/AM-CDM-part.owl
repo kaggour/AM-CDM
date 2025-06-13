@@ -141,6 +141,28 @@
     <rdfs:comment xml:lang="en">Point cloud scanned AM part model brought back in to the CAD application for feedback and analysis.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://kdl.ge.com/AM-CDM-part#Design"/>
   </owl:Class>
+  <owl:Class rdf:about="http://kdl.ge.com/AM-CDM-part#PartSpecificProcessParameters">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-part#Design"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partSpecDesign"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onClass rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+        >1</owl:qualifiedCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partSpecOrientation"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
   <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partProcessHistory">
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#Part"/>
     <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-process#ProcessHistory"/>
@@ -154,6 +176,21 @@
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#DesignSpecification"/>
     <rdfs:comment xml:lang="en">Author of design specification.</rdfs:comment>
     <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partSpecOrientation">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#PartSpecificProcessParameters"/>
+    <rdfs:comment xml:lang="en">Specified orientation for the specific part.</rdfs:comment>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-base#Orientation"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partProcessSpecificPartDesign">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#Part"/>
+    <rdfs:comment xml:lang="en">A design file which specifies the part at the completion of a manufacturing process step. This is not the specification for completed part.</rdfs:comment>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-part#PartSpecificProcessParameters"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#partSpecDesign">
+    <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#PartSpecificProcessParameters"/>
+    <rdfs:comment xml:lang="en">design file which prescribes the changes to the part which are specific to this process.</rdfs:comment>
+    <rdfs:range rdf:resource="http://kdl.ge.com/AM-CDM-part#Design"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://kdl.ge.com/AM-CDM-part#designSpecRequirements">
     <rdfs:domain rdf:resource="http://kdl.ge.com/AM-CDM-part#DesignSpecification"/>
