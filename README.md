@@ -60,9 +60,23 @@ Each class may also have a type, allowing for the inheritance of attributes betw
 
 ## How to reference the AM-CDM - Lead: Kareem Aggour
 
-### Citing
-### Versioning
+If you use the AM-CDM, we would appreciate citations to the following paper:
 
+<a href="https://rdcu.be/dEl5G" target="_blank">A Common Data Dictionary and Common Data Model for Additive Manufacturing</a>, A. Kuan, K.S. Aggour, S. Li, _et al_., _Integrating Materials and Manufacturing Innovation_ vol. 13, no. 1, pp. 105-119, 2024.
+
+```
+@article{10.1007/s40192-024-00341-x, 
+year = {2024}, 
+title = {{A Common Data Dictionary and Common Data Model for Additive Manufacturing}}, 
+author = {Kuan, Alexander and Aggour, Kareem S and Li, Shengyen and Lu, Yan and Mohr, Luke and Kitt, Alex and Macdonald, Hunter}, 
+journal = {Integrating Materials and Manufacturing Innovation}, 
+issn = {2193-9764}, 
+doi = {10.1007/s40192-024-00341-x}, 
+pages = {105--119}, 
+number = {1}, 
+volume = {13}
+}
+```
 
 ## CDM Structure - Lead: Alex Kitt
 *This section may need a rename to avoid confusion with Alex Kuan's section with graphics.*  
@@ -83,6 +97,11 @@ Each class may also have a type, allowing for the inheritance of attributes betw
 ### Expansion to sub-domains (PBF, DED, specific TICs, etc.)
 ### How to get involved and/or provide feedback
 
+## Publications
+
+* K.S. Aggour. (2023), Evolution of Data Management and Common Data Models for Additive Manufacturing. _Additive Manufacturing Design and Applications_, ASM Handbook, vol. 24A, pp. 210-218. https://doi.org/10.31399/asm.hb.v24A.a0006963
+* A. Kuan, K.S. Aggour, S. Li, _et al_. (2024), A Common Data Dictionary and Common Data Model for Additive Manufacturing. _Integrating Materials and Manufacturing Innovation_, vol. 13, pp. 105-119. https://doi.org/10.1007/s40192-024-00341-x, https://rdcu.be/dEl5G
+* S. Li, Y. Lu, K.S. Aggour, _et al_. (2023), Enabling FAIR Data in Additive Manufacturing to Accelerate Industrialization. _Advanced Manufacturing Series (NIST AMS)_, National Institute of Standards and Technology, Gaithersburg, MD, https://doi.org/10.6028/NIST.AMS.500-1, https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=936454
 
 ## References - Lead: ALL
 
