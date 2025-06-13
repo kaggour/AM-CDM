@@ -20,6 +20,8 @@ AMMaterialOutput is a type of MaterialOutputs,
 	described by amMatOutputBuildProduct with a single value of type BuildProduct.
 
 BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
+	described by buildProdName with a single value of type string,
+	described by buildProdProcessHistory with a single value of type ProcessHistory,
 	described by buildProdBuildPlate with a single value of type BuildPlate,
 	described by buildProdParts with values of type Part.
 
