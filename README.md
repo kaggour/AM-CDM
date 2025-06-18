@@ -88,42 +88,32 @@ volume = {13}
 
 Current and Potential Users of AM-CDM include
 
-ASTM International
-Within ASTM, the Center of Excellence and the Consortium for Materials Data Standardization (CMDS) use AM-CDM for data collection and to populate their curated database with laser powder bed fusion process data from members.
+ASTM International - Within ASTM, the Center of Excellence and the Consortium for Materials Data Standardization (CMDS) use AM-CDM for data collection and to populate their curated database with laser powder bed fusion process data from members.
 
-America Makes Community
-Several projects within the America Makes ecosystem have incorporated AM-CDM and AM-CDD (Common Data Dictionary):
-  Colorado School of Mines – Cross Platform Consistency Project, Focused on mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems, this project aims to Establish cross-platform processing pedigree strategies, Conduct tensile property testing, Characterize mechanical behavior of PBF-LB materials, Assess the impact of process parameters, machine features, and feedstock, Evaluate heat treatment effectsand Recommend test methods and data standards for qualification and future needs
+America Makes Community - Several projects within the America Makes ecosystem have incorporated AM-CDM and AM-CDD (Common Data Dictionary):
+  1. Colorado School of Mines – Cross Platform Consistency Project, Focused on mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems, this project aims to Establish cross-platform processing pedigree strategies, Conduct tensile property testing, Characterize mechanical behavior of PBF-LB materials, Assess the impact of process parameters, machine features, and feedstock, Evaluate heat treatment effectsand Recommend test methods and data standards for qualification and future needs
 
-  Boeing – GAMAT Project
+  2. Boeing – GAMAT Project
 The "Generation of Additive Material Allowables for Ti-6Al-4V" aims to create a standardized, statistical method for deriving bulk material properties using L-DED (Laser Powder Feed Directed Energy Deposition).
 
-AFRL – HyperThought and Materials Center Integration (Presentation)
+AFRL – HyperThought and Materials Center Integration (Presentation link)
 
 NIST – AM Bench Data Curation AM Bench offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
 (More Info)
 
-Penn State / Maritime Industrial Base (MIB)
-Exploring AM-CDM for managing data in the maritime industrial context.
+Penn State / Maritime Industrial Base (MIB) - Exploring AM-CDM for managing data in the maritime industrial context.
 
-University of Maryland (UMD)
-Uses AM-CDM/CDD in collaboration with DEVCOM.
-(Project Report)
+University of Maryland (UMD)- Uses AM-CDM/CDD in collaboration with DEVCOM. (Project Report link)
 
-CCAM (Commonwealth Center for Advanced Manufacturing)
-Proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
+CCAM (Commonwealth Center for Advanced Manufacturing) - Proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
 
-Hexagon
-Applies AM-CDM across multiple projects for curating AM material data.
+Hexagon - Applies AM-CDM across multiple projects for curating AM material data.
 
-Authentise
-Interested in developing a CDM-based adaptor to enable standardized communication with AM systems from various vendors.
+Authentise - Interested in developing a CDM-based adaptor to enable standardized communication with AM systems from various vendors.
 
-3Degrees – TRACEAM
-Their TRACEAM platform references AM-CDM/CDD for managing AM data.
+3Degrees – Their TRACEAM platform references AM-CDM/CDD for managing AM data.
 
-ORNL (Oak Ridge National Laboratory)
-Exploring AM-CDM integration to link modeling and simulation tools with process data for improved model calibration.
+ORNL (Oak Ridge National Laboratory) - Exploring AM-CDM integration to link modeling and simulation tools with process data for improved model calibration.
 
 
 ## Future Work - Lead: Yan Lu
