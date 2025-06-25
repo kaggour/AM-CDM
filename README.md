@@ -78,8 +78,17 @@ volume = {13}
 }
 ```
 
-## CDM Structure - Lead: Alex Kitt
-*This section may need a rename to avoid confusion with Alex Kuan's section with graphics.*  
+## CDM Inheritance - Lead: Alex Kitt
+The AM CDM relies on class inheritance to enforce consistency. High level classes (such as ManufacturingProcessStep) lay out common attributes and common structures to be inherited by domain specific subclasses. Critically, the high level classes establish the foundational relationships between classses. As an example, ManufacturingProcessStep includes the relationship to:
+* the manufacturing equipment used in the process,
+* the specification used to prescribe the process,
+* the material inputs and material ouputs should.
+
+Further, since ManufacturingProcessStep is a child of PlannedProcessStep, all ManufacturingProcessSteps include relationships to:
+* the personnel who ran the process,
+* the organization which ran the process.
+
+Finally, through inheritance consistent common attributes are also enforced. For ManufacturingProcessStep this the timestamp when the process started and stopped. Subclasses are left to define domain specific attributes within the common structure defined by their parent classes. 
 
 ### Inheritance/Meta-Rules
 
