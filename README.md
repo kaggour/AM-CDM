@@ -19,7 +19,7 @@ Additive Manufacturing - Common Data Model
 
 *This content could be put into a PPT/PDF for sharing outside of the Github environment*  
 
-## What is the AM CDM - Lead: Kareem Aggour
+## What is the AM-CDM - Lead: Kareem Aggour
 Additive Manufacturing (AM), as a fully digital process, relies heavily on data spanning input materials, process parameters, post-processing steps, and inspections. Despite its potential, AM remains a developing field, requiring collaboration among academia, corporations, national labs, professional societies, and more. These partnerships depend on extensive data sharing across the AM ecosystem, including material vendors, equipment manufacturers, part suppliers, and customers.
 
 However, effective data management and data sharing is challenging. To address this, many organizations are adopting the FAIR Guiding Principles [[1]](#ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 Common Data Dictionary (CDD) standard, to develop a common vocabulary around key terms in the AM space [[2]](#ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange between systems.
@@ -31,21 +31,21 @@ While the CDM enables humans and machines to communicate about AM data, a key ch
 Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures the vocabulary for machine usability, and CDEFs enable machines to exchange data based on the structure of the CDM.
 
 
-## AM CDM Scope - Lead: Peter Coutts
-The AM-CDM is currently AM process-agnostic, meaning that it does not include AM domain-specific information, such as data related specifically to Metallic Laser Powder Bed Fusion or Metallic Wire-Arc Directed Energy Deposition. Future efforts can focus on extensions to the AM CDM for these specific domains, relying on the domain Subject Matter Experts (SMEs) to define and organize the data of that domain. For instance, data models representing specific destructive testing types (e.g. tensile testing) or specific thermal treatments (e.g. stress relief) could be constructed that build on the AM CDM. Specific, non-AM concepts (e.g. organization, personnel, system) have been included in the AM CDM in effort to create a wholistic picture of the AM data pedigree.
+## AM-CDM Scope - Lead: Peter Coutts
+The AM-CDM is currently AM process-agnostic, meaning that it does not include AM domain-specific information, such as data related specifically to Metallic Laser Powder Bed Fusion or Metallic Wire-Arc Directed Energy Deposition. Future efforts can focus on extensions to the AM-CDM for these specific domains, relying on the domain Subject Matter Experts (SMEs) to define and organize the data of that domain. For instance, data models representing specific destructive testing types (e.g. tensile testing) or specific thermal treatments (e.g. stress relief) could be constructed that build on the AM-CDM. Specific, non-AM concepts (e.g. organization, personnel, system) have been included in the AM-CDM in effort to create a wholistic picture of the AM data pedigree.
 
-## AM CDM Structure - Lead: Alex Kuan
-*insert some graphics of the AM CDM to help visualize the organization and structure*
+## AM-CDM Structure - Lead: Alex Kuan
+*insert some graphics of the AM-CDM to help visualize the organization and structure*
 *focus on most important classes*
 
 
-## How to use the AM CDM - Lead: Richard Huff, supporting Benjamin Standfield (All contribute ideas?)
+## How to use the AM-CDM - Lead: Richard Huff, supporting Benjamin Standfield (All contribute ideas?)
 
 ### What is the use case for a general AM practitioner?
 ### How a non-data person may apply the CDM in their organization, even if not implemented in a database, etc.
 ### Minimum viable data, enable data pedigree via data connectivity
 ### How the CDM relates to data exchange formats
-*should we define conformance to the AM CDM? If so, include loose rules*
+*should we define conformance to the AM-CDM? If so, include loose rules*
 
 ## What is SADL - Lead: Kareem Aggour
 The AM-CDM is designed and developed in the Semantic Application Design Language (SADL) [[6]](#ref6). SADL is both a language and an Eclipse plugin designed to simplify data model development. SADL uses a formal, English-like syntax and grammar, enabling users to author data models that can be automatically converted into the Web Ontology Language (OWL), the W3C standard for semantic modeling [[7]](#ref7). SADL was specifically developed to make data models accessible to non-semantic domain experts, allowing them to read and understand these models with ease. Its intuitive design makes it straightforward for domain experts such as engineers and materials scientists to collaborate with computer scientists to rapidly develop data models, without requiring those domain experts to become proficient in semantic modeling.
@@ -54,8 +54,8 @@ Each SADL file contains a collection of classes, which are comprised of zero to 
 
 Each class may also have a type, allowing for the inheritance of attributes between classes.
 
-## How to Derive Data Exchange Formats from the CDM - Lead: Shengyen Li (Hunter and Luke?)
-Depending on the target database technology, it may be necessary to convert the SADL specification into alternative formats such as XML or JSON. Preliminary parsing routines implemented in Python are available within the Jupyter notebooks located in the notebooks directory. For certain technologies—such as OWL or JSON-LD—that require more advanced semantic relationships, additional modeling may be needed. Nevertheless, it is strongly advised that the original attribute definitions and core class structures be preserved throughout the conversion process to maintain semantic consistency and interoperability. Once a CDEF for the AM CDM is available, this format should be used and or extracted from to create a data exchange format for a subset of data. Guidance for extracting micro data exchange formats from the CDEF will be provided in the future.
+## How to Derive Data Exchange Formats from the AM-CDM - Lead: Shengyen Li (Hunter and Luke?)
+Depending on the target database technology, it may be necessary to convert the SADL specification into alternative formats such as XML or JSON. Preliminary parsing routines implemented in Python are available within the Jupyter notebooks located in the notebooks directory. For certain technologies—such as OWL or JSON-LD—that require more advanced semantic relationships, additional modeling may be needed. Nevertheless, it is strongly advised that the original attribute definitions and core class structures be preserved throughout the conversion process to maintain semantic consistency and interoperability. Once a CDEF for the AM-CDM is available, this format should be used and or extracted from to create a data exchange format for a subset of data. Guidance for extracting micro data exchange formats from the CDEF will be provided in the future.
 
 ## How to reference the AM-CDM - Lead: Kareem Aggour
 
@@ -77,45 +77,47 @@ volume = {13}
 }
 ```
 
-## CDM Inheritance - Lead: Alex Kitt
-The AM CDM relies on class inheritance to enforce consistency. High-level classes (such as ManufacturingProcessStep) lay out common attributes and common structures to be inherited by domain specific subclasses. Critically, the high level classes establish the foundational relationships between classses. As an example, ManufacturingProcessStep includes the relationship to:
+## AM-CDM Inheritance - Lead: Alex Kitt
+The AM-CDM relies on class inheritance to enforce consistency and reduce redundant concepts. High-level classes (such as ManufacturingProcessStep) lay out common attributes and common structures to be inherited by domain-specific subclasses. Critically, the high level classes establish the foundational relationships between classses. As an example, ManufacturingProcessStep includes the relationship to:
 * the manufacturing equipment used in the process,
-* the specification used to prescribe the process,
-* the material inputs and material ouputs should.
+* the material inputs and material ouputs.
 
 Further, since ManufacturingProcessStep is a child of PlannedProcessStep, all ManufacturingProcessSteps include relationships to:
 * the personnel who ran the process,
 * the organization which ran the process.
+* the specification used to prescribe the process.
 
-Finally, through inheritance consistent common attributes are also enforced. For ManufacturingProcessStep this the timestamp when the process started and stopped. Subclasses are left to define domain specific attributes within the common structure defined by their parent classes. 
+One special circumstance of note in the SADL syntax is the use of "only has values of". For example, mfgProcessMachine of Build *only has values* of type AMSystem. Here, the attributes associated within AMSystem append (as opposed to overwritte) to the attributes within mfgProcessMachine, but only in the case of a ManufacturingProcessStep of type Build. On the contrary, it would not make sense for the attributes of an AMSystem to be applicable to other types of mfgProcessMachine, such as in the case of a thermal treatment process where the mfgProcessMachine of ManufacturingProcessStep MaterialHT "only has values of" HTSystem.
 
-### Inheritance/Meta-Rules
+## Who is using the AM-CDM - Lead: Yan Lu
 
+Current known users of AM-CDM include;
 
-## Who is using the AM CDM - Lead: Yan Lu
+ASTM International - Within ASTM, the Center of Excellence and the Consortium for Materials Data Standardization (CMDS) is aligning their database that is curating Laser Powder Bed Fusion data for its members to the AM-CDM.
 
-Current and Potential Users of AM-CDM include
+America Makes Community - Several projects within the America Makes community have incorporated AM-CDM and AM-CDD:
+  1. CORE Data Repository - A project led by The Penn State Applied Research Lab and supported by Edison Welding Institute (EWI) has adopted the AM-CDM as the foundation for the data model that will be employed by the CORE Project Data Repository. A proof-of-concept has been comleted and remains to be implemented on CORE. This project has also produced an AM-CDM compliant data template that is currently available on the CORE Data Repository to America Makes members: <a href="https://core.americamakes.us/deliverables/overview/cd6ef85c-e9a6-4ac3-8fa9-005d7d78d040" target="_blank">CORE Data Template Available Here</a>
+  2. Colorado School of Mines – Cross Platform Consistency Project - Focused on curating mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems. This project aims to establish cross-platform processing pedigree strategies, conduct tensile property testing, characterize mechanical behavior of PBF-LB materials, assess the impact of process parameters, machine features, and feedstock, evaluate heat treatment effects, and recommend test methods and data standards for qualification.
+*How is CSOM using the AM-CDM?*
+  3. Boeing – GAMAT Project - The "Generation of Additive Material Allowables for Ti-6Al-4V" aims to create a standardized, statistical method for deriving bulk material properties using L-DED (Laser Powder Feed Directed Energy Deposition). GAMAT is using Hexagon's Material Center softaware to capture AM process data, which has been mapped to the AM-CDM.
 
-ASTM International - Within ASTM, the Center of Excellence and the Consortium for Materials Data Standardization (CMDS) use AM-CDM for data collection and to populate their curated database with laser powder bed fusion process data from members.
+AFRL – HyperThought is integrating with Materials Center and is employing the AM-CDM 
 
-America Makes Community - Several projects within the America Makes ecosystem have incorporated AM-CDM and AM-CDD (Common Data Dictionary):
-  1. Colorado School of Mines – Cross Platform Consistency Project, Focused on mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems, this project aims to Establish cross-platform processing pedigree strategies, Conduct tensile property testing, Characterize mechanical behavior of PBF-LB materials, Assess the impact of process parameters, machine features, and feedstock, Evaluate heat treatment effectsand Recommend test methods and data standards for qualification and future needs
+*(Presentation link)*
 
-  2. Boeing – GAMAT Project
-The "Generation of Additive Material Allowables for Ti-6Al-4V" aims to create a standardized, statistical method for deriving bulk material properties using L-DED (Laser Powder Feed Directed Energy Deposition).
+NIST – AM Bench - A data curation activity that is leveraging the AM-CDM which offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
 
-AFRL – HyperThought and Materials Center Integration (Presentation link)
+*(Link to more Info)*
 
-NIST – AM Bench Data Curation AM Bench offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
-(More Info)
+The Maritime Industrial Base (MIB) & The Penn State Applied Research Lab - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
 
-Penn State / Maritime Industrial Base (MIB) - Exploring AM-CDM for managing data in the maritime industrial context.
+University of Maryland (UMD) - Uses AM-CDM/CDD in a collaboration with DEVCOM. 
 
-University of Maryland (UMD)- Uses AM-CDM/CDD in collaboration with DEVCOM. (Project Report link)
+*(Project Report link)*
 
-CCAM (Commonwealth Center for Advanced Manufacturing) - Proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
+CCAM (Commonwealth Center for Advanced Manufacturing) - Is proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
 
-Hexagon - Applies AM-CDM across multiple projects for curating AM material data.
+Hexagon - Applies the AM-CDM in their software for curating AM material data across multiple projects.
 
 Authentise - Interested in developing a CDM-based adaptor to enable standardized communication with AM systems from various vendors.
 
@@ -126,11 +128,11 @@ ORNL (Oak Ridge National Laboratory) - Exploring AM-CDM integration to link mode
 
 ## Future Work - Lead: Yan Lu
 
-Future work for AM-CDM focuses on expanding its standardization, adoption, and technical maturity. A key priority is updating the current ASTM F3490 standard or initiating a new work item to further formalize AM-CDM. Alongside this, the development of compliance rules and derivation methods for standard data exchange formats—such as JSON—is essential to ensure interoperability and consistency across platforms. Demonstrating the practical value of AM-CDM through a strong test case—such as adopting it as the core model for the Consortium for Materials Data Standardization (CMDS) and America Makes—will help drive broader adoption. A series of whitepapers are also planned, including guidance on using AM-CDM for metadata graphs in AM data management, and on applying AM-CDM for federated AM data systems. Looking ahead, the development of AM-CDM 2.0 will align the model with the Industrial Ontologies Foundry (IOF), integrate ASTM standard data curation templates, MMPDS data formats, and NIAR’s “Workbench for Additive Materials,” and extend the schema to include metadata for computational models and simulations.
+Future work for the AM-CDM focuses on expanding its standardization, adoption, and technical maturity. Key priorities will include; (1) updating the current ASTM F3490 standard for consistency with the AM-CDM and to reflect improved understanding of data concepts and (2) initiating a new work item to further formalize the AM-CDM. Alongside this, the development of compliance rules and derivation methods for standard data exchange formats (such as JSON) is essential to ensure interoperability between data platforms. Demonstrating the practical value of AM-CDM through strong test cases, such as adopting it as the core model for the Consortium for Materials Data Standardization (CMDS) the America Makes CORE Data Repository, and within the MIB — will help drive broader adoption. A series of whitepapers are also planned, including guidance on using AM-CDM for metadata graphs in AM data management, and on applying AM-CDM for federated AM data systems. Looking ahead, the development of AM-CDM 2.0 will align the model with the Industrial Ontologies Foundry (IOF), integrate standard data curation templates, and extend the data model to other related domains and sub-domains, such as Powder Bed Fusion, Directed Energy Deposition, and specific testing types.
 
-### Standardization
-### Expansion to sub-domains (PBF, DED, specific TICs, etc.)
-### How to get involved and/or provide feedback
+## How to Get Involved, Provide Feedback, or Share Record of Use
+
+If you or your organization is interested in contributing to improvements to the AM CDM,if you have and feedback to provide, or if you would like to share record of the AM-CDM in use, please reach out to either the repository owner, Kareem Aggour, or any of the repository contributors.
 
 ## Publications
 
