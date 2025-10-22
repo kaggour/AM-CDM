@@ -132,7 +132,10 @@ Future work for the AM-CDM focuses on expanding its standardization, adoption, a
 
 ## How to Get Involved, Provide Feedback, or Share Record of Use
 
-If you or your organization is interested in contributing to improvements to the AM CDM,if you have and feedback to provide, or if you would like to share record of the AM-CDM in use, please reach out to either the repository owner, Kareem Aggour, or any of the repository contributors.
+This project is part of a growing open-source ecosystem dedicated to advancing digital manufacturing. Contributions of all kinds — code, documentation, testing, or ideas — are welcome! Our only rule: be kind, be curious, and help us make this better for everyone. If you’d like to get started, check out the open issues or start a conversation.
+
+Together, we can build something meaningful.
+ 
 
 ## Publications
 
