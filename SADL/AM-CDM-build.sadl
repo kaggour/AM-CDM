@@ -82,7 +82,7 @@ BuildInterruption is a class,
 BuildProductInput is a type of MaterialInputs,
 	described by buildProductInput with values of type BuildProduct.
 
-AMPartExtraction (note "Separating or extracting a part or component from a signal one.") is a type of ManufacturingProcessStep.
+AMPartExtraction (note "Separating or extracting a part or component from a single one.") is a type of ManufacturingProcessStep.
 
 mfgProcessMachine of AMPartExtraction only has values of type PartExtractionSystem.
 mfgProcessMaterialInputs of AMPartExtraction only has values of type BuildProductInput.
@@ -106,3 +106,4 @@ processSpecification of PowderRecycling only has values of type PowderRecyclePro
 //processData of PowderRecycling only has values of type .
 
 PowderRecycleProcessSpecification is a type of ManufacturingSpecification.
+
