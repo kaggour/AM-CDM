@@ -1,0 +1,9 @@
+# CODEOWNERS
+#
+# This file defines who must review changes before they can be merged.
+# It reflects the editorial structure of the AM CDM project.
+#
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default: all changes require review by project editors
+* @am-cdm-editors
