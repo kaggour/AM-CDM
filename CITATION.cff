@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: >
+  If you use the AM Common Data Model (AM CDM) in your work,
+  please cite it using the information below.
+
+title: "AM Common Data Model (AM CDM)"
+authors:
+  - name: "AM CDM Contributors"
+
+repository-code: "https://github.com/<org-or-user>/AM-CDM"
+url: "https://github.com/<org-or-user>/AM-CDM"
+
+license: "Apache-2.0"
+
+keywords:
+  - additive manufacturing
+  - data model
+  - interoperability
+  - standards

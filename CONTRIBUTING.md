@@ -23,7 +23,7 @@ If you are unsure which to use, **start with a Discussion**.
 
 If something is unclear, ambiguous, or you want to better understand the intent of the model:
 
-➡️ **Start a Discussion**
+➡️ **Start a Q&A Discussion**
 
 Examples:
 - “What is the intended meaning of this attribute?”
@@ -62,7 +62,7 @@ If you have an idea for:
 - An extension to the model
 - A structural change
 
-➡️ **Start with a Discussion**
+➡️ **Start an Extensions/Enhancement Discussion**
 
 This allows the community to:
 - Clarify scope

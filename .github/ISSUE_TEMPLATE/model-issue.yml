@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         ⚠️ **Not sure this is a model defect?**
-        Please consider starting a Discussion first.
+        Please consider starting a Q&A Discussion first.
 
   - type: textarea
     id: problem
