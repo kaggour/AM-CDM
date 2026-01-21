@@ -1,0 +1,47 @@
+name: Model issue or inconsistency
+description: Report a concrete problem in the AM CDM model
+title: "[Model Issue]: <short description>"
+labels: ["model-issue"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ **Not sure this is a model defect?**
+        Please consider starting a Discussion first.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem description
+      description: >
+        Clearly describe the issue, ambiguity, or inconsistency.
+        Reference specific model elements where possible.
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Why this matters
+      description: >
+        Explain the practical or conceptual impact of the issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed resolution
+      description: >
+        Suggest a possible resolution or change to the model.
+        This does not need to be perfect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative approaches (optional)
+      description: >
+        List alternative interpretations or solutions, if applicable.
