@@ -83,7 +83,7 @@ One special circumstance of note in the SADL syntax is the use of "only has valu
 
 Current known users of AM-CDM include;
 
-ASTM International - Within ASTM, the Center of Excellence and the Consortium for Materials Data Standardization (CMDS) is aligning their database that is curating Laser Powder Bed Fusion data for its members to the AM-CDM.
+ASTM International - Within ASTM, <a href="https://amcoe.org/" target="_blank">the Center of Excellence</a> and <a href="https://amcoe.org/" target="_blank">the Consortium for Materials Data Standardization (CMDS)</a> are aligning their database that is for curating Laser Powder Bed Fusion data for its members to the AM-CDM.
 
 America Makes Community - Several projects within the America Makes community have incorporated AM-CDM and AM-CDD:
   1. CORE Data Repository - A project led by The Penn State Applied Research Lab and supported by Edison Welding Institute (EWI) has adopted the AM-CDM as the foundation for the data model that will be employed by the CORE Project Data Repository. A proof-of-concept has been completed and remains to be implemented on CORE. This project has also produced an AM-CDM compliant data template that is currently available on the CORE Data Repository to America Makes members: <a href="https://core.americamakes.us/deliverables/overview/cd6ef85c-e9a6-4ac3-8fa9-005d7d78d040" target="_blank">CORE Data Template Available Here</a>
