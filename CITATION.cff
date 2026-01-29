@@ -1,11 +1,35 @@
 cff-version: 1.2.0
 message: >
-  If you use the AM Common Data Model (AM CDM) in your work,
-  please cite it using the information below.
+  If you use the AM Common Data Model (AM CDM), please cite the
+  associated peer-reviewed publication listed below.
 
 title: "AM Common Data Model (AM CDM)"
-authors:
-  - name: "AM CDM Contributors"
+
+preferred-citation:
+  type: article
+  title: "A Common Data Dictionary and Common Data Model for Additive Manufacturing"
+  authors:
+    - family-names: Kuan
+      given-names: Alexander
+    - family-names: Aggour
+      given-names: Kareem S.
+    - family-names: Li
+      given-names: Shengyen
+    - family-names: Lu
+      given-names: Yan
+    - family-names: Mohr
+      given-names: Luke
+    - family-names: Kitt
+      given-names: Alex
+    - family-names: Macdonald
+      given-names: Hunter
+  journal: "Integrating Materials and Manufacturing Innovation"
+  volume: 13
+  issue: 1
+  start: 105
+  end: 119
+  year: 2024
+  doi: "10.1007/s40192-024-00341-x"
 
 repository-code: "https://github.com/<org-or-user>/AM-CDM"
 url: "https://github.com/<org-or-user>/AM-CDM"
@@ -14,6 +38,7 @@ license: "Apache-2.0"
 
 keywords:
   - additive manufacturing
-  - data model
+  - common data model
+  - data dictionary
   - interoperability
   - standards
