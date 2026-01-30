@@ -1,21 +1,31 @@
-# AM-CDM Documentation for the General AM Practitioner
-
-Additive Manufacturing - Common Data Model
+# Additive Manufacturing-Common Data Model (AM-CDM) Documentation for the General AM Practitioner
 
 ## What is the AM-CDM
-Additive Manufacturing (AM), as a fully digital process, relies heavily on data spanning input materials, process parameters, post-processing steps, and inspections. Despite its potential, AM remains a developing field, requiring collaboration among academia, corporations, national labs, professional societies, and more. These partnerships depend on extensive data sharing across the AM ecosystem, including material vendors, equipment manufacturers, part suppliers, and customers.
+Additive Manufacturing (AM) relies heavily on data spanning input materials, process parameters, post-processing steps, and inspections to be successful, just to name a few of the AM steps. Despite its potential, AM remains a developing field, requiring collaboration among academia, corporations, national labs, professional societies, and more. These partnerships depend on extensive data sharing across the AM ecosystem, including material vendors, equipment manufacturers, part suppliers, and customers. However, effective data sharing is challenging because most organizations use their own internal definitions (vocabulary) and representations (structure) to manage their data, making data exchange between parties a challenge. The Additive Manufacturing-Common Data Model (AM-CDM) was developed to address this challenge.
 
-However, effective data management and data sharing is challenging. To address this, many organizations are adopting the FAIR Guiding Principles [[1]](#ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 Common Data Dictionary (CDD) standard, to develop a common vocabulary around key terms in the AM space [[2]](#ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange between systems.
+The AM-CDM is written in the Semantic Application Design Language (SADL) [[6]](#ref6).
 
-To achieve seamless data interoperability by systems, AM developers need a common data representation. A Common Data Model (CDM) solves this by defining the logical structure and relationships of the terms in the CDD [[3]](#ref3). An effective CDM must be both human-readable, enabling users to understand and utilize the data, and machine-computable, allowing systems to understand and process data automatically. The CDM is not a data schema, so organizations adopting it do not need to change their internal data storage systems. Instead, they must align, map, and translate their internal data representations to the CDM for external data sharing. In this way, the CDM acts as a "lingua franca," allowing systems to maintain their internal data structures while using a shared language for communication across boundaries [[4]](#ref4). Alternatively, the CDM can be adopted as a data model for new data systems.
+## What is SADL
+SADL is both a language and an Eclipse plugin designed to simplify data model development. SADL uses a formal, English-like syntax and grammar, enabling users to author data models that can be automatically converted into the Web Ontology Language (OWL), the W3C standard for semantic modeling [[7]](#ref7). SADL was developed specifically to make data modeling more accessible to non-semantic domain experts, allowing them to read and understand these models with ease. SADL's intuitive design makes it straightforward for domain experts such as engineers and materials scientists to collaborate with computer scientists to rapidly develop data models, without requiring those domain experts to become proficient in semantic modeling.
 
-While the CDM enables humans and machines to communicate about AM data, a key challenge remains--the format used for data exchange. A Common Data Exchange Format (CDEF), aligned with the CDM's structure, enables data exchange in formats like XML or JSON. This eliminates the need for creating individual mappings between each party wishing to exchange AM data [[5]](#ref5). A CDEF for AM data is planned to be produced in the near future. Information about how to access this CDEF will be added to this repository when it is available.
+Each AM-CDM SADL file contains a collection of classes, which are comprised of zero to many properties. These properties can be of a primitive data type, such as string, int, double, and more, or can be of a complex type, and be defined by a class name. In this way, classes can be linked to each other through properties, creating a potentially complex network of relationships. The cardinality of each property is also defined, as each property is specified to be single-valued (‘with a single value of type’) or multi-valued (‘with values of type’).
 
-Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures the vocabulary for machine usability, and CDEFs enable machines to exchange data based on the structure of the CDM.
+Each class may also have a type, allowing for the inheritance of properties between classes.  A simple example of an extract of SADL is shown below.
 
+# SADL EXAMPLE
+
+
+## CDD vs. CDM vs. CDEF
+Today, many organizations are adopting the FAIR Guiding Principles [[1]](#ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 Common Data Dictionary (CDD) standard, to develop a common vocabulary around key terms in the AM space [[2]](#ref2). While CDDs help standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange between systems.
+
+To achieve seamless data interoperability by systems, AM developers need a common data representation. A Common Data Model (CDM) solves this by defining the logical structure and relationships of the terms in the CDD [[3]](#ref3). An effective CDM must be both human-readable, enabling users to understand and utilize the data, and machine-computable, allowing systems to understand and process data automatically. The CDM is not a data schema, so organizations adopting it do not need to change their internal data storage systems. Instead, they can simply map their internal data representations to the CDM for external data sharing. In this way, the CDM acts as a "lingua franca," allowing systems to maintain their internal data structures while using a shared language for communication across boundaries [[4]](#ref4). Alternatively, the CDM can be adopted as a data model for new data systems, if users so desire.
+
+While the CDM enables humans and machines to communicate about AM data, a key challenge remains--the format used for data exchange. A Common Data Exchange Format (CDEF), aligned with the CDM's structure, enables data exchange in file formats such as XML (eXtensible Markup Language) or JSON (JavaScript Object Notation). This eliminates the need for creating individual mappings between each party wishing to exchange AM data [[5]](#ref5). A CDEF for AM data is planned to be produced in the near future. Information about how to access this CDEF will be added to this repository when it is available.
+
+Overall, the CDD standardizes the AM vocabulary for human use, the CDM structures that vocabulary to enable data interoperability by machines, and CDEFs enable machines to physically exchange data based on the structure of the CDM.
 
 ## AM-CDM Scope
-The AM-CDM is currently AM process-agnostic, meaning that it does not include AM domain-specific information, such as data related specifically to Metallic Laser Powder Bed Fusion or Metallic Wire-Arc Directed Energy Deposition. Future efforts can focus on extensions to the AM-CDM for these specific domains, relying on the domain Subject Matter Experts (SMEs) to define and organize the data of that domain. For instance, data models representing specific destructive testing types (e.g. tensile testing) or specific thermal treatments (e.g. stress relief) could be constructed that build on the AM-CDM. Specific, non-AM concepts (e.g. organization, personnel, system) have been included in the AM-CDM in effort to create a wholistic picture of the AM data pedigree.
+The AM-CDM is currently AM process-agnostic, meaning it does not include AM domain-specific information, such as data related specifically to Metallic Laser Powder Bed Fusion or Metallic Wire-Arc Directed Energy Deposition. Future efforts can focus on extensions to the AM-CDM for these specific domains, relying on the domain Subject Matter Experts (SMEs) to define and organize the data of that domain. For instance, data models representing specific destructive testing types (e.g. tensile testing) or specific thermal treatments (e.g. stress relief) could be constructed that build on the AM-CDM. Specific, non-AM concepts (e.g. organization, personnel, system) have been included in the AM-CDM in effort to create a wholistic picture of the AM data pedigree.
 
 ## AM-CDM Structure
 *insert some graphics of the AM-CDM to help visualize the organization and structure*
@@ -37,35 +47,8 @@ Figure 1 - CDM use-case linking a PowderStock class object to a Specimen class o
 ### Parent Classes
 Many elements in the CDM are defined as subclasses (ie., ManufacturingProcessStep is a type of PlannedProcessStep).  In these cases, the required ID/name properties should be in the parent class.  However, reference properties can exist in either the parent or child.  Child classes inherit all properties from the parent and replaces the parent in the data model when utilized.  In the example above, the PlannedProcessStep class is not required since ManufacturingProcessStep is being used instead.  
 
-## What is SADL
-The AM-CDM is designed and developed in the Semantic Application Design Language (SADL) [[6]](#ref6). SADL is both a language and an Eclipse plugin designed to simplify data model development. SADL uses a formal, English-like syntax and grammar, enabling users to author data models that can be automatically converted into the Web Ontology Language (OWL), the W3C standard for semantic modeling [[7]](#ref7). SADL was specifically developed to make data models accessible to non-semantic domain experts, allowing them to read and understand these models with ease. Its intuitive design makes it straightforward for domain experts such as engineers and materials scientists to collaborate with computer scientists to rapidly develop data models, without requiring those domain experts to become proficient in semantic modeling.
-
-Each SADL file contains a collection of classes, which are comprised of zero to many attributes. These attributes can be of a primitive type, such as string, int, double, and more, or can be of a complex type, and be defined by a class name. In this way, classes can be linked to each other through attributes, creating a potentially complex network of data concepts. The cardinality of each attribute is also defined, as each attribute is specified to be single-valued (‘with a single value of type’) or multi-valued (‘with values of type’).
-
-Each class may also have a type, allowing for the inheritance of attributes between classes.
-
 ## How to Derive Data Exchange Formats from the AM-CDM
 Depending on the target database technology, it may be necessary to convert the SADL specification into alternative formats such as XML or JSON. Preliminary parsing routines implemented in Python are available within the Jupyter notebooks located in the notebooks directory. For certain technologies—such as OWL or JSON-LD—that require more advanced semantic relationships, additional modeling may be needed. Nevertheless, it is strongly advised that the original attribute definitions and core class structures be preserved throughout the conversion process to maintain semantic consistency and interoperability. Once a CDEF for the AM-CDM is available, this format should be used and or extracted from to create a data exchange format for a subset of data. Guidance for extracting micro data exchange formats from the CDEF will be provided in the future.
-
-## How to reference the AM-CDM
-
-If you use the AM-CDM, we would appreciate citations to the following paper:
-
-<a href="https://rdcu.be/dEl5G" target="_blank">A Common Data Dictionary and Common Data Model for Additive Manufacturing</a>, A. Kuan, K.S. Aggour, S. Li, _et al_., _Integrating Materials and Manufacturing Innovation_ vol. 13, no. 1, pp. 105-119, 2024.
-
-```
-@article{10.1007/s40192-024-00341-x, 
-year = {2024}, 
-title = {{A Common Data Dictionary and Common Data Model for Additive Manufacturing}}, 
-author = {Kuan, Alexander and Aggour, Kareem S and Li, Shengyen and Lu, Yan and Mohr, Luke and Kitt, Alex and Macdonald, Hunter}, 
-journal = {Integrating Materials and Manufacturing Innovation}, 
-issn = {2193-9764}, 
-doi = {10.1007/s40192-024-00341-x}, 
-pages = {105--119}, 
-number = {1}, 
-volume = {13}
-}
-```
 
 ## AM-CDM Inheritance
 The AM-CDM relies on class inheritance to enforce consistency and reduce redundant concepts. High-level classes (such as ManufacturingProcessStep) lay out common attributes and common structures to be inherited by domain-specific subclasses. Critically, the high level classes establish the foundational relationships between classses. As an example, ManufacturingProcessStep includes the relationship to:
@@ -142,3 +125,23 @@ Together, we can build something meaningful.
 5. <a id="ref5">S. Li</a>, Y. Lu, K.S. Aggour, _et al_. (2023), Enabling FAIR Data in Additive Manufacturing to Accelerate Industrialization. _Advanced Manufacturing Series (NIST AMS)_, National Institute of Standards and Technology, Gaithersburg, MD, https://doi.org/10.6028/NIST.AMS.500-1, https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=936454
 6. <a id="ref6">A. Crapo</a> and A. Moitra. (2013), Toward a Unified English-like Representation of Semantic Models, Data, and Graph Patterns for Subject Matter Experts. _International Journal of Semantic Computing_, vol. 7, no. 3, pp. 215-236. http://dx.doi.org/10.1142/S1793351X13500025
 7. <a id="ref7">W3C Web Ontology Language</a>, https://www.w3.org/OWL/
+
+## How to reference the AM-CDM
+
+If you use the AM-CDM, we would appreciate citations to the following paper:
+
+<a href="https://rdcu.be/dEl5G" target="_blank">A Common Data Dictionary and Common Data Model for Additive Manufacturing</a>, A. Kuan, K.S. Aggour, S. Li, _et al_., _Integrating Materials and Manufacturing Innovation_ vol. 13, no. 1, pp. 105-119, 2024.
+
+```
+@article{10.1007/s40192-024-00341-x, 
+year = {2024}, 
+title = {{A Common Data Dictionary and Common Data Model for Additive Manufacturing}}, 
+author = {Kuan, Alexander and Aggour, Kareem S and Li, Shengyen and Lu, Yan and Mohr, Luke and Kitt, Alex and Macdonald, Hunter}, 
+journal = {Integrating Materials and Manufacturing Innovation}, 
+issn = {2193-9764}, 
+doi = {10.1007/s40192-024-00341-x}, 
+pages = {105--119}, 
+number = {1}, 
+volume = {13}
+}
+```
