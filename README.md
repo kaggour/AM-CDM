@@ -122,7 +122,7 @@ Future work for the AM-CDM focuses on expanding its standardization, adoption, a
 
 ## How to Get Involved, Provide Feedback, or Share Record of Use
 
-This project is part of a growing open-source ecosystem dedicated to advancing digital manufacturing. Contributions of all kinds — code, documentation, testing, or ideas — are welcome! Our only rule: be kind, be curious, and help us make this better for everyone. If you’d like to get started, check out the open issues or start a conversation.
+This project is part of a growing open-source ecosystem dedicated to advancing digital manufacturing. Contributions of all kinds — code, documentation, testing, or ideas — are welcome! Our only rule: be kind, be curious, and help us make this better for everyone. If you’d like to get started see our [contributions guide](./CONTRIBUTING.md)
 
 Together, we can build something meaningful.
  
