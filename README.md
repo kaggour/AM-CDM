@@ -13,7 +13,7 @@ Each AM-CDM SADL file contains a collection of classes, which are comprised of z
 Each class may also have a type, allowing for the inheritance of properties between classes. A simple example of an extract of SADL is shown below.
 
 # SADL EXAMPLE
-
+<img width="50%" alt="SADL example" src="https://github.com/user-attachments/assets/21947534-53a7-48fe-8d01-4ce4ad640e25" />
 
 ## CDD vs. CDM vs. CDEF
 Today, many organizations are adopting the FAIR Guiding Principles [[1]](#ref1) to make their data Findable, Accessible, Interoperable, and Reusable (FAIR). Interoperability, a key FAIR principle, is essential for seamless data exchange and requires community-driven vocabulary standards. To address this need, the ASTM F42.08 Subcommittee on Data developed the F3490-21 Common Data Dictionary (CDD) standard, to develop a common vocabulary around key terms in the AM space [[2]](#ref2). While CDDs standardize how humans describe data, they rely on human interpretation of relationships, limiting machine-to-machine communication. This lack of standardized, machine-readable data relationships prevents automated data exchange between systems.
