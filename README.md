@@ -70,17 +70,13 @@ ASTM International - Within ASTM, <a href="https://amcoe.org/" target="_blank">t
 
 America Makes Community - Several projects within the America Makes community have incorporated AM-CDM and AM-CDD:
   1. CORE Data Repository - A project led by The Penn State Applied Research Lab and supported by Edison Welding Institute (EWI) has adopted the AM-CDM as the foundation for the data model that will be employed by the CORE Project Data Repository. A proof-of-concept has been completed and remains to be implemented on CORE. This project has also produced an AM-CDM compliant data template that is currently available on the CORE Data Repository to America Makes members: <a href="https://core.americamakes.us/deliverables/overview/cd6ef85c-e9a6-4ac3-8fa9-005d7d78d040" target="_blank">CORE Data Template Available Here</a>
-  2. Colorado School of Mines – Cross Platform Consistency Project - Focused on curating mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems. This project aims to establish cross-platform processing pedigree strategies, conduct tensile property testing, characterize mechanical behavior of PBF-LB materials, assess the impact of process parameters, machine features, and feedstock, evaluate heat treatment effects, and recommend test methods and data standards for qualification.
+  2. Colorado School of Mines – <a href="https://www.americamakes.us/wp-content/uploads/2023/09/PS-5546.pdf" target="_blank">Cross Platform Consistency Project</a> - Focused on curating mechanical properties of Inconel 718 (IN718) produced on PBF-LB systems. This project aims to establish cross-platform processing pedigree strategies, conduct tensile property testing, characterize mechanical behavior of PBF-LB materials, assess the impact of process parameters, machine features, and feedstock, evaluate heat treatment effects, and recommend test methods and data standards for qualification.
 *How is CSOM using the AM-CDM?*
-  3. Boeing – GAMAT Project - The "Generation of Additive Material Allowables for Ti-6Al-4V" aims to create a standardized, statistical method for deriving bulk material properties using L-DED (Laser Powder Feed Directed Energy Deposition). GAMAT is using Hexagon's Material Center softaware to capture AM process data, which has been mapped to the AM-CDM.
+  3. Boeing – <a href="https://www.americamakes.us/wp-content/uploads/2023/02/PS-GAMAT-5534.1.30.23.FINAL_.pdf" target="_blank">GAMAT Project</a> - The "Generation of Additive Material Allowables for Ti-6Al-4V" aims to create a standardized, statistical method for deriving bulk material properties using L-DED (Laser Powder Feed Directed Energy Deposition). GAMAT is using Hexagon's Material Center softaware to capture AM process data, which has been mapped to the AM-CDM.
 
-AFRL – HyperThought is integrating with Materials Center and is employing the AM-CDM 
+AFRL – <a href="https://www.youtube.com/watch?v=Zur1yX-t2ow" target="_blank">HyperThought</a> is integrating with Materials Center and is employing the AM-CDM 
 
-*(Presentation link)*
-
-NIST – AM Bench - A data curation activity that is leveraging the AM-CDM which offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
-
-*(Link to more Info)*
+NIST – <a href="https://ambench2022.nist.gov/" target="_blank">AM Bench</a> - A data curation activity that is leveraging the AM-CDM which offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
 
 The Maritime Industrial Base (MIB) & The Penn State Applied Research Lab - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
 
