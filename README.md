@@ -83,26 +83,24 @@ AFRL – <a href="https://www.youtube.com/watch?v=Zur1yX-t2ow" target="_blank">H
 
 NIST – <a href="https://ambench2022.nist.gov/" target="_blank">AM Bench</a> - A data curation activity that is leveraging the AM-CDM which offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
 
-The Maritime Industrial Base (MIB) & The Penn State Applied Research Lab - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
+<a href="https://www.secnav.navy.mil/rda/mib/Pages/default.aspx", target="_blank">The Maritime Industrial Base (MIB)</a> & <a href="https://www.arl.psu.edu/" target="_blank">The Penn State Applied Research Lab</a> - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
 
-University of Maryland (UMD) - Uses AM-CDM/CDD in a collaboration with DEVCOM. 
+University of Maryland (UMD) - Uses AM-CDM/CDD in a collaboration with DEVCOM: <a href="https://apps.dtic.mil/sti/trecms/pdf/AD1156858.pdf" target="_blank">Data Management and Data Curation for Additive Manufacturing: Annual Report</a>. 
 
-*(Project Report link)*
+<a href="https://ccam-va.com/" target="_blank">CCAM</a> (Commonwealth Center for Advanced Manufacturing) - Is proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
 
-CCAM (Commonwealth Center for Advanced Manufacturing) - Is proposing a data integration framework using AM-CDM to enable interoperability between AM systems and MES/ERP platforms.
+<a href="https://hexagon.com/" target="_blank">Hexagon</a> - Applies the AM-CDM in their software for curating AM material data across multiple projects.
 
-Hexagon - Applies the AM-CDM in their software for curating AM material data across multiple projects.
+<a href="https://www.authentise.com/" target="_blank">Authentise</a> - Interested in developing a CDM-based adaptor to enable standardized communication with AM systems from various vendors.
 
-Authentise - Interested in developing a CDM-based adaptor to enable standardized communication with AM systems from various vendors.
+<a href="https://www.3degreescompany.com/" target="_blank">3Degrees</a> – Their TRACEAM platform references AM-CDM/CDD for managing AM data.
 
-3Degrees – Their TRACEAM platform references AM-CDM/CDD for managing AM data.
-
-ORNL (Oak Ridge National Laboratory) - Exploring AM-CDM integration to link modeling and simulation tools with process data for improved model calibration.
+<a href="https://www.ornl.gov/technology/90000193" target="_blank">ORNL (Oak Ridge National Laboratory)</a> - Exploring AM-CDM integration to link modeling and simulation tools with process data for improved model calibration.
 
 
 ## Future Work
 
-Future work for the AM-CDM focuses on expanding its standardization, adoption, and technical maturity. Key priorities will include; (1) updating the current ASTM F3490 standard for consistency with the AM-CDM and to reflect improved understanding of data concepts and (2) initiating a new work item to further formalize the AM-CDM. Alongside this, the development of compliance rules and derivation methods for standard data exchange formats (such as JSON) is essential to ensure interoperability between data platforms. Demonstrating the practical value of AM-CDM through strong test cases, such as adopting it as the core model for the Consortium for Materials Data Standardization (CMDS) the America Makes CORE Data Repository, and within the MIB — will help drive broader adoption. A series of whitepapers are also planned, including guidance on using AM-CDM for metadata graphs in AM data management, and on applying AM-CDM for federated AM data systems. Looking ahead, the development of AM-CDM 2.0 will align the model with the Industrial Ontologies Foundry (IOF), integrate standard data curation templates, and extend the data model to other related domains and sub-domains, such as Powder Bed Fusion, Directed Energy Deposition, and specific testing types.
+Future work for the AM-CDM focuses on expanding its standardization, adoption, and technical maturity. Key priorities will include; (1) updating the current <a href="https://store.astm.org/f3490-21.html" target="_blank">ASTM F3490</a> standard for consistency with the AM-CDM and to reflect improved understanding of data concepts and (2) initiating a new work item to further formalize the AM-CDM. Alongside this, the development of compliance rules and derivation methods for standard data exchange formats (such as JSON) is essential to ensure interoperability between data platforms. Demonstrating the practical value of AM-CDM through strong test cases, such as adopting it as the core model for <a href="https://amcoe.org/" target="_blank">the Consortium for Materials Data Standardization (CMDS)</a>, <a href="https://www.americamakes.us/projects/5566-001-proliferation-of-additive-manufacturing-material-datasets/" target="_blank" >the America Makes CORE Data Repository</a>, and within the <a href="https://www.secnav.navy.mil/rda/mib/Pages/default.aspx", target="_blank">MIB</a> — will help drive broader adoption. A series of whitepapers are also planned, including guidance on using AM-CDM for metadata graphs in AM data management, and on applying AM-CDM for federated AM data systems. Looking ahead, the development of AM-CDM 2.0 will align the model with <a href="https://oagi.org/pages/industrial-ontologies" target="_blank">the Industrial Ontologies Foundry (IOF)</a>, integrate standard data curation templates, and extend the data model to other related domains and sub-domains, such as Powder Bed Fusion, Directed Energy Deposition, and specific testing types.
 
 ## How to Get Involved, Provide Feedback, or Share Record of Use
 
