@@ -83,7 +83,7 @@ AFRL – <a href="https://www.youtube.com/watch?v=Zur1yX-t2ow" target="_blank">H
 
 NIST – <a href="https://ambench2022.nist.gov/" target="_blank">AM Bench</a> - A data curation activity that is leveraging the AM-CDM which offers benchmark datasets and challenges for model validation and simulation. Data are rigorously measured, well-documented, and publicly archived.
 
-<a href="https://www.secnav.navy.mil/rda/mib/Pages/default.aspx", target="_blank">The Maritime Industrial Base (MIB)</a> & <a href="https://www.arl.psu.edu/" target="_blank">The Penn State Applied Research Lab</a> - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
+<a href="https://www.secnav.navy.mil/rda/mib/Pages/default.aspx" target="_blank">The Maritime Industrial Base (MIB)</a> & <a href="https://www.arl.psu.edu/" target="_blank">The Penn State Applied Research Lab</a> - Are adopting the AM-CDM as the foundation for the MIB Ontolgoy for Advanced Manufacturing (MIBO-ADVM) that will be utilized to connect Advanced Manufacturing data accross the MIB.
 
 University of Maryland (UMD) - Uses AM-CDM/CDD in a collaboration with DEVCOM: <a href="https://apps.dtic.mil/sti/trecms/pdf/AD1156858.pdf" target="_blank">Data Management and Data Curation for Additive Manufacturing: Annual Report</a>. 
 
