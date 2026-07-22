@@ -2,7 +2,7 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 
 import "http://kdl.ge.com/AM-CDM-material".
 
-ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity.") is a class,
+ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity [BFO].") is a class,
 	described by processHistoryID (note "UID for specific processHistory.") with a single value of type string,
 	described by orderedProcessStep (note "Sequence of events this object participated in.") with values of type IndexedProcessStep.
 
@@ -12,13 +12,13 @@ IndexedProcessStep is a class,
 
 PlannedProcessStep (note "A process that is planned.") is a class,
 	described by processName (note "Human readable name which designates this process step.") with a single value of type string,
-	described by processPersonnel with values of type Person,
+	described by processPersonnel (note "The individual who is primarily in charge of the execution of this process.") with values of type Person,
 	described by processOrganization (note "The organization which performs the process step.") with a single value of type Organization,
 	described by processAddress (note "Address where process was performed.") with a single value of type Address,
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
 	described by processStepSpecification (note "Prescribed process specification for this process occurrence.") with a single value of type ProcessStepSpecification,
-	described by processStepData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type ProcessStepData,
+	described by processStepData (note "Data which describes the execution of this process including process monitoring data and real-time control information .") with a single value of type ProcessStepData,
 	described by childProcessSteps (note "Sub processes that are fully contained within the PlannedProcessStep." ) with values of type IndexedPlannedProcessStep.
 
 IndexedPlannedProcessStep is a class,
@@ -32,19 +32,19 @@ ProcessStepSpecification (note "A prescription of how a planned process step sho
 	described by specControlPlanObjective (note "information content entity that prescribes what the outcome of some process should be.") with values of type Document,
 	described by childProcessStepSpecification (note "Specification for sub processes that are fully contained within the PlannedProcess step prescribed by this ProcessStepSpecification.") with values of type IndexedPlannedProcessStep.
 
-HTProcessStepSpecification is a type of ProcessStepSpecification.
-HIPProcessStepSpecification is a type of ProcessStepSpecification.
+HTProcessStepSpecification (note "A specification for a thermal heat treatment process") is a type of ProcessStepSpecification.
+HIPProcessStepSpecification (note "A specification for hot isostatic pressing process") is a type of ProcessStepSpecification.
 
 ProcessStepData is a class,
-	described by dataOperatorNotes (note "Observations recorded by the personnel involved in the process step.") with a single value of type string.
+	described by dataOperatorNotes (note "Observations recorded during the execution of a process step.") with a single value of type string.
 
-HTProcessStepData is a type of ProcessStepData.
-HIPProcessStepData is a type of ProcessStepData.
+HTProcessStepData (note "Process data for thermal heat treatment process.") is a type of ProcessStepData.
+HIPProcessStepData (note "Process data for hot isostatic pressing process.") is a type of ProcessStepData.
 
-MaterialSeparation (note "One material stock split into multiple stocks, including powder sampling scenario, but not including part extraction.") is a type of PlannedProcessStep,
-	described by materialInput with a single value of type MaterialStock,
-	described by materialOutput with values of type MaterialStock.
+MaterialSeparation (note "A process in which one material stock is split into multiple stocks, including powder sampling scenario, but not including part extraction.") is a type of PlannedProcessStep,
+	described by materialInput (note "The material stock which was split.") with a single value of type MaterialStock,
+	described by materialOutput (note "The new material stocks which were split out of the original material stock.") with values of type MaterialStock.
 
 MaterialTransfer (note "Material stock moved from one owner to another owner at a different location.") is a type of PlannedProcessStep,
-	described by materialInput with a single value of type MaterialStock,
-	described by materialOutput with a single value of type MaterialStock.
+	described by materialInput (note "Material that was departed from the source.") with a single value of type MaterialStock,
+	described by materialOutput (note "Material that arrived at the destination.") with a single value of type MaterialStock.
