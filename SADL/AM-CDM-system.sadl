@@ -80,7 +80,7 @@ GalvoScannerSpecification (note "A specification that is unique to a galvo scann
 	described by galvoScannerOrigin (note "The location of the origin of the galvo scanner within the scan area, typically where the galvanometer motors recieve a neutral control signal.") with a single value of type CartesianCoordinate,
 	described by galvoScannerType (note "The type of galvo scanner.") with a single value of type string.
 
-Camera is a type of Sensor.
+Camera (note ".") is a type of Sensor.
 
 systemSpecification of Camera only has values of type CameraSpecification.
 
