@@ -61,24 +61,24 @@ Recoater (note "A system which spreads or recoats powder accross a surface.") is
 systemSpecification of Recoater only has values of type RecoaterSpecification.
 
 RecoaterSpecification (note "A specification that is unique to a recoater.") is a type of SystemSpecification,
-	described by samplingRateMin with a single value of type Quantity,
-	described by samplingRateMax with a single value of type Quantity,
+	described by samplingRateMin (note ".") with a single value of type Quantity,
+	described by samplingRateMax (note ".") with a single value of type Quantity,
 	described by recoaterMaximumSpeed (note "The maximum speed at which the recoater can transverse at.") with a single value of type Quantity,
 	described by recoaterMaxUsesAllowed (note "The maximum number of builds that a recoater is allowed to participate in.") with a single value of type integer,
 	described by recoatingSurfaceMaterialType (note "The material that the recoating surface is made of.") with a single value of type MaterialType,
 	described by recoatingSurfaceMaterialSpecification (note "Specifications that are unique to the recoating surface material.") with a single value of type Document.
 
-GalvoScanner (note "A system that is used to manipulate a laser beam.") is a type of System.
+GalvoScanner (note "A system that is used to manipulate the position of something, such as a laser beam.") is a type of System.
 
 systemSpecification of GalvoScanner only has values of type GalvoScannerSpecification.
 
 GalvoScannerSpecification (note "A specification that is unique to a galvo scanner.")is a type of SystemSpecification,
-	described by galvoScannerMaxScanAngleX with a single value of type Quantity,
-	described by galvoScannerMaxScanAngleY with a single value of type Quantity,
-	described by galvoScannerRepeatability with a single value of type Quantity,
-	described by galvoScannerMaxScanSpeed with a single value of type Quantity,
-	described by galvoScannerOrigin with a single value of type CartesianCoordinate,
-	described by galvoScannerType with a single value of type string.
+	described by galvoScannerMaxScanAngleX (note "The maximum angle in the X direction, relative to the galvo scanner origin, that the galvo scanner is capable of rotating to.") with a single value of type Quantity,
+	described by galvoScannerMaxScanAngleY (note "The maximum angle in the Y direction, relative to the galvo scanner origin, that the galvo scanner is capable of rotating to..") with a single value of type Quantity,
+	described by galvoScannerRepeatability (note "The maximum angle in the Z direction, relative to the galvo scanner origin, that the galvo scanner is capable of rotating to..") with a single value of type Quantity,
+	described by galvoScannerMaxScanSpeed (note "The maximum taversal speed that the galvo scanner is capable of achieving.") with a single value of type Quantity,
+	described by galvoScannerOrigin (note "The location of the origin of the galvo scanner within the scan area, typically where the galvanometer motors recieve a neutral control signal.") with a single value of type CartesianCoordinate,
+	described by galvoScannerType (note "The type of galvo scanner.") with a single value of type string.
 
 Camera is a type of Sensor.
 
@@ -95,46 +95,46 @@ CameraSpecification (note "A specification that is unique to a camera.") is a ty
 	described by cameraLensOpticalMagnification with a single value of type float,
 	described by cameraMinShutterSpeed (note "Shutter speed of a camera.") with a single value of type Quantity.
 
-Lens is a type of Sensor.
+Lens (note "An assembly of shaped glass or plastic elements designed to collect, bend, and focus incoming light rays onto a single plane.") is a type of Sensor.
 
 systemSpecification of Lens only has values of type LensSpecification.
 
 LensSpecification (note "A specification that is unique to a lens.") is a type of SensorSpecification,
-	described by lensAperture with a single value of type Quantity,
-	described by lensFilter with a single value of type string.
+	described by lensAperture (note "The maximum aperture of the lens.") with a single value of type Quantity,
+	described by lensFilter (note "The type of filter used in conjunction with a lens to modify the light that passes through it.")with a single value of type string.
 
-Photodiode is a type of Sensor.
+Photodiode (note "A semiconductor light sensor that converts light energy (photons) directly into an electrical current or voltage.") is a type of Sensor.
 
 systemSpecification of Photodiode only has values of type PhotodiodeSpecification.
 
 PhotodiodeSpecification (note "A specification that is unique to a photodiode.") is a type of SensorSpecification,
-	described by photodiodeOpticalFilterBandwidth with a single value of type Quantity,
-	described by photodiodeBitDepth with a single value of type Quantity.
+	described by photodiodeOpticalFilterBandwidth (note ".") with a single value of type Quantity,
+	described by photodiodeBitDepth (note ".") with a single value of type Quantity.
 
-Pyrometer is a type of Sensor.
+Pyrometer (note "a non-contact temperature measurement device that operates by detecting and measuring radiation emitted from an object.") is a type of Sensor.
 
 systemSpecification of Pyrometer only has values of type PyrometerSpecification.
 
 PyrometerSpecification (note "A specification that is unique to a pyrometer.") is a type of SensorSpecification,
-	described by pyrometerOpticalFilterBandwidth1 with a single value of type Quantity,
-	described by pyrometerOpticalFilterBandwidth2 with a single value of type Quantity,
-	described by pyrometerBitDepth with a single value of type Quantity.
+	described by pyrometerOpticalFilterBandwidth1 (note "The first bandwidth of the pyrometers optical filter") with a single value of type Quantity,
+	described by pyrometerOpticalFilterBandwidth2 (note "The second bandwidth (if applicable) of the pyrometers optical filter.") with a single value of type Quantity,
+	described by pyrometerBitDepth (note "The resolution of the pyrometer representing the number of digital increments that are available to translate the anolog signal into a digital temperature reading.") with a single value of type Quantity.
 
-LaserPowderBedFusionSystem is a type of AMSystem.
+LaserPowderBedFusionSystem (note "An Additive Manufacturing system capable of building parts through the laser powder bed fusion process.") is a type of AMSystem.
 
-ElectronBeamPowderBedFusionSystem is a type of AMSystem.
+ElectronBeamPowderBedFusionSystem (note "An Additive Manufacturing system capable of building parts through the electron beam powder bed fusion process.") is a type of AMSystem.
 
-DirectedEnergyDepositionSystem is a type of AMSystem.
+DirectedEnergyDepositionSystem (note "An Additive Manufacturing system capable of building parts through the directed energy deposition process.") is a type of AMSystem.
 
-BinderJetSystem is a type of AMSystem.
+BinderJetSystem (note "An Additive Manufacturing system capable of building parts through the binder jet process.") is a type of AMSystem.
 
 BuildEnvironmentalControl (note "Environment control of the build chamber on its temperature, pressure, humidity and oxygen level, for optimal quality of AM material transformation.") is a class,
-	described by buildEnvironmentControlShieldingGasType with a single value of type string,
-	described by buildEnvironmentControlMaximumPreheatingTemperature with a single value of type Quantity,
-	described by buildEnvironmentControlGasFlowNozzleType with a single value of type string,
-	described by buildEnvironmentControlShieldingDeviceType with a single value of type string.
+	described by buildEnvironmentControlShieldingGasType (note "The type of shielding gas used in the build environmental control system.") with a single value of type string,
+	described by buildEnvironmentControlMaximumPreheatingTemperature (note "The maximum temperature that the build environmental control is capable of preheating to.") with a single value of type Quantity,
+	described by buildEnvironmentControlGasFlowNozzleType (note "The type of gas flow nozzle utilized by the build environmental control.") with a single value of type string,
+	described by buildEnvironmentControlShieldingDeviceType (note "The type of shielding device used by the build environmental control.") with a single value of type string.
 
-BuildVolume (note "Total usable volume available in the machine for building parts.") is a class,
+BuildVolume (note "Total usable volume available as part of the AM system for building parts.") is a class,
 	described by buildVolumeShape (note "Shape of a building volume, i.e., 'box' or 'cylinder'.") with a single value of type string,
 	described by buildVolumeDimension (note "Width, Depth, Height of a building volume.") with a single value of type CartesianCoordinate,
 	described by buildVolumeDiameter (note "Diameter of a building volume if of cylinder type.") with a single value of type Quantity,
@@ -146,47 +146,47 @@ SystemCapability (note "Capabilities or limitations of a system, which may be pr
 
 AMSystemCapability (note "Capabilities or limitations of an AM system, which may be provided by the system manufacturer or vendor.") is a class,
 	described by systemCapabilityProcessableRawMaterial (note "A processable raw material list of an AM system.") with values of type MaterialType,
-	described by systemCapabilityMaximumBuildRate with a single value of type Quantity,
-	described by systemCapabilityMinimumLayerThickness with a single value of type Quantity,
-	described by systemCapabilityMaximumLayerThickness with a single value of type Quantity,
-	described by systemCapabilityMinimumOxygenLevel with a single value of type Quantity,
-	described by systemCapabilityMinimumMoistureLevel with a single value of type Quantity.
+	described by systemCapabilityMaximumBuildRate (note "The maximum build rate (reported in volume or mass per unit of time) that the AM system is capable of operating at.") with a single value of type Quantity,
+	described by systemCapabilityMinimumLayerThickness (note "The smallest layer thickness that the AM system is capable of producing.") with a single value of type Quantity,
+	described by systemCapabilityMaximumLayerThickness (note "The maximum layer thickness that the AM system is capable of producing.") with a single value of type Quantity,
+	described by systemCapabilityMinimumOxygenLevel (note "The minimum level of oxygen that the AM system is capable of operating at.") with a single value of type Quantity,
+	described by systemCapabilityMinimumMoistureLevel (note "The minimum level of moisture that the AM system is capable of operating at.") with a single value of type Quantity.
 
-SystemQualificationEvent is a type of PlannedProcessStep,
+SystemQualificationEvent (note "An event that a system undergoes to evaluate whether or not it can be qualified.") is a type of ProcessStep,
 	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type SystemQualificationEventData.
 
-SystemQualificationEventData is a type of ProcessStepData,
+SystemQualificationEventData (note "Information that is generated as a result of a system qualification event.") is a type of ProcessStepData,
 	described by systemQualDataPassFail (note "Pass / fail result.") with a single value of type string,
 	described by systemQualDataResults (note "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report, tied to a machine serial number.") with a single value of type string.
 
-InstallationQualification is a type of SystemQualificationEvent.
+InstallationQualification (note ".") is a type of SystemQualificationEvent.
 
-OperationalQualification is a type of SystemQualificationEvent.
+OperationalQualification (note ".") is a type of SystemQualificationEvent.
 
-PerformanceQualification is a type of SystemQualificationEvent.
+PerformanceQualification (note ".") is a type of SystemQualificationEvent.
 
-MaintenanceEvent is a type of PlannedProcessStep,
+MaintenanceEvent is a (note ".") type of PlannedProcessStep,
 	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type MaintenanceEventData.
 
-MaintenanceEventData is a type of ProcessStepData,
+MaintenanceEventData (note ".") is a type of ProcessStepData,
 	described by maintenanceDataReport (note "Technical report from the maintenance.") with a single value of type Document.
 
 SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent.
 
 processEventData of SystemCalibration only has values of type SystemCalibrationData.
 
-SystemCalibrationData is a type of ProcessStepData,
+SystemCalibrationData (note ".") is a type of ProcessStepData,
 	described by calibrationPassFail (note "Pass / fail result.") with a single value of type string,
 	described by calibrationDataResults (note "The results of the equipment calibration (files, etc.).") with a single value of type Document.
 
-Software is a class,
+Software (note ".") is a class,
 	described by softwareName (note "A unique identifier for the software.") with a single value of type string,
 	described by softwareID (note "Version/configuration/OS.") with a single value of type string,
 	described by softwareVendor (note "Software Vendor identification. Links to Organization foreign key.") with a single value of type Organization,
 	described by softwareVersion (note "The version number of the software.") with a single value of type string,
-	described by softwareConfigurationSettingsFile (note "specific software settings document, for this project/component.") with a single value of type Document,
+	described by softwareConfigurationSettingsFile (note "The file representing the specific software settings used.") with a single value of type Document,
 	described by softwareFileType (note "File type (for automated processing).") with a single value of type string.
 
-HTSystem is a type of System.
-HIPSystem is a type of System.
-PartExtractionSystem is a type of System.
+HTSystem (note ".") is a type of System.
+HIPSystem (note ".") is a type of System.
+PartExtractionSystem (note ".") is a type of System.
