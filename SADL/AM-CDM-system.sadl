@@ -4,7 +4,6 @@ import "http://kdl.ge.com/AM-CDM-process".
 
 System (note "A manufacturing system that may be an aggregate of subsystems.") is a class,
 	described by systemID (note "Unique identifier of the system.") with a single value of type string,
-	described by systemSerialNumber (note "The serial number of the system defined by the manufacturer.") with a single value of type string,
 	described by systemName (note "The name of the system.") with a single value of type string,
 	described by systemPurchaseDate (note "The purchase date of the system.") with a single value of type dateTime,
 	described by systemOwner (note "The owning organization of the system.") with a single value of type Organization,
@@ -15,6 +14,7 @@ System (note "A manufacturing system that may be an aggregate of subsystems.") i
 	described by systemCapability (note "Capabilities and limitations of the system.") with a single value of type systemCapability.
 
 SystemSpecification (note "Information about the system that is specified by the system manufacturer.") is a class,
+	described by systemSerialNumber (note "The serial number of the system defined by the manufacturer.") with a single value of type string,
 	described by systemModel (note "Model name of a machine defined by the machine manufacturer.") with a single value of type string,
 	described by systemManufacturer (note "The manufacturer of the equipment.") with a single value of type Organization,
 	described by systemSpecElectricVoltage (note "Voltage for an AM Machine's electrical connection.") with a single value of type Quantity,
@@ -46,7 +46,7 @@ Laser (note "A system that is capable of producing a laser beam.") is a type of 
 	described by laserLaserBeamProfile (note "The measured cross-sectional intensity profile of a laser beam.") with a single value of type Document.
 
 laserSpecification (note "A specification that is unique to a laser.") is a type of SystemSpecification,
-	described by laserNumberOfLasers (note "The number of laser beams the laser is intentionally designed to produce by the laser manufacturer.") with a single value of type int,
+	// removed because an AM system can have multiple laser systems associated with it. A single laser can not have a number of lasers. The number of lasers would have to be deduced by the number of laser systems an AM system has. we could group the energy systems together to capture metadata in the future. described by laserNumberOfLasers (note "The number of laser beams the laser is intentionally designed to produce by the laser manufacturer.") with a single value of type int,
 	described by laserModeOfLaserOperation (note "The mode that the laser operates at. For example, Continuous Wave, Pulsed Wave, etc.") with a single value of type string,
 	described by laserMaxLaserPower (note "The maximum power output that the laser is able to emmit, as specified by the laser manufacturer.") with a single value of type Quantity,
 	described by laserMinLaserPower (note "The minimum power output that the laser is able to emmit, as specified by the laser manufacturer.") with a single value of type Quantity,
@@ -54,7 +54,7 @@ laserSpecification (note "A specification that is unique to a laser.") is a type
 	described by laserBeamShape (note "The shape of the laser beam that was designed by the laser manufacturer. This does not account for any additional optics that may modify the laser beam shape.") with a single value of type string,
 	described by laserMaxBeamSpotSize (note "The maximum cross-sectional size of the laser beam as specificed by the laser manufacturer. This does not account for any additional optics that may modify the spot size.") with a single value of type Quantity,
 	described by laserMinBeamSpotSize (note "The minimum cross-sectional size of the laser beam as specificed by the laser manufacturer. This does not account for any additional optics that may modify the spot size.") with a single value of type Quantity,
-	described by laserFocusCorrectionType (note "The optical laser focusing correction type.") with a single value of type string.
+	described by laserFocusCorrectionType (note "The optical laser focusing correction type(s), such as F-theta lens and/or Dynamic Focus Module (DFM).") with a single value of type string.
 
 Recoater (note "A system which spreads or recoats powder accross a surface.") is a type of System.
 
