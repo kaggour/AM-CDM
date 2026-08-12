@@ -80,7 +80,7 @@ GalvoScannerSpecification (note "A specification that is unique to a galvo scann
 	described by galvoScannerOrigin (note "The location of the origin of the galvo scanner within the scan area, typically where the galvanometer motors recieve a neutral control signal.") with a single value of type CartesianCoordinate,
 	described by galvoScannerType (note "The type of galvo scanner.") with a single value of type string.
 
-Camera (note ".") is a type of Sensor.
+Camera (note "A device that is capable of capturing or recording visual images of a subject.") is a type of Sensor.
 
 systemSpecification of Camera only has values of type CameraSpecification.
 
@@ -117,7 +117,7 @@ systemSpecification of Pyrometer only has values of type PyrometerSpecification.
 
 PyrometerSpecification (note "A specification that is unique to a pyrometer.") is a type of SensorSpecification,
 	described by pyrometerOpticalFilterBandwidth1 (note "The first bandwidth of the pyrometers optical filter") with a single value of type Quantity,
-	described by pyrometerOpticalFilterBandwidth2 (note "The second bandwidth (if applicable) of the pyrometers optical filter.") with a single value of type Quantity,
+	described by pyrometerOpticalFilterBandwidth2 (note "The second bandwidth of the pyrometers optical filter.") with a single value of type Quantity,
 	described by pyrometerBitDepth (note "The resolution of the pyrometer representing the number of digital increments that are available to translate the anolog signal into a digital temperature reading.") with a single value of type Quantity.
 
 LaserPowderBedFusionSystem (note "An Additive Manufacturing system capable of building parts through the laser powder bed fusion process.") is a type of AMSystem.
@@ -159,27 +159,27 @@ SystemQualificationEventData (note "Information that is generated as a result of
 	described by systemQualDataPassFail (note "Pass / fail result.") with a single value of type string,
 	described by systemQualDataResults (note "A certification capturing the basic calibration and test build(s) performed after installation of machine; aka, suite acceptance report, tied to a machine serial number.") with a single value of type string.
 
-InstallationQualification (note ".") is a type of SystemQualificationEvent.
+InstallationQualification (note "The qualification process involved in the installation of an AM System.") is a type of SystemQualificationEvent.
 
-OperationalQualification (note ".") is a type of SystemQualificationEvent.
+OperationalQualification (note "The qualificaiton process involved in the operationalization of an AM System, often to evaluate and validate the performance of a particular AM System for a particular material type.") is a type of SystemQualificationEvent.
 
-PerformanceQualification (note ".") is a type of SystemQualificationEvent.
+PerformanceQualification (note "The qualification process involved in the evaluation of an AM Systems capability to meet performance requirements for a partiular part.") is a type of SystemQualificationEvent.
 
-MaintenanceEvent is a (note ".") type of PlannedProcessStep,
+MaintenanceEvent is a (note "An event which targets the maintenance of something.") type of PlannedProcessStep,
 	described by processEventData (note "Process monitoring data, in-situ monitoring data, real-time monitoring etc, real-time control information.") with a single value of type MaintenanceEventData.
 
-MaintenanceEventData (note ".") is a type of ProcessStepData,
-	described by maintenanceDataReport (note "Technical report from the maintenance.") with a single value of type Document.
+MaintenanceEventData (note "Data that is associated with a Maintenance Event.") is a type of ProcessStepData,
+	described by maintenanceDataReport (note "Technical report from the maintenance event.") with a single value of type Document.
 
 SystemCalibration (note "Calibration information.") is a type of MaintenanceEvent.
 
 processEventData of SystemCalibration only has values of type SystemCalibrationData.
 
-SystemCalibrationData (note ".") is a type of ProcessStepData,
+SystemCalibrationData (note "Data associated with the calibration of a system.") is a type of ProcessStepData,
 	described by calibrationPassFail (note "Pass / fail result.") with a single value of type string,
 	described by calibrationDataResults (note "The results of the equipment calibration (files, etc.).") with a single value of type Document.
 
-Software (note ".") is a class,
+Software (note "A set of instructions or programs that dictate to a computer what to do and how to work.") is a class,
 	described by softwareName (note "A unique identifier for the software.") with a single value of type string,
 	described by softwareID (note "Version/configuration/OS.") with a single value of type string,
 	described by softwareVendor (note "Software Vendor identification. Links to Organization foreign key.") with a single value of type Organization,
@@ -187,6 +187,6 @@ Software (note ".") is a class,
 	described by softwareConfigurationSettingsFile (note "The file representing the specific software settings used.") with a single value of type Document,
 	described by softwareFileType (note "File type (for automated processing).") with a single value of type string.
 
-HTSystem (note ".") is a type of System.
-HIPSystem (note ".") is a type of System.
-PartExtractionSystem (note ".") is a type of System.
+HTSystem (note "A system capable of performing a Heat Treatment.") is a type of System.
+HIPSystem (note "A system capable of performing Hot Isostatic Pressing.") is a type of System.
+PartExtractionSystem (note "A system capable of part extraction.") is a type of System.
