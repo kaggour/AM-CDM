@@ -3,48 +3,47 @@ uri "http://kdl.ge.com/AM-CDM-process" alias AM-CDM-process version "$Revision:$
 import "http://kdl.ge.com/AM-CDM-material".
 
 ProcessHistory (note "(Elucidation) A history is a process that is the sum of the totality of processes taking place in the spatiotemporal region occupied by the material part of a material entity [BFO].") is a class,
-	described by processHistoryID (note "UID for specific processHistory.") with a single value of type string,
-	described by orderedProcessStep (note "Sequence of events this object participated in.") with values of type IndexedProcessStep.
+	described by processHistoryID (note "Globally unique identifier assigned to a specific process history within the data model.") with a single value of type string,
+	described by orderedProcessStep (note "Process steps, taken in an ordered sequence, that make up the process history.") with values of type IndexedProcessStep.
 
-IndexedProcessStep is a class,
-	described by indexStep (note "The time ordered enumeration of processes in this list.") with a single value of type int,
-	described by processStep (note "The process step which corresponds to the index.") with a single value of type PlannedProcessStep.
+IndexedProcessStep (note "Process step paired with an index that fixes its position within an ordered sequence.") is a class,
+	described by indexStep (note "Time-ordered position of a process step within the sequence.") with a single value of type int,
+	described by processStep (note "Planned process step corresponding to the given index position.") with a single value of type PlannedProcessStep.
 
-PlannedProcessStep (note "A process that is planned.") is a class,
-	described by processName (note "Human readable name which designates this process step.") with a single value of type string,
-	described by processPersonnel (note "The individual who is primarily in charge of the execution of this process.") with values of type Person,
-	described by processOrganization (note "The organization which performs the process step.") with a single value of type Organization,
-	described by processAddress (note "Address where process was performed.") with a single value of type Address,
+PlannedProcessStep (note "Process step which is prescribed in advance by a specification.") is a class,
+	described by processName (note "Human-readable name which designates this process step.") with a single value of type string,
+	described by processPersonnel (note "Individuals who are primarily in charge of the execution of this process.") with values of type Person,
+	described by processOrganization (note "Organization which performs the process step.") with a single value of type Organization,
+	described by processAddress (note "Address where the process is performed.") with a single value of type Address,
 	described by processStartTime (note "Time when process step starts.") with a single value of type dateTime,
 	described by processEndTime (note "Time when process step ends.") with a single value of type dateTime,
-	described by processStepSpecification (note "Prescribed process specification for this process occurrence.") with a single value of type ProcessStepSpecification,
-	described by processStepData (note "Data which describes the execution of this process including process monitoring data and real-time control information .") with a single value of type ProcessStepData,
-	described by childProcessSteps (note "Sub processes that are fully contained within the PlannedProcessStep." ) with values of type IndexedPlannedProcessStep.
+	described by processStepSpecification (note "Prescribed specification governing how the process step is performed.") with a single value of type ProcessStepSpecification,
+	described by processStepData (note "Data which describes the execution of this process including process monitoring data and real-time control information.") with a single value of type ProcessStepData,
+	described by childProcessSteps (note "Sub-processes that are fully contained within the parent planned process step." ) with values of type IndexedPlannedProcessStep.
 
-IndexedPlannedProcessStep is a class,
-	described by indexPlannedStep (note "The time ordered enumeration that the specified processes would be performed.") with a single value of type int,
-	described by processStepSpecification (note "The process specification which corresponds to the index.") with a single value of type ProcessStepSpecification.
+IndexedPlannedProcessStep (note "Planned process step paired with an index that fixes the order in which it is performed.") is a class,
+	described by indexPlannedStep (note "Time-ordered position at which the specified process is performed.") with a single value of type int,
+	described by processStepSpecification (note "Prescribed specification governing how the process step is performed.") with a single value of type ProcessStepSpecification.
 
-ProcessStepSpecification (note "A prescription of how a planned process step should be performed.") is a class,
-	described by specStandard (note "Standards which process should comply with, ex. AMS2774.") with values of type Document,
-	described by specProcedure (note "Procedure which should be followed when the process is run.") with values of type Document,
-	described by specControlPlan (note "Document that describes the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
-	described by specControlPlanObjective (note "information content entity that prescribes what the outcome of some process should be.") with values of type Document,
-	described by childProcessStepSpecification (note "Specification for sub processes that are fully contained within the PlannedProcess step prescribed by this ProcessStepSpecification.") with values of type IndexedPlannedProcessStep.
+ProcessStepSpecification (note "Prescription of the manner in which a planned process step is to be performed.") is a class,
+	described by specStandard (note "Standards that the process is required to comply with.") with values of type Document,
+	described by specProcedure (note "Procedures which should be followed when the process is run.") with values of type Document,
+	described by specControlPlan (note "Documents that describe the methods taken to ensure the quality control of critical inputs to deliver outputs that meet requirements.") with values of type Document,
+	described by specControlPlanObjective (note "Information content entities that prescribe what the outcome of the process should be.") with values of type Document,
+	described by childProcessStepSpecification (note "Specifications for sub-processes fully contained within the parent planned process step.") with values of type IndexedPlannedProcessStep.
 
-HTProcessStepSpecification (note "A specification for a thermal heat treatment process") is a type of ProcessStepSpecification.
-HIPProcessStepSpecification (note "A specification for hot isostatic pressing process") is a type of ProcessStepSpecification.
+HTProcessStepSpecification (note "Specification for a thermal heat-treatment process.") is a type of ProcessStepSpecification.
+HIPProcessStepSpecification (note "Specification for a hot isostatic pressing process.") is a type of ProcessStepSpecification.
+ProcessStepData (note "Data which describes the execution of a process including process monitoring data and real-time control information.") is a class,
+	described by dataOperatorNotes (note "Observation recorded during the execution of a process step.") with a single value of type string.
 
-ProcessStepData is a class,
-	described by dataOperatorNotes (note "Observations recorded during the execution of a process step.") with a single value of type string.
+HTProcessStepData (note "Data describing a thermal heat-treatment process.") is a type of ProcessStepData.
+HIPProcessStepData (note "Data describing a hot isostatic pressing process.") is a type of ProcessStepData.
 
-HTProcessStepData (note "Process data for thermal heat treatment process.") is a type of ProcessStepData.
-HIPProcessStepData (note "Process data for hot isostatic pressing process.") is a type of ProcessStepData.
+MaterialSeparation (note "Process in which one material stock is split into multiple stocks, including powder sampling scenario, but not including part extraction.") is a type of PlannedProcessStep,
+	described by materialInput (note "Material stock that is split into multiple stocks.") with a single value of type MaterialStock,
+	described by materialOutput (note "Material stocks produced by splitting the original material stock.") with values of type MaterialStock.
 
-MaterialSeparation (note "A process in which one material stock is split into multiple stocks, including powder sampling scenario, but not including part extraction.") is a type of PlannedProcessStep,
-	described by materialInput (note "The material stock which was split.") with a single value of type MaterialStock,
-	described by materialOutput (note "The new material stocks which were split out of the original material stock.") with values of type MaterialStock.
-
-MaterialTransfer (note "Material stock moved from one owner to another owner at a different location.") is a type of PlannedProcessStep,
-	described by materialInput (note "Material that was departed from the source.") with a single value of type MaterialStock,
-	described by materialOutput (note "Material that arrived at the destination.") with a single value of type MaterialStock.
+MaterialTransfer (note "Process in which material stock is moved from one owner to another at a different location.") is a type of PlannedProcessStep,
+	described by materialInput (note "Material stock that departs from the source location.") with a single value of type MaterialStock,
+	described by materialOutput (note "Material stock that arrives at the destination location.") with a single value of type MaterialStock.
