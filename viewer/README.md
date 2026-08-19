@@ -9,7 +9,7 @@ SADL files are typically defined, edited, and viewed using the Eclipse IDE with 
    - For Linux, follow the instructions for [installing Docker and `docker-compose`](https://docs.docker.com/desktop/linux/) separately
 
 ### Instructions for installing
-1. Clone this repository: `git clone https://github.com/kaggour/AM-CDM.git`
+1. Clone this repository: `git clone https://github.com/AM-CDM/AM-CDM.git`
 1. Enter the cloned directory (`/viewer`) with a Terminal/PowerShell session (the target is the directory that contains the `Dockerfile` and the `docker-compose.yaml` file).
 1. With your Docker Desktop application running, enter the command `docker-compose build`. This process will may take several mintues the first time it is run. Subsequent rebuilds will use a cache and run very quickly.
 
