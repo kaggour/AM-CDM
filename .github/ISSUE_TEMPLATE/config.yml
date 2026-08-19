@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/AM-CDM/AM-CDM/discussions/categories/q-a
+    about: Please ask questions in Discussions instead of Issues
+  - name: Suggest an Extension or Enhancement
+    url: https://github.com/AM-CDM/AM-CDM/discussions/categories/extensions-enhancements
+    about: Please brainstorm about net new content in Extensions/Enhancements instead of Issues
