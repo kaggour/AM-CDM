@@ -40,7 +40,7 @@ PowderStockInput (note "Powder stock provided as input to a process.") is a type
 PowderStockOutput (note "Powder stock produced as output by a process.") is a type of MaterialOutputs,
 	described by powderStockOutput (note "Powder stocks produced as output by the process step.") with values of type PowderStock.
 
-Blending (note "Process in which metal powders are mixed.") is a type of ManufacturingProcessStep.
+Blending (note "Process in which powders are mixed.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialInputs of Blending only has values of type PowderStockInput.
 mfgProcessMaterialOutputs of Blending only has values of type PowderStockOutput.
