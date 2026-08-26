@@ -2,44 +2,44 @@ uri "http://kdl.ge.com/AM-CDM-testInspectionCharacterization" alias AM-CDM-testI
 
 import "http://kdl.ge.com/AM-CDM-build".
 
-TestInspectionCharacterization (note "test, inspection, or characterization performed on a part or material specimen, excluding in-process monitoring.") is a type of PlannedProcessStep,
-	described by ticResult (note "result produced by the test, inspection, or characterization.") with a single value of type TestResult.
-	described by ticSpecimen (note "identifier of the specimen on which the test, inspection, or characterization is performed. Note: This is a convenience relationship and is redundant to the relationship established through a process history.") with a single value of type SpecimenID.
+TestInspectionCharacterization (note "Test, inspection, or characterization performed on a part or material specimen, excluding in-process monitoring.") is a type of PlannedProcessStep,
+	described by ticResult (note "Result produced by the test, inspection, or characterization.") with a single value of type TestResult.
+	described by ticSpecimen (note "Identifier of the specimen on which the test, inspection, or characterization is performed. Note: This is a convenience relationship and is redundant to the relationship established through a process history.") with a single value of type SpecimenID.
 
-NonDestructiveExamination (note "process step in which a part is inspected without causing damage to it.") is a type of TestInspectionCharacterization.
+NonDestructiveExamination (note "Process step in which a part is inspected without causing damage to it.") is a type of TestInspectionCharacterization.
 
-DestructiveTest (note "process step in which a part is tested in a manner that damages or consumes it.") is a type of TestInspectionCharacterization.
+DestructiveTest (note "Process step in which a part is tested in a manner that damages or consumes it.") is a type of TestInspectionCharacterization.
 
-TestResult (note "outcome produced by a test, inspection, or characterization.") is a class,
-	described by ticResultPassFail (note "indication of whether the test, inspection, or characterization passed or failed.") with a single value of type TICResultStatus,
-	described by ticResultReport (note "document reporting the outcome of the test, inspection, or characterization.") with a single value of type Document,
-	described by ticResultMaterialProperty (note "material properties determined by the test, inspection, or characterization.") with values of type MaterialProperty.
+TestResult (note "Outcome produced by a test, inspection, or characterization.") is a class,
+	described by ticResultPassFail (note "Indication of whether the test, inspection, or characterization passed or failed.") with a single value of type TICResultStatus,
+	described by ticResultReport (note "Document reporting the outcome of the test, inspection, or characterization.") with a single value of type Document,
+	described by ticResultMaterialProperty (note "Material properties determined by the test, inspection, or characterization.") with values of type MaterialProperty.
 
-TICResultStatus (note "status indicating whether a test, inspection, or characterization passed or failed.") is a class, must be one of {Pass, Fail}.
+TICResultStatus (note "Status indicating whether a test, inspection, or characterization passed or failed.") is a class, must be one of {Pass, Fail}.
 
-Specimen (note "physical coupon used for a test, inspection, or characterization; it may be a section of a part or an entire part.") is a class,
-	described by specimenID (note "globally unique identifier assigned to a specific specimen within the data model.") with a single value of type string,
-	described by specimenDescription (note "human-readable description of the specimen.") with a single value of type string,
-	described by specimenMass (note "mass of the specimen, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity,
-	described by specimenProcessHistory (note "process history of the specimen recording, in chronological order, the events that occurred to it after it reached the base geometric form specified in the applicable standard.") with a single value of type ProcessHistory,
-	described by specimenDeviations (note "descriptions of the differences from the recommendations in the applicable standards for specimen configuration and preparation.") with values of type string.
+Specimen (note "Physical coupon used for a test, inspection, or characterization; it may be a section of a part or an entire part.") is a class,
+	described by specimenID (note "Globally unique identifier assigned to a specific specimen within the data model.") with a single value of type string,
+	described by specimenDescription (note "Human-readable description of the specimen.") with a single value of type string,
+	described by specimenMass (note "Mass of the specimen, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity,
+	described by specimenProcessHistory (note "Process history of the specimen recording, in chronological order, the events that occurred to it after it reached the base geometric form specified in the applicable standard.") with a single value of type ProcessHistory,
+	described by specimenDeviations (note "Descriptions of the differences from the recommendations in the applicable standards for specimen configuration and preparation.") with values of type string.
 
-PartSpecimen (note "specimen extracted from a part.") is a type of Specimen,
-	described by partSpecimenParentPart (note "part from which the specimen is extracted.") with a single value of type Part,
-	described by partSpecimenCoordinateOnBuild (note "coordinate locating the bounding-box center of the part, or an accepted reference datum, within the build.") with a single value of type CartesianCoordinate,
-	described by partSpecimenOrientation (note "orientation of the specimen within its parent part.") with a single value of type Orientation,
+PartSpecimen (note "Specimen extracted from a part.") is a type of Specimen,
+	described by partSpecimenParentPart (note "Part from which the specimen is extracted.") with a single value of type Part,
+	described by partSpecimenCoordinateOnBuild (note "Coordinate locating the bounding-box center of the part, or an accepted reference datum, within the build.") with a single value of type CartesianCoordinate,
+	described by partSpecimenOrientation (note "Orientation of the specimen within its parent part.") with a single value of type Orientation,
 	// In the future, we have a Design class with PartDesign, SpecimenDesign subclasses. Below should be of type SpecimenDesign rather than Document. Might also be common geometry terminology from standards.
-	described by partSpecimenGeometry (note "document describing the geometry of the specimen.") with a single value of type Document.
+	described by partSpecimenGeometry (note "Document describing the geometry of the specimen.") with a single value of type Document.
 
-MaterialStockSpecimen (note "specimen extracted from material stock.") is a type of Specimen,
-	described by feedstockSpecimenSource (note "material stock from which the specimen is extracted.") with a single value of type MaterialStock.
+MaterialStockSpecimen (note "Specimen extracted from material stock.") is a type of Specimen,
+	described by feedstockSpecimenSource (note "Material stock from which the specimen is extracted.") with a single value of type MaterialStock.
 
-PartSpecimenExtraction (note "manufacturing process step in which a part or component is extracted from a single part.") is a type of ManufacturingProcessStep.
+PartSpecimenExtraction (note "Manufacturing process step in which a part or component is extracted from a single part.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type PartMaterialInput.
 mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type PartMaterialOutput.
 
-MaterialStockSampling (note "manufacturing process step in which a sample is extracted from a single material stock.") is a type of ManufacturingProcessStep.
+MaterialStockSampling (note "Manufacturing process step in which a sample is extracted from a single material stock.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialInputs of PartSpecimenExtraction only has values of type MaterialStockInput.
 mfgProcessMaterialOutputs of PartSpecimenExtraction only has values of type MaterialStockOutput.
