@@ -1,146 +1,146 @@
 uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last modified on   $Date:$".
 
-Document (note "electronic file of any format, described by attributes such as its title, author, location, and format") is a class,
-	described by documentTitle (note "human-readable title assigned to the document") with a single value of type string,
-	described by documentFileName (note "name of the electronic file in which the document is stored") with a single value of type string,
-	described by documentAuthor (note "person credited as an author of the document") with values of type Person,
-	described by documentLocation (note "physical location at which the document resides") with a single value of type string,
-	described by documentFormat (note "formal description language that describes the format or layout of the document, not the file type, such as CSV with Headers, Protobuf, fixed position, JSON Schema") with values of type string,
-	described by documentClassificationLevel (note "classification level assigned to the document") with a single value of type string,
-	described by documentClassificationIPClass (note "intellectual property classification of the document") with a single value of type string,
-	described by documentURI (note "URI of the document pointing to its digital location") with a single value of type string,
-	described by documentCreationTime (note "date and time at which the document was created") with a single value of type string.
+Document (note "Electronic file of any format, described by attributes such as its title, author, location, and format.") is a class,
+	described by documentTitle (note "Human-readable title assigned to the document.") with a single value of type string,
+	described by documentFileName (note "Name of the electronic file in which the document is stored.") with a single value of type string,
+	described by documentAuthor (note "Person credited as an author of the document.") with values of type Person,
+	described by documentLocation (note "Physical location at which the document resides.") with a single value of type string,
+	described by documentFormat (note "Formal description language that describes the format or layout of the document, not the file type, such as CSV with Headers, Protobuf, fixed position, JSON Schema.") with values of type string,
+	described by documentClassificationLevel (note "Classification level assigned to the document.") with a single value of type string,
+	described by documentClassificationIPClass (note "Intellectual property classification of the document.") with a single value of type string,
+	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string,
+	described by documentCreationTime (note "Date and time at which the document was created.") with a single value of type string.
 
-Organization (note "legally or functionally-recognised body—such as a manufacturer, supplier, contractor, or regulator—that participates in the additive-manufacturing lifecycle") is a class,
-	described by organizationID (note "unique identifier assigned to a specific organization within the data model") with a single value of type string,
-	described by organizationName (note "human-readable name that designates the organization") with a single value of type string,
-	described by organizationType (note "category, or set of roles, that classifies an organization, such as manufacturer, supplier, contractor, or regulator") with values of type OrganizationType,
-	described by organizationQualification (note "qualification or certification held by the organization, including its type, level, and issuing organization") with values of type OrganizationQualification,
-	described by organizationAddress (note "physical mailing address of the organization") with a single value of type Address,
-	described by organizationPhoneNumber (note "telephone number at which the organization can be reached") with a single value of type PhoneNumber,
-	described by organizationPointOfContact (note "person who serves as the point of contact for the organization") with a single value of type Person.
+Organization (note "Legally or functionally-recognised body—such as a manufacturer, supplier, contractor, or regulator—that participates in the additive-manufacturing lifecycle.") is a class,
+	described by organizationID (note "Unique identifier assigned to a specific organization within the data model.") with a single value of type string,
+	described by organizationName (note "Human-readable name that designates the organization.") with a single value of type string,
+	described by organizationType (note "Category, or set of roles, that classifies an organization, such as manufacturer, supplier, contractor, or regulator.") with values of type OrganizationType,
+	described by organizationQualification (note "Qualification or certification held by the organization, including its type, level, and issuing organization.") with values of type OrganizationQualification,
+	described by organizationAddress (note "Physical mailing address of the organization.") with a single value of type Address,
+	described by organizationPhoneNumber (note "Telephone number at which the organization can be reached.") with a single value of type PhoneNumber,
+	described by organizationPointOfContact (note "Person who serves as the point of contact for the organization.") with a single value of type Person.
 
-OrganizationType (note "recognized capability of an organization") is a class, must be one of {MaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester, Regulator, Buyer, FundingAgency, Other}.
+OrganizationType (note "Recognized capability of an organization.") is a class, must be one of {MaterialManufacturer, MaterialSupplier, PartDesigner, PartManufacturer, MachineManufacturer, SystemIntegrator, PartTester, Regulator, Buyer, FundingAgency, Other}.
 
-Person (note "individual and their primary credentials and contact information") is a class,
-	described by personID (note "unique identifier assigned to a specific person within the data model") with a single value of type string,
-	described by personFirstName (note "given (first) name of the person") with a single value of type string,
-	described by personLastName (note "family (last) name of the person") with a single value of type string,
-	described by personFullName (note "full name of the person if not split into separate names") with a single value of type string,
-	described by personEmail (note "electronic-mail address at which the person can be reached") with a single value of type string,
-	described by personPhoneNumber (note "telephone number at which the person can be reached") with values of type PhoneNumber,
-	described by personQualification (note "qualification or certification held by the person, including its type, level, and issuing organization") with values of type PersonQualification,
-	described by personOrganization (note "organization to which the person belongs (you may wish to reference by ID to avoid possible circular references)") with a single value of type Organization.
+Person (note "Individual and their primary credentials and contact information.") is a class,
+	described by personID (note "Unique identifier assigned to a specific person within the data model.") with a single value of type string,
+	described by personFirstName (note "Given (first) name of the person.") with a single value of type string,
+	described by personLastName (note "Family (last) name of the person.") with a single value of type string,
+	described by personFullName (note "Full name of the person not split into separate names.") with a single value of type string,
+	described by personEmail (note "Electronic-mail address at which the person can be reached.") with a single value of type string,
+	described by personPhoneNumber (note "Telephone number at which the person can be reached.") with values of type PhoneNumber,
+	described by personQualification (note "Qualification or certification held by the person, including its type, level, and issuing organization.") with values of type PersonQualification,
+	described by personOrganization (note "Organization to which the person belongs (you may wish to reference by ID to avoid possible circular references).") with a single value of type Organization.
 
-OrganizationQualification (note "qualification or certification held by the entity, including its type, level, and issuing organization") is a type of Qualification.
+OrganizationQualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a type of Qualification.
 
-PersonQualification (note "qualification or certification held by the entity, including its type, level, and issuing organization") is a type of Qualification,
-	described by personQualificationNumberOfHours (note "number of hours that this person has completed on this equipment/software/system") with a single value of type int.
+PersonQualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a type of Qualification,
+	described by personQualificationNumberOfHours (note "Number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
 
-Qualification (note "qualification or certification held by the entity, including its type, level, and issuing organization") is a class,
-	described by qualificationType (note "qualification or certification held by the qualification, including its type, level, and issuing organization") with a single value of type string,
-	described by qualificationLevel (note "qualification or certification held by the qualification, including its type, level, and issuing organization") with a single value of type string,
-	described by qualifyingOrganization (note "organization associated with the qualification") with a single value of type Organization.
+Qualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a class,
+	described by qualificationType (note "Qualification or certification held by the qualification, including its type, level, and issuing organization.") with a single value of type string,
+	described by qualificationLevel (note "Qualification or certification held by the qualification, including its type, level, and issuing organization.") with a single value of type string,
+	described by qualifyingOrganization (note "Organization associated with the qualification.") with a single value of type Organization.
 
-Address (note "physical address where someone or something is located") is a class,
-	described by addressLine1 (note "first line of the postal address") with a single value of type string,
-	described by addressLine2 (note "second line of the postal address") with a single value of type string,
-	described by addressCity (note "city portion of the postal address") with a single value of type string,
-	described by addressStateProvince (note "state or province portion of the postal address") with a single value of type string,
-	described by adderssPostalCode (note "zip or postal code of the postal address") with a single value of type string,
-	described by addressCountry (note "country portion of the postal address") with a single value of type Country.
+Address (note "Physical address where someone or something is located.") is a class,
+	described by addressLine1 (note "First line of the postal address.") with a single value of type string,
+	described by addressLine2 (note "Second line of the postal address.") with a single value of type string,
+	described by addressCity (note "City portion of the postal address.") with a single value of type string,
+	described by addressStateProvince (note "State or province portion of the postal address.") with a single value of type string,
+	described by adderssPostalCode (note "Zip or postal code of the postal address.") with a single value of type string,
+	described by addressCountry (note "Country portion of the postal address.") with a single value of type Country.
 
-PhoneNumber (note "telephone number together with the country to which its calling code belongs") is a class,
-	described by phoneCountry (note "country in which the phone number can be reached") with a single value of type Country,
-	described by phoneNumber (note "digits of the telephone number, excluding the country calling code") with a single value of type string.
+PhoneNumber (note "Telephone number together with the country to which its calling code belongs.") is a class,
+	described by phoneCountry (note "Country in which the phone number can be reached.") with a single value of type Country,
+	described by phoneNumber (note "Digits of the telephone number, excluding the country calling code.") with a single value of type string.
 
-Country (note "sovereign nation identified by its name and standardised ISO country and calling codes, used to qualify addresses and phone numbers") is a class,
-	described by countryName (note "human-readable name that designates the country") with a single value of type string,
-	described by countryAlpha2Code (note "two-digit country code for the country") with a single value of type string,
-	described by countryAlpha3Code (note "three-digit country code for the country") with a single value of type string,
-	described by countryCallingCode (note "calling code for the country") with a single value of type string.
+Country (note "Sovereign nation identified by its name and standardised ISO country and calling codes, used to qualify addresses and phone numbers.") is a class,
+	described by countryName (note "Human-readable name that designates the country.") with a single value of type string,
+	described by countryAlpha2Code (note "Two-digit country code for the country.") with a single value of type string,
+	described by countryAlpha3Code (note "Three-digit country code for the country.") with a single value of type string,
+	described by countryCallingCode (note "Calling code for the country.") with a single value of type string.
 
-Environment (note "set of ambient physical conditions, such as temperature and pressure, surrounding an object or process") is a class,
-	described by environmentAmbientTemperature (note "ambient temperature of the environment, expressed as a numeric quantity with its unit of measure") with a single value of type Quantity,
-	described by environmentAmbientPressure (note "ambient pressure of the environment, expressed as a numeric quantity with its unit of measure") with a single value of type Quantity.
+Environment (note "Set of ambient physical conditions, such as temperature and pressure, surrounding an object or process.") is a class,
+	described by environmentAmbientTemperature (note "Ambient temperature of the environment, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity,
+	described by environmentAmbientPressure (note "Ambient pressure of the environment, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity.
 
-Coordinate (note "reference value, or set of values, that specifies the position or orientation of an object relative to a defined origin") is a class.
+Coordinate (note "Reference value, or set of values, that specifies the position or orientation of an object relative to a defined origin.") is a class.
 
-CartesianCoordinate (note "coordinate that specifies a position by its distances along the orthogonal x, y and z axes of a Cartesian system") is a type of Coordinate,
-	described by xCoordinate (note "position on the x-axis in a Cartesian coordinate system") with a single value of type Quantity,
-	described by yCoordinate (note "position on the y-axis in a Cartesian coordinate system") with a single value of type Quantity,
-	described by zCoordinate (note "position on the z-axis in a Cartesian coordinate system") with a single value of type Quantity.
+CartesianCoordinate (note "Coordinate that specifies a position by its distances along the orthogonal x, y and z axes of a Cartesian system.") is a type of Coordinate,
+	described by xCoordinate (note "Position on the x-axis in a Cartesian coordinate system.") with a single value of type Quantity,
+	described by yCoordinate (note "Position on the y-axis in a Cartesian coordinate system.") with a single value of type Quantity,
+	described by zCoordinate (note "Position on the z-axis in a Cartesian coordinate system.") with a single value of type Quantity.
 
-RotaryCoordinate (note "coordinate that specifies an orientation by rotation angles (A, B, C) about the axes of a rotary system") is a type of Coordinate,
-	described by aAngle (note "rotation of the A angle in a rotary coordinate system") with a single value of type Quantity,
-	described by bAngle (note "rotation of the B angle in a rotary coordinate system") with a single value of type Quantity,
-	described by cAngle (note "rotation of the C angle in a rotary coordinate system") with a single value of type Quantity.
+RotaryCoordinate (note "Coordinate that specifies an orientation by rotation angles (A, B, C) about the axes of a rotary system.") is a type of Coordinate,
+	described by aAngle (note "Rotation of the A angle in a rotary coordinate system.") with a single value of type Quantity,
+	described by bAngle (note "Rotation of the B angle in a rotary coordinate system.") with a single value of type Quantity,
+	described by cAngle (note "Rotation of the C angle in a rotary coordinate system.") with a single value of type Quantity.
 
-InitialOrientation (note "initial angular placement of an object, expressed as one of the enumerated axis-rotation sequences such as XYZ, ZX, or Y") is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
+InitialOrientation (note "Initial angular placement of an object, expressed as one of the enumerated axis-rotation sequences such as XYZ, ZX, or Y.") is a class, must be one of {XYZ, XY, XZY, XZ, YXZ, YX, YZX, YZ, ZXY, ZX, ZYX, ZY, X, Y, Z}.
 
-Orientation (note "angular placement of an object relative to a reference coordinate system, specified in accordance with ISO/ASTM 52921") is a class,
-	described by partLocationX (note "x-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921") with a single value of type Quantity,
-	described by partLocationY (note "y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921") with a single value of type Quantity,
-	described by partLocationZ (note "z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921") with a single value of type Quantity,
-	described by partReorientationA (note "specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z), per ISO/ASTM 52921") with a single value of type Quantity,
-	described by partReorientationB (note "specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence B (rotation about y), C (rotation about z), then A (rotation about x), per ISO/ASTM 52921") with a single value of type Quantity,
-	described by partReorientationC (note "specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence C (rotation about z), A (rotation about x), then B (rotation about y), per ISO/ASTM 52921") with a single value of type Quantity.
+Orientation (note "Angular placement of an object relative to a reference coordinate system, specified in accordance with ISO/ASTM 52921.") is a class,
+	described by partLocationX (note "X-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partLocationY (note "Y-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partLocationZ (note "Z-coordinate position of the geometric center of the design's arbitrarily oriented minimum bounding box with respect to the system origin, per ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationA (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence A (rotation about x), B (rotation about y), then C (rotation about z), per ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationB (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence B (rotation about y), C (rotation about z), then A (rotation about x), per ISO/ASTM 52921.") with a single value of type Quantity,
+	described by partReorientationC (note "Specification of the rotation of the design's arbitrarily oriented minimum bounding box around the geometric center in the sequence C (rotation about z), A (rotation about x), then B (rotation about y), per ISO/ASTM 52921.") with a single value of type Quantity.
 
-Quantity (note "abstract class representing a numerical quantity with an unit") is a class,
-	described by quantityUnit (note "units associated with the numerical value") with a single value of type string.
+Quantity (note "Abstract class representing a numerical quantity with an unit.") is a class,
+	described by quantityUnit (note "Units associated with the numerical value.") with a single value of type string.
 
-SingleValue (note "single quantity value with a value, a single measure of uncertainty, and an unit") is a type of Quantity,
-	described by valueValue (note "the numerical value") with a single value of type double,
-	described by valueUncertaintyMeasure (note "measure of uncertainty associated with the numerical value") with a single value of type double.
+SingleValue (note "Single quantity value with a value, a single measure of uncertainty, and an unit.") is a type of Quantity,
+	described by valueValue (note "The numerical value.") with a single value of type double,
+	described by valueUncertaintyMeasure (note "Measure of uncertainty associated with the numerical value.") with a single value of type double.
 
-StatisticalValue (note "statistical quantity value with a variety of statistical measures") is a type of Quantity,
-	described by statMeanValue (note "mean (average) value of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statMedianValue (note "median value of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statModeValue (note "mode of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statStandardDeviationValue (note "standard deviation of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statMinValue (note "minimum value of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statMaxValue (note "maximum value of the multiple values, if the numerical value was derived multiple values") with a single value of type double,
-	described by statNumberOfValues (note "number (count) of the multiple values, if the numerical value was derived multiple values") with a single value of type int,
-	described by statDataAggregationTechnique (note "data aggregation technique, if the numerical value was derived multiple values") with a single value of type string,
-	described by statAggregatedValues (note "multiple raw values that were aggregated to produce the statistical measures") with values of type SingleValue.
+StatisticalValue (note "Statistical quantity value with a variety of statistical measures.") is a type of Quantity,
+	described by statMeanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMedianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statModeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statStandardDeviationValue (note "Standard deviation of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMinValue (note "Minimum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statMaxValue (note "Maximum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
+	described by statNumberOfValues (note "Count (number) of the multiple values, if the numerical value was derived multiple values.") with a single value of type int,
+	described by statDataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
+	described by statAggregatedValues (note "Multiple raw values that were aggregated to produce the statistical measures.") with values of type SingleValue.
 
-DatasetMetadata (note "descriptive attributes of a dataset, such as its name, identifier, subject, format and access control, used to catalog and locate the data") is a class,
-	described by datasetName (note "human-readable name of the dataset") with a single value of type string,
-	described by datasetID (note "unique identifier assigned to a specific dataset within the data model") with a single value of type string,
-	described by datasetSubject (note "classifications, keywords, or phrases that describe the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).") with values of type string,
-	described by datasetType (note "dataset type, i.e., raw, AI-generated, or synthesized data") with a single value of type string,
-	described by datasetURI (note "URI location where the dataset can be found") with a single value of type string,
-	described by datasetFormat (note "formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12, HDF5, ZIP") with values of type string,
-	described by datasetStructure (note "detailed text description of the format of the data, e.g., the XML file format, JSON file format, HDf5 format") with a single value of type string,
-	described by datasetSchemaURI (note "URI pointing to the content-format specification that defines how to parse the dataset's contents") with a single value of type string,
-	described by datasetCreator (note "creator of the dataset and/or the metadata of the dataset") with values of type Person,
-	described by datasetCreationDateTime (note "date and time at which the dataset was created") with a single value of type dateTime,
-	described by datasetSize (note "size of the dataset, expressed as a numeric quantity with a unit of measure") with a single value of type Quantity,
-	described by datasetQuantityType (note "type of measurement recorded in the dataset, such as pH, moisture, or temperature") with values of type string,
-	described by datasetKeyTags (note "keywords and tags describing the data to facilitate search and findability") with values of type string,
-	described by datasetAccessControl (note "access-control classification of the dataset, expressed as Restricted, Consent, or Public") with a single value of type DatasetAccessControl.
+DatasetMetadata (note "Descriptive attributes of a dataset, such as its name, identifier, subject, format and access control, used to catalog and locate the data.") is a class,
+	described by datasetName (note "Human-readable name of the dataset.") with a single value of type string,
+	described by datasetID (note "Unique identifier assigned to a specific dataset within the data model.") with a single value of type string,
+	described by datasetSubject (note "Classifications, keywords, or phrases that describe the topic of the dataset at the endpoint of the URI. This is a refinement of the Dublin Core definition that states this is the topic of the resource and the plurality of keywords, etc. It should be noted that the recommended best practice is to use a controlled vocabulary (per Dublin Core).") with values of type string,
+	described by datasetType (note "Dataset type, i.e., raw, AI-generated, or synthesized data.") with a single value of type string,
+	described by datasetURI (note "URI location where the dataset can be found.") with a single value of type string,
+	described by datasetFormat (note "Formal description language that describes the format or layout of the file, such as CSV with Headers, Protobuf, fixed position, JSON Schema, XML, Cobol Copybook, X12, HDF5, ZIP.") with values of type string,
+	described by datasetStructure (note "Detailed text description of the format of the data, e.g., the XML file format, JSON file format, HDf5 format.") with a single value of type string,
+	described by datasetSchemaURI (note "URI pointing to the content-format specification that defines how to parse the dataset's contents.") with a single value of type string,
+	described by datasetCreator (note "Creator of the dataset and/or the metadata of the dataset.") with values of type Person,
+	described by datasetCreationDateTime (note "Date and time at which the dataset was created.") with a single value of type dateTime,
+	described by datasetSize (note "Size of the dataset, expressed as a numeric quantity with a unit of measure.") with a single value of type Quantity,
+	described by datasetQuantityType (note "Type of measurement recorded in the dataset, such as pH, moisture, or temperature.") with values of type string,
+	described by datasetKeyTags (note "Keywords and tags describing the data to facilitate search and findability.") with values of type string,
+	described by datasetAccessControl (note "Access-control classification of the dataset, expressed as Restricted, Consent, or Public.") with a single value of type DatasetAccessControl.
 
-DatasetAccessControl (note "possible types of data access control") is a class, must be one of {Restricted, Consent, Public}.
+DatasetAccessControl (note "Possible types of data access control.") is a class, must be one of {Restricted, Consent, Public}.
 
-Project (note "temporary endeavour undertaken to create one or more unique additive-manufacturing products or services") is a class,
-	described by projectID (note "unique identifier assigned to a specific project within the data model") with a single value of type string,
-	described by projectCreator (note "organization that created the project") with a single value of type Organization,
-	described by projectSponsor (note "provider of money and requirements for the project") with a single value of type Organization,
-	described by projectOwningOrganization (note "organization associated with the project") with a single value of type Organization,
-	described by projectDistributionStatement (note "documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source") with a single value of type string,
-	described by projectRequirements (note "requirements document associated with the project") with a single value of type Document,
-	described by projectPlan (note "document describing how project is to be conducted, organized, etc.") with a single value of type Document,
-	described by projectStart (note "date and time at which the project begins") with a single value of type dateTime,
-	described by projectEnd (note "date and time at which the project ends") with a single value of type dateTime,
-	described by projectStandards (note "set of standards used in project") with values of type string,
-	described by projectQualityControlPlan (note "document describing the quality control plan for the the site performing the project") with a single value of type Document,
-	described by projectQualityProcessControlPlan (note "document describing the quality process control plan for the site performing the project") with a single value of type Document,
-	described by projectDeliveryDate (note "requested delivery date of the project") with a single value of type dateTime,
-	described by projectDistributionControl (note "restriction on distribution comparable to ITAR export controls") with a single value of type string,
-	described by projectDataset (note "dataset generated from the project") with values of type DatasetMetadata,
-	described by projectReport (note "report document associated with the project") with values of type Document,
-	described by projectDataManagementPlan (note "data management plan document associated with the project") with a single value of type Document.
+Project (note "Temporary endeavour undertaken to create one or more unique additive-manufacturing products or services.") is a class,
+	described by projectID (note "Unique identifier assigned to a specific project within the data model.") with a single value of type string,
+	described by projectCreator (note "Organization that created the project.") with a single value of type Organization,
+	described by projectSponsor (note "Provider of money and requirements for the project.") with a single value of type Organization,
+	described by projectOwningOrganization (note "Organization associated with the project.") with a single value of type Organization,
+	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.") with a single value of type string,
+	described by projectRequirements (note "Requirements document associated with the project.") with a single value of type Document,
+	described by projectPlan (note "Document describing how project is to be conducted, organized, etc.") with a single value of type Document,
+	described by projectStart (note "Date and time at which the project begins.") with a single value of type dateTime,
+	described by projectEnd (note "Date and time at which the project ends.") with a single value of type dateTime,
+	described by projectStandards (note "Set of standards used in project.") with values of type string,
+	described by projectQualityControlPlan (note "Document describing the quality control plan for the the site performing the project.") with a single value of type Document,
+	described by projectQualityProcessControlPlan (note "Document describing the quality process control plan for the site performing the project.") with a single value of type Document,
+	described by projectDeliveryDate (note "Requested delivery date of the project.") with a single value of type dateTime,
+	described by projectDistributionControl (note "Restriction on distribution comparable to ITAR export controls.") with a single value of type string,
+	described by projectDataset (note "Dataset generated from the project.") with values of type DatasetMetadata,
+	described by projectReport (note "Report document associated with the project.") with values of type Document,
+	described by projectDataManagementPlan (note "Data management plan document associated with the project.") with a single value of type Document.
 
-SynthesizedData (note "dataset that has been reduced from raw form into interpretable results such as statistical summaries, trends or material cards") is a type of DatasetMetadata,
-	described by synthesizedDataMethod (note "method used to synthesize the data") with values of type string,
-	described by synthesizedDocument (note "document associated with the synthesized data") with a single value of type Document.
+SynthesizedData (note "Dataset that has been reduced from raw form into interpretable results such as statistical summaries, trends or material cards.") is a type of DatasetMetadata,
+	described by synthesizedDataMethod (note "Method used to synthesize the data.") with values of type string,
+	described by synthesizedDocument (note "Document associated with the synthesized data.") with a single value of type Document.
