@@ -1,22 +1,22 @@
 uri "http://kdl.ge.com/AM-CDM-base" alias AM-CDM-base version "$Revision:$ Last modified on   $Date:$".
 
-Document (note "Electronic file of any format, described by attributes such as its title, author, location, and format.") is a class,
+Document (note "Metadata describing a document in any format.") is a class,
 	described by documentTitle (note "Human-readable title assigned to the document.") with a single value of type string,
 	described by documentFileName (note "Name of the electronic file in which the document is stored.") with a single value of type string,
 	described by documentAuthor (note "Person credited as an author of the document.") with values of type Person,
-	described by documentLocation (note "Physical location at which the document resides.") with a single value of type string,
+	described by documentLocation (note "Physical postal address at which the document resides.") with a single value of type Address,
 	described by documentFormat (note "Formal description language that describes the format or layout of the document, not the file type, such as CSV with Headers, Protobuf, fixed position, JSON Schema.") with values of type string,
 	described by documentClassificationLevel (note "Classification level assigned to the document.") with a single value of type string,
 	described by documentClassificationIPClass (note "Intellectual property classification of the document.") with a single value of type string,
 	described by documentURI (note "URI of the document pointing to its digital location.") with a single value of type string,
 	described by documentCreationTime (note "Date and time at which the document was created.") with a single value of type string.
 
-Organization (note "Legally or functionally-recognised body—such as a manufacturer, supplier, contractor, or regulator—that participates in the additive-manufacturing lifecycle.") is a class,
+Organization (note "Legally or functionally-recognized body—such as a manufacturer, supplier, contractor, or regulator.") is a class,
 	described by organizationID (note "Unique identifier assigned to a specific organization within the data model.") with a single value of type string,
 	described by organizationName (note "Human-readable name that designates the organization.") with a single value of type string,
 	described by organizationType (note "Category, or set of roles, that classifies an organization, such as manufacturer, supplier, contractor, or regulator.") with values of type OrganizationType,
 	described by organizationQualification (note "Qualification or certification held by the organization, including its type, level, and issuing organization.") with values of type OrganizationQualification,
-	described by organizationAddress (note "Physical mailing address of the organization.") with a single value of type Address,
+	described by organizationAddress (note "Physical postal address of the organization.") with a single value of type Address,
 	described by organizationPhoneNumber (note "Telephone number at which the organization can be reached.") with a single value of type PhoneNumber,
 	described by organizationPointOfContact (note "Person who serves as the point of contact for the organization.") with a single value of type Person.
 
@@ -32,9 +32,9 @@ Person (note "Individual and their primary credentials and contact information."
 	described by personQualification (note "Qualification or certification held by the person, including its type, level, and issuing organization.") with values of type PersonQualification,
 	described by personOrganization (note "Organization to which the person belongs (you may wish to reference by ID to avoid possible circular references).") with a single value of type Organization.
 
-OrganizationQualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a type of Qualification.
+OrganizationQualification (note "Qualification or certification held by the organization, including its type, level, and issuing organization.") is a type of Qualification.
 
-PersonQualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a type of Qualification,
+PersonQualification (note "Qualification or certification held by the person, including its type, level, and issuing organization.") is a type of Qualification,
 	described by personQualificationNumberOfHours (note "Number of hours that this person has completed on this equipment/software/system.") with a single value of type int.
 
 Qualification (note "Qualification or certification held by the entity, including its type, level, and issuing organization.") is a class,
@@ -94,14 +94,14 @@ SingleValue (note "Single quantity value with a value, a single measure of uncer
 	described by valueUncertaintyMeasure (note "Measure of uncertainty associated with the numerical value.") with a single value of type double.
 
 StatisticalValue (note "Statistical quantity value with a variety of statistical measures.") is a type of Quantity,
-	described by statMeanValue (note "Mean (average) value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statMedianValue (note "Median value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statModeValue (note "Mode of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statStandardDeviationValue (note "Standard deviation of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statMinValue (note "Minimum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statMaxValue (note "Maximum value of the multiple values, if the numerical value was derived multiple values.") with a single value of type double,
-	described by statNumberOfValues (note "Count (number) of the multiple values, if the numerical value was derived multiple values.") with a single value of type int,
-	described by statDataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived multiple values.") with a single value of type string,
+	described by statMeanValue (note "Mean (average) value of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statMedianValue (note "Median value of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statModeValue (note "Mode of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statStandardDeviationValue (note "Standard deviation of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statMinValue (note "Minimum value of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statMaxValue (note "Maximum value of the multiple values, if the numerical value was derived from multiple values.") with a single value of type double,
+	described by statNumberOfValues (note "Count (number) of the multiple values, if the numerical value was derived from multiple values.") with a single value of type int,
+	described by statDataAggregationTechnique (note "Data aggregation technique, if the numerical value was derived from multiple values.") with a single value of type string,
 	described by statAggregatedValues (note "Multiple raw values that were aggregated to produce the statistical measures.") with values of type SingleValue.
 
 DatasetMetadata (note "Descriptive attributes of a dataset, such as its name, identifier, subject, format and access control, used to catalog and locate the data.") is a class,
@@ -125,7 +125,7 @@ DatasetAccessControl (note "Possible types of data access control.") is a class,
 Project (note "Temporary endeavour undertaken to create one or more unique additive-manufacturing products or services.") is a class,
 	described by projectID (note "Unique identifier assigned to a specific project within the data model.") with a single value of type string,
 	described by projectCreator (note "Organization that created the project.") with a single value of type Organization,
-	described by projectSponsor (note "Provider of money and requirements for the project.") with a single value of type Organization,
+	described by projectSponsor (note "Provider of funding and requirements for the project.") with a single value of type Organization,
 	described by projectOwningOrganization (note "Organization associated with the project.") with a single value of type Organization,
 	described by projectDistributionStatement (note "Documentation of any restrictions of access or distribution of the data collected and analyzed under this project, by organizations other than the authoritative source.") with a single value of type string,
 	described by projectRequirements (note "Requirements document associated with the project.") with a single value of type Document,
