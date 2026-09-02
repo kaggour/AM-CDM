@@ -11,7 +11,7 @@ SheetStock (note "Material stock in the form of sheet.") is a type of MaterialSt
 FilamentStock (note "Material stock in the form of filament.") is a type of MaterialStock.
 
 MaterialStock (note "Material covering feedstock, reusables, and consumables.") is a class,
-	described by materialStockID (note "Globally unique identifier assigned to a specific material stock within the data model.") with a single value of type string,
+	described by materialStockID (note "Unique identifier assigned to a specific material stock within the data model.") with a single value of type string,
 	described by materialStockName (note "Name of material for operational purposes, and using Unified Numbering System number is recommended.") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
