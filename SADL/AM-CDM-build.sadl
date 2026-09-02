@@ -2,7 +2,7 @@ uri "http://kdl.ge.com/AM-CDM-build" alias AM-CDM-build version "$Revision:$ Las
 
 import "http://kdl.ge.com/AM-CDM-manufacturingProcess".
 
-Build (note "A Build is an action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcessStep.
+Build (note "Action to make one or more objects in a single action by an additive manufacturing system. A Build record encompasses all of the data for the build cycle; and single process cycle in which one or more components are built up in layers in the process chamber of the additive manufacturing system.") is a type of ManufacturingProcessStep.
 
 mfgProcessMachine of Build only has values of type AMSystem.
 mfgProcessMaterialInputs of Build only has values of type AMMaterialInput.
@@ -13,41 +13,41 @@ processStepData of Build only has values of type AMProcessStepData.
 AMMaterialInput (note "Materials that are an input to the AM process and become a part of the material output, including feedstock and build plate.") is a type of MaterialInputs,
 	described by amMatInputFeedstockMaterial (note "Bulk raw material supplied to the additive manufacturing building process.") with a single value of type MaterialStock,
 	described by amMatInputQuantityOfFeedstockMaterialUsed (note "Mass of material used in solidified parts.") with a single value of type Quantity,
-	described by amMatInputBuildPlate (note "A BuildPlate as a critical materail input to an AM build.") with a single value of type BuildPlate.
+	described by amMatInputBuildPlate (note "BuildPlate as a critical materail input to an AM build.") with a single value of type BuildPlate.
 
 AMMaterialOutput(note "Materials that are an output of the AM process, including a BuildProduct and reclaimed feedstock.") is a type of MaterialOutputs,
 	described by amMatOutputReclaimedFeedstockMaterial (note "Feedstock reclaimed upon the completion of the AM process.") with a single value of type MaterialStock,
 	described by amMatOutputBuildProduct (note "BuildProduct, with a build plate and parts built on top of it, as the primary output from an AM build.")with a single value of type BuildProduct.
 
-BuildProduct (note "The build plate with parts connected to it. The build product is specified by the BuildLayout.") is a class,
+BuildProduct (note "Build plate with parts connected to it, as specified by the build layout.") is a class,
 	described by buildProdName (note "Human readable name which designates an AM build") with a single value of type string,
-	described by buildProdProcessHistory (note "A history is a process that is the sum of the totality of processes of a BuildProduct.") with a single value of type ProcessHistory,
-	described by buildProdBuildPlate (note "An BuildPlate which is the foundation of a BuildProduct where parts are built on") with a single value of type BuildPlate,
-	described by buildProdParts (note "Parts that are built on a BuildPlate, as the primary component of a BuildProduct") with values of type Part.
+	described by buildProdProcessHistory (note "History is a process that is the sum of the totality of processes of a build product.") with a single value of type ProcessHistory,
+	described by buildProdBuildPlate (note "BuildPlate which is the foundation of a BuildProduct where parts are built on") with a single value of type BuildPlate,
+	described by buildProdParts (note "Parts that are built on a build plate, as the primary component of a build product") with values of type Part.
 
-BuildPlate (note "Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process.") is a type of Part,
-	described by buildPlateID (note "Identifier of a build platform.") with a single value of type string,
-	described by buildPlateMaterial (note "Material type of a build platform.") with a single value of type MaterialType,
+BuildPlate (note "Material input which provides a surface upon which the building of the part/s, is started and supported throughout the build process, also known as build platform.") is a type of Part,
+	described by buildPlateID (note "Identifier of a build plate.") with a single value of type string,
+	described by buildPlateMaterial (note "Material type of a build plate.") with a single value of type MaterialType,
 	described by buildPlateMaterialGrade (note "Standard grade to which the build platform material product conforms.") with a single value of type string,
-	described by buildPlateHeight (note "Height of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlateWidth (note "Width of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlateDepth (note "Depth of the build platform/plate.") with a single value of type Quantity,
-	described by buildPlateProcessingMethods (note "Post processing methods of a build platform, e.g., hot rolled and annealed.") with a single value of type string,
+	described by buildPlateHeight (note "Height of the build plate.") with a single value of type Quantity,
+	described by buildPlateWidth (note "Width of the build plate.") with a single value of type Quantity,
+	described by buildPlateDepth (note "Depth of the build plate.") with a single value of type Quantity,
+	described by buildPlateProcessingMethods (note "Post processing methods of a build plate, e.g., hot rolled and annealed.") with a single value of type string,
 	described by buildPlateSurfaceFinish (note "Surface roughness description of the build plate.") with a single value of type string,
-	described by buildPlateManufacturer (note "Build platform manufacturer, links to Organization.") with a single value of type Organization,
-	described by buildPlateCertificationDate (note "The purchase/certification date of the build platform.") with a single value of type dateTime,
+	described by buildPlateManufacturer (note "Build plate manufacturer, links to Organization.") with a single value of type Organization,
+	described by buildPlateCertificationDate (note "Purchase/certification date of the build plate.") with a single value of type dateTime,
 	described by buildPlateCertification (note "Link to the build plate certificate.") with a single value of type Document.
 
-AMProcessStepSpecification (note "A specification for a additive manufacturing process") is a type of ManufacturingStepSpecification,
-	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements. This may include plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
-	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build platform ") with a single value of type Document,
+AMProcessStepSpecification (note "Specification for a additive manufacturing process") is a type of ManufacturingStepSpecification,
+	described by amSpecBuildPlan (note "Document that describes the build specific design intent and requirements, may including plate layout, witness coupons, object quantity, position/orientation.") with values of type Document,
+	described by amSpecBuildLayout (note "Document that describe the arrangement or positioning of multiple parts or objects on the build plate ") with a single value of type Document,
 	described by amSpecJobFile (note "Digital and proprietary file defined by a machine vendor that contains all the necessary instructions for a 3D printer to fabricate an object.") with a single value of type Document,
-	described by amSpecBuildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the 3D printer during the printing process, for example, xy2-100 commands and G-code, etc.") with a single value of type DatasetMetadata.
+	described by amSpecBuildCommandData (note "Dataset that captures the specific set of instructions or commands that guide the AM system during the fabrication process, for example, xy2-100 commands and G-code, etc.") with a single value of type DatasetMetadata.
 
 mfgSpecGlobalProcessParameters of AMProcessStepSpecification only has values of type BuildParameters.
 mfgSpecPartSpecificProcessParameters of AMProcessStepSpecification only has values of type AMPartParameters.
 
-BuildParameters (note "Process parameters and settings which apply to all parts in the build Process") is a type of GlobalProcessParameters,
+BuildParameters (note "Process parameters and settings which apply to all parts in the build process") is a type of GlobalProcessParameters,
 	described by buildParamPlatformPreheatTemperature (note "Temperature setting the build platform is heated to prior to print.") with a single value of type Quantity,
 	described by buildParamPlatformLevelingMethod (note "Description of the method of platform leveling procedures and tools.") with a single value of type string,
 	described by buildParamPlatformZStartPosition (note "Z position of top of build plate prior to starting a build. Must be a part of the setup procedures.") with a single value of type Quantity,
@@ -56,16 +56,16 @@ BuildParameters (note "Process parameters and settings which apply to all parts 
 	described by buildParamLayerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
 	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity.
 
-AMPartParameters is a type of PartSpecificProcessParameters.
+AMPartParameters (note "Part specific process parameters that apply to selective parts in the build process") is a type of PartSpecificProcessParameters.
 
 AMProcessStepData (note "Data generated in the build Process, including in-situ monitoring data, build interruptions, build cool down duration and images captured") is a type of ProcessStepData,
-	described by amDataInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processStepData.") with values of type AMInSituData,
- 	described by amDataBuildInterruptions (note "logs of build interruptions") with values of type BuildInterruption,
+	described by amDataInSituData (note "Advanced AM in-process monitoring dataset.") with values of type AMInSituData,
+ 	described by amDataBuildInterruptions (note "Logs of build interruptions") with values of type BuildInterruption,
 	described by amDataBuildCoolDownDuration (note "Time from build completion to cooling to 100 degrees C.") with a single value of type Quantity,
 	described by amDataBuildImages (note "Images collected during the build process, usually capturing the build surface.") with values of type Document.
 
 AMInSituData (note "Data generated by in-situ monitoring systems during an AM Build cycle.") is a type of DatasetMetadata,
-	described by amInSituCharacteristicsType (note "characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
+	described by amInSituCharacteristicsType (note "Characteristics measured, e.g., melt pool geometry, melt pool temperature, powder bed surface, exposure surface.") with a single value of type string,
 	described by amInSituMeasurementType (note "Technique used for the measurement, e.g., co-axial optical camera.") with values of type string,
 	described by amInSituMeasurementLocation (note "The location of what is being monitored, e.g., build surface, coaxial melt pool area.") with values of type string,
 	described by amInSituDevice (note "Device used for the in-situ measurement.") with a single value of type Sensor,
@@ -78,8 +78,8 @@ BuildInterruption (note "Temporary cessation of the build process during a build
 	described by buildInterruptReason (note "Reason of interruption.") with a single value of type string,
 	described by buildInterruptHandling (note "How the interruption is handled.") with a single value of type string.
 
-BuildProductInput (note "The intended material output from an AM process, with a role of being an input for the downstream processes") is a type of MaterialInputs,
-	described by buildProductInput with values of type BuildProduct.
+BuildProductInput (note "Material input in the form of a build product") is a type of MaterialInputs,
+	described by buildProductInput (note "Build product to be processed by a manufacturing process step") with values of type BuildProduct.
 
 AMPartExtraction (note "Separating or extracting a part or component from a single one.") is a type of ManufacturingProcessStep.
 
@@ -89,16 +89,16 @@ mfgProcessMaterialOutputs of AMPartExtraction only has values of type AMPartExtr
 processStepSpecification of AMPartExtraction only has values of type PartExtractionProcessStepSpecification.
 processStepData of AMPartExtraction only has values of type PartExtractionProcessStepData.
 
-PartExtractionProcessStepSpecification (note "A specification for part seperation from build plate") is a type of ManufacturingStepSpecification.
+PartExtractionProcessStepSpecification (note "Specification for part seperation from build plate") is a type of ManufacturingStepSpecification.
 PartExtractionProcessStepData (note "Data recorded by the personnel involved in the PartExtractionProcess step") is a type of ProcessStepData.
 
-AMPartExtractionMaterialOutput (note "The material output from an AM part extraction process, including parts and a build plate") is a type of MaterialOutputs,
-	described by amAMPartExtractionParts (note "The parts extracted from an BuildProduct") with values of type Part,
-	described by amAMPartExtractionBuildPlate (note "The BuildPlate extracted from an BuildProduct")  with a single value of type BuildPlate.
+AMPartExtractionMaterialOutput (note "Material output from an AM part extraction process, including parts and a build plate") is a type of MaterialOutputs,
+	described by amAMPartExtractionParts (note "Parts extracted from an BuildProduct") with values of type Part,
+	described by amAMPartExtractionBuildPlate (note "BuildPlate extracted from an BuildProduct")  with a single value of type BuildPlate.
 
-PowderRecycling (note "The process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcessStep.
+PowderRecycling (note "Process of collecting and processing powder materials and turning them into new ones.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialOutputs of PowderRecycling only has values of type MaterialStockOutput.
 processStepSpecification of PowderRecycling only has values of type PowderRecycleProcessStepSpecification.
 
-PowderRecycleProcessStepSpecification is a type of ManufacturingStepSpecification.
+PowderRecycleProcessStepSpecification (note "Specification for a powder recycle process") is a type of ManufacturingStepSpecification.
