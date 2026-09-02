@@ -10,29 +10,29 @@ SheetStock (note "Material stock in the form of sheet.") is a type of MaterialSt
 
 FilamentStock (note "Material stock in the form of filament.") is a type of MaterialStock.
 
-MaterialStock (note "Information about a material covering feedstock, reusables, and consumables.") is a class,
-	described by materialStockID (note "Unique identifier for specific material instance. For example, a unique lot number.") with a single value of type string,
-	described by materialStockName (note "A name of material for operational purposes, and using UNS number is recommended.") with a single value of type string,
+MaterialStock (note "Material covering feedstock, reusables, and consumables.") is a class,
+	described by materialStockID (note "Globally unique identifier assigned to a specific material stock within the data model.") with a single value of type string,
+	described by materialStockName (note "Name of material for operational purposes, and using Unified Numbering System number is recommended.") with a single value of type string,
 	described by materialType (note "Generic material this specific instance is an instantiation of, such as Ni-based superalloy or stainless steel.") with a single value of type MaterialType,
 	described by actualChemistry (note "Chemistry characterization for the specific material instance, which may be different from the nominal chemistry.") with a single value of type Chemistry,
 	described by materialStockSpecification (note "Material data sheet provided by a material supplier or manufacturer.") with a single value of type Document,
-	described by materialPurchaseHistory (note "Information about purchasing material, including vendor, manufacturer, etc.") with a single value of type MaterialPurchaseHistory,
-	described by materialStorage (note "Details about how to store the material") with values of type MaterialStorage,
-	described by materialStockCertificate (note "Link to a material stock certificate.") with a single value of type Document,
-	described by materialStockCertificationDate (note "Date that the material is certified.") with a single value of type dateTime,
+	described by materialPurchaseHistory (note "Purchasing material, including vendor, manufacturer, etc.") with a single value of type MaterialPurchaseHistory,
+	described by materialStorage (note "Storage requirements and handling instructions for the material.") with values of type MaterialStorage,
+	described by materialStockCertificate (note "Certificate document associated with the material stock.") with a single value of type Document,
+	described by materialStockCertificationDate (note "Certification held by the material stock, including its type, level and issuing organization.") with a single value of type dateTime,
 	described by materialProperties (note "Property of the material, which can be measured or calculated.") with values of type MaterialProperty,
 	described by packagingRequirements (note "Packaging standard operating procedure and environmental tolerances required by a material product.") with a single value of type Document.
 
-MaterialPurchaseHistory (note "Information about purchasing material, including vendor, manufacturer, etc.") is a class,
-	described by materialStockVendor (note "Name of the material stock vendor. Not specified if material stock is a blend from multiple lots.") with a single value of type Organization,
-	described by materialStockManufacturer (note "Name of the material stock manufacturer. Not specified if material stock is a blend from multiple lots.") with a single value of type Organization,
+MaterialPurchaseHistory (note "Purchasing material, including vendor, manufacturer, etc.") is a class,
+	described by materialStockVendor (note "Name of the material stock vendor.") with a single value of type Organization,
+	described by materialStockManufacturer (note "Name of the material stock manufacturer.") with a single value of type Organization,
 	described by vendorManufacturingLot (note "Unique manufacturing lot number assigned by the manufacturer to the material stock.") with a single value of type string,
 	described by purchaseOrderNumber (note "Reference to the internal purchase order.") with a single value of type string.
 
-MaterialStorage (note "Details about how to store the material.") is a class,
+MaterialStorage (note "Storage requirements and handling instructions for the material.") is a class,
 	described by materialStockOwner (note "Owner/organization of a material stock.") with a single value of type Organization,
 	described by materialStockLocation (note "Current physical location of material stock.") with a single value of type Address,
-	described by materialStockQuantity (note "Quantity of material stock.") with a single value of type Quantity,
+	described by materialStockQuantity (note "Stock quantity of the material storage, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity,
 	described by storageEnvironment (note "Material stock storage environment details - temperature, humidity, light, etc.") with a single value of type Document,
 	described by storageRequirements (note "Environmental tolerances, handling standard operating procedure required by a material product.") with a single value of type Document.
 
@@ -42,16 +42,16 @@ MaterialType (note "Generic/ideal material type.") is a class,
 	described by materialBaseElement (note "Base element of material from the periodic table.") with a single value of type PeriodicElement,
 	described by materialSpecification (note "Ideal chemistry specification of generic material.") with a single value of type MaterialSpecification.
 
-MaterialSpecification (note "The ideal specification of a material, e.g., a perfect lot of Inconel 625.") is a class,
-	described by specChemistry (note "The chemistry specification of the generic/ideal material.") with a single value of type Chemistry,
-	described by predictedProperties (note "The predicted properties of the generic/ideal material.") with values of type MaterialProperty.
+MaterialSpecification (note "Ideal specification of a material, e.g., a perfect lot of Inconel 625.") is a class,
+	described by specChemistry (note "Chemistry specification of the generic/ideal material.") with a single value of type Chemistry,
+	described by predictedProperties (note "Predicted properties of the generic/ideal material.") with values of type MaterialProperty.
 
-MaterialProperty (note "Base class of material properties. Can be sub-classed to define specific types of material properties.") is a class,
+MaterialProperty (note "Base class of material properties.") is a class,
 	described by derivedBy (note "How property was determined.") with a single value of type PropertyDerivedBy,
 	described by propertyReferenceStandard (note "ASTM or other standard to which the measurement conforms.") with a single value of type Document,
 	described by propertyDataSheet (note "Reference document used to provide material properties.") with a single value of type Document.
 
-PropertyDerivedBy (note "The type of approach, from experiment or simulation, to obtain the property.") is a class, must be one of {Measured, Predicted}.
+PropertyDerivedBy (note "Type of approach, from experiment or simulation, to obtain the property.") is a class, must be one of {Measured, Predicted}.
 
 ThermodynamicProperty (note "Thermodynamic property of the material.") is a type of MaterialProperty,
 	described by electricalConductivity (note "Electrical conductivity of the material.") with a single value of type Quantity,
@@ -76,45 +76,45 @@ ParticleSizeDistribution (note "Particle size of the feedstock for types of proc
 	described by psdMean (note "Mean value of the particle size distribution.") with a single value of type Quantity,
 	described by psdMode (note "Mode of the particle size distribution.") with a single value of type Quantity,
 	described by psdStandardDeviation (note "Standard deviation of the particle size distribution.") with a single value of type Quantity,
-	described by psdRange (note "The value range of the measured particle size distribution.") with a single value of type Quantity,
+	described by psdRange (note "Value range of the measured particle size distribution.") with a single value of type Quantity,
 	described by psdSkewness (note "Skewness, (mean-median)/(standard deviation) of the particle size distribution.") with a single value of type Quantity,
 	described by psdKurtosis (note "Kurtosis of the particle size distribution.") with a single value of type Quantity.
 
 TensileProperties (note "Tensile properties of the material or part.") is a type of MaterialProperty,
-	described by tensileTestStrainRate (note "Strain rate applied for tensile test.") with a single value of type Quantity,
+	described by tensileTestStrainRate (note "Strain rate of the tensile test.") with a single value of type Quantity,
 	described by tensileTestDisplacementRate (note "Rate of displacement applied for tensile test.") with a single value of type Quantity,
 	described by tensileTestControlMode (note "Control of measurement for tensile test.") with a single value of type string,
 	described by initialStrainRate (note "Initial strain rate applied for tensile test.") with a single value of type Quantity,
-	described by initialLoadingRate (note "The rate of initial loading for tensile test.") with a single value of type Quantity,
+	described by initialLoadingRate (note "Rate of initial loading for tensile test.") with a single value of type Quantity,
 	described by finalStrainRate (note "Final strain rate applied for tensile test.") with a single value of type Quantity,
-	described by finalLoadingRate (note "The rate of loading in the end of the tensile test.") with a single value of type Quantity,
+	described by finalLoadingRate (note "Rate of loading in the end of the tensile test.") with a single value of type Quantity,
 	described by yieldStrengthZeroPoint2Percent (note "0.2% off yielding strength from tensile test.") with a single value of type Quantity,
-	described by yieldStrengthZeroPointZero2Percent (note "Yield strength at 0.0 strain from tensile test.") with a single value of type Quantity,
+	described by yieldStrengthZeroPointZero2Percent (note "Yield strength at initial strain from tensile test.") with a single value of type Quantity,
 	described by ultimateTensileStrength (note "Ultimate tensile strength from tensile test.") with a single value of type Quantity,
-	described by elongation (note "The value of strain at necking from tensile test.") with a single value of type Quantity,
-	described by percentReductionInArea (note "The reduction area measured from tensile test.") with a single value of type Quantity,
+	described by elongation (note "Value of strain at necking from tensile test.") with a single value of type Quantity,
+	described by percentReductionInArea (note "Reduction area measured from tensile test.") with a single value of type Quantity,
 	described by youngsModulus (note "Young's modulus of the material.") with a single value of type Quantity,
 	described by maximumLoad (note "Maximum loading from tensile test.") with a single value of type Quantity.
 
-CreepProperties (note "Details about the creep properties of a material.") is a type of MaterialProperty,
-	described by creepPanLoad (note "The loading for creep test.") with a single value of type Quantity,
-	described by creepLeverArmRatio (note "The setup details about the lever arm for creep test.") with a single value of type Quantity,
-	described by creepTestLoad (note "The loading for creep test.") with a single value of type Quantity,
-	described by creepTestStress (note "The stress setup for creep test.") with a single value of type Quantity,
-	described by creepTestDuration (note "The testing time for creep test.") with a single value of type Quantity,
-	described by elongationAtRuptureCreep (note "The elongation at the end of the creep test.") with a single value of type Quantity.
+CreepProperties (note "Creep properties of a material.") is a type of MaterialProperty,
+	described by creepPanLoad (note "Loading for creep test.") with a single value of type Quantity,
+	described by creepLeverArmRatio (note "Setup details about the lever arm for creep test.") with a single value of type Quantity,
+	described by creepTestLoad (note "Loading for creep test.") with a single value of type Quantity,
+	described by creepTestStress (note "Stress setup for creep test.") with a single value of type Quantity,
+	described by creepTestDuration (note "Testing time for creep test.") with a single value of type Quantity,
+	described by elongationAtRuptureCreep (note "Elongation at the end of the creep test.") with a single value of type Quantity.
 
 ChemicalProperties (note "Chemical properties of the material.") is a type of MaterialProperty,
 	described by oxidationResistance (note "Oxidation resistance of the material.") with a single value of type Quantity.
 
-Chemistry (note "The chemistry of the material.") is a class,
-	described by chemistryMeasurementMethod (note "Measurement method for real chemistries, which may be different from nominal chemistries. Should not be included if this is a specified chemistry.") with a single value of type string,
-	described by chemistryPercentUnit (note "The unit of the chemistry, like weight percent or volume percent.") with a single value of type ChemistryPercentUnit,
+Chemistry (note "Elemental composition of a material, expressed as the proportion of each constituent element.") is a class,
+	described by chemistryMeasurementMethod (note "Measurement method used to determine the actual chemistry, which may differ from the nominal chemistry.") with a single value of type string,
+	described by chemistryPercentUnit (note "Unit of the chemistry, like weight percent or volume percent.") with a single value of type ChemistryPercentUnit,
 	described by chemistryComposition (note "Elements from periodic table and percents.") with values of type Composition.
 
-ChemistryPercentUnit (note "Percent unit of the chemistry.") is a class, must be one of {WeightPercent, AtomicPercent}.
+ChemistryPercentUnit (note "Unit in which a chemical-composition proportion is expressed, either weight percent or atomic percent.") is a class, must be one of {WeightPercent, AtomicPercent}.
 
-Composition (note "Chemical element from periodic table.") is a class,
+Composition (note "Range of chemical composition.") is a class,
 	described by chemistryElement (note "Chemical element from periodic table.") with a single value of type PeriodicElement,
 	described by minPercent (note "Minimum percentage of the element from measurements.") with a single value of type double,
 	described by maxPercent (note "Maximum percentage of the element from measurements.") with a single value of type double,
@@ -127,10 +127,10 @@ PeriodicElement (note "Element symbol, e.g., C.") is a class, must be one of {Ac
 }.
 
 /*
-PeriodicElement (note "Information about individual elements.") is a class,
-	described by elementName (note "element name, e.g., Carbon.") with a single value of type string,
-	described by elementSymbol (note "element symbol, e.g., C.") with a single value of type string,
-	described by atomicNumber (note "element atomic number, e.g., 6.") with a single value of type int,
-	described by atomicMass (note "element atomic mass, e.g., 12.0107 amu.") with a single value of type Quantity,
-	described by elementMeltingPoint (note "element melting point, e.g., 3500.0 degrees Celsius.") with a single value of type Quantity.
+PeriodicElement (note "Individual elements.") is a class,
+	described by elementName (note "Element name, e.g., Carbon.") with a single value of type string,
+	described by elementSymbol (note "Element symbol, e.g., C.") with a single value of type string,
+	described by atomicNumber (note "Element atomic number, e.g., 6.") with a single value of type int,
+	described by atomicMass (note "Element atomic mass, e.g., 12.0107 amu.") with a single value of type Quantity,
+	described by elementMeltingPoint (note "Element melting point, e.g., 3500.0 degrees Celsius.") with a single value of type Quantity.
 */
