@@ -56,7 +56,7 @@ BuildParameters (note "Process parameters and settings which apply to all parts 
 	described by buildParamLayerThickness (note "Setting for the incremental distance between built layers.") with a single value of type Quantity,
 	described by buildParamEnvironmentTemperature (note "Commanded temperature of the build chamber.") with a single value of type Quantity.
 
-AMPartParameters (note "part specific process parameters that specifies how to fabricate an additive manufacturing part") is a type of PartSpecificProcessParameters.
+AMPartParameters (note "Part specific process parameters that specifies how to fabricate an additive manufacturing part") is a type of PartSpecificProcessParameters.
 
 AMProcessStepData (note "Data generated in the build Process, including in-situ monitoring data, build interruptions, build cool down duration and images captured") is a type of ProcessStepData,
 	described by amDataInSituData (note "Advanced AM in-process monitoring BIG data, is differentiated from processStepData.") with values of type AMInSituData,
@@ -78,8 +78,8 @@ BuildInterruption (note "Temporary cessation of the build process during a build
 	described by buildInterruptReason (note "Reason of interruption.") with a single value of type string,
 	described by buildInterruptHandling (note "Methods of how the interruption is handled.") with a single value of type string.
 
-BuildProductInput (note "Intended material output from an AM process, with a role of being an input for the downstream processes") is a type of MaterialInputs,
-	described by buildProductInput (note "Build product as an input to a manufacturing process") with values of type BuildProduct.
+BuildProductInput (note "Material input in the form of a build product") is a type of MaterialInputs,
+	described by buildProductInput (note "Build product to be processed by a manufacturing process step") with values of type BuildProduct.
 
 AMPartExtraction (note "Separating or extracting a part or component from a single one.") is a type of ManufacturingProcessStep.
 
@@ -96,9 +96,9 @@ AMPartExtractionMaterialOutput (note "Material output from an AM part extraction
 	described by amAMPartExtractionParts (note "Parts extracted from an BuildProduct") with values of type Part,
 	described by amAMPartExtractionBuildPlate (note "Build plate extracted from an build product")  with a single value of type BuildPlate.
 
-PowderRecycling (note "Process of collecting and processing materials and turning them into new ones.") is a type of ManufacturingProcessStep.
+PowderRecycling (note "Process of collecting and processing powder materials and turning them into new ones.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialOutputs of PowderRecycling only has values of type MaterialStockOutput.
 processStepSpecification of PowderRecycling only has values of type PowderRecycleProcessStepSpecification.
 
-PowderRecycleProcessStepSpecification is a type of ManufacturingStepSpecification.
+PowderRecycleProcessStepSpecification (note "Specification for a powder recycle process") is a type of ManufacturingStepSpecification.
