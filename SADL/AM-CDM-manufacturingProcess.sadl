@@ -4,54 +4,54 @@ import "http://kdl.ge.com/AM-CDM-system".
 import "http://kdl.ge.com/AM-CDM-part".
 
 ManufacturingProcessStep (note "Planned process in which input material is transformed or modified.") is a type of PlannedProcessStep,
-	described by processSpecification with a single value of type ManufacturingStepSpecification,
-	described by mfgProcessMachine (note "The machine used to transform the input material.") with a single value of type System,
-	described by mfgProcessControlSoftware (note "Software used to control the process.") with values of type Software,
-	described by mfgProcessConsumables (note "Consumables used during this process step.") with values of type Consumables,
-	described by mfgProcessMaterialInputs (note "Material inputs for this process step") with values of type MaterialInputs,
-	described by mfgProcessMaterialOutputs (note "New material stock of parts that are created in this process") with values of type MaterialOutputs,
-	described by mfgProcessSimulation (note "Reference to Simulation records associated with this processStep.") with values of type ProcessSimulation.
+	described by processSpecification (note "Specification that governs how the manufacturing process step is performed.") with a single value of type ManufacturingStepSpecification,
+	described by mfgProcessMachine (note "System used to transform the input material.") with a single value of type System,
+	described by mfgProcessControlSoftware (note "Software applications used to control the manufacturing process step.") with values of type Software,
+	described by mfgProcessConsumables (note "Consumables used during the manufacturing process step.") with values of type Consumables,
+	described by mfgProcessMaterialInputs (note "Materials provided as inputs to the manufacturing process step.") with values of type MaterialInputs,
+	described by mfgProcessMaterialOutputs (note "Materials produced as output by the manufacturing process step.") with values of type MaterialOutputs,
+	described by mfgProcessSimulation (note "Simulation records associated with the process step.") with values of type ProcessSimulation.
 
-ManufacturingStepSpecification (note "A specification for a manufacturing process") is a type of ProcessStepSpecification,
-	described by mfgSpecGlobalProcessParameters (note "Nominal system setting which apply to all material stock involved in the Manufacturing Process Step.") with values of type GlobalProcessParameters,
-	described by mfgSpecPartSpecificProcessParameters (note "Nominal system setting which uniquely apply to an individual part to be processed.") with values of type PartSpecificProcessParameters,
-	described by mfgSpecEnvironment with a single value of type Environment.
+ManufacturingStepSpecification (note "Specification that prescribes how a manufacturing process step is performed.") is a type of ProcessStepSpecification,
+	described by mfgSpecGlobalProcessParameters (note "Nominal system settings that apply to all material stock involved in the manufacturing process step.") with values of type GlobalProcessParameters,
+	described by mfgSpecPartSpecificProcessParameters (note "Nominal system settings that apply uniquely to an individual part to be processed.") with values of type PartSpecificProcessParameters,
+	described by mfgSpecEnvironment (note "Set of environmental conditions maintained during the manufacturing process step.") with a single value of type Environment.
 
-GlobalProcessParameters is a class.
+GlobalProcessParameters (note "Nominal system settings that apply to all material stock involved in a manufacturing process step.") is a class.
 processStepSpecification of ManufacturingProcessStep only has values of type ManufacturingStepSpecification.
 
-Consumables (note "Materials which are used during the execution of a process, but do not, in a substantial way, become part of material output. Example: Process Gas") is a class.
+Consumables (note "Materials used during the execution of a manufacturing process step that do not substantially become part of the material output.") is a class.
 
-MaterialInputs (note "Materials that are an input to the process and become a part of the material output in a substantial way. Examples: Powder Feedstock, billet, sub-components to be assembled.") is a class.
-MaterialOutputs is a class.
+MaterialInputs (note "Materials that are inputs to a manufacturing process step and substantially become part of the material output.") is a class.
+MaterialOutputs (note "Materials produced as output by a manufacturing process step.") is a class.
 
-ProcessSimulation (note "Data used and generated from computer programs using physics based models: including the models and the simulation outputs.") is a class,
-	described by simulationID (note "UID for specific simulation.") with a single value of type string,
-	described by simulationModel (note "Physical phenomenon covered, mathematical equations.") with a single value of type Document,
-	described by simulationSoftware (note "Software information.") with values of type Software,
-	described by simulationInputs (note "Parameters used for simulations.") with a single value of type Document,
-	described by simulationOutputs (note "Simulation results.") with a single value of type Document,
-	described by simulationModelDomain (note "Focal area of model.") with values of type string,
-	described by simulationModelDefinition (note "Documentation of how model is constructed (equations, I/O).") with a single value of type Document.
+ProcessSimulation (note "Data used and generated by computer programs that employ physics-based models.") is a class,
+	described by simulationID (note "Globally unique identifier assigned to a specific simulation.") with a single value of type string,
+	described by simulationModel (note "Document that describes the physical phenomena and mathematical equations used in the simulation.") with a single value of type Document,
+	described by simulationSoftware (note "Software applications used to perform the simulation.") with values of type Software,
+	described by simulationInputs (note "Document specifying the parameters used as inputs to the simulation.") with a single value of type Document,
+	described by simulationOutputs (note "Document containing the results produced by the simulation.") with a single value of type Document,
+	described by simulationModelDomain (note "Physical disciplines, such as thermal or structural analysis, represented by the simulation model.") with values of type string,
+	described by simulationModelDefinition (note "Document describing how the simulation model is constructed, including its equations, inputs and outputs.") with a single value of type Document.
 
-PowderStockInput is a type of MaterialInputs,
-	described by powderStockInput with values of type PowderStock.
+PowderStockInput (note "Powder stock provided as input to a manufacturing process step.") is a type of MaterialInputs,
+	described by powderStockInput (note "Powder stocks supplied as input to the manufacturing process step.") with values of type PowderStock.
 
-PowderStockOutput is a type of MaterialOutputs,
-	described by powderStockOutput with values of type PowderStock.
+PowderStockOutput (note "Powder stock produced as output by a manufacturing process step.") is a type of MaterialOutputs,
+	described by powderStockOutput (note "Powder stocks produced as output by the manufacturing process step.") with values of type PowderStock.
 
-Blending (note "The process of mixing metal powders.") is a type of ManufacturingProcessStep.
+Blending (note "Manufacturing process step in which powders are mixed.") is a type of ManufacturingProcessStep.
 
 mfgProcessMaterialInputs of Blending only has values of type PowderStockInput.
 mfgProcessMaterialOutputs of Blending only has values of type PowderStockOutput.
 
-MaterialStockInput is a type of MaterialInputs,
-	described by materialStockInput with values of type MaterialStock.
+MaterialStockInput (note "Material stock provided as input to a manufacturing process step.") is a type of MaterialInputs,
+	described by materialStockInput (note "Material stocks supplied as input to the manufacturing process step.") with values of type MaterialStock.
 
-MaterialStockOutput is a type of MaterialOutputs,
-	described by materialStockOutput with values of type MaterialStock.
+MaterialStockOutput (note "Material stock produced as output by a manufacturing process step.") is a type of MaterialOutputs,
+	described by materialStockOutput (note "Material stocks produced as output by the manufacturing process step.") with values of type MaterialStock.
 
-MaterialHT is a type of ManufacturingProcessStep.
+MaterialHT (note "Manufacturing process step in which material stock undergoes thermal heat treatment.") is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHT only has values of type HTProcessStepSpecification.
 processData of MaterialHT only has values of type HTProcessStepData.
@@ -59,13 +59,13 @@ mfgProcessMachine of MaterialHT only has values of type HTSystem.
 mfgProcessMaterialInputs of MaterialHT only has values of type MaterialStockInput.
 mfgProcessMaterialOutputs of MaterialHT only has values of type MaterialStockOutput.
  
-PartMaterialInput is a type of MaterialInputs,
-	described by partInput with values of type Part.
+PartMaterialInput (note "Part provided as input to a manufacturing process step.") is a type of MaterialInputs,
+	described by partInput (note "Parts supplied as input to the manufacturing process step.") with values of type Part.
 
-PartMaterialOutput is a type of MaterialOutputs,
-	described by partOutput with values of type Part.
+PartMaterialOutput (note "Part produced as output by a manufacturing process step.") is a type of MaterialOutputs,
+	described by partOutput (note "Parts produced as output by the manufacturing process step.") with values of type Part.
 
-PartHT is a type of ManufacturingProcessStep.
+PartHT (note "Manufacturing process step in which a part undergoes thermal heat treatment.") is a type of ManufacturingProcessStep.
 
 processSpecification of PartHT only has values of type HTProcessStepSpecification.
 processData of PartHT only has values of type HTProcessStepData.
@@ -73,7 +73,7 @@ mfgProcessMachine of PartHT only has values of type HTSystem.
 mfgProcessMaterialInputs of PartHT only has values of type PartMaterialInput.
 mfgProcessMaterialOutputs of PartHT only has values of type PartMaterialOutput.
 
-MaterialHIP is a type of ManufacturingProcessStep.
+MaterialHIP (note "Manufacturing process step in which material stock undergoes hot isostatic pressing.") is a type of ManufacturingProcessStep.
 
 processSpecification of MaterialHIP only has values of type HIPProcessStepSpecification.
 processData of MaterialHIP only has values of type HIPProcessStepData.
@@ -81,7 +81,7 @@ mfgProcessMachine of MaterialHIP only has values of type HIPSystem.
 mfgProcessMaterialInputs of MaterialHIP only has values of type MaterialStockInput.
 mfgProcessMaterialOutputs of MaterialHIP only has values of type MaterialStockOutput.
 
-PartHIP is a type of ManufacturingProcessStep.
+PartHIP (note "Manufacturing process step in which a part undergoes hot isostatic pressing.") is a type of ManufacturingProcessStep.
 
 processSpecification of PartHIP only has values of type HTProcessStepSpecification.
 processData of PartHIP only has values of type HTProcessStepData.
