@@ -18,7 +18,7 @@ TestResult (note "Outcome produced by a test, inspection, or characterization.")
 TICResultStatus (note "Status indicating whether a test, inspection, or characterization passed or failed.") is a class, must be one of {Pass, Fail}.
 
 Specimen (note "Physical coupon used for a test, inspection, or characterization; it may be a section of a part or an entire part.") is a class,
-	described by specimenID (note "Globally unique identifier assigned to a specific specimen within the data model.") with a single value of type string,
+	described by specimenID (note "Globally unique identifier assigned to a specific specimen.") with a single value of type string,
 	described by specimenDescription (note "Human-readable description of the specimen.") with a single value of type string,
 	described by specimenMass (note "Mass of the specimen, expressed as a numeric quantity with its unit of measure.") with a single value of type Quantity,
 	described by specimenProcessHistory (note "Process history of the specimen recording, in chronological order, the events that occurred to it after it reached the base geometric form specified in the applicable standard.") with a single value of type ProcessHistory,
